@@ -1,0 +1,127 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<XtraReportsLayoutSerializer SerializerVersion="23.2.3.0" Ref="0" ControlType="DevExpress.XtraReports.UI.XtraReport, DevExpress.XtraReports.v23.2, Version=23.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" Name="Report2" SnappingMode="SnapToGridAndSnapLines" Landscape="true" Margins="100, 100, 73.0102, 22.198137" PaperKind="A4" PageWidth="1169" PageHeight="827" Version="23.2" Font="Arial, 9.75pt">
+  <Parameters>
+    <Item1 Ref="2" Description="MivNumber" ValueInfo="0" Name="MivNumber" Type="#Ref-1" />
+  </Parameters>
+  <Bands>
+    <Item1 Ref="3" ControlType="TopMarginBand" Name="TopMargin" HeightF="73.0102">
+      <Controls>
+        <Item1 Ref="4" ControlType="XRTable" Name="table5" SizeF="969.00006,25.000023" LocationFloat="0,25" Padding="2,2,0,0,96" Borders="All">
+          <Rows>
+            <Item1 Ref="5" ControlType="XRTableRow" Name="tableRow7" Weight="1">
+              <Cells>
+                <Item1 Ref="6" ControlType="XRTableCell" Name="tableCell20" Weight="1" Multiline="true">
+                  <Controls>
+                    <Item1 Ref="7" ControlType="XRLabel" Name="lblUser" Multiline="true" CanGrow="false" TextAlignment="MiddleLeft" SizeF="156.30003,22.999992" LocationFloat="37.5,1.5258789E-05" Padding="2,2,0,0,100">
+                      <StylePriority Ref="8" UseTextAlignment="false" />
+                    </Item1>
+                    <Item2 Ref="9" ControlType="XRLabel" Name="label5" Multiline="true" Text="By :" TextAlignment="MiddleLeft" SizeF="37.5,22.999992" LocationFloat="0,1.5258789E-05" Font="Arial, 9.75pt, style=Bold" Padding="2,2,0,0,100">
+                      <StylePriority Ref="10" UseFont="false" UseTextAlignment="false" />
+                    </Item2>
+                  </Controls>
+                </Item1>
+                <Item2 Ref="11" ControlType="XRTableCell" Name="tableCell23" Weight="2.4716796892838335" Multiline="true">
+                  <Controls>
+                    <Item1 Ref="12" ControlType="XRLabel" Name="label8" Multiline="true" Text="SubCon. No :" TextAlignment="MiddleLeft" SizeF="95.74832,22.999992" LocationFloat="1.5258789E-05,0" Font="Arial, 9.75pt, style=Bold" Padding="2,2,0,0,100">
+                      <StylePriority Ref="13" UseFont="false" UseTextAlignment="false" />
+                    </Item1>
+                    <Item2 Ref="14" ControlType="XRLabel" Name="lblMrc" Multiline="true" CanGrow="false" CanShrink="true" TextAlignment="MiddleLeft" WordWrap="false" SizeF="385.31158,22.999992" LocationFloat="93.69998,0" Padding="2,2,0,0,100" Borders="None">
+                      <StylePriority Ref="15" UseTextAlignment="false" />
+                    </Item2>
+                  </Controls>
+                </Item2>
+                <Item3 Ref="16" ControlType="XRTableCell" Name="tableCell27" Weight="0.6361053428307977" Multiline="true">
+                  <Controls>
+                    <Item1 Ref="17" ControlType="XRLabel" Name="label7" Multiline="true" Text="Date :" TextAlignment="MiddleLeft" SizeF="48.979614,22.999992" LocationFloat="0,0" Font="Arial, 9.75pt, style=Bold" Padding="2,2,0,0,100">
+                      <StylePriority Ref="18" UseFont="false" UseTextAlignment="false" />
+                    </Item1>
+                    <Item2 Ref="19" ControlType="XRLabel" Name="lblDate2" Multiline="true" CanGrow="false" TextAlignment="MiddleCenter" SizeF="74.29761,22.999992" LocationFloat="48.979614,0" Padding="2,2,0,0,100">
+                      <StylePriority Ref="20" UseTextAlignment="false" />
+                    </Item2>
+                  </Controls>
+                </Item3>
+                <Item4 Ref="21" ControlType="XRTableCell" Name="tableCell28" Weight="0.8922149678853688" Multiline="true">
+                  <Controls>
+                    <Item1 Ref="22" ControlType="XRLabel" Name="label10" Multiline="true" Text="MIV NO :" TextAlignment="MiddleLeft" SizeF="69.17523,22.999992" LocationFloat="0,0" Font="Arial, 9.75pt, style=Bold" Padding="2,2,0,0,100">
+                      <StylePriority Ref="23" UseFont="false" UseTextAlignment="false" />
+                    </Item1>
+                    <Item2 Ref="24" ControlType="XRLabel" Name="lblRequestNO" Multiline="true" CanGrow="false" TextAlignment="MiddleCenter" SizeF="103.7359,22.999992" LocationFloat="69.17529,0" Padding="2,2,0,0,100">
+                      <StylePriority Ref="25" UseTextAlignment="false" />
+                    </Item2>
+                  </Controls>
+                </Item4>
+              </Cells>
+            </Item1>
+          </Rows>
+        </Item1>
+        <Item2 Ref="26" ControlType="XRTable" Name="table1" TextAlignment="MiddleCenter" SizeF="969,23.010178" LocationFloat="0,50.000023" Font="Tahoma, 9.75pt" BackColor="Silver" Padding="2,2,0,0,96" Borders="All">
+          <Rows>
+            <Item1 Ref="27" ControlType="XRTableRow" Name="tableRow1" Weight="1">
+              <Cells>
+                <Item1 Ref="28" ControlType="XRTableCell" Name="tableCell7" Weight="0.31356748490316455" Multiline="true" Text="#" Borders="All">
+                  <StylePriority Ref="29" UseBorders="false" />
+                </Item1>
+                <Item2 Ref="30" ControlType="XRTableCell" Name="tableCell1" Weight="1.2486481305067618" Multiline="true" Text="PL" Borders="All">
+                  <StylePriority Ref="31" UseBorders="false" />
+                </Item2>
+                <Item3 Ref="32" ControlType="XRTableCell" Name="tableCell2" Weight="0.5554793092370507" Multiline="true" Text="PK" />
+                <Item4 Ref="33" ControlType="XRTableCell" Name="tableCell6" Weight="0.8235479517542125" Multiline="true" Text="Tag" />
+                <Item5 Ref="34" ControlType="XRTableCell" Name="tableCell5" Weight="2.9412428244545326" Multiline="true" Text="Description" />
+                <Item6 Ref="35" ControlType="XRTableCell" Name="tableCell4" Weight="0.4705988565182986" Multiline="true" Text="Unit" />
+                <Item7 Ref="36" ControlType="XRTableCell" Name="tableCell3" Weight="0.5882485437616172" Multiline="true" Text="ReqQty" />
+                <Item8 Ref="37" ControlType="XRTableCell" Name="tableCell8" Weight="1.0269116847534367" Multiline="true" Text="Location" />
+                <Item9 Ref="38" ControlType="XRTableCell" Name="tableCell9" Weight="1.1519610371742237" Multiline="true" Text="Remark" />
+              </Cells>
+            </Item1>
+          </Rows>
+          <StylePriority Ref="39" UseFont="false" UseBackColor="false" UseBorders="false" UseTextAlignment="false" />
+        </Item2>
+      </Controls>
+    </Item1>
+    <Item2 Ref="40" ControlType="DetailBand" Name="Detail" HeightF="30.20833">
+      <Controls>
+        <Item1 Ref="41" ControlType="XRTable" Name="table2" TextAlignment="MiddleCenter" SizeF="969,30.20833" LocationFloat="0,0" Font="Tahoma, 8pt" BackColor="Transparent" Padding="2,2,0,0,96" Borders="All">
+          <Rows>
+            <Item1 Ref="42" ControlType="XRTableRow" Name="tableRow2" Weight="1">
+              <Cells>
+                <Item1 Ref="43" ControlType="XRTableCell" Name="lblRow" Weight="0.31356748490316455" Multiline="true" Borders="All">
+                  <StylePriority Ref="44" UseBorders="false" />
+                </Item1>
+                <Item2 Ref="45" ControlType="XRTableCell" Name="lblPl" Weight="1.2486481305067618" Multiline="true" TextAlignment="MiddleLeft" Borders="All">
+                  <StylePriority Ref="46" UseBorders="false" UseTextAlignment="false" />
+                </Item2>
+                <Item3 Ref="47" ControlType="XRTableCell" Name="lblPk" Weight="0.5554793092370507" Multiline="true" />
+                <Item4 Ref="48" ControlType="XRTableCell" Name="lblTag" Weight="0.8235479517542125" Multiline="true" />
+                <Item5 Ref="49" ControlType="XRTableCell" Name="lblDescription" Weight="2.9412428244545326" Multiline="true" TextAlignment="MiddleLeft">
+                  <StylePriority Ref="50" UseTextAlignment="false" />
+                </Item5>
+                <Item6 Ref="51" ControlType="XRTableCell" Name="lblUnit" Weight="0.4705988565182986" Multiline="true" />
+                <Item7 Ref="52" ControlType="XRTableCell" Name="lblReqQty" Weight="0.5882485437616172" Multiline="true" />
+                <Item8 Ref="53" ControlType="XRTableCell" Name="lblLocation" Weight="1.0269116847534367" Multiline="true" />
+                <Item9 Ref="54" ControlType="XRTableCell" Name="lblRemark" Weight="1.1519610371742237" Multiline="true" TextAlignment="MiddleLeft">
+                  <StylePriority Ref="55" UseTextAlignment="false" />
+                </Item9>
+              </Cells>
+            </Item1>
+          </Rows>
+          <StylePriority Ref="56" UseFont="false" UseBackColor="false" UseBorders="false" UseTextAlignment="false" />
+        </Item1>
+      </Controls>
+    </Item2>
+    <Item3 Ref="57" ControlType="BottomMarginBand" Name="BottomMargin" HeightF="22.198137" StyleName="Style1">
+      <Controls>
+        <Item1 Ref="58" ControlType="XRLabel" Name="label1" Multiline="true" Text="AWMS" TextAlignment="TopLeft" SizeF="87.5,10.000007" LocationFloat="12.5,2.4999936" Font="Arial, 8pt, style=Italic" ForeColor="IndianRed" Padding="2,2,0,0,100">
+          <StylePriority Ref="59" UseFont="false" UseForeColor="false" UseTextAlignment="false" />
+        </Item1>
+        <Item2 Ref="60" ControlType="XRPageInfo" Name="pageInfo1" SizeF="87.5,14.999993" LocationFloat="462.5,0" Padding="2,2,0,0,100" />
+      </Controls>
+    </Item3>
+  </Bands>
+  <StyleSheet>
+    <Item1 Ref="61" Name="Style1" BorderStyle="Inset" Font="Arial, 9.75pt" StringFormat="Near;Near;FitBlackBox, LineLimit, NoClip;None;Character;GenericTypographic" />
+    <Item2 Ref="62" Name="Style2" BorderStyle="Inset" Padding="2,2,0,0,100" Font="Arial, 9.75pt, style=Bold" ForeColor="Black" BackColor="Transparent" BorderColor="White" StringFormat="Center;Center;FitBlackBox, LineLimit, NoClip;None;Character;GenericTypographic" TextAlignment="MiddleCenter" />
+  </StyleSheet>
+  <ObjectStorage>
+    <Item1 ObjectType="DevExpress.XtraReports.Serialization.ObjectStorageInfo, DevExpress.XtraReports.v23.2" Ref="1" Content="System.Int32" Type="System.Type" />
+  </ObjectStorage>
+</XtraReportsLayoutSerializer>

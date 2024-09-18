@@ -1,6 +1,7 @@
 ﻿using AWMS.core.Interfaces;
 using AWMS.datalayer;
 using AWMS.datalayer.Entities;
+using AWMS.dto;
 
 namespace AWMS.core
 {
@@ -53,6 +54,11 @@ namespace AWMS.core
         public async Task<int?> GetByCompanyNameAsync(string Companyname)
         {
             return await _unitOfWork.Companies.GetByNameAsync(Companyname);
+        }
+
+        public Task<IEnumerable<CompaneisDto>> GetAllCompaniesNameAsync()
+        {
+            return _unitOfWork.Companies.GetAllCompanyNamesAsync();
         }
     }
 }

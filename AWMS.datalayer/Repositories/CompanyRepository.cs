@@ -1,5 +1,6 @@
 ﻿using AWMS.datalayer.Context;
 using AWMS.datalayer.Entities;
+using AWMS.dto;
 using Microsoft.EntityFrameworkCore;
 
 namespace AWMS.datalayer.Repositories
@@ -52,5 +53,24 @@ namespace AWMS.datalayer.Repositories
             await _context.SaveChangesAsync();
             return company.CompanyID;
         }
+
+        public async Task<IEnumerable<CompaneisDto>> GetAllCompanyNamesAsync()
+        {
+            var companies = await _context.Companies
+                .FromSqlRaw("EXEC sp_GetAllCompanyNames")
+                .ToListAsync();  // واکشی اطلاعات به صورت async از دیتابیس
+
+            // تبدیل داده‌ها به نوع CompaneisDto در سطح کلاینت
+            var companyDtos = companies
+                .Select(c => new CompaneisDto
+                {
+                    CompanyID = c.CompanyID,
+                    CompanyName = c.CompanyName
+                })
+                .ToList();  // تبدیل به لیست همگام‌سازی شده
+
+            return companyDtos;
+        }
+
     }
 }

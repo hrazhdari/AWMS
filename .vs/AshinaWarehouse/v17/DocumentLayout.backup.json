@@ -1,7 +1,28 @@
 {
   "Version": 1,
   "WorkspaceRootPath": "D:\\MyBigProject\\AshinaWarehouse\\",
-  "Documents": [],
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{89D8F00C-F3D8-4FD2-9904-504DD587455F}|AWMS.app\\AWMS.app.csproj|d:\\mybigproject\\ashinawarehouse\\awms.app\\forms\\ribbonvoucher\\frmmrv.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{89D8F00C-F3D8-4FD2-9904-504DD587455F}|AWMS.app\\AWMS.app.csproj|solutionrelative:awms.app\\forms\\ribbonvoucher\\frmmrv.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{89D8F00C-F3D8-4FD2-9904-504DD587455F}|AWMS.app\\AWMS.app.csproj|d:\\mybigproject\\ashinawarehouse\\awms.app\\forms\\ribbonvoucher\\frmmrv.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{89D8F00C-F3D8-4FD2-9904-504DD587455F}|AWMS.app\\AWMS.app.csproj|solutionrelative:awms.app\\forms\\ribbonvoucher\\frmmrv.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{89D8F00C-F3D8-4FD2-9904-504DD587455F}|AWMS.app\\AWMS.app.csproj|d:\\mybigproject\\ashinawarehouse\\awms.app\\forms\\ribbonvoucher\\frmissuevoucher.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{89D8F00C-F3D8-4FD2-9904-504DD587455F}|AWMS.app\\AWMS.app.csproj|solutionrelative:awms.app\\forms\\ribbonvoucher\\frmissuevoucher.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{72C9D7C4-39DA-4D50-8F4F-A18DB77F1F9B}|AWMS.dapper\\AWMS.dapper.csproj|d:\\mybigproject\\ashinawarehouse\\awms.dapper\\mrvdapperrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{72C9D7C4-39DA-4D50-8F4F-A18DB77F1F9B}|AWMS.dapper\\AWMS.dapper.csproj|solutionrelative:awms.dapper\\mrvdapperrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{72C9D7C4-39DA-4D50-8F4F-A18DB77F1F9B}|AWMS.dapper\\AWMS.dapper.csproj|d:\\mybigproject\\ashinawarehouse\\awms.dapper\\repositories\\imrvdapperrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{72C9D7C4-39DA-4D50-8F4F-A18DB77F1F9B}|AWMS.dapper\\AWMS.dapper.csproj|solutionrelative:awms.dapper\\repositories\\imrvdapperrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
   "DocumentGroupContainers": [
     {
       "Orientation": 1,
@@ -9,11 +30,75 @@
       "DocumentGroups": [
         {
           "DockedHeight": 200,
-          "SelectedChildIndex": -1,
+          "SelectedChildIndex": 4,
           "Children": [
             {
               "$type": "Bookmark",
               "Name": "ST:0:0:{b1e99781-ab81-11d0-b683-00aa00a3ee26}"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "frmIssueVoucher.cs",
+              "DocumentMoniker": "D:\\MyBigProject\\AshinaWarehouse\\AWMS.app\\Forms\\RibbonVoucher\\frmIssueVoucher.cs",
+              "RelativeDocumentMoniker": "AWMS.app\\Forms\\RibbonVoucher\\frmIssueVoucher.cs",
+              "ToolTip": "D:\\MyBigProject\\AshinaWarehouse\\AWMS.app\\Forms\\RibbonVoucher\\frmIssueVoucher.cs",
+              "RelativeToolTip": "AWMS.app\\Forms\\RibbonVoucher\\frmIssueVoucher.cs",
+              "ViewState": "AgIAALUCAAAAAAAAAAAtwMsCAAAJAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-09-18T14:32:12.168Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "MrvDapperRepository.cs",
+              "DocumentMoniker": "D:\\MyBigProject\\AshinaWarehouse\\AWMS.dapper\\MrvDapperRepository.cs",
+              "RelativeDocumentMoniker": "AWMS.dapper\\MrvDapperRepository.cs",
+              "ToolTip": "D:\\MyBigProject\\AshinaWarehouse\\AWMS.dapper\\MrvDapperRepository.cs",
+              "RelativeToolTip": "AWMS.dapper\\MrvDapperRepository.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABAAAAAiAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-09-18T14:26:43.46Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "IMrvDapperRepository.cs",
+              "DocumentMoniker": "D:\\MyBigProject\\AshinaWarehouse\\AWMS.dapper\\Repositories\\IMrvDapperRepository.cs",
+              "RelativeDocumentMoniker": "AWMS.dapper\\Repositories\\IMrvDapperRepository.cs",
+              "ToolTip": "D:\\MyBigProject\\AshinaWarehouse\\AWMS.dapper\\Repositories\\IMrvDapperRepository.cs",
+              "RelativeToolTip": "AWMS.dapper\\Repositories\\IMrvDapperRepository.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAgAAAApAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-09-18T14:25:55.98Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "frmMRV.cs [Design]",
+              "DocumentMoniker": "D:\\MyBigProject\\AshinaWarehouse\\AWMS.app\\Forms\\RibbonVoucher\\frmMRV.cs",
+              "RelativeDocumentMoniker": "AWMS.app\\Forms\\RibbonVoucher\\frmMRV.cs",
+              "ToolTip": "D:\\MyBigProject\\AshinaWarehouse\\AWMS.app\\Forms\\RibbonVoucher\\frmMRV.cs [Design]",
+              "RelativeToolTip": "AWMS.app\\Forms\\RibbonVoucher\\frmMRV.cs [Design]",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-09-18T06:54:11.841Z",
+              "EditorCaption": " [Design]"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "frmMRV.cs",
+              "DocumentMoniker": "D:\\MyBigProject\\AshinaWarehouse\\AWMS.app\\Forms\\RibbonVoucher\\frmMRV.cs",
+              "RelativeDocumentMoniker": "AWMS.app\\Forms\\RibbonVoucher\\frmMRV.cs",
+              "ToolTip": "D:\\MyBigProject\\AshinaWarehouse\\AWMS.app\\Forms\\RibbonVoucher\\frmMRV.cs",
+              "RelativeToolTip": "AWMS.app\\Forms\\RibbonVoucher\\frmMRV.cs",
+              "ViewState": "AgIAACMAAAAAAAAAAAAUwDcAAAAbAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-09-18T05:43:19.972Z",
+              "EditorCaption": ""
             }
           ]
         }

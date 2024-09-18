@@ -394,5 +394,24 @@ namespace AWMS.app.Forms
                 SplashScreenManager.CloseForm();
             }
         }
+
+        private void barButtonItem17_ItemClick(object sender, ItemClickEventArgs e)
+        {
+            try
+            {
+                SplashScreenManager.ShowForm(this, typeof(frmWait), true, true, true, false);
+                var frmMRV = ActivatorUtilities.CreateInstance<frmMRV>(_serviceProvider, _userContext.UserId);
+                frmMRV.MdiParent = this;
+                frmMRV.Show();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"An error occurred: {ex.Message}");
+            }
+            finally
+            {
+                SplashScreenManager.CloseForm();
+            }
+        }
     }
 }

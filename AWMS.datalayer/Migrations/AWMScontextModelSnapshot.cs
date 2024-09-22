@@ -209,14 +209,14 @@ namespace AWMS.datalayer.Migrations
                             CompanyID = 1,
                             Abbreviation = "PPI",
                             CompanyName = "Petro Paydar Iranian",
-                            EnteredDate = new DateTime(2024, 9, 17, 10, 49, 12, 554, DateTimeKind.Local).AddTicks(7571)
+                            EnteredDate = new DateTime(2024, 9, 19, 16, 42, 37, 699, DateTimeKind.Local).AddTicks(8402)
                         },
                         new
                         {
                             CompanyID = 2,
                             Abbreviation = "TESCO",
                             CompanyName = "Teco",
-                            EnteredDate = new DateTime(2024, 9, 17, 10, 49, 12, 554, DateTimeKind.Local).AddTicks(7583)
+                            EnteredDate = new DateTime(2024, 9, 19, 16, 42, 37, 699, DateTimeKind.Local).AddTicks(8412)
                         });
                 });
 
@@ -647,21 +647,21 @@ namespace AWMS.datalayer.Migrations
                         {
                             LocationID = 1,
                             EnteredBy = 88,
-                            EnteredDate = new DateTime(2024, 9, 17, 10, 49, 12, 553, DateTimeKind.Local).AddTicks(4349),
+                            EnteredDate = new DateTime(2024, 9, 19, 16, 42, 37, 698, DateTimeKind.Local).AddTicks(7050),
                             LocationName = "L02A101A"
                         },
                         new
                         {
                             LocationID = 2,
                             EnteredBy = 88,
-                            EnteredDate = new DateTime(2024, 9, 17, 10, 49, 12, 553, DateTimeKind.Local).AddTicks(4367),
+                            EnteredDate = new DateTime(2024, 9, 19, 16, 42, 37, 698, DateTimeKind.Local).AddTicks(7074),
                             LocationName = "L02A102A"
                         },
                         new
                         {
                             LocationID = 3,
                             EnteredBy = 88,
-                            EnteredDate = new DateTime(2024, 9, 17, 10, 49, 12, 553, DateTimeKind.Local).AddTicks(4368),
+                            EnteredDate = new DateTime(2024, 9, 19, 16, 42, 37, 698, DateTimeKind.Local).AddTicks(7076),
                             LocationName = "W02A02B"
                         });
                 });
@@ -1024,21 +1024,27 @@ namespace AWMS.datalayer.Migrations
                         .HasColumnType("date");
 
                     b.Property<decimal?>("DelHmvQty")
+                        .HasPrecision(18, 2)
                         .HasColumnType("decimal(18,2)");
 
                     b.Property<decimal?>("DelHmvRejQty")
+                        .HasPrecision(18, 2)
                         .HasColumnType("decimal(18,2)");
 
                     b.Property<decimal?>("DelMivQty")
+                        .HasPrecision(18, 2)
                         .HasColumnType("decimal(18,2)");
 
                     b.Property<decimal?>("DelMivRejQty")
+                        .HasPrecision(18, 2)
                         .HasColumnType("decimal(18,2)");
 
                     b.Property<decimal?>("DelMrvQty")
+                        .HasPrecision(18, 2)
                         .HasColumnType("decimal(18,2)");
 
                     b.Property<decimal?>("DelMrvRejQty")
+                        .HasPrecision(18, 2)
                         .HasColumnType("decimal(18,2)");
 
                     b.Property<string>("HMVNO")
@@ -1070,21 +1076,26 @@ namespace AWMS.datalayer.Migrations
                         .HasColumnType("date");
 
                     b.Property<decimal?>("ReqHmvQty")
+                        .HasPrecision(18, 2)
                         .HasColumnType("decimal(18,2)");
 
                     b.Property<decimal?>("ReqMivQty")
+                        .HasPrecision(18, 2)
                         .HasColumnType("decimal(18,2)");
 
                     b.Property<decimal?>("ReqMivRejQty")
+                        .HasPrecision(18, 2)
                         .HasColumnType("decimal(18,2)");
 
                     b.Property<decimal?>("ReqMrvQty")
+                        .HasPrecision(18, 2)
                         .HasColumnType("decimal(18,2)");
 
                     b.Property<string>("RequestNO")
                         .IsRequired()
                         .HasMaxLength(100)
-                        .HasColumnType("nvarchar(100)");
+                        .IsUnicode(false)
+                        .HasColumnType("varchar(100)");
 
                     b.Property<string>("RequestPDF")
                         .HasColumnType("nvarchar(max)");
@@ -1093,9 +1104,11 @@ namespace AWMS.datalayer.Migrations
                         .HasColumnType("int");
 
                     b.Property<decimal?>("ReserveMivQty")
+                        .HasPrecision(18, 2)
                         .HasColumnType("decimal(18,2)");
 
                     b.Property<decimal?>("ReserveMivRejQty")
+                        .HasPrecision(18, 2)
                         .HasColumnType("decimal(18,2)");
 
                     b.Property<int?>("TypeID")

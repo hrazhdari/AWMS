@@ -52,23 +52,5 @@ namespace AWMS.datalayer.Entities
 
         [ForeignKey(nameof(LocItemID))]
         public virtual LocItem LocItem { get; set; }
-
-        //[ForeignKey(nameof(CompanyID))]
-        //public virtual Company Company { get; set; }
-
-        //[ForeignKey(nameof(CompanyID2))]
-        //public virtual Company Company2 { get; set; }
-
-        //[ForeignKey(nameof(ContractId))]
-        //public virtual CompanyContract CompanyContract { get; set; }
-
-        //[ForeignKey(nameof(ContractId2))]
-        //public virtual CompanyContract CompanyContract2 { get; set; }
-
-        //[ForeignKey(nameof(AreaUnitID))]
-        //public virtual AreaUnit AreaUnit { get; set; }  // تعریف رابطه با AreaUnit
-
-        //[ForeignKey(nameof(VendorID))]
-        //public virtual Vendor Vendor { get; set; }  // تعریف رابطه با Vendor
     }
 }

@@ -27,7 +27,7 @@ namespace AWMS.dapper
                 connection.Open();
 
                 var commandDefinition = new CommandDefinition(
-                    "Search_ChangeLocitem",
+                    "Search_ChangeLocitem3",
                     commandType: CommandType.StoredProcedure,
                     commandTimeout: 600
                 );

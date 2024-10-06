@@ -95,17 +95,24 @@ namespace AWMS.dapper
 
             return dataTable;
         }
-        public async Task UpdateMivRequestsBulkAsync(List<MivUpdateModel> updateDataList)
+        public async Task UpdateMivRequestsBulkAsync(List<MivUpdateModel> updateDataList, int userID)
         {
             using (var connection = CreateConnection())
             {
                 var dataTable = ToDataTable(updateDataList);
                 var parameters = new DynamicParameters();
+
+                // Add table-valued parameter
                 parameters.Add("@UpdateData", dataTable.AsTableValuedParameter("dbo.UpdateMivTableType"));
 
-                await connection.ExecuteAsync("UpdateMivRequestsBulk", parameters, commandType: CommandType.StoredProcedure);
+                // Add userID parameter
+                parameters.Add("@UserID", userID, DbType.Int32);
+
+                // Execute the stored procedure
+                await connection.ExecuteAsync("UpdateMivRequestsBulk2", parameters, commandType: CommandType.StoredProcedure);
             }
         }
+
 
     }
 }

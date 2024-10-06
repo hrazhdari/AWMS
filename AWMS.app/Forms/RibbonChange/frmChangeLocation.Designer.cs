@@ -32,14 +32,13 @@
             labelControl4 = new DevExpress.XtraEditors.LabelControl();
             ReserveMivQty = new DevExpress.XtraGrid.Columns.GridColumn();
             DelMivQty = new DevExpress.XtraGrid.Columns.GridColumn();
-            TotalReturnAcceptQty = new DevExpress.XtraGrid.Columns.GridColumn();
+            ReturnQty = new DevExpress.XtraGrid.Columns.GridColumn();
             Balance = new DevExpress.XtraGrid.Columns.GridColumn();
             Inventory = new DevExpress.XtraGrid.Columns.GridColumn();
             RejectQty = new DevExpress.XtraGrid.Columns.GridColumn();
             NISQty = new DevExpress.XtraGrid.Columns.GridColumn();
             Discipline = new DevExpress.XtraGrid.Columns.GridColumn();
             Scope = new DevExpress.XtraGrid.Columns.GridColumn();
-            QtyinLocWithMRV = new DevExpress.XtraGrid.Columns.GridColumn();
             repositoryItemLookUpEditirn = new DevExpress.XtraEditors.Repository.RepositoryItemLookUpEdit();
             repositoryItemLookUpEditpo = new DevExpress.XtraEditors.Repository.RepositoryItemLookUpEdit();
             repositoryItemLookUpEditmr = new DevExpress.XtraEditors.Repository.RepositoryItemLookUpEdit();
@@ -106,8 +105,12 @@
             OverQty = new DevExpress.XtraGrid.Columns.GridColumn();
             ShortageQty = new DevExpress.XtraGrid.Columns.GridColumn();
             DamageQty = new DevExpress.XtraGrid.Columns.GridColumn();
+            BalanceWithRejectAndNIS = new DevExpress.XtraGrid.Columns.GridColumn();
+            BalanceWithReject = new DevExpress.XtraGrid.Columns.GridColumn();
             panelControl1 = new DevExpress.XtraEditors.PanelControl();
             panelControl3 = new DevExpress.XtraEditors.PanelControl();
+            DelMrvRejQty = new DevExpress.XtraGrid.Columns.GridColumn();
+            DelMivRejQty = new DevExpress.XtraGrid.Columns.GridColumn();
             ((System.ComponentModel.ISupportInitialize)repositoryItemLookUpEditirn).BeginInit();
             ((System.ComponentModel.ISupportInitialize)repositoryItemLookUpEditpo).BeginInit();
             ((System.ComponentModel.ISupportInitialize)repositoryItemLookUpEditmr).BeginInit();
@@ -161,7 +164,7 @@
             ReserveMivQty.MinWidth = 21;
             ReserveMivQty.Name = "ReserveMivQty";
             ReserveMivQty.Visible = true;
-            ReserveMivQty.VisibleIndex = 16;
+            ReserveMivQty.VisibleIndex = 17;
             ReserveMivQty.Width = 81;
             // 
             // DelMivQty
@@ -171,18 +174,18 @@
             DelMivQty.MinWidth = 21;
             DelMivQty.Name = "DelMivQty";
             DelMivQty.Visible = true;
-            DelMivQty.VisibleIndex = 17;
+            DelMivQty.VisibleIndex = 18;
             DelMivQty.Width = 81;
             // 
-            // TotalReturnAcceptQty
+            // ReturnQty
             // 
-            TotalReturnAcceptQty.Caption = "Return AcceptQty";
-            TotalReturnAcceptQty.FieldName = "TotalReturnAcceptQty";
-            TotalReturnAcceptQty.MinWidth = 21;
-            TotalReturnAcceptQty.Name = "TotalReturnAcceptQty";
-            TotalReturnAcceptQty.Visible = true;
-            TotalReturnAcceptQty.VisibleIndex = 12;
-            TotalReturnAcceptQty.Width = 81;
+            ReturnQty.Caption = "Return Qty";
+            ReturnQty.FieldName = "ReturnQty";
+            ReturnQty.MinWidth = 21;
+            ReturnQty.Name = "ReturnQty";
+            ReturnQty.Visible = true;
+            ReturnQty.VisibleIndex = 12;
+            ReturnQty.Width = 81;
             // 
             // Balance
             // 
@@ -191,7 +194,7 @@
             Balance.MinWidth = 21;
             Balance.Name = "Balance";
             Balance.Visible = true;
-            Balance.VisibleIndex = 18;
+            Balance.VisibleIndex = 21;
             Balance.Width = 81;
             // 
             // Inventory
@@ -201,7 +204,7 @@
             Inventory.MinWidth = 21;
             Inventory.Name = "Inventory";
             Inventory.Visible = true;
-            Inventory.VisibleIndex = 19;
+            Inventory.VisibleIndex = 22;
             Inventory.Width = 81;
             // 
             // RejectQty
@@ -211,7 +214,7 @@
             RejectQty.MinWidth = 21;
             RejectQty.Name = "RejectQty";
             RejectQty.Visible = true;
-            RejectQty.VisibleIndex = 15;
+            RejectQty.VisibleIndex = 14;
             RejectQty.Width = 81;
             // 
             // NISQty
@@ -221,7 +224,7 @@
             NISQty.MinWidth = 21;
             NISQty.Name = "NISQty";
             NISQty.Visible = true;
-            NISQty.VisibleIndex = 14;
+            NISQty.VisibleIndex = 13;
             NISQty.Width = 81;
             // 
             // Discipline
@@ -231,7 +234,7 @@
             Discipline.MinWidth = 21;
             Discipline.Name = "Discipline";
             Discipline.Visible = true;
-            Discipline.VisibleIndex = 20;
+            Discipline.VisibleIndex = 23;
             Discipline.Width = 127;
             // 
             // Scope
@@ -241,18 +244,8 @@
             Scope.MinWidth = 21;
             Scope.Name = "Scope";
             Scope.Visible = true;
-            Scope.VisibleIndex = 21;
+            Scope.VisibleIndex = 24;
             Scope.Width = 144;
-            // 
-            // QtyinLocWithMRV
-            // 
-            QtyinLocWithMRV.Caption = "QtyinLoc With MRV";
-            QtyinLocWithMRV.FieldName = "QtyinLocWithMRV";
-            QtyinLocWithMRV.MinWidth = 21;
-            QtyinLocWithMRV.Name = "QtyinLocWithMRV";
-            QtyinLocWithMRV.Visible = true;
-            QtyinLocWithMRV.VisibleIndex = 13;
-            QtyinLocWithMRV.Width = 81;
             // 
             // repositoryItemLookUpEditirn
             // 
@@ -671,7 +664,7 @@
             gridView1.Appearance.Row.Options.UseTextOptions = true;
             gridView1.Appearance.Row.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
             gridView1.Appearance.Row.TextOptions.VAlignment = DevExpress.Utils.VertAlignment.Center;
-            gridView1.Columns.AddRange(new DevExpress.XtraGrid.Columns.GridColumn[] { RowNumber, ArrivalDate, MSRNO, PLNO, OPINO, Project, LocItemID, LocationName, LocationID, EnteredDate, ExpiredDate, MARDate, PoName, Supplier, Vendor, Mr, IRN, ItemId, PLName, ArchiveNO, PK, Tag, Description, UnitName, QtyPL, OverQty, ShortageQty, DamageQty, QtyInLoc, QtyinLocWithMRV, NISQty, RejectQty, ReqMivQty, ReserveMivQty, DelMivQty, TotalReturnAcceptQty, Balance, Inventory, Discipline, Scope });
+            gridView1.Columns.AddRange(new DevExpress.XtraGrid.Columns.GridColumn[] { RowNumber, ArrivalDate, MSRNO, PLNO, OPINO, Project, LocItemID, LocationName, LocationID, EnteredDate, ExpiredDate, MARDate, PoName, Supplier, Vendor, Mr, IRN, ItemId, PLName, ArchiveNO, PK, Tag, Description, UnitName, QtyPL, OverQty, ShortageQty, DamageQty, QtyInLoc, NISQty, RejectQty, DelMivRejQty, DelMrvRejQty, ReqMivQty, ReserveMivQty, DelMivQty, ReturnQty, BalanceWithRejectAndNIS, BalanceWithReject, Balance, Inventory, Discipline, Scope });
             gridView1.DetailHeight = 284;
             gridView1.GridControl = gridControl1;
             gridView1.Name = "gridView1";
@@ -763,7 +756,7 @@
             EnteredDate.MinWidth = 21;
             EnteredDate.Name = "EnteredDate";
             EnteredDate.Visible = true;
-            EnteredDate.VisibleIndex = 22;
+            EnteredDate.VisibleIndex = 25;
             EnteredDate.Width = 105;
             // 
             // ExpiredDate
@@ -909,7 +902,7 @@
             OverQty.FieldName = "OverQty";
             OverQty.Name = "OverQty";
             OverQty.Visible = true;
-            OverQty.VisibleIndex = 23;
+            OverQty.VisibleIndex = 26;
             // 
             // ShortageQty
             // 
@@ -917,7 +910,7 @@
             ShortageQty.FieldName = "ShortageQty";
             ShortageQty.Name = "ShortageQty";
             ShortageQty.Visible = true;
-            ShortageQty.VisibleIndex = 24;
+            ShortageQty.VisibleIndex = 27;
             // 
             // DamageQty
             // 
@@ -925,7 +918,23 @@
             DamageQty.FieldName = "DamageQty";
             DamageQty.Name = "DamageQty";
             DamageQty.Visible = true;
-            DamageQty.VisibleIndex = 25;
+            DamageQty.VisibleIndex = 28;
+            // 
+            // BalanceWithRejectAndNIS
+            // 
+            BalanceWithRejectAndNIS.Caption = "BalanceWithRejectAndNIS";
+            BalanceWithRejectAndNIS.FieldName = "BalanceWithRejectAndNIS";
+            BalanceWithRejectAndNIS.Name = "BalanceWithRejectAndNIS";
+            BalanceWithRejectAndNIS.Visible = true;
+            BalanceWithRejectAndNIS.VisibleIndex = 20;
+            // 
+            // BalanceWithReject
+            // 
+            BalanceWithReject.Caption = "BalanceWithReject";
+            BalanceWithReject.FieldName = "BalanceWithReject";
+            BalanceWithReject.Name = "BalanceWithReject";
+            BalanceWithReject.Visible = true;
+            BalanceWithReject.VisibleIndex = 19;
             // 
             // panelControl1
             // 
@@ -947,6 +956,22 @@
             panelControl3.Name = "panelControl3";
             panelControl3.Size = new Size(928, 456);
             panelControl3.TabIndex = 2;
+            // 
+            // DelMrvRejQty
+            // 
+            DelMrvRejQty.Caption = "DelMrvRejQty";
+            DelMrvRejQty.FieldName = "DelMrvRejQty";
+            DelMrvRejQty.Name = "DelMrvRejQty";
+            DelMrvRejQty.Visible = true;
+            DelMrvRejQty.VisibleIndex = 16;
+            // 
+            // DelMivRejQty
+            // 
+            DelMivRejQty.Caption = "DelMivRejQty";
+            DelMivRejQty.FieldName = "DelMivRejQty";
+            DelMivRejQty.Name = "DelMivRejQty";
+            DelMivRejQty.Visible = true;
+            DelMivRejQty.VisibleIndex = 15;
             // 
             // frmChangeLocation
             // 
@@ -996,14 +1021,13 @@
         private DevExpress.XtraEditors.LabelControl labelControl4;
         private DevExpress.XtraGrid.Columns.GridColumn ReserveMivQty;
         private DevExpress.XtraGrid.Columns.GridColumn DelMivQty;
-        private DevExpress.XtraGrid.Columns.GridColumn TotalReturnAcceptQty;
+        private DevExpress.XtraGrid.Columns.GridColumn ReturnQty;
         private DevExpress.XtraGrid.Columns.GridColumn Balance;
         private DevExpress.XtraGrid.Columns.GridColumn Inventory;
         private DevExpress.XtraGrid.Columns.GridColumn RejectQty;
         private DevExpress.XtraGrid.Columns.GridColumn NISQty;
         private DevExpress.XtraGrid.Columns.GridColumn Discipline;
         private DevExpress.XtraGrid.Columns.GridColumn Scope;
-        private DevExpress.XtraGrid.Columns.GridColumn QtyinLocWithMRV;
         private DevExpress.XtraEditors.Repository.RepositoryItemLookUpEdit repositoryItemLookUpEditirn;
         private DevExpress.XtraEditors.Repository.RepositoryItemLookUpEdit repositoryItemLookUpEditpo;
         private DevExpress.XtraEditors.Repository.RepositoryItemLookUpEdit repositoryItemLookUpEditmr;
@@ -1072,5 +1096,9 @@
         private DevExpress.XtraGrid.Columns.GridColumn LocationID;
         private DevExpress.XtraEditors.SpinEdit txtNis;
         private DevExpress.XtraGrid.Columns.GridColumn ExpiredDate;
+        private DevExpress.XtraGrid.Columns.GridColumn BalanceWithRejectAndNIS;
+        private DevExpress.XtraGrid.Columns.GridColumn BalanceWithReject;
+        private DevExpress.XtraGrid.Columns.GridColumn DelMivRejQty;
+        private DevExpress.XtraGrid.Columns.GridColumn DelMrvRejQty;
     }
 }

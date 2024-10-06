@@ -20,6 +20,8 @@
         public string UnitName { get; set; }
         public decimal QtyPL { get; set; }
         public decimal QtyInLoc { get; set; }
+        public decimal BalanceWithRejectAndNIS { get; set; }
+        public decimal BalanceWithReject { get; set; }
         public decimal Balance { get; set; }
         public decimal Inventory { get; set; }
         public string Discipline { get; set; }
@@ -28,12 +30,14 @@
         public string BatchNo { get; set; }
         public string Remark { get; set; }
         public bool Hold { get; set; }
-        public decimal TotalReturnAcceptQty { get; set; }
+        public decimal ReturnQty { get; set; }
         public decimal ReqMivQty { get; set; }
         public decimal DelMivQty { get; set; }
         public decimal ReserveMivQty { get; set; }
         public decimal NISQty { get; set; }
         public decimal RejectQty { get; set; }
+        public decimal DelMivRejQty { get; set; }
+        public decimal DelMrvRejQty { get; set; }
         public decimal OverQty { get; set; }
         public decimal ShortageQty { get; set; }
         public decimal DamageQty { get; set; }

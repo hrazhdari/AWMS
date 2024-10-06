@@ -77,7 +77,7 @@ namespace AWMS.dapper
                 try
                 {
                     var result = await connection.QueryFirstOrDefaultAsync<string>(
-                        "[dbo].[InsertMRVBatch]",
+                        "[dbo].[InsertMRVBatch3]",
                         parameters,
                         commandType: CommandType.StoredProcedure);
 

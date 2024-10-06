@@ -60,7 +60,7 @@ public class RequestDapperRepository : IRequestDapperRepository
             connection.Open();
 
             var commandDefinition = new CommandDefinition(
-                "Search_Material_Issue_Voucher5",
+                "Search_Material_Issue_Voucher6",
                 parameters: new { PageNumber = pageNumber, PageSize = pageSize },
                 commandType: CommandType.StoredProcedure,
                 commandTimeout: 600
@@ -131,7 +131,7 @@ public class RequestDapperRepository : IRequestDapperRepository
             parameters.Add("@ItemIds", string.Join(",", itemIds));
 
             var locItems = await connection.QueryAsync<LocItemBalanceDto>(
-                "GetLocItemOFSelectedItemID_FOR_ISSUE_VOUCHER",
+                "GetLocItemOFSelectedItemID_FOR_ISSUE_VOUCHER2",
                 parameters,
                 commandType: CommandType.StoredProcedure
             );

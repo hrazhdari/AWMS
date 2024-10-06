@@ -201,7 +201,7 @@ namespace AWMS.app.Forms.RibbonVoucher
             // فراخوانی متد برای آپدیت داده‌ها در دیتابیس
             try
             {
-                await _approveDapperRepository.UpdateMivRequestsBulkAsync(updateDataList);
+                await _approveDapperRepository.UpdateMivRequestsBulkAsync(updateDataList, _session.UserID);
                 MessageBox.Show("داده‌ها با موفقیت به‌روزرسانی شدند.", "اطلاع", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
                 // پس از موفقیت، GridView را خالی کنید

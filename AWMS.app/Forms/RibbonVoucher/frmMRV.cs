@@ -156,7 +156,7 @@ namespace AWMS.app.Forms.RibbonVoucher
             dt.Columns.Add("SelectedLocation", typeof(int)); // Column for selected location (as ID)
             dt.Columns.Add("ReturnedQty", typeof(decimal));  // Column for returned quantity
             dt.Columns.Add("ReturnedDelQty", typeof(decimal));  // Column for returned quantity
-            dt.Columns.Add("ReturnedRejQty", typeof(decimal));  // Column for returned quantity
+            //dt.Columns.Add("ReturnedRejQty", typeof(decimal));  // Column for returned quantity
             dt.Columns.Add("Remark", typeof(string));  // Column for returned quantity
 
             return dt;
@@ -199,15 +199,15 @@ namespace AWMS.app.Forms.RibbonVoucher
                 gridView2.Columns["ReturnedDelQty"].AppearanceHeader.BackColor = Color.LightGreen;     // رنگ سر ستون همرنگ با رنگ ستون
                 gridView2.Columns["ReturnedDelQty"].AppearanceCell.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;  // وسط‌چین کردن محتوای سلول‌ها
             }           // بررسی اینکه آیا ستون فعلی ReturnedQty است
-            if (e.Column.FieldName == "ReturnedRejQty")
-            {
-                e.Appearance.BackColor = Color.LightSalmon; // رنگ آبی لایت برای ReturnedQty
-                e.Appearance.ForeColor = Color.Black;     // رنگ متن مشکی
+            //if (e.Column.FieldName == "ReturnedRejQty")
+            //{
+            //    e.Appearance.BackColor = Color.LightSalmon; // رنگ آبی لایت برای ReturnedQty
+            //    e.Appearance.ForeColor = Color.Black;     // رنگ متن مشکی
 
-                // تنظیمات برای ستون ReturnedQty
-                gridView2.Columns["ReturnedRejQty"].AppearanceHeader.BackColor = Color.LightSalmon;     // رنگ سر ستون همرنگ با رنگ ستون
-                gridView2.Columns["ReturnedRejQty"].AppearanceCell.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;  // وسط‌چین کردن محتوای سلول‌ها
-            }
+            //    // تنظیمات برای ستون ReturnedQty
+            //    gridView2.Columns["ReturnedRejQty"].AppearanceHeader.BackColor = Color.LightSalmon;     // رنگ سر ستون همرنگ با رنگ ستون
+            //    gridView2.Columns["ReturnedRejQty"].AppearanceCell.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;  // وسط‌چین کردن محتوای سلول‌ها
+            //}
             if (e.Column.FieldName == "Remark")
             {
                 e.Appearance.BackColor = Color.LightSkyBlue; // رنگ آبی لایت برای ReturnedQty
@@ -415,12 +415,12 @@ namespace AWMS.app.Forms.RibbonVoucher
                 decimal ReturnedDelQty = gridView2.GetRowCellValue(currentRow, "ReturnedDelQty") != DBNull.Value
                     ? Convert.ToDecimal(gridView2.GetRowCellValue(currentRow, "ReturnedDelQty"))
                     : 0m;
-                decimal ReturnedRejQty = gridView2.GetRowCellValue(currentRow, "ReturnedRejQty") != DBNull.Value
-                    ? Convert.ToDecimal(gridView2.GetRowCellValue(currentRow, "ReturnedRejQty"))
-                    : 0m;
+                //decimal ReturnedRejQty = gridView2.GetRowCellValue(currentRow, "ReturnedRejQty") != DBNull.Value
+                //    ? Convert.ToDecimal(gridView2.GetRowCellValue(currentRow, "ReturnedRejQty"))
+                //    : 0m;
 
                 // محاسبه مقدار مجاز
-                decimal allowedQty = (ReturnedDelQty + ReturnedRejQty);//delMrvQty + delMrvRejQty;
+                decimal allowedQty = (ReturnedDelQty);// + ReturnedRejQty);//delMrvQty + delMrvRejQty;
 
                 // بررسی شرط
                 if (mrvAvailableQty < allowedQty)
@@ -429,12 +429,13 @@ namespace AWMS.app.Forms.RibbonVoucher
                     gridView2.CellValueChanged -= gridView2_CellValueChanged;
 
                     //MessageBox.Show("Returned Qty must be less than or equal to DelMivQty - (DelMrvQty + DelMrvRejQty + ReturnedDelQty + ReturnedRejQty).", "Invalid Input", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                    MessageBox.Show("Returned Qty  (ReturnedDelQty + ReturnedRejQty) must be less than or equal to MrvAvailableQty.", "Invalid Input", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    //MessageBox.Show("Returned Qty  (ReturnedDelQty + ReturnedRejQty) must be less than or equal to MrvAvailableQty.", "Invalid Input", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    MessageBox.Show("Returned Qty  (ReturnedDelQty) must be less than or equal to MrvAvailableQty.", "Invalid Input", MessageBoxButtons.OK, MessageBoxIcon.Warning);
 
                     // Reset to 0 or another appropriate action
                     gridView2.SetRowCellValue(currentRow, "ReturnedQty", 0);
                     gridView2.SetRowCellValue(currentRow, "ReturnedDelQty", 0);
-                    gridView2.SetRowCellValue(currentRow, "ReturnedRejQty", 0);
+                    //gridView2.SetRowCellValue(currentRow, "ReturnedRejQty", 0);
 
                     // Re-enable the event handler
                     gridView2.CellValueChanged += gridView2_CellValueChanged;
@@ -510,6 +511,13 @@ namespace AWMS.app.Forms.RibbonVoucher
         {
             try
             {
+                // Check if there are any rows in the grid
+                if (gridView2.RowCount == 0)
+                {
+                    MessageBox.Show("There are no rows in the grid to insert.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return; // Stop execution if the grid is empty
+                }
+
                 string mrvNo = txtMrvNo.Text.Trim();
                 if (string.IsNullOrEmpty(mrvNo))
                 {
@@ -568,26 +576,28 @@ namespace AWMS.app.Forms.RibbonVoucher
                     decimal returnedDelQty = gridView2.GetRowCellValue(i, "ReturnedDelQty") != DBNull.Value
                         ? Convert.ToDecimal(gridView2.GetRowCellValue(i, "ReturnedDelQty"))
                         : 0m;
-                    decimal returnedRejQty = gridView2.GetRowCellValue(i, "ReturnedRejQty") != DBNull.Value
-                        ? Convert.ToDecimal(gridView2.GetRowCellValue(i, "ReturnedRejQty"))
-                        : 0m;
+                    //decimal returnedRejQty = gridView2.GetRowCellValue(i, "ReturnedRejQty") != DBNull.Value
+                    //    ? Convert.ToDecimal(gridView2.GetRowCellValue(i, "ReturnedRejQty"))
+                    //    : 0m;
 
                     // If ReturnedQty is 0, either ReturnedDelQty or ReturnedRejQty must be non-zero
                     if (returnedQty == 0m)
                     {
-                        if (returnedDelQty == 0m && returnedRejQty == 0m)
+                        if (returnedDelQty == 0m)// && returnedRejQty == 0m)
                         {
-                            MessageBox.Show($"Row {i + 1}: 'ReturnedQty' is 0. Either 'ReturnedDelQty' or 'ReturnedRejQty' must have a value.", "Missing Required Field", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                            //MessageBox.Show($"Row {i + 1}: 'ReturnedQty' is 0. Either 'ReturnedDelQty' or 'ReturnedRejQty' must have a value.", "Missing Required Field", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                            MessageBox.Show($"Row {i + 1}: 'ReturnedQty' is 0. Either 'ReturnedDelQty' must have a value.", "Missing Required Field", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                             return; // Stop execution
                         }
                     }
 
                     // If ReturnedDelQty is 0, ReturnedRejQty must have a value
-                    if (returnedDelQty == 0m && returnedRejQty == 0m)
-                    {
-                        MessageBox.Show($"Row {i + 1}: 'ReturnedDelQty' is 0. 'ReturnedRejQty' must have a value.", "Missing Required Field", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                        return; // Stop execution
-                    }
+                    //if (returnedDelQty == 0m)// && returnedRejQty == 0m)
+                    //{
+                    //    //MessageBox.Show($"Row {i + 1}: 'ReturnedDelQty' is 0. 'ReturnedRejQty' must have a value.", "Missing Required Field", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    //    MessageBox.Show($"Row {i + 1}: 'ReturnedDelQty' must have a value.", "Missing Required Field", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    //    return; // Stop execution
+                    //}
 
                     var newMrvDto = new NewMrvDto
                     {
@@ -598,9 +608,9 @@ namespace AWMS.app.Forms.RibbonVoucher
                         DelMrvQty = gridView2.GetRowCellValue(i, "ReturnedDelQty") != DBNull.Value
                                     ? Convert.ToDecimal(gridView2.GetRowCellValue(i, "ReturnedDelQty"))
                                     : 0m,
-                        DelMrvRejQty = gridView2.GetRowCellValue(i, "ReturnedRejQty") != DBNull.Value
-                                    ? Convert.ToDecimal(gridView2.GetRowCellValue(i, "ReturnedRejQty"))
-                                    : 0m,
+                        //DelMrvRejQty = gridView2.GetRowCellValue(i, "ReturnedRejQty") != DBNull.Value
+                        //            ? Convert.ToDecimal(gridView2.GetRowCellValue(i, "ReturnedRejQty"))
+                        //            : 0m,
                         Remark = gridView2.GetRowCellValue(i, "Remark")?.ToString() ?? string.Empty,
                         SelectedLocation = selectedLocation
                     };
@@ -611,13 +621,14 @@ namespace AWMS.app.Forms.RibbonVoucher
 
                 // Call the InsertMrvBatchAsync method to insert the batch
                 string newMrvNumber = await _mrvDapperRepository.InsertMrvBatchAsync(companyId, contractId, mrvNo, areaUnitId, issuedBy, delDate, requestMrvs);
+                //MessageBox.Show(newMrvNumber);
                 txtMrvNo.Text = "";
                 lookUpEdit1_EditValueChanged(null,null);
                 //lookUpEdit1.Refresh();
                 //gridControl2.DataSource = null;
                 //gridView2.Columns.Clear();
                 // Display the new MRV number
-                MessageBox.Show($"New MRV created with number: {newMrvNumber}", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show($"New MRV created with number: MRV-{newMrvNumber}", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
             catch (Exception ex)
             {

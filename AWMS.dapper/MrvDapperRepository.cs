@@ -3,12 +3,8 @@ using AWMS.dto;
 using Dapper;
 using Microsoft.Data.SqlClient;
 using Microsoft.Extensions.Configuration;
-using System;
-using System.Collections.Generic;
 using System.Data;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+
 
 namespace AWMS.dapper
 {
@@ -46,6 +42,12 @@ namespace AWMS.dapper
                 return result == 1;
             }
         }
+        public class InsertMRVResult
+        {
+            public string NewMRVNumber { get; set; }
+            public string Status { get; set; }
+        }
+
         public async Task<string> InsertMrvBatchAsync(int companyId, int contractId, string mrvNo, int areaUnitId, int issuedBy, DateTime delDate, IEnumerable<NewMrvDto> requestMrvs)
         {
             using (var connection = CreateConnection())
@@ -76,21 +78,28 @@ namespace AWMS.dapper
 
                 try
                 {
-                    var result = await connection.QueryFirstOrDefaultAsync<string>(
-                        "[dbo].[InsertMRVBatch3]",
-                        parameters,
-                        commandType: CommandType.StoredProcedure);
+                    var result = await connection.QueryFirstOrDefaultAsync<InsertMRVResult>(
+                    "[dbo].[InsertMRVBatch5]",
+                    parameters,
+                    commandType: CommandType.StoredProcedure);
 
-                    return result; // بازگرداندن MRV number جدید
+                    // بازگرداندن شماره MRV جدید و وضعیت
+                    if (result != null)
+                    {
+                        return result.NewMRVNumber; // شماره MRV جدید
+                    }
+                    else
+                    {
+                        return null; // در صورتی که نتیجه‌ای وجود نداشته باشد
+                    }
                 }
                 catch (SqlException ex)
                 {
                     // Handling exceptions such as duplicate MRV number
                     throw new Exception($"Error inserting MRV: {ex.Message}", ex);
                 }
+
             }
         }
-
-
     }
 }

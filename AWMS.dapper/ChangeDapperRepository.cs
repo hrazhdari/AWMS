@@ -27,7 +27,7 @@ namespace AWMS.dapper
                 connection.Open();
 
                 var commandDefinition = new CommandDefinition(
-                    "Search_ChangeLocitem3",
+                    "Search_ChangeLocitem5",
                     commandType: CommandType.StoredProcedure,
                     commandTimeout: 600
                 );
@@ -78,7 +78,7 @@ namespace AWMS.dapper
                 parameters.Add("EnteredBy", EnteredBy);
 
                 // اجرای دستور و گرفتن نتیجه
-                var result = await connection.QuerySingleAsync<string>("dbo.spUpdateBalanceAndInsertLocItem2", parameters, commandType: CommandType.StoredProcedure);
+                var result = await connection.QuerySingleAsync<string>("dbo.spUpdateBalanceAndInsertLocItem3", parameters, commandType: CommandType.StoredProcedure);
 
                 // بررسی نتیجه
                 if (result == "Success")
@@ -164,7 +164,7 @@ namespace AWMS.dapper
                 var parameters = new DynamicParameters();
                 parameters.Add("@LocItemId", locItemId);
 
-                var result = await connection.QueryAsync<MivListDto>("spGetRequestsByLocItemId", parameters, commandType: CommandType.StoredProcedure);
+                var result = await connection.QueryAsync<MivListDto>("spGetRequestsByLocItemIds", parameters, commandType: CommandType.StoredProcedure);
                 return result.ToList();
             }
 

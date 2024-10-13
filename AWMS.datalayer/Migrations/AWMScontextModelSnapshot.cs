@@ -209,14 +209,14 @@ namespace AWMS.datalayer.Migrations
                             CompanyID = 1,
                             Abbreviation = "PPI",
                             CompanyName = "Petro Paydar Iranian",
-                            EnteredDate = new DateTime(2024, 9, 19, 16, 42, 37, 699, DateTimeKind.Local).AddTicks(8402)
+                            EnteredDate = new DateTime(2024, 10, 12, 15, 46, 19, 477, DateTimeKind.Local).AddTicks(7250)
                         },
                         new
                         {
                             CompanyID = 2,
                             Abbreviation = "TESCO",
                             CompanyName = "Teco",
-                            EnteredDate = new DateTime(2024, 9, 19, 16, 42, 37, 699, DateTimeKind.Local).AddTicks(8412)
+                            EnteredDate = new DateTime(2024, 10, 12, 15, 46, 19, 477, DateTimeKind.Local).AddTicks(7264)
                         });
                 });
 
@@ -586,11 +586,19 @@ namespace AWMS.datalayer.Migrations
                     b.Property<decimal?>("OverQty")
                         .HasColumnType("decimal(18,2)");
 
+                    b.Property<int?>("ParentLocItemID")
+                        .IsRequired()
+                        .HasColumnType("int");
+
                     b.Property<decimal?>("Qty")
                         .HasColumnType("decimal(18,2)");
 
                     b.Property<decimal?>("RejectQty")
                         .HasColumnType("decimal(18,2)");
+
+                    b.Property<string>("RemarkLocitemID")
+                        .HasMaxLength(300)
+                        .HasColumnType("nvarchar(300)");
 
                     b.Property<decimal?>("ShortageQty")
                         .HasColumnType("decimal(18,2)");
@@ -602,6 +610,9 @@ namespace AWMS.datalayer.Migrations
 
                     b.HasIndex("LocationID")
                         .HasDatabaseName("IX_LocItem_LocationID");
+
+                    b.HasIndex("ParentLocItemID")
+                        .HasDatabaseName("IX_LocItem_ParentLocItemID");
 
                     b.ToTable("LocItems");
                 });
@@ -647,21 +658,21 @@ namespace AWMS.datalayer.Migrations
                         {
                             LocationID = 1,
                             EnteredBy = 88,
-                            EnteredDate = new DateTime(2024, 9, 19, 16, 42, 37, 698, DateTimeKind.Local).AddTicks(7050),
+                            EnteredDate = new DateTime(2024, 10, 12, 15, 46, 19, 476, DateTimeKind.Local).AddTicks(6066),
                             LocationName = "L02A101A"
                         },
                         new
                         {
                             LocationID = 2,
                             EnteredBy = 88,
-                            EnteredDate = new DateTime(2024, 9, 19, 16, 42, 37, 698, DateTimeKind.Local).AddTicks(7074),
+                            EnteredDate = new DateTime(2024, 10, 12, 15, 46, 19, 476, DateTimeKind.Local).AddTicks(6084),
                             LocationName = "L02A102A"
                         },
                         new
                         {
                             LocationID = 3,
                             EnteredBy = 88,
-                            EnteredDate = new DateTime(2024, 9, 19, 16, 42, 37, 698, DateTimeKind.Local).AddTicks(7076),
+                            EnteredDate = new DateTime(2024, 10, 12, 15, 46, 19, 476, DateTimeKind.Local).AddTicks(6086),
                             LocationName = "W02A02B"
                         });
                 });
@@ -1902,9 +1913,17 @@ namespace AWMS.datalayer.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
+                    b.HasOne("AWMS.datalayer.Entities.LocItem", "ParentLocItem")
+                        .WithMany()
+                        .HasForeignKey("ParentLocItemID")
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired();
+
                     b.Navigation("Item");
 
                     b.Navigation("Location");
+
+                    b.Navigation("ParentLocItem");
                 });
 
             modelBuilder.Entity("AWMS.datalayer.Entities.Package", b =>

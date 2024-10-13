@@ -485,6 +485,5 @@ namespace AWMS.app.Forms.RibbonChange
                 MessageBox.Show("Please select a row first.");
             }
         }
-
     }
 }

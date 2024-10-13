@@ -12,6 +12,8 @@
         public string PoName { get; set; }
         public string Vendor { get; set; }
         public int ItemId { get; set; }
+        public int ParentLocItemID { get; set; }
+        public string RemarkLocitemID { get; set; }
         public string PLName { get; set; }
         public string PK { get; set; }
         public string ItemOfPk { get; set; }
@@ -37,7 +39,7 @@
         public decimal NISQty { get; set; }
         public decimal RejectQty { get; set; }
         public decimal DelMivRejQty { get; set; }
-        public decimal DelMrvRejQty { get; set; }
+        //public decimal DelMrvRejQty { get; set; }
         public decimal OverQty { get; set; }
         public decimal ShortageQty { get; set; }
         public decimal DamageQty { get; set; }

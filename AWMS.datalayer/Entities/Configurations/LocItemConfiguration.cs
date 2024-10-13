@@ -33,6 +33,10 @@ namespace AWMS.datalayer.Entities.Configurations
             builder.Property(li => li.EditedDate)
                 .HasColumnType("date");
 
+            builder.Property(i => i.RemarkLocitemID)
+                .HasMaxLength(300)
+                .IsRequired(false);  // فیلد اختیاری
+
             // پیکربندی رابطه بین LocItem و Item
             builder.HasOne(li => li.Item)
                 .WithMany(i => i.LocItems)
@@ -51,9 +55,24 @@ namespace AWMS.datalayer.Entities.Configurations
                 .HasForeignKey(r => r.LocItemID)
                 .OnDelete(DeleteBehavior.Restrict); // ممکن است نیاز به Restrict باشد، بسته به نیاز شما
 
+            //builder.HasOne(li => li.ParentLocItem)
+            //    .WithMany()
+            //    .HasForeignKey(li => li.ParentLocItemID)
+            //    .OnDelete(DeleteBehavior.NoAction);
+
+
+            // پیکربندی رابطه بین LocItem و ParentLocItem به عنوان nullable (پیش‌فرض null)
+            builder.HasOne(li => li.ParentLocItem) // ارتباط با LocItem والد
+                .WithMany() // اگر نیازی به دسترسی به فرزندان نیست، اینجا خالی بگذارید
+                .HasForeignKey(li => li.ParentLocItemID) // کلید خارجی
+                .OnDelete(DeleteBehavior.Restrict); // تنظیم رفتار حذف
+
             // اضافه کردن ایندکس‌ها
             builder.HasIndex(li => li.LocationID).HasDatabaseName("IX_LocItem_LocationID");
             builder.HasIndex(li => li.ItemId).HasDatabaseName("IX_LocItem_ItemId");
+            // اضافه کردن ایندکس‌ها
+            builder.HasIndex(li => li.ParentLocItemID).HasDatabaseName("IX_LocItem_ParentLocItemID"); builder.HasIndex(li => li.ParentLocItemID).HasDatabaseName("IX_LocItem_ParentLocItemID"); // ایندکس جدید برای ParentLocItemID
         }
+    
     }
 }

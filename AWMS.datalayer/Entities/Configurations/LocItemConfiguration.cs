@@ -11,6 +11,11 @@ namespace AWMS.datalayer.Entities.Configurations
 
             builder.Property(li => li.Qty)
                 .HasColumnType("decimal(18,2)");
+          
+            builder.Property(l => l.FlagMIVorHMV)
+                .HasColumnType("tinyint")
+                .IsRequired(false) // فیلد اختیاری است
+                .HasComment("Flag for MIV or HMV status");
 
             builder.Property(li => li.OverQty)
                 .HasColumnType("decimal(18,2)");
@@ -73,6 +78,6 @@ namespace AWMS.datalayer.Entities.Configurations
             // اضافه کردن ایندکس‌ها
             builder.HasIndex(li => li.ParentLocItemID).HasDatabaseName("IX_LocItem_ParentLocItemID"); builder.HasIndex(li => li.ParentLocItemID).HasDatabaseName("IX_LocItem_ParentLocItemID"); // ایندکس جدید برای ParentLocItemID
         }
-    
+
     }
 }

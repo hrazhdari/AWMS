@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace AWMS.dto
+﻿namespace AWMS.dto
 {
     public class NewMrvDto
     {
@@ -13,7 +7,9 @@ namespace AWMS.dto
         public decimal DelMrvRejQty { get; set; }
         public int LocItemID { get; set; }
         public string Remark { get; set; }
+        public string RequestNO { get; set; }
         public int? SelectedLocation { get; set; }
+        public string typeName { get; set; }
     }
 
 

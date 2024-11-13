@@ -39,7 +39,7 @@
         public decimal NISQty { get; set; }
         public decimal RejectQty { get; set; }
         public decimal DelMivRejQty { get; set; }
-        //public decimal DelMrvRejQty { get; set; }
+        public decimal DelMrvRejQty { get; set; }
         public decimal OverQty { get; set; }
         public decimal ShortageQty { get; set; }
         public decimal DamageQty { get; set; }

@@ -100,6 +100,7 @@
             repositoryItemLookUpLocation = new DevExpress.XtraEditors.Repository.RepositoryItemLookUpEdit();
             repositoryItemLookUpEditUnit = new DevExpress.XtraEditors.Repository.RepositoryItemLookUpEdit();
             panelControl7 = new DevExpress.XtraEditors.PanelControl();
+            simpleButton4 = new DevExpress.XtraEditors.SimpleButton();
             simpleButton3 = new DevExpress.XtraEditors.SimpleButton();
             labelControl8 = new DevExpress.XtraEditors.LabelControl();
             labelControl12 = new DevExpress.XtraEditors.LabelControl();
@@ -298,7 +299,7 @@
             xtraTabControl1.Margin = new Padding(3, 2, 3, 2);
             xtraTabControl1.Name = "xtraTabControl1";
             xtraTabControl1.SelectedTabPage = xtraTabPage1;
-            xtraTabControl1.Size = new Size(1332, 592);
+            xtraTabControl1.Size = new Size(1554, 592);
             xtraTabControl1.TabIndex = 0;
             xtraTabControl1.TabPages.AddRange(new DevExpress.XtraTab.XtraTabPage[] { xtraTabPage1, xtraTabPage2, xtraTabPage3 });
             xtraTabControl1.SelectedPageChanged += xtraTabControl1_SelectedPageChanged;
@@ -309,7 +310,7 @@
             xtraTabPage1.ImageOptions.Image = (Image)resources.GetObject("xtraTabPage1.ImageOptions.Image");
             xtraTabPage1.Margin = new Padding(3, 2, 3, 2);
             xtraTabPage1.Name = "xtraTabPage1";
-            xtraTabPage1.Size = new Size(1330, 548);
+            xtraTabPage1.Size = new Size(1552, 548);
             xtraTabPage1.Text = "Select Item(s) For Issue";
             // 
             // panelControl1
@@ -320,7 +321,7 @@
             panelControl1.Location = new Point(0, 0);
             panelControl1.Margin = new Padding(3, 2, 3, 2);
             panelControl1.Name = "panelControl1";
-            panelControl1.Size = new Size(1330, 548);
+            panelControl1.Size = new Size(1552, 548);
             panelControl1.TabIndex = 0;
             // 
             // panelControl3
@@ -330,7 +331,7 @@
             panelControl3.Location = new Point(2, 58);
             panelControl3.Margin = new Padding(3, 2, 3, 2);
             panelControl3.Name = "panelControl3";
-            panelControl3.Size = new Size(1326, 488);
+            panelControl3.Size = new Size(1548, 488);
             panelControl3.TabIndex = 1;
             // 
             // gridControl1
@@ -342,7 +343,7 @@
             gridControl1.Margin = new Padding(3, 2, 3, 2);
             gridControl1.Name = "gridControl1";
             gridControl1.RepositoryItems.AddRange(new DevExpress.XtraEditors.Repository.RepositoryItem[] { repositoryItemCheckEdit1 });
-            gridControl1.Size = new Size(1322, 484);
+            gridControl1.Size = new Size(1544, 484);
             gridControl1.TabIndex = 0;
             gridControl1.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] { gridView1 });
             // 
@@ -616,7 +617,7 @@
             panelControl2.Location = new Point(2, 2);
             panelControl2.Margin = new Padding(3, 2, 3, 2);
             panelControl2.Name = "panelControl2";
-            panelControl2.Size = new Size(1326, 56);
+            panelControl2.Size = new Size(1548, 56);
             panelControl2.TabIndex = 0;
             // 
             // progressLabel
@@ -644,7 +645,7 @@
             panelControl9.Appearance.Options.UseBackColor = true;
             panelControl9.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.NoBorder;
             panelControl9.Controls.Add(btnApply);
-            panelControl9.Location = new Point(1117, 27);
+            panelControl9.Location = new Point(1339, 27);
             panelControl9.Margin = new Padding(3, 2, 3, 2);
             panelControl9.Name = "panelControl9";
             panelControl9.Size = new Size(64, 26);
@@ -671,7 +672,7 @@
             labelControl3.Appearance.ForeColor = Color.DimGray;
             labelControl3.Appearance.Options.UseFont = true;
             labelControl3.Appearance.Options.UseForeColor = true;
-            labelControl3.Location = new Point(1190, 8);
+            labelControl3.Location = new Point(1412, 8);
             labelControl3.Margin = new Padding(3, 2, 3, 2);
             labelControl3.Name = "labelControl3";
             labelControl3.Size = new Size(0, 12);
@@ -684,7 +685,7 @@
             panelControl5.Appearance.Options.UseBackColor = true;
             panelControl5.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.NoBorder;
             panelControl5.Controls.Add(simpleButton1);
-            panelControl5.Location = new Point(1190, 27);
+            panelControl5.Location = new Point(1412, 27);
             panelControl5.Margin = new Padding(3, 2, 3, 2);
             panelControl5.Name = "panelControl5";
             panelControl5.Size = new Size(129, 26);
@@ -791,7 +792,7 @@
             xtraTabPage2.ImageOptions.Image = (Image)resources.GetObject("xtraTabPage2.ImageOptions.Image");
             xtraTabPage2.Margin = new Padding(3, 2, 3, 2);
             xtraTabPage2.Name = "xtraTabPage2";
-            xtraTabPage2.Size = new Size(1330, 548);
+            xtraTabPage2.Size = new Size(1552, 548);
             xtraTabPage2.Text = "Issue Detail";
             // 
             // panelControl6
@@ -802,7 +803,7 @@
             panelControl6.Location = new Point(0, 0);
             panelControl6.Margin = new Padding(3, 2, 3, 2);
             panelControl6.Name = "panelControl6";
-            panelControl6.Size = new Size(1330, 548);
+            panelControl6.Size = new Size(1552, 548);
             panelControl6.TabIndex = 0;
             // 
             // panelControl8
@@ -812,7 +813,7 @@
             panelControl8.Location = new Point(2, 62);
             panelControl8.Margin = new Padding(3, 2, 3, 2);
             panelControl8.Name = "panelControl8";
-            panelControl8.Size = new Size(1326, 484);
+            panelControl8.Size = new Size(1548, 484);
             panelControl8.TabIndex = 1;
             // 
             // gridControl2
@@ -824,7 +825,7 @@
             gridControl2.Margin = new Padding(3, 2, 3, 2);
             gridControl2.Name = "gridControl2";
             gridControl2.RepositoryItems.AddRange(new DevExpress.XtraEditors.Repository.RepositoryItem[] { repositoryItemTextEditQtyIssue, repositoryItemLookUpLocation, repositoryItemLookUpEditUnit });
-            gridControl2.Size = new Size(1322, 480);
+            gridControl2.Size = new Size(1544, 480);
             gridControl2.TabIndex = 1;
             gridControl2.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] { gridView6 });
             gridControl2.Click += gridControl2_Click;
@@ -850,6 +851,7 @@
             gridView6.DetailHeight = 284;
             gridView6.GridControl = gridControl2;
             gridView6.Name = "gridView6";
+            gridView6.OptionsBehavior.AllowDeleteRows = DevExpress.Utils.DefaultBoolean.True;
             gridView6.OptionsEditForm.PopupEditFormWidth = 686;
             gridView6.OptionsMenu.ShowFooterItem = true;
             gridView6.OptionsSelection.MultiSelect = true;
@@ -1115,6 +1117,7 @@
             // 
             // panelControl7
             // 
+            panelControl7.Controls.Add(simpleButton4);
             panelControl7.Controls.Add(simpleButton3);
             panelControl7.Controls.Add(labelControl8);
             panelControl7.Controls.Add(labelControl12);
@@ -1138,8 +1141,21 @@
             panelControl7.Location = new Point(2, 2);
             panelControl7.Margin = new Padding(3, 2, 3, 2);
             panelControl7.Name = "panelControl7";
-            panelControl7.Size = new Size(1326, 60);
+            panelControl7.Size = new Size(1548, 60);
             panelControl7.TabIndex = 0;
+            // 
+            // simpleButton4
+            // 
+            simpleButton4.Anchor = AnchorStyles.Top | AnchorStyles.Right;
+            simpleButton4.Appearance.BackColor = Color.FromArgb(255, 192, 192);
+            simpleButton4.Appearance.Options.UseBackColor = true;
+            simpleButton4.ImageOptions.Image = (Image)resources.GetObject("simpleButton4.ImageOptions.Image");
+            simpleButton4.Location = new Point(958, 19);
+            simpleButton4.Name = "simpleButton4";
+            simpleButton4.Size = new Size(89, 23);
+            simpleButton4.TabIndex = 23;
+            simpleButton4.Text = "Delete Row";
+            simpleButton4.Click += simpleButton4_Click;
             // 
             // simpleButton3
             // 
@@ -1147,7 +1163,7 @@
             simpleButton3.Appearance.BackColor = Color.FromArgb(192, 255, 255);
             simpleButton3.Appearance.Options.UseBackColor = true;
             simpleButton3.ImageOptions.Image = (Image)resources.GetObject("simpleButton3.ImageOptions.Image");
-            simpleButton3.Location = new Point(855, 19);
+            simpleButton3.Location = new Point(1077, 19);
             simpleButton3.Name = "simpleButton3";
             simpleButton3.Size = new Size(98, 23);
             simpleButton3.TabIndex = 22;
@@ -1159,7 +1175,7 @@
             labelControl8.Anchor = AnchorStyles.Top | AnchorStyles.Right;
             labelControl8.Cursor = Cursors.Hand;
             labelControl8.ImageOptions.Image = (Image)resources.GetObject("labelControl8.ImageOptions.Image");
-            labelControl8.Location = new Point(975, 23);
+            labelControl8.Location = new Point(1197, 22);
             labelControl8.Margin = new Padding(3, 2, 3, 2);
             labelControl8.Name = "labelControl8";
             labelControl8.Size = new Size(16, 16);
@@ -1171,7 +1187,7 @@
             labelControl12.Anchor = AnchorStyles.Top | AnchorStyles.Right;
             labelControl12.Appearance.ForeColor = Color.FromArgb(0, 192, 0);
             labelControl12.Appearance.Options.UseForeColor = true;
-            labelControl12.Location = new Point(995, 23);
+            labelControl12.Location = new Point(1217, 24);
             labelControl12.Margin = new Padding(3, 2, 3, 2);
             labelControl12.Name = "labelControl12";
             labelControl12.Size = new Size(95, 13);
@@ -1183,7 +1199,7 @@
             labelControl11.Anchor = AnchorStyles.Top | AnchorStyles.Right;
             labelControl11.Appearance.ForeColor = Color.FromArgb(255, 128, 0);
             labelControl11.Appearance.Options.UseForeColor = true;
-            labelControl11.Location = new Point(1096, 23);
+            labelControl11.Location = new Point(1318, 24);
             labelControl11.Margin = new Padding(3, 2, 3, 2);
             labelControl11.Name = "labelControl11";
             labelControl11.Size = new Size(4, 13);
@@ -1281,7 +1297,7 @@
             panelControl10.Appearance.Options.UseBackColor = true;
             panelControl10.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.NoBorder;
             panelControl10.Controls.Add(btnRun);
-            panelControl10.Location = new Point(1192, 10);
+            panelControl10.Location = new Point(1414, 10);
             panelControl10.Margin = new Padding(3, 2, 3, 2);
             panelControl10.Name = "panelControl10";
             panelControl10.Size = new Size(127, 39);
@@ -1395,7 +1411,7 @@
             xtraTabPage3.ImageOptions.Image = (Image)resources.GetObject("xtraTabPage3.ImageOptions.Image");
             xtraTabPage3.Margin = new Padding(3, 2, 3, 2);
             xtraTabPage3.Name = "xtraTabPage3";
-            xtraTabPage3.Size = new Size(1330, 548);
+            xtraTabPage3.Size = new Size(1552, 548);
             xtraTabPage3.Text = "Print";
             // 
             // panelControl11
@@ -1407,7 +1423,7 @@
             panelControl11.Location = new Point(0, 0);
             panelControl11.Margin = new Padding(3, 2, 3, 2);
             panelControl11.Name = "panelControl11";
-            panelControl11.Size = new Size(1330, 548);
+            panelControl11.Size = new Size(1552, 548);
             panelControl11.TabIndex = 0;
             // 
             // standaloneBarDockControl1
@@ -1417,7 +1433,7 @@
             standaloneBarDockControl1.Location = new Point(183, 2);
             standaloneBarDockControl1.Manager = documentViewerBarManager1;
             standaloneBarDockControl1.Name = "standaloneBarDockControl1";
-            standaloneBarDockControl1.Size = new Size(1145, 20);
+            standaloneBarDockControl1.Size = new Size(1367, 20);
             standaloneBarDockControl1.Text = "standaloneBarDockControl1";
             // 
             // documentViewerBarManager1
@@ -1729,7 +1745,7 @@
             barDockControlTop.Dock = DockStyle.Top;
             barDockControlTop.Location = new Point(0, 0);
             barDockControlTop.Manager = documentViewerBarManager1;
-            barDockControlTop.Size = new Size(1332, 0);
+            barDockControlTop.Size = new Size(1554, 0);
             // 
             // barDockControlBottom
             // 
@@ -1737,7 +1753,7 @@
             barDockControlBottom.Dock = DockStyle.Bottom;
             barDockControlBottom.Location = new Point(0, 592);
             barDockControlBottom.Manager = documentViewerBarManager1;
-            barDockControlBottom.Size = new Size(1332, 0);
+            barDockControlBottom.Size = new Size(1554, 0);
             // 
             // barDockControlLeft
             // 
@@ -1751,7 +1767,7 @@
             // 
             barDockControlRight.CausesValidation = false;
             barDockControlRight.Dock = DockStyle.Right;
-            barDockControlRight.Location = new Point(1332, 0);
+            barDockControlRight.Location = new Point(1554, 0);
             barDockControlRight.Manager = documentViewerBarManager1;
             barDockControlRight.Size = new Size(0, 592);
             // 
@@ -1763,7 +1779,7 @@
             documentViewer1.IsMetric = false;
             documentViewer1.Location = new Point(0, 0);
             documentViewer1.Name = "documentViewer1";
-            documentViewer1.Size = new Size(1148, 521);
+            documentViewer1.Size = new Size(1370, 521);
             documentViewer1.TabIndex = 0;
             // 
             // printPreviewStaticItemPageOfPages
@@ -2091,7 +2107,7 @@
             sidePanel2.Location = new Point(183, 27);
             sidePanel2.Margin = new Padding(3, 2, 3, 2);
             sidePanel2.Name = "sidePanel2";
-            sidePanel2.Size = new Size(1148, 521);
+            sidePanel2.Size = new Size(1370, 521);
             sidePanel2.TabIndex = 1;
             sidePanel2.Text = "sidePanel2";
             // 
@@ -2370,7 +2386,7 @@
             Appearance.Options.UseFont = true;
             AutoScaleDimensions = new SizeF(6F, 13F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(1332, 592);
+            ClientSize = new Size(1554, 592);
             Controls.Add(xtraTabControl1);
             Controls.Add(barDockControlLeft);
             Controls.Add(barDockControlRight);
@@ -2650,5 +2666,6 @@
         private DevExpress.XtraEditors.ToggleSwitch toggleSwitch2;
         private DevExpress.XtraBars.Navigation.AccordionControlElement accordionControlElement8;
         private DevExpress.XtraEditors.SimpleButton simpleButton3;
+        private DevExpress.XtraEditors.SimpleButton simpleButton4;
     }
 }

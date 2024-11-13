@@ -1,5 +1,4 @@
-﻿using System;
-using Microsoft.EntityFrameworkCore.Migrations;
+﻿using Microsoft.EntityFrameworkCore.Migrations;
 
 #nullable disable
 
@@ -11,7 +10,7 @@ namespace AWMS.datalayer.Migrations
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
         {
-            
+
             migrationBuilder.AddColumn<string>(
                 name: "RemarkLocitemID",
                 table: "LocItems",
@@ -23,7 +22,7 @@ namespace AWMS.datalayer.Migrations
         /// <inheritdoc />
         protected override void Down(MigrationBuilder migrationBuilder)
         {
-          
+
             migrationBuilder.DropColumn(
                 name: "RemarkLocitemID",
                 table: "LocItems");

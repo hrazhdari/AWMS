@@ -1,17 +1,8 @@
 ﻿using AWMS.app.Forms.RibbonUser;
-using AWMS.dapper;
 using AWMS.dapper.Repositories;
 using DevExpress.XtraEditors;
 using DevExpress.XtraEditors.Repository;
-using System;
-using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
 using static AWMS.dapper.ApproveDapperRepository;
 
 namespace AWMS.app.Forms.RibbonVoucher

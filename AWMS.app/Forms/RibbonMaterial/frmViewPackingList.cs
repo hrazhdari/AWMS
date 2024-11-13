@@ -4,7 +4,6 @@ using AWMS.core.Interfaces;
 using AWMS.dapper.Repositories;
 using AWMS.dto;
 using DevExpress.XtraEditors;
-using DevExpress.XtraEditors.Controls;
 using DevExpress.XtraEditors.Repository;
 using DevExpress.XtraGrid;
 using DevExpress.XtraGrid.Columns;
@@ -12,7 +11,6 @@ using DevExpress.XtraGrid.Views.Grid;
 using DevExpress.XtraGrid.Views.Grid.ViewInfo;
 using Microsoft.Extensions.DependencyInjection;
 using System.Diagnostics;
-using System.Windows.Forms;
 
 namespace AWMS.app.Forms.RibbonMaterial
 {

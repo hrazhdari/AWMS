@@ -765,5 +765,39 @@ namespace AWMS.app.Forms.RibbonVoucher
         {
 
         }
+
+        private void simpleButton4_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                // Check if any rows are selected in gridControl6
+                if (gridView6.SelectedRowsCount > 0)
+                {
+                    // Ask for confirmation before deletion
+                    DialogResult result = MessageBox.Show("Are you sure you want to delete the selected rows?", "Confirmation", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+
+                    if (result == DialogResult.Yes)
+                    {
+                        // Get the indices of the selected rows
+                        int[] selectedRows = gridView6.GetSelectedRows();
+
+                        // Delete selected rows starting from the last one to avoid index issues
+                        for (int i = selectedRows.Length - 1; i >= 0; i--)
+                        {
+                            gridView6.DeleteRow(selectedRows[i]);
+                        }
+                    }
+                }
+                else
+                {
+                    MessageBox.Show("Please select rows to remove.", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"An error occurred: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+
+        }
     }
 }

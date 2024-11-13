@@ -35,6 +35,7 @@
             panelControl3 = new DevExpress.XtraEditors.PanelControl();
             btnSendForward = new DevExpress.XtraEditors.SimpleButton();
             panelControl2 = new DevExpress.XtraEditors.PanelControl();
+            lookUpEdit2 = new DevExpress.XtraEditors.LookUpEdit();
             labelControl5 = new DevExpress.XtraEditors.LabelControl();
             labelControl4 = new DevExpress.XtraEditors.LabelControl();
             labelControl3 = new DevExpress.XtraEditors.LabelControl();
@@ -53,7 +54,6 @@
             gridView1 = new DevExpress.XtraGrid.Views.Grid.GridView();
             gridControl2 = new DevExpress.XtraGrid.GridControl();
             gridView2 = new DevExpress.XtraGrid.Views.Grid.GridView();
-            lookUpEdit2 = new DevExpress.XtraEditors.LookUpEdit();
             ((System.ComponentModel.ISupportInitialize)splitContainerControl1).BeginInit();
             ((System.ComponentModel.ISupportInitialize)splitContainerControl1.Panel1).BeginInit();
             splitContainerControl1.Panel1.SuspendLayout();
@@ -66,6 +66,7 @@
             panelControl3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)panelControl2).BeginInit();
             panelControl2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)lookUpEdit2.Properties).BeginInit();
             ((System.ComponentModel.ISupportInitialize)dateEdit1.Properties).BeginInit();
             ((System.ComponentModel.ISupportInitialize)dateEdit1.Properties.CalendarTimeProperties).BeginInit();
             ((System.ComponentModel.ISupportInitialize)txtMrvNo.Properties).BeginInit();
@@ -83,7 +84,6 @@
             ((System.ComponentModel.ISupportInitialize)gridView1).BeginInit();
             ((System.ComponentModel.ISupportInitialize)gridControl2).BeginInit();
             ((System.ComponentModel.ISupportInitialize)gridView2).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)lookUpEdit2.Properties).BeginInit();
             SuspendLayout();
             // 
             // splitContainerControl1
@@ -171,6 +171,19 @@
             panelControl2.Name = "panelControl2";
             panelControl2.Size = new Size(504, 81);
             panelControl2.TabIndex = 6;
+            // 
+            // lookUpEdit2
+            // 
+            lookUpEdit2.Location = new Point(247, 47);
+            lookUpEdit2.Name = "lookUpEdit2";
+            lookUpEdit2.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] { new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo) });
+            lookUpEdit2.Properties.Columns.AddRange(new DevExpress.XtraEditors.Controls.LookUpColumnInfo[] { new DevExpress.XtraEditors.Controls.LookUpColumnInfo("ContractId", "ContractId", 20, DevExpress.Utils.FormatType.None, "", false, DevExpress.Utils.HorzAlignment.Default, DevExpress.Data.ColumnSortOrder.None, DevExpress.Utils.DefaultBoolean.Default), new DevExpress.XtraEditors.Controls.LookUpColumnInfo("ContractNumber", "ContractNumber") });
+            lookUpEdit2.Properties.DisplayMember = "ContractNumber";
+            lookUpEdit2.Properties.NullText = "Select Contract ...";
+            lookUpEdit2.Properties.ShowHeader = false;
+            lookUpEdit2.Properties.ValueMember = "ContractId";
+            lookUpEdit2.Size = new Size(126, 20);
+            lookUpEdit2.TabIndex = 12;
             // 
             // labelControl5
             // 
@@ -354,6 +367,7 @@
             gridView1.GridControl = gridControl1;
             gridView1.Name = "gridView1";
             gridView1.OptionsView.ShowAutoFilterRow = true;
+            gridView1.OptionsView.ShowFooter = true;
             gridView1.OptionsView.ShowGroupPanel = false;
             // 
             // gridControl2
@@ -374,19 +388,6 @@
             gridView2.OptionsView.ShowFooter = true;
             gridView2.OptionsView.ShowGroupPanel = false;
             gridView2.RowCellStyle += gridView2_RowCellStyle;
-            // 
-            // lookUpEdit2
-            // 
-            lookUpEdit2.Location = new Point(247, 47);
-            lookUpEdit2.Name = "lookUpEdit2";
-            lookUpEdit2.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] { new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo) });
-            lookUpEdit2.Properties.Columns.AddRange(new DevExpress.XtraEditors.Controls.LookUpColumnInfo[] { new DevExpress.XtraEditors.Controls.LookUpColumnInfo("ContractId", "ContractId", 20, DevExpress.Utils.FormatType.None, "", false, DevExpress.Utils.HorzAlignment.Default, DevExpress.Data.ColumnSortOrder.None, DevExpress.Utils.DefaultBoolean.Default), new DevExpress.XtraEditors.Controls.LookUpColumnInfo("ContractNumber", "ContractNumber") });
-            lookUpEdit2.Properties.DisplayMember = "ContractNumber";
-            lookUpEdit2.Properties.NullText = "Select Contract ...";
-            lookUpEdit2.Properties.ShowHeader = false;
-            lookUpEdit2.Properties.ValueMember = "ContractId";
-            lookUpEdit2.Size = new Size(126, 20);
-            lookUpEdit2.TabIndex = 12;
             // 
             // frmMRV
             // 
@@ -410,6 +411,7 @@
             ((System.ComponentModel.ISupportInitialize)panelControl2).EndInit();
             panelControl2.ResumeLayout(false);
             panelControl2.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)lookUpEdit2.Properties).EndInit();
             ((System.ComponentModel.ISupportInitialize)dateEdit1.Properties.CalendarTimeProperties).EndInit();
             ((System.ComponentModel.ISupportInitialize)dateEdit1.Properties).EndInit();
             ((System.ComponentModel.ISupportInitialize)txtMrvNo.Properties).EndInit();
@@ -428,7 +430,6 @@
             ((System.ComponentModel.ISupportInitialize)gridView1).EndInit();
             ((System.ComponentModel.ISupportInitialize)gridControl2).EndInit();
             ((System.ComponentModel.ISupportInitialize)gridView2).EndInit();
-            ((System.ComponentModel.ISupportInitialize)lookUpEdit2.Properties).EndInit();
             ResumeLayout(false);
         }
 

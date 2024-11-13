@@ -48,29 +48,39 @@
             repositoryItemTextEditirn = new DevExpress.XtraEditors.Repository.RepositoryItemTextEdit();
             panelControl2 = new DevExpress.XtraEditors.PanelControl();
             panelControl4 = new DevExpress.XtraEditors.PanelControl();
-            panelControl5 = new DevExpress.XtraEditors.PanelControl();
+            label2 = new Label();
+            label1 = new Label();
+            panelControl8 = new DevExpress.XtraEditors.PanelControl();
+            txtQty = new DevExpress.XtraEditors.SpinEdit();
+            btnChangeLoc = new DevExpress.XtraEditors.SimpleButton();
+            labelControl5 = new DevExpress.XtraEditors.LabelControl();
+            panelControl6 = new DevExpress.XtraEditors.PanelControl();
+            simpleButton4 = new DevExpress.XtraEditors.SimpleButton();
+            spinEdit1 = new DevExpress.XtraEditors.SpinEdit();
+            labelControl16 = new DevExpress.XtraEditors.LabelControl();
+            panelControlRemarkLocitemid = new DevExpress.XtraEditors.PanelControl();
+            txtRemarkLocitemID = new DevExpress.XtraEditors.TextEdit();
             simpleButton2 = new DevExpress.XtraEditors.SimpleButton();
-            labelControl11 = new DevExpress.XtraEditors.LabelControl();
-            lookUpEdit1 = new DevExpress.XtraEditors.LookUpEdit();
+            labelControl14 = new DevExpress.XtraEditors.LabelControl();
+            labelControl13 = new DevExpress.XtraEditors.LabelControl();
+            labelControl10 = new DevExpress.XtraEditors.LabelControl();
             btnMivList = new DevExpress.XtraEditors.SimpleButton();
             labelControl9 = new DevExpress.XtraEditors.LabelControl();
             btnDate = new DevExpress.XtraEditors.SimpleButton();
             labelControl8 = new DevExpress.XtraEditors.LabelControl();
             btnNis = new DevExpress.XtraEditors.SimpleButton();
-            simpleButton3 = new DevExpress.XtraEditors.SimpleButton();
-            labelControl7 = new DevExpress.XtraEditors.LabelControl();
-            txtWarehouse = new DevExpress.XtraEditors.TextEdit();
-            labelControl6 = new DevExpress.XtraEditors.LabelControl();
-            labelControl5 = new DevExpress.XtraEditors.LabelControl();
             labelControl3 = new DevExpress.XtraEditors.LabelControl();
-            txtLocation = new DevExpress.XtraEditors.TextEdit();
-            btnChangeLoc = new DevExpress.XtraEditors.SimpleButton();
             separatorControl1 = new DevExpress.XtraEditors.SeparatorControl();
             txtDate = new DevExpress.XtraEditors.DateEdit();
             separatorControl2 = new DevExpress.XtraEditors.SeparatorControl();
             lookUpEditlocation = new DevExpress.XtraEditors.LookUpEdit();
-            txtQty = new DevExpress.XtraEditors.SpinEdit();
             txtNis = new DevExpress.XtraEditors.SpinEdit();
+            panelControl7 = new DevExpress.XtraEditors.PanelControl();
+            simpleButton3 = new DevExpress.XtraEditors.SimpleButton();
+            txtLocation = new DevExpress.XtraEditors.TextEdit();
+            labelControl6 = new DevExpress.XtraEditors.LabelControl();
+            txtWarehouse = new DevExpress.XtraEditors.TextEdit();
+            labelControl7 = new DevExpress.XtraEditors.LabelControl();
             progressLabel = new Label();
             progressBar1 = new ProgressBar();
             labelControl2 = new DevExpress.XtraEditors.LabelControl();
@@ -117,12 +127,6 @@
             BalanceWithReject = new DevExpress.XtraGrid.Columns.GridColumn();
             panelControl1 = new DevExpress.XtraEditors.PanelControl();
             panelControl3 = new DevExpress.XtraEditors.PanelControl();
-            textEdit1 = new DevExpress.XtraEditors.TextEdit();
-            labelControl10 = new DevExpress.XtraEditors.LabelControl();
-            labelControl12 = new DevExpress.XtraEditors.LabelControl();
-            labelControl13 = new DevExpress.XtraEditors.LabelControl();
-            labelControl14 = new DevExpress.XtraEditors.LabelControl();
-            labelControl15 = new DevExpress.XtraEditors.LabelControl();
             ((System.ComponentModel.ISupportInitialize)repositoryItemLookUpEditirn).BeginInit();
             ((System.ComponentModel.ISupportInitialize)repositoryItemLookUpEditpo).BeginInit();
             ((System.ComponentModel.ISupportInitialize)repositoryItemLookUpEditmr).BeginInit();
@@ -134,25 +138,31 @@
             panelControl2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)panelControl4).BeginInit();
             panelControl4.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)panelControl5).BeginInit();
-            panelControl5.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)lookUpEdit1.Properties).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)txtWarehouse.Properties).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)txtLocation.Properties).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)panelControl8).BeginInit();
+            panelControl8.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)txtQty.Properties).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)panelControl6).BeginInit();
+            panelControl6.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)spinEdit1.Properties).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)panelControlRemarkLocitemid).BeginInit();
+            panelControlRemarkLocitemid.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)txtRemarkLocitemID.Properties).BeginInit();
             ((System.ComponentModel.ISupportInitialize)separatorControl1).BeginInit();
             ((System.ComponentModel.ISupportInitialize)txtDate.Properties).BeginInit();
             ((System.ComponentModel.ISupportInitialize)txtDate.Properties.CalendarTimeProperties).BeginInit();
             ((System.ComponentModel.ISupportInitialize)separatorControl2).BeginInit();
             ((System.ComponentModel.ISupportInitialize)lookUpEditlocation.Properties).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)txtQty.Properties).BeginInit();
             ((System.ComponentModel.ISupportInitialize)txtNis.Properties).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)panelControl7).BeginInit();
+            panelControl7.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)txtLocation.Properties).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)txtWarehouse.Properties).BeginInit();
             ((System.ComponentModel.ISupportInitialize)gridControl1).BeginInit();
             ((System.ComponentModel.ISupportInitialize)gridView1).BeginInit();
             ((System.ComponentModel.ISupportInitialize)panelControl1).BeginInit();
             panelControl1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)panelControl3).BeginInit();
             panelControl3.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)textEdit1.Properties).BeginInit();
             SuspendLayout();
             // 
             // labelControl4
@@ -165,7 +175,7 @@
             labelControl4.Appearance.Options.UseFont = true;
             labelControl4.Appearance.Options.UseForeColor = true;
             labelControl4.LineColor = Color.FromArgb(255, 128, 0);
-            labelControl4.Location = new Point(960, 10);
+            labelControl4.Location = new Point(1250, 10);
             labelControl4.Margin = new Padding(3, 2, 3, 2);
             labelControl4.Name = "labelControl4";
             labelControl4.Size = new Size(80, 14);
@@ -335,94 +345,217 @@
             panelControl2.Location = new Point(2, 2);
             panelControl2.Margin = new Padding(3, 2, 3, 2);
             panelControl2.Name = "panelControl2";
-            panelControl2.Size = new Size(1087, 153);
+            panelControl2.Size = new Size(1377, 153);
             panelControl2.TabIndex = 1;
             // 
             // panelControl4
             // 
-            panelControl4.Controls.Add(labelControl15);
-            panelControl4.Controls.Add(labelControl14);
-            panelControl4.Controls.Add(panelControl5);
+            panelControl4.Controls.Add(label2);
+            panelControl4.Controls.Add(label1);
+            panelControl4.Controls.Add(panelControl8);
+            panelControl4.Controls.Add(panelControl6);
+            panelControl4.Controls.Add(panelControlRemarkLocitemid);
             panelControl4.Controls.Add(btnMivList);
             panelControl4.Controls.Add(labelControl9);
             panelControl4.Controls.Add(btnDate);
             panelControl4.Controls.Add(labelControl8);
             panelControl4.Controls.Add(btnNis);
-            panelControl4.Controls.Add(simpleButton3);
-            panelControl4.Controls.Add(labelControl7);
-            panelControl4.Controls.Add(txtWarehouse);
-            panelControl4.Controls.Add(labelControl6);
-            panelControl4.Controls.Add(labelControl5);
             panelControl4.Controls.Add(labelControl3);
-            panelControl4.Controls.Add(txtLocation);
-            panelControl4.Controls.Add(btnChangeLoc);
             panelControl4.Controls.Add(separatorControl1);
             panelControl4.Controls.Add(txtDate);
             panelControl4.Controls.Add(separatorControl2);
             panelControl4.Controls.Add(lookUpEditlocation);
-            panelControl4.Controls.Add(txtQty);
             panelControl4.Controls.Add(txtNis);
-            panelControl4.Controls.Add(labelControl13);
+            panelControl4.Controls.Add(panelControl7);
             panelControl4.Location = new Point(10, 35);
             panelControl4.Name = "panelControl4";
-            panelControl4.Size = new Size(1030, 98);
+            panelControl4.Size = new Size(1169, 113);
             panelControl4.TabIndex = 148;
             // 
-            // panelControl5
+            // label2
             // 
-            panelControl5.Appearance.BackColor = Color.FromArgb(0, 192, 0);
-            panelControl5.Appearance.Options.UseBackColor = true;
-            panelControl5.Appearance.Options.UseBorderColor = true;
-            panelControl5.Appearance.Options.UseFont = true;
-            panelControl5.Appearance.Options.UseForeColor = true;
-            panelControl5.Appearance.Options.UseTextOptions = true;
-            panelControl5.Controls.Add(labelControl12);
-            panelControl5.Controls.Add(labelControl10);
-            panelControl5.Controls.Add(textEdit1);
-            panelControl5.Controls.Add(simpleButton2);
-            panelControl5.Controls.Add(labelControl11);
-            panelControl5.Controls.Add(lookUpEdit1);
-            panelControl5.Location = new Point(12, 33);
-            panelControl5.Name = "panelControl5";
-            panelControl5.Size = new Size(647, 31);
-            panelControl5.TabIndex = 29;
+            label2.AutoSize = true;
+            label2.BackColor = Color.FromArgb(192, 192, 255);
+            label2.Location = new Point(760, 9);
+            label2.Name = "label2";
+            label2.Size = new Size(13, 13);
+            label2.TabIndex = 42;
+            label2.Text = "B";
+            // 
+            // label1
+            // 
+            label1.AutoSize = true;
+            label1.BackColor = Color.FromArgb(255, 224, 192);
+            label1.Location = new Point(760, 21);
+            label1.Name = "label1";
+            label1.Size = new Size(14, 13);
+            label1.TabIndex = 41;
+            label1.Text = "R";
+            // 
+            // panelControl8
+            // 
+            panelControl8.Controls.Add(txtQty);
+            panelControl8.Controls.Add(btnChangeLoc);
+            panelControl8.Controls.Add(labelControl5);
+            panelControl8.Location = new Point(330, 7);
+            panelControl8.Name = "panelControl8";
+            panelControl8.Size = new Size(228, 26);
+            panelControl8.TabIndex = 40;
+            // 
+            // txtQty
+            // 
+            txtQty.EditValue = new decimal(new int[] { 0, 0, 0, 0 });
+            txtQty.Location = new Point(75, 3);
+            txtQty.Name = "txtQty";
+            txtQty.Properties.Appearance.BackColor = Color.FromArgb(192, 192, 255);
+            txtQty.Properties.Appearance.Options.UseBackColor = true;
+            txtQty.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] { new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo) });
+            txtQty.Properties.EditValueChangedFiringMode = DevExpress.XtraEditors.Controls.EditValueChangedFiringMode.Default;
+            txtQty.Properties.MaskSettings.Set("mask", "f");
+            txtQty.Properties.SpinStyle = DevExpress.XtraEditors.Controls.SpinStyles.Horizontal;
+            txtQty.Size = new Size(100, 20);
+            txtQty.TabIndex = 3;
+            // 
+            // btnChangeLoc
+            // 
+            btnChangeLoc.Appearance.BackColor = Color.FromArgb(192, 192, 255);
+            btnChangeLoc.Appearance.Options.UseBackColor = true;
+            btnChangeLoc.ImageOptions.Image = (Image)resources.GetObject("btnChangeLoc.ImageOptions.Image");
+            btnChangeLoc.Location = new Point(178, 3);
+            btnChangeLoc.Name = "btnChangeLoc";
+            btnChangeLoc.Size = new Size(45, 20);
+            btnChangeLoc.TabIndex = 0;
+            btnChangeLoc.Text = "OK";
+            btnChangeLoc.Click += btnChangeLoc_Click;
+            // 
+            // labelControl5
+            // 
+            labelControl5.Appearance.BackColor = Color.FromArgb(192, 192, 255);
+            labelControl5.Appearance.Options.UseBackColor = true;
+            labelControl5.Location = new Point(5, 7);
+            labelControl5.Name = "labelControl5";
+            labelControl5.Size = new Size(65, 13);
+            labelControl5.TabIndex = 5;
+            labelControl5.Text = "Balance Qty :";
+            // 
+            // panelControl6
+            // 
+            panelControl6.Controls.Add(simpleButton4);
+            panelControl6.Controls.Add(spinEdit1);
+            panelControl6.Controls.Add(labelControl16);
+            panelControl6.Location = new Point(565, 7);
+            panelControl6.Name = "panelControl6";
+            panelControl6.Size = new Size(188, 26);
+            panelControl6.TabIndex = 38;
+            // 
+            // simpleButton4
+            // 
+            simpleButton4.Appearance.BackColor = Color.FromArgb(255, 224, 192);
+            simpleButton4.Appearance.Options.UseBackColor = true;
+            simpleButton4.ImageOptions.Image = (Image)resources.GetObject("simpleButton4.ImageOptions.Image");
+            simpleButton4.Location = new Point(137, 3);
+            simpleButton4.Name = "simpleButton4";
+            simpleButton4.Size = new Size(45, 20);
+            simpleButton4.TabIndex = 37;
+            simpleButton4.Text = "OK";
+            // 
+            // spinEdit1
+            // 
+            spinEdit1.EditValue = new decimal(new int[] { 0, 0, 0, 0 });
+            spinEdit1.Location = new Point(55, 3);
+            spinEdit1.Name = "spinEdit1";
+            spinEdit1.Properties.Appearance.BackColor = Color.FromArgb(255, 224, 192);
+            spinEdit1.Properties.Appearance.Options.UseBackColor = true;
+            spinEdit1.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] { new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo) });
+            spinEdit1.Properties.EditValueChangedFiringMode = DevExpress.XtraEditors.Controls.EditValueChangedFiringMode.Default;
+            spinEdit1.Properties.MaskSettings.Set("mask", "f");
+            spinEdit1.Properties.SpinStyle = DevExpress.XtraEditors.Controls.SpinStyles.Horizontal;
+            spinEdit1.Size = new Size(76, 20);
+            spinEdit1.TabIndex = 35;
+            // 
+            // labelControl16
+            // 
+            labelControl16.Appearance.BackColor = Color.FromArgb(255, 224, 192);
+            labelControl16.Appearance.Options.UseBackColor = true;
+            labelControl16.Location = new Point(7, 7);
+            labelControl16.Name = "labelControl16";
+            labelControl16.Size = new Size(44, 13);
+            labelControl16.TabIndex = 36;
+            labelControl16.Text = "Rej Qty :";
+            // 
+            // panelControlRemarkLocitemid
+            // 
+            panelControlRemarkLocitemid.Appearance.BackColor = Color.FromArgb(0, 192, 0);
+            panelControlRemarkLocitemid.Appearance.Options.UseBackColor = true;
+            panelControlRemarkLocitemid.Appearance.Options.UseBorderColor = true;
+            panelControlRemarkLocitemid.Appearance.Options.UseFont = true;
+            panelControlRemarkLocitemid.Appearance.Options.UseForeColor = true;
+            panelControlRemarkLocitemid.Appearance.Options.UseTextOptions = true;
+            panelControlRemarkLocitemid.Controls.Add(txtRemarkLocitemID);
+            panelControlRemarkLocitemid.Controls.Add(simpleButton2);
+            panelControlRemarkLocitemid.Controls.Add(labelControl14);
+            panelControlRemarkLocitemid.Controls.Add(labelControl13);
+            panelControlRemarkLocitemid.Controls.Add(labelControl10);
+            panelControlRemarkLocitemid.Location = new Point(12, 38);
+            panelControlRemarkLocitemid.Name = "panelControlRemarkLocitemid";
+            panelControlRemarkLocitemid.Size = new Size(741, 31);
+            panelControlRemarkLocitemid.TabIndex = 29;
+            // 
+            // txtRemarkLocitemID
+            // 
+            txtRemarkLocitemID.Location = new Point(95, 5);
+            txtRemarkLocitemID.Name = "txtRemarkLocitemID";
+            txtRemarkLocitemID.Size = new Size(242, 20);
+            txtRemarkLocitemID.TabIndex = 29;
             // 
             // simpleButton2
             // 
             simpleButton2.ImageOptions.Image = (Image)resources.GetObject("simpleButton2.ImageOptions.Image");
-            simpleButton2.Location = new Point(596, 4);
+            simpleButton2.Location = new Point(340, 5);
             simpleButton2.Name = "simpleButton2";
-            simpleButton2.Size = new Size(45, 23);
+            simpleButton2.Size = new Size(45, 20);
             simpleButton2.TabIndex = 25;
             simpleButton2.Text = "OK";
+            simpleButton2.Click += simpleButton2_Click_1;
             // 
-            // labelControl11
+            // labelControl14
             // 
-            labelControl11.Location = new Point(27, 9);
-            labelControl11.Name = "labelControl11";
-            labelControl11.Size = new Size(135, 13);
-            labelControl11.TabIndex = 28;
-            labelControl11.Text = "Change AnyWAy Location : ";
+            labelControl14.Appearance.Font = new Font("Segoe UI", 7.25F, FontStyle.Regular, GraphicsUnit.Point);
+            labelControl14.Appearance.ForeColor = Color.ForestGreen;
+            labelControl14.Appearance.Options.UseFont = true;
+            labelControl14.Appearance.Options.UseForeColor = true;
+            labelControl14.Appearance.Options.UseTextOptions = true;
+            labelControl14.Appearance.TextOptions.WordWrap = DevExpress.Utils.WordWrap.Wrap;
+            labelControl14.Location = new Point(400, 9);
+            labelControl14.Name = "labelControl14";
+            labelControl14.Size = new Size(337, 12);
+            labelControl14.TabIndex = 33;
+            labelControl14.Text = "\" IF YOU WANT TO ADD REMARK TO REMARK-LOCITEMID USE THIS ROW \"";
             // 
-            // lookUpEdit1
+            // labelControl13
             // 
-            lookUpEdit1.Location = new Point(164, 5);
-            lookUpEdit1.Name = "lookUpEdit1";
-            lookUpEdit1.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] { new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo) });
-            lookUpEdit1.Properties.Columns.AddRange(new DevExpress.XtraEditors.Controls.LookUpColumnInfo[] { new DevExpress.XtraEditors.Controls.LookUpColumnInfo("LocationID", "LocationID", 20, DevExpress.Utils.FormatType.None, "", false, DevExpress.Utils.HorzAlignment.Default, DevExpress.Data.ColumnSortOrder.None, DevExpress.Utils.DefaultBoolean.Default), new DevExpress.XtraEditors.Controls.LookUpColumnInfo("LocationName", "LocationName") });
-            lookUpEdit1.Properties.DisplayMember = "LocationName";
-            lookUpEdit1.Properties.DropDownRows = 10;
-            lookUpEdit1.Properties.NullText = "Select Location ...";
-            lookUpEdit1.Properties.ShowHeader = false;
-            lookUpEdit1.Properties.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.Standard;
-            lookUpEdit1.Properties.ValueMember = "LocationID";
-            lookUpEdit1.Size = new Size(234, 20);
-            lookUpEdit1.TabIndex = 26;
+            labelControl13.Appearance.Font = new Font("Tahoma", 14.25F, FontStyle.Regular, GraphicsUnit.Point);
+            labelControl13.Appearance.ForeColor = Color.Gold;
+            labelControl13.Appearance.Options.UseFont = true;
+            labelControl13.Appearance.Options.UseForeColor = true;
+            labelControl13.Location = new Point(386, 4);
+            labelControl13.Name = "labelControl13";
+            labelControl13.Size = new Size(19, 23);
+            labelControl13.TabIndex = 32;
+            labelControl13.Text = "★";
+            // 
+            // labelControl10
+            // 
+            labelControl10.Location = new Point(4, 9);
+            labelControl10.Name = "labelControl10";
+            labelControl10.Size = new Size(90, 13);
+            labelControl10.TabIndex = 30;
+            labelControl10.Text = "Remark LocitemID:";
             // 
             // btnMivList
             // 
             btnMivList.ImageOptions.Image = (Image)resources.GetObject("btnMivList.ImageOptions.Image");
-            btnMivList.Location = new Point(937, 10);
+            btnMivList.Location = new Point(1063, 10);
             btnMivList.Name = "btnMivList";
             btnMivList.Size = new Size(85, 46);
             btnMivList.TabIndex = 23;
@@ -431,7 +564,7 @@
             // 
             // labelControl9
             // 
-            labelControl9.Location = new Point(685, 43);
+            labelControl9.Location = new Point(811, 43);
             labelControl9.Name = "labelControl9";
             labelControl9.Size = new Size(54, 13);
             labelControl9.TabIndex = 22;
@@ -440,7 +573,7 @@
             // btnDate
             // 
             btnDate.ImageOptions.Image = (Image)resources.GetObject("btnDate.ImageOptions.Image");
-            btnDate.Location = new Point(832, 38);
+            btnDate.Location = new Point(958, 38);
             btnDate.Name = "btnDate";
             btnDate.Size = new Size(61, 23);
             btnDate.TabIndex = 20;
@@ -449,7 +582,7 @@
             // 
             // labelControl8
             // 
-            labelControl8.Location = new Point(685, 11);
+            labelControl8.Location = new Point(811, 11);
             labelControl8.Name = "labelControl8";
             labelControl8.Size = new Size(45, 13);
             labelControl8.TabIndex = 18;
@@ -458,79 +591,20 @@
             // btnNis
             // 
             btnNis.ImageOptions.Image = (Image)resources.GetObject("btnNis.ImageOptions.Image");
-            btnNis.Location = new Point(832, 6);
+            btnNis.Location = new Point(958, 6);
             btnNis.Name = "btnNis";
             btnNis.Size = new Size(45, 23);
             btnNis.TabIndex = 16;
             btnNis.Text = "NIS";
             btnNis.Click += btnNis_Click;
             // 
-            // simpleButton3
-            // 
-            simpleButton3.ImageOptions.Image = (Image)resources.GetObject("simpleButton3.ImageOptions.Image");
-            simpleButton3.Location = new Point(425, 70);
-            simpleButton3.Name = "simpleButton3";
-            simpleButton3.Size = new Size(45, 23);
-            simpleButton3.TabIndex = 9;
-            simpleButton3.Text = "OK";
-            simpleButton3.Click += simpleButton3_Click_1;
-            // 
-            // labelControl7
-            // 
-            labelControl7.Location = new Point(277, 75);
-            labelControl7.Name = "labelControl7";
-            labelControl7.Size = new Size(66, 13);
-            labelControl7.TabIndex = 8;
-            labelControl7.Text = "WareHouse : ";
-            // 
-            // txtWarehouse
-            // 
-            txtWarehouse.EditValue = "PPI";
-            txtWarehouse.Location = new Point(349, 71);
-            txtWarehouse.Name = "txtWarehouse";
-            txtWarehouse.Size = new Size(69, 20);
-            txtWarehouse.TabIndex = 7;
-            // 
-            // labelControl6
-            // 
-            labelControl6.Location = new Point(12, 75);
-            labelControl6.Name = "labelControl6";
-            labelControl6.Size = new Size(72, 13);
-            labelControl6.TabIndex = 6;
-            labelControl6.Text = "Add Location : ";
-            // 
-            // labelControl5
-            // 
-            labelControl5.Location = new Point(333, 11);
-            labelControl5.Name = "labelControl5";
-            labelControl5.Size = new Size(28, 13);
-            labelControl5.TabIndex = 5;
-            labelControl5.Text = "Qty : ";
-            // 
             // labelControl3
             // 
-            labelControl3.Location = new Point(12, 11);
+            labelControl3.Location = new Point(13, 14);
             labelControl3.Name = "labelControl3";
             labelControl3.Size = new Size(74, 13);
             labelControl3.TabIndex = 4;
             labelControl3.Text = "New Location : ";
-            // 
-            // txtLocation
-            // 
-            txtLocation.Location = new Point(98, 71);
-            txtLocation.Name = "txtLocation";
-            txtLocation.Size = new Size(168, 20);
-            txtLocation.TabIndex = 1;
-            // 
-            // btnChangeLoc
-            // 
-            btnChangeLoc.ImageOptions.Image = (Image)resources.GetObject("btnChangeLoc.ImageOptions.Image");
-            btnChangeLoc.Location = new Point(476, 6);
-            btnChangeLoc.Name = "btnChangeLoc";
-            btnChangeLoc.Size = new Size(45, 23);
-            btnChangeLoc.TabIndex = 0;
-            btnChangeLoc.Text = "OK";
-            btnChangeLoc.Click += btnChangeLoc_Click;
             // 
             // separatorControl1
             // 
@@ -539,7 +613,7 @@
             separatorControl1.LineOrientation = Orientation.Vertical;
             separatorControl1.LineStyle = System.Drawing.Drawing2D.DashStyle.Dash;
             separatorControl1.LineThickness = 2;
-            separatorControl1.Location = new Point(653, 0);
+            separatorControl1.Location = new Point(779, 0);
             separatorControl1.Name = "separatorControl1";
             separatorControl1.Size = new Size(26, 68);
             separatorControl1.TabIndex = 19;
@@ -547,7 +621,7 @@
             // txtDate
             // 
             txtDate.EditValue = null;
-            txtDate.Location = new Point(742, 39);
+            txtDate.Location = new Point(868, 39);
             txtDate.Name = "txtDate";
             txtDate.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] { new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo) });
             txtDate.Properties.CalendarTimeProperties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] { new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo) });
@@ -570,15 +644,17 @@
             separatorControl2.LineOrientation = Orientation.Vertical;
             separatorControl2.LineStyle = System.Drawing.Drawing2D.DashStyle.Dash;
             separatorControl2.LineThickness = 2;
-            separatorControl2.Location = new Point(900, 0);
+            separatorControl2.Location = new Point(1026, 0);
             separatorControl2.Name = "separatorControl2";
             separatorControl2.Size = new Size(26, 68);
             separatorControl2.TabIndex = 24;
             // 
             // lookUpEditlocation
             // 
-            lookUpEditlocation.Location = new Point(93, 7);
+            lookUpEditlocation.Location = new Point(93, 10);
             lookUpEditlocation.Name = "lookUpEditlocation";
+            lookUpEditlocation.Properties.Appearance.Font = new Font("Tahoma", 8.25F, FontStyle.Bold, GraphicsUnit.Point);
+            lookUpEditlocation.Properties.Appearance.Options.UseFont = true;
             lookUpEditlocation.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] { new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo) });
             lookUpEditlocation.Properties.Columns.AddRange(new DevExpress.XtraEditors.Controls.LookUpColumnInfo[] { new DevExpress.XtraEditors.Controls.LookUpColumnInfo("LocationID", "LocationID", 20, DevExpress.Utils.FormatType.None, "", false, DevExpress.Utils.HorzAlignment.Default, DevExpress.Data.ColumnSortOrder.None, DevExpress.Utils.DefaultBoolean.Default), new DevExpress.XtraEditors.Controls.LookUpColumnInfo("LocationName", "LocationName") });
             lookUpEditlocation.Properties.DisplayMember = "LocationName";
@@ -587,31 +663,75 @@
             lookUpEditlocation.Properties.ShowHeader = false;
             lookUpEditlocation.Properties.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.Standard;
             lookUpEditlocation.Properties.ValueMember = "LocationID";
-            lookUpEditlocation.Size = new Size(234, 20);
+            lookUpEditlocation.Size = new Size(231, 20);
             lookUpEditlocation.TabIndex = 2;
-            // 
-            // txtQty
-            // 
-            txtQty.EditValue = new decimal(new int[] { 0, 0, 0, 0 });
-            txtQty.Location = new Point(370, 7);
-            txtQty.Name = "txtQty";
-            txtQty.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] { new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo) });
-            txtQty.Properties.EditValueChangedFiringMode = DevExpress.XtraEditors.Controls.EditValueChangedFiringMode.Default;
-            txtQty.Properties.MaskSettings.Set("mask", "f");
-            txtQty.Properties.SpinStyle = DevExpress.XtraEditors.Controls.SpinStyles.Horizontal;
-            txtQty.Size = new Size(100, 20);
-            txtQty.TabIndex = 3;
             // 
             // txtNis
             // 
             txtNis.EditValue = new decimal(new int[] { 0, 0, 0, 0 });
-            txtNis.Location = new Point(742, 7);
+            txtNis.Location = new Point(868, 7);
             txtNis.Name = "txtNis";
             txtNis.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] { new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo) });
             txtNis.Properties.EditValueChangedFiringMode = DevExpress.XtraEditors.Controls.EditValueChangedFiringMode.Default;
             txtNis.Properties.SpinStyle = DevExpress.XtraEditors.Controls.SpinStyles.Horizontal;
             txtNis.Size = new Size(83, 20);
             txtNis.TabIndex = 17;
+            // 
+            // panelControl7
+            // 
+            panelControl7.Appearance.BackColor = Color.FromArgb(192, 255, 192);
+            panelControl7.Appearance.Options.UseBackColor = true;
+            panelControl7.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.Simple;
+            panelControl7.Controls.Add(simpleButton3);
+            panelControl7.Controls.Add(txtLocation);
+            panelControl7.Controls.Add(labelControl6);
+            panelControl7.Controls.Add(txtWarehouse);
+            panelControl7.Controls.Add(labelControl7);
+            panelControl7.Location = new Point(12, 76);
+            panelControl7.Name = "panelControl7";
+            panelControl7.Size = new Size(476, 32);
+            panelControl7.TabIndex = 39;
+            // 
+            // simpleButton3
+            // 
+            simpleButton3.ImageOptions.Image = (Image)resources.GetObject("simpleButton3.ImageOptions.Image");
+            simpleButton3.Location = new Point(422, 5);
+            simpleButton3.Name = "simpleButton3";
+            simpleButton3.Size = new Size(45, 20);
+            simpleButton3.TabIndex = 9;
+            simpleButton3.Text = "OK";
+            simpleButton3.Click += simpleButton3_Click_1;
+            // 
+            // txtLocation
+            // 
+            txtLocation.Location = new Point(81, 5);
+            txtLocation.Name = "txtLocation";
+            txtLocation.Size = new Size(168, 20);
+            txtLocation.TabIndex = 1;
+            // 
+            // labelControl6
+            // 
+            labelControl6.Location = new Point(8, 9);
+            labelControl6.Name = "labelControl6";
+            labelControl6.Size = new Size(72, 13);
+            labelControl6.TabIndex = 6;
+            labelControl6.Text = "Add Location : ";
+            // 
+            // txtWarehouse
+            // 
+            txtWarehouse.EditValue = "PPI";
+            txtWarehouse.Location = new Point(342, 5);
+            txtWarehouse.Name = "txtWarehouse";
+            txtWarehouse.Size = new Size(74, 20);
+            txtWarehouse.TabIndex = 7;
+            // 
+            // labelControl7
+            // 
+            labelControl7.Location = new Point(270, 9);
+            labelControl7.Name = "labelControl7";
+            labelControl7.Size = new Size(66, 13);
+            labelControl7.TabIndex = 8;
+            labelControl7.Text = "WareHouse : ";
             // 
             // progressLabel
             // 
@@ -664,7 +784,7 @@
             // 
             simpleButton1.Anchor = AnchorStyles.Top | AnchorStyles.Right;
             simpleButton1.ImageOptions.Image = (Image)resources.GetObject("simpleButton1.ImageOptions.Image");
-            simpleButton1.Location = new Point(1057, 8);
+            simpleButton1.Location = new Point(1347, 8);
             simpleButton1.Margin = new Padding(3, 2, 3, 2);
             simpleButton1.Name = "simpleButton1";
             simpleButton1.Size = new Size(20, 19);
@@ -676,7 +796,7 @@
             // 
             btnRefreshArchiveNO.Anchor = AnchorStyles.Top | AnchorStyles.Right;
             btnRefreshArchiveNO.ImageOptions.Image = (Image)resources.GetObject("btnRefreshArchiveNO.ImageOptions.Image");
-            btnRefreshArchiveNO.Location = new Point(935, 8);
+            btnRefreshArchiveNO.Location = new Point(1225, 8);
             btnRefreshArchiveNO.Margin = new Padding(3, 2, 3, 2);
             btnRefreshArchiveNO.Name = "btnRefreshArchiveNO";
             btnRefreshArchiveNO.Size = new Size(21, 19);
@@ -712,7 +832,7 @@
             gridControl1.Margin = new Padding(3, 2, 3, 2);
             gridControl1.Name = "gridControl1";
             gridControl1.RepositoryItems.AddRange(new DevExpress.XtraEditors.Repository.RepositoryItem[] { repositoryItemLookUpEditirn, repositoryItemLookUpEditpo, repositoryItemLookUpEditmr, repositoryItemLookUpEditsupplier, repositoryItemLookUpEditscope, repositoryItemLookUpEditdescipline, repositoryItemTextEditirn });
-            gridControl1.Size = new Size(1083, 413);
+            gridControl1.Size = new Size(1373, 413);
             gridControl1.TabIndex = 0;
             gridControl1.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] { gridView1 });
             gridControl1.Click += gridControl1_Click;
@@ -1043,7 +1163,7 @@
             panelControl1.Location = new Point(0, 0);
             panelControl1.Margin = new Padding(3, 2, 3, 2);
             panelControl1.Name = "panelControl1";
-            panelControl1.Size = new Size(1091, 574);
+            panelControl1.Size = new Size(1381, 574);
             panelControl1.TabIndex = 1;
             // 
             // panelControl3
@@ -1053,74 +1173,15 @@
             panelControl3.Location = new Point(2, 155);
             panelControl3.Margin = new Padding(3, 2, 3, 2);
             panelControl3.Name = "panelControl3";
-            panelControl3.Size = new Size(1087, 417);
+            panelControl3.Size = new Size(1377, 417);
             panelControl3.TabIndex = 2;
-            // 
-            // textEdit1
-            // 
-            textEdit1.Location = new Point(455, 5);
-            textEdit1.Name = "textEdit1";
-            textEdit1.Size = new Size(135, 20);
-            textEdit1.TabIndex = 29;
-            // 
-            // labelControl10
-            // 
-            labelControl10.Location = new Point(403, 9);
-            labelControl10.Name = "labelControl10";
-            labelControl10.Size = new Size(46, 13);
-            labelControl10.TabIndex = 30;
-            labelControl10.Text = "Remark : ";
-            // 
-            // labelControl12
-            // 
-            labelControl12.Appearance.Font = new Font("Tahoma", 14.25F, FontStyle.Regular, GraphicsUnit.Point);
-            labelControl12.Appearance.ForeColor = Color.SeaGreen;
-            labelControl12.Appearance.Options.UseFont = true;
-            labelControl12.Appearance.Options.UseForeColor = true;
-            labelControl12.Location = new Point(5, 4);
-            labelControl12.Name = "labelControl12";
-            labelControl12.Size = new Size(19, 23);
-            labelControl12.TabIndex = 31;
-            labelControl12.Text = "★";
-            // 
-            // labelControl13
-            // 
-            labelControl13.Appearance.Font = new Font("Tahoma", 14.25F, FontStyle.Regular, GraphicsUnit.Point);
-            labelControl13.Appearance.ForeColor = Color.SeaGreen;
-            labelControl13.Appearance.Options.UseFont = true;
-            labelControl13.Appearance.Options.UseForeColor = true;
-            labelControl13.Location = new Point(515, 68);
-            labelControl13.Name = "labelControl13";
-            labelControl13.Size = new Size(19, 23);
-            labelControl13.TabIndex = 32;
-            labelControl13.Text = "★";
-            // 
-            // labelControl14
-            // 
-            labelControl14.Appearance.ForeColor = Color.OliveDrab;
-            labelControl14.Appearance.Options.UseForeColor = true;
-            labelControl14.Location = new Point(532, 69);
-            labelControl14.Name = "labelControl14";
-            labelControl14.Size = new Size(483, 13);
-            labelControl14.TabIndex = 33;
-            labelControl14.Text = "\"To change the location of an item with zero QtyinLoc, use this row. And if you want to add a remark";
-            // 
-            // labelControl15
-            // 
-            labelControl15.Appearance.ForeColor = Color.OliveDrab;
-            labelControl15.Appearance.Options.UseForeColor = true;
-            labelControl15.Location = new Point(537, 80);
-            labelControl15.Name = "labelControl15";
-            labelControl15.Size = new Size(217, 13);
-            labelControl15.TabIndex = 34;
-            labelControl15.Text = "to your LocItems, you can also use this row.\"";
             // 
             // frmChangeLocation
             // 
             Appearance.Options.UseFont = true;
             AutoScaleDimensions = new SizeF(6F, 13F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(1091, 574);
+            ClientSize = new Size(1381, 574);
             Controls.Add(panelControl1);
             IconOptions.Image = (Image)resources.GetObject("frmChangeLocation.IconOptions.Image");
             IconOptions.LargeImage = (Image)resources.GetObject("frmChangeLocation.IconOptions.LargeImage");
@@ -1140,26 +1201,35 @@
             ((System.ComponentModel.ISupportInitialize)panelControl4).EndInit();
             panelControl4.ResumeLayout(false);
             panelControl4.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)panelControl5).EndInit();
-            panelControl5.ResumeLayout(false);
-            panelControl5.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)lookUpEdit1.Properties).EndInit();
-            ((System.ComponentModel.ISupportInitialize)txtWarehouse.Properties).EndInit();
-            ((System.ComponentModel.ISupportInitialize)txtLocation.Properties).EndInit();
+            ((System.ComponentModel.ISupportInitialize)panelControl8).EndInit();
+            panelControl8.ResumeLayout(false);
+            panelControl8.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)txtQty.Properties).EndInit();
+            ((System.ComponentModel.ISupportInitialize)panelControl6).EndInit();
+            panelControl6.ResumeLayout(false);
+            panelControl6.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)spinEdit1.Properties).EndInit();
+            ((System.ComponentModel.ISupportInitialize)panelControlRemarkLocitemid).EndInit();
+            panelControlRemarkLocitemid.ResumeLayout(false);
+            panelControlRemarkLocitemid.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)txtRemarkLocitemID.Properties).EndInit();
             ((System.ComponentModel.ISupportInitialize)separatorControl1).EndInit();
             ((System.ComponentModel.ISupportInitialize)txtDate.Properties.CalendarTimeProperties).EndInit();
             ((System.ComponentModel.ISupportInitialize)txtDate.Properties).EndInit();
             ((System.ComponentModel.ISupportInitialize)separatorControl2).EndInit();
             ((System.ComponentModel.ISupportInitialize)lookUpEditlocation.Properties).EndInit();
-            ((System.ComponentModel.ISupportInitialize)txtQty.Properties).EndInit();
             ((System.ComponentModel.ISupportInitialize)txtNis.Properties).EndInit();
+            ((System.ComponentModel.ISupportInitialize)panelControl7).EndInit();
+            panelControl7.ResumeLayout(false);
+            panelControl7.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)txtLocation.Properties).EndInit();
+            ((System.ComponentModel.ISupportInitialize)txtWarehouse.Properties).EndInit();
             ((System.ComponentModel.ISupportInitialize)gridControl1).EndInit();
             ((System.ComponentModel.ISupportInitialize)gridView1).EndInit();
             ((System.ComponentModel.ISupportInitialize)panelControl1).EndInit();
             panelControl1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)panelControl3).EndInit();
             panelControl3.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)textEdit1.Properties).EndInit();
             ResumeLayout(false);
         }
 
@@ -1249,15 +1319,19 @@
         private DevExpress.XtraGrid.Columns.GridColumn DelMrvRejQty;
         private DevExpress.XtraGrid.Columns.GridColumn ParentLocItemID;
         private DevExpress.XtraGrid.Columns.GridColumn RemarkLocitemID;
-        private DevExpress.XtraEditors.LabelControl labelControl11;
         private DevExpress.XtraEditors.SimpleButton simpleButton2;
-        private DevExpress.XtraEditors.LookUpEdit lookUpEdit1;
-        private DevExpress.XtraEditors.PanelControl panelControl5;
-        private DevExpress.XtraEditors.TextEdit textEdit1;
+        private DevExpress.XtraEditors.PanelControl panelControlRemarkLocitemid;
+        private DevExpress.XtraEditors.TextEdit txtRemarkLocitemID;
         private DevExpress.XtraEditors.LabelControl labelControl10;
-        private DevExpress.XtraEditors.LabelControl labelControl12;
         private DevExpress.XtraEditors.LabelControl labelControl13;
-        private DevExpress.XtraEditors.LabelControl labelControl15;
         private DevExpress.XtraEditors.LabelControl labelControl14;
+        private DevExpress.XtraEditors.LabelControl labelControl16;
+        private DevExpress.XtraEditors.SpinEdit spinEdit1;
+        private DevExpress.XtraEditors.PanelControl panelControl6;
+        private DevExpress.XtraEditors.SimpleButton simpleButton4;
+        private DevExpress.XtraEditors.PanelControl panelControl7;
+        private DevExpress.XtraEditors.PanelControl panelControl8;
+        private Label label2;
+        private Label label1;
     }
 }

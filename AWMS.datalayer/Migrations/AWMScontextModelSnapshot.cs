@@ -209,14 +209,14 @@ namespace AWMS.datalayer.Migrations
                             CompanyID = 1,
                             Abbreviation = "PPI",
                             CompanyName = "Petro Paydar Iranian",
-                            EnteredDate = new DateTime(2024, 10, 12, 15, 46, 19, 477, DateTimeKind.Local).AddTicks(7250)
+                            EnteredDate = new DateTime(2024, 11, 10, 17, 27, 35, 307, DateTimeKind.Local).AddTicks(6124)
                         },
                         new
                         {
                             CompanyID = 2,
                             Abbreviation = "TESCO",
                             CompanyName = "Teco",
-                            EnteredDate = new DateTime(2024, 10, 12, 15, 46, 19, 477, DateTimeKind.Local).AddTicks(7264)
+                            EnteredDate = new DateTime(2024, 11, 10, 17, 27, 35, 307, DateTimeKind.Local).AddTicks(6133)
                         });
                 });
 
@@ -574,6 +574,10 @@ namespace AWMS.datalayer.Migrations
                     b.Property<DateTime?>("EnteredDate")
                         .HasColumnType("date");
 
+                    b.Property<byte?>("FlagMIVorHMV")
+                        .HasColumnType("tinyint")
+                        .HasComment("Flag for MIV or HMV status");
+
                     b.Property<int>("ItemId")
                         .HasColumnType("int");
 
@@ -658,21 +662,21 @@ namespace AWMS.datalayer.Migrations
                         {
                             LocationID = 1,
                             EnteredBy = 88,
-                            EnteredDate = new DateTime(2024, 10, 12, 15, 46, 19, 476, DateTimeKind.Local).AddTicks(6066),
+                            EnteredDate = new DateTime(2024, 11, 10, 17, 27, 35, 306, DateTimeKind.Local).AddTicks(3303),
                             LocationName = "L02A101A"
                         },
                         new
                         {
                             LocationID = 2,
                             EnteredBy = 88,
-                            EnteredDate = new DateTime(2024, 10, 12, 15, 46, 19, 476, DateTimeKind.Local).AddTicks(6084),
+                            EnteredDate = new DateTime(2024, 11, 10, 17, 27, 35, 306, DateTimeKind.Local).AddTicks(3321),
                             LocationName = "L02A102A"
                         },
                         new
                         {
                             LocationID = 3,
                             EnteredBy = 88,
-                            EnteredDate = new DateTime(2024, 10, 12, 15, 46, 19, 476, DateTimeKind.Local).AddTicks(6086),
+                            EnteredDate = new DateTime(2024, 11, 10, 17, 27, 35, 306, DateTimeKind.Local).AddTicks(3322),
                             LocationName = "W02A02B"
                         });
                 });
@@ -1079,6 +1083,10 @@ namespace AWMS.datalayer.Migrations
 
                     b.Property<string>("MRVNO")
                         .HasColumnType("nvarchar(max)");
+
+                    b.Property<int?>("PLocItemIDforMRV")
+                        .HasColumnType("int")
+                        .HasComment("Parent LocItemID for MRV process");
 
                     b.Property<string>("Remark")
                         .HasColumnType("nvarchar(max)");

@@ -21,6 +21,7 @@ namespace AWMS.datalayer.Entities
         public decimal? RejectQty { get; set; }
         public decimal? NISQty { get; set; }
         public int? EnteredBy { get; set; }
+        public byte? FlagMIVorHMV { get; set; }
         public string? RemarkLocitemID { get; set; }
         // ایجاد ارتباط با LocItem والد
         [ForeignKey(nameof(ParentLocItemID))]

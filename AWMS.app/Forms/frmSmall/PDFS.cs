@@ -1,19 +1,9 @@
 ﻿using AWMS.app.Forms.RibbonUser;
-using AWMS.app.Utility;
 using AWMS.dapper.Repositories;
 using DevExpress.XtraEditors;
 using DevExpress.XtraEditors.Repository;
-using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Diagnostics;
-using System.Drawing;
 using System.IO;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
 
 namespace AWMS.app.Forms.frmSmall
 {

@@ -1,44 +1,24 @@
 ﻿using AWMS.app.Forms.RibbonUser;
-using AWMS.core;
 using AWMS.core.Interfaces;
-using AWMS.dapper;
 using AWMS.dapper.Repositories;
-using AWMS.datalayer.Entities;
 using AWMS.dto;
 using DevExpress.XtraEditors;
 using DevExpress.XtraEditors.Repository;
-using System;
-using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
-using System.Diagnostics.Contracts;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
-using static System.Windows.Forms.VisualStyles.VisualStyleElement;
-
+using Microsoft.Extensions.DependencyInjection;
 namespace AWMS.app.Forms.RibbonVoucher
 {
     public partial class frmMRV : XtraForm
     {
         private readonly IServiceProvider _serviceProvider;
-        private readonly ICompanyService _companyService;
-        private readonly IContractService _contractService;
-        private readonly ILocationDapperRepository _locationDapperRepository;
-        private readonly IMrvDapperRepository _mrvDapperRepository;
         private readonly UserSession _session; // اضافه کردن UserSession
-        public frmMRV(IServiceProvider serviceProvider, ICompanyService companyDapperRepository, ILocationDapperRepository locationDapperRepository, IContractService contractRepository, IMrvDapperRepository mrvDapperRepository, int? userId = null)
+        public frmMRV(IServiceProvider serviceProvider, int? userId = null)
         {
             InitializeComponent();
             _serviceProvider = serviceProvider;
             int finalUserId = userId ?? 1;
             _session = SessionManager.GetSession(finalUserId);
-            _companyService = companyDapperRepository;
-            _contractService = contractRepository;
-            _mrvDapperRepository = mrvDapperRepository;
-            _locationDapperRepository = locationDapperRepository;
+  
             loadEditLookupCompany();
 
             // ثبت رویداد CellValueChanged
@@ -47,8 +27,8 @@ namespace AWMS.app.Forms.RibbonVoucher
 
         private async void loadEditLookupCompany()
         {
-            lookUpEdit1.Properties.DataSource = await _companyService.GetAllCompaniesNameAsync();
-            locationlookupForm.Properties.DataSource = await _locationDapperRepository.GetAllAsync();
+            lookUpEdit1.Properties.DataSource = await _serviceProvider.GetService<ICompanyService>()!.GetAllCompaniesNameAsync();
+            locationlookupForm.Properties.DataSource = await _serviceProvider.GetService<ILocationDapperRepository>()!.GetAllAsync();
         }
         private async void lookUpEdit1_EditValueChanged(object sender, EventArgs e)
         {
@@ -57,7 +37,7 @@ namespace AWMS.app.Forms.RibbonVoucher
                 // Show null text
                 lookUpEdit2.EditValue = null;
                 // Load data asynchronously
-                lookUpEdit2.Properties.DataSource = await Task.Run(() => _contractService.GetAllContractsByCompanyidAsync(Convert.ToInt32(lookUpEdit1.EditValue)));
+                lookUpEdit2.Properties.DataSource = await Task.Run(() =>  _serviceProvider.GetService<IContractService>()!.GetAllContractsByCompanyidAsync(Convert.ToInt32(lookUpEdit1.EditValue)));
 
 
                 gridControl2.DataSource = null;
@@ -68,9 +48,9 @@ namespace AWMS.app.Forms.RibbonVoucher
                     int companyId = Convert.ToInt32(lookUpEdit1.EditValue);
 
                     // Fetch data from the stored procedure
-                    var data = await _mrvDapperRepository.GetAllMaterialMrvableAsync(companyId);
+                    var data =  await _serviceProvider.GetService<IMrvDapperRepository>()!.GetAllMaterialMrvableAsync(companyId);
 
-                    // Check if data is not empty
+                    // Check if data is not emptyk
                     if (data != null && data.Any())
                     {
                         // Bind the data to gridControl1
@@ -88,16 +68,21 @@ namespace AWMS.app.Forms.RibbonVoucher
 
                         // Specify the columns you want to show and set their visibility and appearance
                         gridView1.Columns["LocItemID"].Visible = true;
+                        gridView1.Columns["RequestNO"].Visible = true;
                         gridView1.Columns["TotalDelMivQty"].Visible = true;
                         gridView1.Columns["TotalDelMivRejQty"].Visible = true;
                         gridView1.Columns["TotalDelMrvQty"].Visible = true;
                         gridView1.Columns["TotalDelMrvRejQty"].Visible = true;
+                        gridView1.Columns["TotalDelHmvQty"].Visible = true;
+                        gridView1.Columns["TotalDelHmvRejQty"].Visible = true;
+                        gridView1.Columns["TotalGetHmvQty"].Visible = true;
+                        gridView1.Columns["TotalGetHmvRejQty"].Visible = true;
                         gridView1.Columns["Tag"].Visible = true;
                         gridView1.Columns["Description"].Visible = true;
-                        gridView1.Columns["UnitName"].Visible = true;
+                        gridView1.Columns["UnitName"].Visible = true; 
 
                         // Custom settings for MrvAvailableQty
-                        var mrvAvailableQtyColumn = gridView1.Columns["MrvAvailableQty"];
+                        var mrvAvailableQtyColumn = gridView1.Columns["MrvHmvAvailableQty"];
                         mrvAvailableQtyColumn.Visible = true;  // Make sure it's visible
                         mrvAvailableQtyColumn.OptionsColumn.AllowShowHide = false;  // Prevent the column from being hidden
                         mrvAvailableQtyColumn.AppearanceCell.BackColor = Color.IndianRed;  // Set the background color to purple
@@ -141,11 +126,12 @@ namespace AWMS.app.Forms.RibbonVoucher
             // Define the columns you want to display in gridControl2
             dt.Columns.Add("LocItemID", typeof(int));     // Column for LocItemID
             dt.Columns.Add("ItemId", typeof(int));        // Column for ItemId
-            //dt.Columns.Add("RequestNO", typeof(string));  // Column for RequestNO
+            dt.Columns.Add("RequestNO", typeof(string));  // Column for RequestNO
+            dt.Columns.Add("TypeName", typeof(string));  // Column for RequestNO
             dt.Columns.Add("Tag", typeof(string));        // Column for Tag
             dt.Columns.Add("Description", typeof(string));// Column for Description
             dt.Columns.Add("DelMivQty", typeof(decimal)); // Column for DelMivQty
-            dt.Columns.Add("MrvAvailableQty", typeof(decimal)); // Column for DelMivQty
+            dt.Columns.Add("MrvHmvAvailableQty", typeof(decimal)); // Column for DelMivQty
             //dt.Columns.Add("DelMrvQty", typeof(decimal)); // Column for DelMrvQty
             //dt.Columns.Add("DelMrvRejQty", typeof(decimal)); // Column for DelMrvRejQty
             //dt.Columns.Add("MRCNO", typeof(string));      // Column for MRCNO
@@ -156,7 +142,7 @@ namespace AWMS.app.Forms.RibbonVoucher
             dt.Columns.Add("SelectedLocation", typeof(int)); // Column for selected location (as ID)
             dt.Columns.Add("ReturnedQty", typeof(decimal));  // Column for returned quantity
             dt.Columns.Add("ReturnedDelQty", typeof(decimal));  // Column for returned quantity
-            //dt.Columns.Add("ReturnedRejQty", typeof(decimal));  // Column for returned quantity
+            dt.Columns.Add("ReturnedRejQty", typeof(decimal));  // Column for returned quantity
             dt.Columns.Add("Remark", typeof(string));  // Column for returned quantity
 
             return dt;
@@ -199,15 +185,15 @@ namespace AWMS.app.Forms.RibbonVoucher
                 gridView2.Columns["ReturnedDelQty"].AppearanceHeader.BackColor = Color.LightGreen;     // رنگ سر ستون همرنگ با رنگ ستون
                 gridView2.Columns["ReturnedDelQty"].AppearanceCell.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;  // وسط‌چین کردن محتوای سلول‌ها
             }           // بررسی اینکه آیا ستون فعلی ReturnedQty است
-            //if (e.Column.FieldName == "ReturnedRejQty")
-            //{
-            //    e.Appearance.BackColor = Color.LightSalmon; // رنگ آبی لایت برای ReturnedQty
-            //    e.Appearance.ForeColor = Color.Black;     // رنگ متن مشکی
+            if (e.Column.FieldName == "ReturnedRejQty")
+            {
+                e.Appearance.BackColor = Color.LightSalmon; // رنگ آبی لایت برای ReturnedQty
+                e.Appearance.ForeColor = Color.Black;     // رنگ متن مشکی
 
-            //    // تنظیمات برای ستون ReturnedQty
-            //    gridView2.Columns["ReturnedRejQty"].AppearanceHeader.BackColor = Color.LightSalmon;     // رنگ سر ستون همرنگ با رنگ ستون
-            //    gridView2.Columns["ReturnedRejQty"].AppearanceCell.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;  // وسط‌چین کردن محتوای سلول‌ها
-            //}
+                // تنظیمات برای ستون ReturnedQty
+                gridView2.Columns["ReturnedRejQty"].AppearanceHeader.BackColor = Color.LightSalmon;     // رنگ سر ستون همرنگ با رنگ ستون
+                gridView2.Columns["ReturnedRejQty"].AppearanceCell.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;  // وسط‌چین کردن محتوای سلول‌ها
+            }
             if (e.Column.FieldName == "Remark")
             {
                 e.Appearance.BackColor = Color.LightSkyBlue; // رنگ آبی لایت برای ReturnedQty
@@ -223,7 +209,7 @@ namespace AWMS.app.Forms.RibbonVoucher
         {
             // Configure the grid for Location LookUpEdit column
             RepositoryItemLookUpEdit locationLookUpEdit = new RepositoryItemLookUpEdit();
-            locationLookUpEdit.DataSource = _locationDapperRepository.GetAllLocLocationChange(); // Assuming this method gets location data
+            locationLookUpEdit.DataSource =  _serviceProvider.GetService<ILocationDapperRepository>()!.GetAllLocLocationChange(); // Assuming this method gets location data
             locationLookUpEdit.DisplayMember = "LocationName";
             locationLookUpEdit.ValueMember = "LocationID"; // ValueMember باید نام ستون باشد
             locationLookUpEdit.ShowHeader = false; // Hide the header
@@ -340,7 +326,8 @@ namespace AWMS.app.Forms.RibbonVoucher
                 {
                     // Get the values for LocItemID and RequestNO
                     int locItemId = (int)gridView1.GetRowCellValue(selectedRowHandle, "LocItemID");
-                    decimal mrvAvailableQty = Convert.ToDecimal(gridView1.GetRowCellValue(selectedRowHandle, "MrvAvailableQty"));
+                    decimal mrvAvailableQty = Convert.ToDecimal(gridView1.GetRowCellValue(selectedRowHandle, "MrvHmvAvailableQty"));
+                    string requestNO = gridView1.GetRowCellValue(selectedRowHandle, "RequestNO").ToString();
                     int companyId = Convert.ToInt32(lookUpEdit1.EditValue);
 
                     // Check if MrvAvailableQty is greater than 0
@@ -356,7 +343,8 @@ namespace AWMS.app.Forms.RibbonVoucher
 
                     // Check if the row is already present in gridControl2
                     bool isAlreadyMoved = dt2.AsEnumerable().Any(row =>
-                        row.Field<int>("LocItemID") == locItemId);
+                        row.Field<int>("LocItemID") == locItemId &&
+                        row.Field<string>("RequestNO") == requestNO);
 
                     if (isAlreadyMoved)
                     {
@@ -364,8 +352,9 @@ namespace AWMS.app.Forms.RibbonVoucher
                         return; // Exit the function without moving the row
                     }
 
+
                     // Call the stored procedure to check the condition
-                    bool isConditionMet = await _mrvDapperRepository.CheckMrvConditionAsync(locItemId, companyId);
+                    bool isConditionMet = await  _serviceProvider.GetService<IMrvDapperRepository>()!.CheckMrvConditionAsync(locItemId, companyId, requestNO);
 
                     if (isConditionMet)
                     {
@@ -375,8 +364,10 @@ namespace AWMS.app.Forms.RibbonVoucher
                         // Copy values from selected row in gridControl1 to gridControl2
                         newRow["LocItemID"] = locItemId;
                         newRow["ItemId"] = gridView1.GetRowCellValue(selectedRowHandle, "ItemId");
+                        newRow["RequestNO"] = gridView1.GetRowCellValue(selectedRowHandle, "RequestNO");
+                        newRow["TypeName"] = gridView1.GetRowCellValue(selectedRowHandle, "TypeName");
                         newRow["DelMivQty"] = gridView1.GetRowCellValue(selectedRowHandle, "TotalDelMivQty");
-                        newRow["MrvAvailableQty"] = mrvAvailableQty;
+                        newRow["MrvHmvAvailableQty"] = mrvAvailableQty;
                         newRow["Tag"] = gridView1.GetRowCellValue(selectedRowHandle, "Tag");
                         newRow["Description"] = gridView1.GetRowCellValue(selectedRowHandle, "Description");
                         newRow["UnitName"] = gridView1.GetRowCellValue(selectedRowHandle, "UnitName");
@@ -410,17 +401,17 @@ namespace AWMS.app.Forms.RibbonVoucher
                      : 0m;
                 //decimal delMivQty = Convert.ToDecimal(gridView2.GetRowCellValue(currentRow, "DelMivQty"));
                 //decimal delMrvQty = Convert.ToDecimal(gridView2.GetRowCellValue(currentRow, "DelMrvQty"));
-                //decimal delMrvRejQty = Convert.ToDecimal(gridView2.GetRowCellValue(currentRow, "DelMrvRejQty"));
-                decimal mrvAvailableQty = Convert.ToDecimal(gridView2.GetRowCellValue(currentRow, "MrvAvailableQty"));
+                decimal delMrvRejQty = Convert.ToDecimal(gridView2.GetRowCellValue(currentRow, "DelMrvRejQty"));
+                decimal mrvAvailableQty = Convert.ToDecimal(gridView2.GetRowCellValue(currentRow, "MrvHmvAvailableQty"));
                 decimal ReturnedDelQty = gridView2.GetRowCellValue(currentRow, "ReturnedDelQty") != DBNull.Value
                     ? Convert.ToDecimal(gridView2.GetRowCellValue(currentRow, "ReturnedDelQty"))
                     : 0m;
-                //decimal ReturnedRejQty = gridView2.GetRowCellValue(currentRow, "ReturnedRejQty") != DBNull.Value
-                //    ? Convert.ToDecimal(gridView2.GetRowCellValue(currentRow, "ReturnedRejQty"))
-                //    : 0m;
+                decimal ReturnedRejQty = gridView2.GetRowCellValue(currentRow, "ReturnedRejQty") != DBNull.Value
+                    ? Convert.ToDecimal(gridView2.GetRowCellValue(currentRow, "ReturnedRejQty"))
+                    : 0m;
 
                 // محاسبه مقدار مجاز
-                decimal allowedQty = (ReturnedDelQty);// + ReturnedRejQty);//delMrvQty + delMrvRejQty;
+                decimal allowedQty = (ReturnedDelQty + ReturnedRejQty);//delMrvQty + delMrvRejQty;
 
                 // بررسی شرط
                 if (mrvAvailableQty < allowedQty)
@@ -429,13 +420,13 @@ namespace AWMS.app.Forms.RibbonVoucher
                     gridView2.CellValueChanged -= gridView2_CellValueChanged;
 
                     //MessageBox.Show("Returned Qty must be less than or equal to DelMivQty - (DelMrvQty + DelMrvRejQty + ReturnedDelQty + ReturnedRejQty).", "Invalid Input", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                    //MessageBox.Show("Returned Qty  (ReturnedDelQty + ReturnedRejQty) must be less than or equal to MrvAvailableQty.", "Invalid Input", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                    MessageBox.Show("Returned Qty  (ReturnedDelQty) must be less than or equal to MrvAvailableQty.", "Invalid Input", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    MessageBox.Show("Returned Qty  (ReturnedDelQty + ReturnedRejQty) must be less than or equal to MrvHmvAvailableQty.", "Invalid Input", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    //MessageBox.Show("Returned Qty  (ReturnedDelQty) must be less than or equal to MrvAvailableQty.", "Invalid Input", MessageBoxButtons.OK, MessageBoxIcon.Warning);
 
                     // Reset to 0 or another appropriate action
                     gridView2.SetRowCellValue(currentRow, "ReturnedQty", 0);
                     gridView2.SetRowCellValue(currentRow, "ReturnedDelQty", 0);
-                    //gridView2.SetRowCellValue(currentRow, "ReturnedRejQty", 0);
+                    gridView2.SetRowCellValue(currentRow, "ReturnedRejQty", 0);
 
                     // Re-enable the event handler
                     gridView2.CellValueChanged += gridView2_CellValueChanged;
@@ -511,6 +502,10 @@ namespace AWMS.app.Forms.RibbonVoucher
         {
             try
             {
+                // Convert to int after ensuring selection
+                int companyId = Convert.ToInt32(lookUpEdit1.EditValue);
+                int contractId = Convert.ToInt32(lookUpEdit2.EditValue);
+
                 // Check if there are any rows in the grid
                 if (gridView2.RowCount == 0)
                 {
@@ -525,6 +520,23 @@ namespace AWMS.app.Forms.RibbonVoucher
                     txtMrvNo.Focus();
                     return;
                 }
+              
+                // بررسی تکراری بودن شماره Mrv
+                bool isDuplicate = await _serviceProvider.GetService<IMrvDapperRepository>()!.CheckMrvNameAsync(companyId, mrvNo);
+
+                if (isDuplicate)
+                {
+                    var dialogResult = MessageBox.Show("The MRV number is duplicate. Do you want to continue?", "Duplicate MRV Number",
+                                                        MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+
+                    if (dialogResult == DialogResult.No)
+                    {
+                        // کاربر تصمیم به ادامه ندادن گرفته است
+                        return;
+                    }
+                }
+
+
                 // Check if companyId is selected
                 if (lookUpEdit1.EditValue == null)
                 {
@@ -541,10 +553,7 @@ namespace AWMS.app.Forms.RibbonVoucher
                     return;
                 }
 
-                // Convert to int after ensuring selection
-                int companyId = Convert.ToInt32(lookUpEdit1.EditValue);
-                int contractId = Convert.ToInt32(lookUpEdit2.EditValue);
-
+                
 
                 int areaUnitId = 1; // Hardcoded as per your instruction
                 int issuedBy = _session.UserID; // Assuming this is defined elsewhere
@@ -576,28 +585,28 @@ namespace AWMS.app.Forms.RibbonVoucher
                     decimal returnedDelQty = gridView2.GetRowCellValue(i, "ReturnedDelQty") != DBNull.Value
                         ? Convert.ToDecimal(gridView2.GetRowCellValue(i, "ReturnedDelQty"))
                         : 0m;
-                    //decimal returnedRejQty = gridView2.GetRowCellValue(i, "ReturnedRejQty") != DBNull.Value
-                    //    ? Convert.ToDecimal(gridView2.GetRowCellValue(i, "ReturnedRejQty"))
-                    //    : 0m;
+                    decimal returnedRejQty = gridView2.GetRowCellValue(i, "ReturnedRejQty") != DBNull.Value
+                        ? Convert.ToDecimal(gridView2.GetRowCellValue(i, "ReturnedRejQty"))
+                        : 0m;
 
                     // If ReturnedQty is 0, either ReturnedDelQty or ReturnedRejQty must be non-zero
                     if (returnedQty == 0m)
                     {
-                        if (returnedDelQty == 0m)// && returnedRejQty == 0m)
+                        if (returnedDelQty == 0m && returnedRejQty == 0m)
                         {
-                            //MessageBox.Show($"Row {i + 1}: 'ReturnedQty' is 0. Either 'ReturnedDelQty' or 'ReturnedRejQty' must have a value.", "Missing Required Field", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                            MessageBox.Show($"Row {i + 1}: 'ReturnedQty' is 0. Either 'ReturnedDelQty' must have a value.", "Missing Required Field", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                            MessageBox.Show($"Row {i + 1}: 'ReturnedQty' is 0. Either 'ReturnedDelQty' or 'ReturnedRejQty' must have a value.", "Missing Required Field", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                            //MessageBox.Show($"Row {i + 1}: 'ReturnedQty' is 0. Either 'ReturnedDelQty' must have a value.", "Missing Required Field", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                             return; // Stop execution
                         }
                     }
 
-                    // If ReturnedDelQty is 0, ReturnedRejQty must have a value
-                    //if (returnedDelQty == 0m)// && returnedRejQty == 0m)
-                    //{
-                    //    //MessageBox.Show($"Row {i + 1}: 'ReturnedDelQty' is 0. 'ReturnedRejQty' must have a value.", "Missing Required Field", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                    //    MessageBox.Show($"Row {i + 1}: 'ReturnedDelQty' must have a value.", "Missing Required Field", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                    //    return; // Stop execution
-                    //}
+                    //If ReturnedDelQty is 0, ReturnedRejQty must have a value
+                    if (returnedDelQty == 0m && returnedRejQty == 0m)
+                    {
+                        MessageBox.Show($"Row {i + 1}: 'ReturnedDelQty' is 0. 'ReturnedRejQty' must have a value.", "Missing Required Field", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                        //MessageBox.Show($"Row {i + 1}: 'ReturnedDelQty' must have a value.", "Missing Required Field", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                        return; // Stop execution
+                    }
 
                     var newMrvDto = new NewMrvDto
                     {
@@ -608,10 +617,12 @@ namespace AWMS.app.Forms.RibbonVoucher
                         DelMrvQty = gridView2.GetRowCellValue(i, "ReturnedDelQty") != DBNull.Value
                                     ? Convert.ToDecimal(gridView2.GetRowCellValue(i, "ReturnedDelQty"))
                                     : 0m,
-                        //DelMrvRejQty = gridView2.GetRowCellValue(i, "ReturnedRejQty") != DBNull.Value
-                        //            ? Convert.ToDecimal(gridView2.GetRowCellValue(i, "ReturnedRejQty"))
-                        //            : 0m,
+                        DelMrvRejQty = gridView2.GetRowCellValue(i, "ReturnedRejQty") != DBNull.Value
+                                   ? Convert.ToDecimal(gridView2.GetRowCellValue(i, "ReturnedRejQty"))
+                                   : 0m,
                         Remark = gridView2.GetRowCellValue(i, "Remark")?.ToString() ?? string.Empty,
+                        RequestNO = gridView2.GetRowCellValue(i, "RequestNO")?.ToString() ?? string.Empty,
+                        typeName = gridView2.GetRowCellValue(i, "TypeName")?.ToString() ?? string.Empty,
                         SelectedLocation = selectedLocation
                     };
 
@@ -620,14 +631,14 @@ namespace AWMS.app.Forms.RibbonVoucher
                 }
 
                 // Call the InsertMrvBatchAsync method to insert the batch
-                string newMrvNumber = await _mrvDapperRepository.InsertMrvBatchAsync(companyId, contractId, mrvNo, areaUnitId, issuedBy, delDate, requestMrvs);
+                string newMrvNumber = await  _serviceProvider.GetService<IMrvDapperRepository>()!.InsertMrvBatchAsync(companyId, contractId, mrvNo, areaUnitId, issuedBy, delDate, requestMrvs);
                 //MessageBox.Show(newMrvNumber);
                 txtMrvNo.Text = "";
-                lookUpEdit1_EditValueChanged(null,null);
+                lookUpEdit1_EditValueChanged(null, null);
                 //lookUpEdit1.Refresh();
                 //gridControl2.DataSource = null;
                 //gridView2.Columns.Clear();
-                // Display the new MRV number
+                // Display the  new MRV number
                 MessageBox.Show($"New MRV created with number: MRV-{newMrvNumber}", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
             catch (Exception ex)

@@ -41,7 +41,7 @@ public class RequestDapperRepository : IRequestDapperRepository
         {
             return await connection.ExecuteScalarAsync<int>(
                 "GetTotalIssueRecordCount",
-                commandType: CommandType.StoredProcedure);
+                commandType: CommandType.StoredProcedure, commandTimeout: 180);
         }
     }
     public async Task<int> GetTotalItemRecordCount()

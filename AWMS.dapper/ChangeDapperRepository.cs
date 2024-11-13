@@ -37,7 +37,7 @@ namespace AWMS.dapper
                 return materialIssue.ToList();
             }
         }
-        public async Task<string> UpdateLocItemsLocationAsync(List<int> locItemIds, int newLocationId)
+        public async Task<string> UpdateLocItemsLocationAsync(List<int> locItemIds, int newLocationId , int userID)
         {
             using (var connection = CreateConnection())
             {
@@ -53,10 +53,11 @@ namespace AWMS.dapper
 
                 parameters.Add("@LocItemIds", locItemIdsTable.AsTableValuedParameter("dbo.IntLocItemsList"));
                 parameters.Add("@NewLocationId", newLocationId);
+                parameters.Add("@userID", newLocationId);
 
                 // Execute stored procedure and retrieve the result (status message)
                 var result = await connection.QueryFirstOrDefaultAsync<string>(
-                    "spUpdateLocItemsLocation",
+                    "spUpdateLocItemsLocation2025",
                     parameters,
                     commandType: CommandType.StoredProcedure
                 );
@@ -65,7 +66,7 @@ namespace AWMS.dapper
                 return result;
             }
         }
-        public async Task<string> UpdateBalanceAndAddLocItem(int ItemId, int LocItemID, decimal Qty, int LocationID, decimal CurrentBalance, int EnteredBy)
+        public async Task<string> UpdateBalanceAndAddLocItem(int ItemId, int LocItemID, decimal Qty, int LocationID, int EnteredBy,decimal MrvOrNot)
         {
             using (var connection = CreateConnection())
             {
@@ -74,11 +75,11 @@ namespace AWMS.dapper
                 parameters.Add("LocItemID", LocItemID);
                 parameters.Add("Qty", Qty);
                 parameters.Add("LocationID", LocationID);
-                parameters.Add("CurrentBalance", CurrentBalance);
                 parameters.Add("EnteredBy", EnteredBy);
+                parameters.Add("MrvOrNot", MrvOrNot);
 
                 // اجرای دستور و گرفتن نتیجه
-                var result = await connection.QuerySingleAsync<string>("dbo.spUpdateBalanceAndInsertLocItem3", parameters, commandType: CommandType.StoredProcedure);
+                var result = await connection.QuerySingleAsync<string>("dbo.spUpdateBalanceAndInsertLocItem2025", parameters, commandType: CommandType.StoredProcedure);
 
                 // بررسی نتیجه
                 if (result == "Success")
@@ -170,5 +171,30 @@ namespace AWMS.dapper
 
         }
 
+        public async Task<string> UpdateRemarkLocItemID(int ItemId, int LocItemID, string Remark, int EnteredBy)
+        {
+            using (var connection = CreateConnection())
+            {
+                var parameters = new DynamicParameters();
+                parameters.Add("ItemId", ItemId);
+                parameters.Add("LocItemID", LocItemID);
+                parameters.Add("RemarkLocitemID", Remark);
+                parameters.Add("EnteredBy", EnteredBy);
+ 
+                // اجرای دستور و گرفتن نتیجه
+                var result = await connection.QuerySingleAsync<string>("dbo.spUpdateRemarkLocItemID2025", parameters, commandType: CommandType.StoredProcedure);
+
+                // بررسی نتیجه
+                if (result == "Success")
+                {
+                    return result; // عملیات موفقیت‌آمیز
+                }
+                else
+                {
+                    //MessageBox.Show(result); // نمایش پیغام خطا
+                    return result; // عملیات ناموفق
+                }
+            }
+        }
     }
 }

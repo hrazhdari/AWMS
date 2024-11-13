@@ -1,5 +1,6 @@
 ﻿using AWMS.app.Forms.frmSmall;
 using AWMS.app.Forms.RibbonUser;
+using AWMS.core.Interfaces;
 using AWMS.dapper.Repositories;
 using AWMS.dto;
 using DevExpress.XtraEditors;
@@ -11,32 +12,23 @@ namespace AWMS.app.Forms.RibbonChange
     public partial class frmChangeLocation : XtraForm
     {
         private readonly IServiceProvider _serviceProvider;
-        private readonly IRequestDapperRepository _requestDapperRepository;
-        private readonly ILocationDapperRepository _locationRepository;
-        private readonly IChangeDapperRepository _changeDapperRepository;
-        private readonly ILocItemDapperRepository _locitemDapperRepository;
         private readonly UserSession _session; // اضافه کردن UserSession
-        public frmChangeLocation(IServiceProvider serviceProvider, IRequestDapperRepository requestDapperRepository,
-            ILocationDapperRepository locationDapperRepository, IChangeDapperRepository changeDapperRepository, ILocItemDapperRepository locItemDapperRepository, int? userId = null)
+        public frmChangeLocation(IServiceProvider serviceProvider, int? userId = null)
         {
             InitializeComponent();
             _serviceProvider = serviceProvider;
-            _requestDapperRepository = requestDapperRepository;
-            this._locationRepository = locationDapperRepository;
-            _changeDapperRepository = changeDapperRepository;
-            _locitemDapperRepository = locItemDapperRepository;
             // اگر UserId پاس داده نشده بود، مقدار پیش‌فرض 1 استفاده می‌شود
             int finalUserId = userId ?? 1;
             _session = SessionManager.GetSession(finalUserId);
             initGrid();
         }
 
-        private void LoadDataIntoGrid3()
+        private async void LoadDataIntoGrid3()
         {
             try
             {
-                gridControl1.DataSource = _changeDapperRepository.SearchFillLocChange();
-                lookUpEditlocation.Properties.DataSource = _locationRepository.GetAllLocLocationChange();
+                gridControl1.DataSource = await _serviceProvider.GetService<ICompanyService>()!.GetAllCompaniesNameAsync();
+                lookUpEditlocation.Properties.DataSource = _serviceProvider.GetService<ILocationDapperRepository>()!.GetAllLocLocationChange();
             }
             catch (Exception ex)
             {
@@ -144,9 +136,9 @@ namespace AWMS.app.Forms.RibbonChange
             try
             {
                 // Save the information using AddAsync method
-                await _locationRepository.AddAsync(locationDto);
+                await _serviceProvider.GetService<ILocationDapperRepository>()!.AddAsync(locationDto);
                 MessageBox.Show("New location has been successfully saved.");
-                lookUpEditlocation.Properties.DataSource = _locationRepository.GetAllLocLocationChange();
+                lookUpEditlocation.Properties.DataSource = _serviceProvider.GetService<ILocationDapperRepository>()!.GetAllLocLocationChange();
                 txtLocation.Text = "";
             }
             catch (Exception ex)
@@ -168,7 +160,11 @@ namespace AWMS.app.Forms.RibbonChange
                 {
                     // Get the 'Balance' value from the selected row (assuming 'Balance' is the column name)
                     decimal balanceValue = (decimal)gridView1.GetRowCellValue(selectedRowHandle, "Balance");
-
+                    if (qtyValue == 0)
+                    {
+                        MessageBox.Show("The balance quantity in the textbox cannot be '0'. Please enter a quantity or amount you want to move, considering the unit and the available stock (Balance) at the current location", "Validation Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        return false;
+                    }
                     // Check if balance is greater than zero
                     if (balanceValue > 0)
                     {
@@ -185,6 +181,14 @@ namespace AWMS.app.Forms.RibbonChange
                             // Get the ItemId and existing LocItemID from the selected row
                             int itemId = (int)gridView1.GetRowCellValue(selectedRowHandle, "ItemId");
                             int locItemId = (int)gridView1.GetRowCellValue(selectedRowHandle, "LocItemID");
+                            int locationfeli = (int)gridView1.GetRowCellValue(selectedRowHandle, "LocationID");
+                            decimal MrvOrNot = (decimal)gridView1.GetRowCellValue(selectedRowHandle, "QtyInLoc");
+
+                            if ((int)lookUpEditlocation.EditValue == locationfeli)
+                            {
+                                MessageBox.Show("The selected location is the same as the current location.", "Validation Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                return false;
+                            }
 
                             // Deduct the entered quantity from the current balance
                             decimal newBalance = balanceValue - qtyValue;
@@ -193,7 +197,7 @@ namespace AWMS.app.Forms.RibbonChange
                             int locationId = (int)lookUpEditlocation.EditValue;
 
                             // Call the stored procedure to update balance and add new LocItem
-                            string result = await _changeDapperRepository.UpdateBalanceAndAddLocItem(itemId, locItemId, qtyValue, locationId, balanceValue, _session.UserID);
+                            string result = await _serviceProvider.GetService<IChangeDapperRepository>()!.UpdateBalanceAndAddLocItem(itemId, locItemId, qtyValue, locationId, _session.UserID, MrvOrNot);
 
                             if (result == "Success")
                             {
@@ -300,7 +304,7 @@ namespace AWMS.app.Forms.RibbonChange
             // Call the stored procedure to update the LocationId for the selected LocItemIDs
             try
             {
-                var resulty = await _changeDapperRepository.UpdateLocItemsLocationAsync(locItemIds, selectedLocationId);
+                var resulty = await _serviceProvider.GetService<IChangeDapperRepository>()!.UpdateLocItemsLocationAsync(locItemIds, selectedLocationId, _session.UserID);
 
                 // بررسی نتیجه و نمایش پیام بر اساس وضعیت
                 if (resulty == "Success: Location updated successfully.")
@@ -343,6 +347,7 @@ namespace AWMS.app.Forms.RibbonChange
                 btnMivList.Enabled = false;
                 btnNis.Enabled = false;
                 txtNis.Enabled = false;
+                panelControlRemarkLocitemid.Enabled = false;
             }
             else
             {
@@ -351,6 +356,7 @@ namespace AWMS.app.Forms.RibbonChange
                 btnMivList.Enabled = true;
                 btnNis.Enabled = true;
                 txtNis.Enabled = true;
+                panelControlRemarkLocitemid.Enabled = true;
             }
 
         }
@@ -390,7 +396,7 @@ namespace AWMS.app.Forms.RibbonChange
             try
             {
                 // فراخوانی متد برای به‌روزرسانی NISQty
-                await _changeDapperRepository.UpdateNisQtyAsync(locItemId, nisQty, currentBalance);
+                await _serviceProvider.GetService<IChangeDapperRepository>()!.UpdateNisQtyAsync(locItemId, nisQty, currentBalance);
 
                 // به‌روزرسانی GridView
                 gridView1.SetRowCellValue(selectedRowHandle, "NISQty", nisQty);
@@ -445,7 +451,7 @@ namespace AWMS.app.Forms.RibbonChange
             try
             {
                 // فراخوانی متد برای به‌روزرسانی ExpireDate
-                await _changeDapperRepository.UpdateExpireDateAsync(selectedItemIds, expireDate);
+                await _serviceProvider.GetService<IChangeDapperRepository>()!.UpdateExpireDateAsync(selectedItemIds, expireDate);
 
                 // به‌روزرسانی GridView با تاریخ جدید
                 foreach (int rowHandle in gridView1.GetSelectedRows())
@@ -485,5 +491,74 @@ namespace AWMS.app.Forms.RibbonChange
                 MessageBox.Show("Please select a row first.");
             }
         }
+        private async Task<bool> AddRemarkLocitemID()
+        {
+            // Check if txtQty is enabled and contains a numeric value
+            if (panelControlRemarkLocitemid.Enabled && !string.IsNullOrWhiteSpace(txtRemarkLocitemID.Text))
+            {
+                // Get selected row from GridView (assuming gridView1 is your GridView)
+                int selectedRowHandle = gridView1.FocusedRowHandle;
+                if (selectedRowHandle >= 0) // Check if any row is selected
+                {
+
+
+                    // Get the ItemId and existing LocItemID from the selected row
+                    int itemId = (int)gridView1.GetRowCellValue(selectedRowHandle, "ItemId");
+                    int locItemId = (int)gridView1.GetRowCellValue(selectedRowHandle, "LocItemID");
+
+                    // Call the stored procedure to update balance and add new LocItem
+                    string result = await _serviceProvider.GetService<IChangeDapperRepository>()!.UpdateRemarkLocItemID(itemId, locItemId, txtRemarkLocitemID.Text, _session.UserID);
+
+                    if (result == "Success")
+                    {
+                        // Update the balance in the current row (assuming you have the appropriate column)
+                        gridView1.SetRowCellValue(selectedRowHandle, "RemarkLocitemID", txtRemarkLocitemID.Text);
+                    }
+                    else
+                    {
+                        MessageBox.Show(result); // نمایش پیغام خطا
+                        return false; // عملیات ناموفق
+                    }
+
+                }
+                else
+                {
+                    MessageBox.Show("PLease Enter Valid Remark");
+                    return false; // Return false if no row is selected
+                }
+            }
+
+            return true;
+        }
+        private async void simpleButton2_Click_1(object sender, EventArgs e)
+        {
+            // Get the number of selected rows
+            int selectedRowsCount = gridView1.SelectedRowsCount;
+
+            // If only one row is selected, enable txtQty and perform validation
+            if (selectedRowsCount == 1)
+            {
+                // Enable txtQty for single-row selection
+                panelControlRemarkLocitemid.Enabled = true;
+
+                // Validate quantity and balance
+                bool isValid = await AddRemarkLocitemID();
+                if (!isValid)
+                {
+                    // If validation fails, stop further execution
+                    return;
+                }
+
+                // If validation succeeds, stop further execution and return
+                MessageBox.Show("Operation was successful. Remark is Added To LocitemID");
+                return;
+            }
+            else
+            {
+                // If more than one row is selected, disable txtQty and skip validation
+                panelControlRemarkLocitemid.Enabled = false;
+            }
+        }
+
     }
 }

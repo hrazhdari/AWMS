@@ -20,6 +20,7 @@ namespace AWMS.datalayer.Entities
         public int? AreaUnitID { get; set; }
         public int? VendorID { get; set; }
         public int? TypeID { get; set; }
+        public int? PLocItemIDforMRV { get; set; }
         public string RequestNO { get; set; }
         [DataType(DataType.Date)]
         public DateTime? ReqDate { get; set; }

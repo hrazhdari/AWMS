@@ -62,6 +62,10 @@ namespace AWMS.datalayer.Entities.Configurations
             builder.Property(r => r.DelDate)
                 .HasColumnType("date");
 
+            builder.Property(r => r.PLocItemIDforMRV)
+                .IsRequired(false) // اختیاری بودن فیلد
+                .HasComment("Parent LocItemID for MRV process"); // توضیحی برای این فیلد اضافه می‌کند
+
 
             // پیکربندی رابطه بین Request و LocItem
             builder.HasOne(r => r.LocItem)

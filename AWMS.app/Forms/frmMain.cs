@@ -413,5 +413,62 @@ namespace AWMS.app.Forms
                 SplashScreenManager.CloseForm();
             }
         }
+
+        private void barButtonItem18_ItemClick(object sender, ItemClickEventArgs e)
+        {
+
+            try
+            {
+                var frmBio = ActivatorUtilities.CreateInstance<frmBio>(_serviceProvider, _userContext.UserId);
+                frmBio.ShowDialog();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"An error occurred: {ex.Message}");
+            }
+        }
+
+        private void barButtonItem19_ItemClick(object sender, ItemClickEventArgs e)
+        {
+            try
+            {
+                SplashScreenManager.ShowForm(this, typeof(frmWait), true, true, true, false);
+                var frmMRV = ActivatorUtilities.CreateInstance<frmHMV>(_serviceProvider, _userContext.UserId);
+                frmMRV.MdiParent = this;
+                frmMRV.Show();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"An error occurred: {ex.Message}");
+            }
+            finally
+            {
+                SplashScreenManager.CloseForm();
+            }
+        }
+
+        private void frmMain_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            Application.Exit();
+        }
+
+        private void barBtnUpdateMRV_ItemClick(object sender, ItemClickEventArgs e)
+        {
+            try
+            {
+                SplashScreenManager.ShowForm(this, typeof(frmWait), true, true, true, false);
+                var frmUpdateMRV = ActivatorUtilities.CreateInstance<frmUpdateMrv>(_serviceProvider, _userContext.UserId);
+                frmUpdateMRV.MdiParent = this;
+                frmUpdateMRV.Show();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"An error occurred: {ex.Message}");
+            }
+            finally
+            {
+                SplashScreenManager.CloseForm();
+            }
+        }
     }
 }

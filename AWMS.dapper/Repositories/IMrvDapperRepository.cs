@@ -13,5 +13,11 @@ namespace AWMS.dapper.Repositories
         Task<List<string>> GetMrvsAsync();
         Task<MrvInfoDto> GetMrvsInfoAsync(string req);
         Task<IEnumerable<MrvUpdateDto>> GetMrvByMrvNoAsync(string req);
+        Task<bool> UpdateMrvNameAsync(string req, string mrvName);
+        Task<bool> UpdateMrvCompanyAsync(string mrvno, int mrvcopany);
+        Task UpdateMrvRemarksAsync(List<UpdateMrvRemarkDto> updateDtos);
+        Task UpdateMrvQtyAsync(List<UpdateMRVqtiesDto> updateDtos);
+        Task DeleteMrvRowAsync(int ReqLocItemID,string mrvno);
+        Task DeleteMrvAsync(string mrvno);
     }
 }

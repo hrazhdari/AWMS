@@ -199,6 +199,35 @@ namespace AWMS.dapper
             }
         }
 
+        public async Task UpdateLocitemRemarksAsync(List<UpdateRemarkLocitemidDto> updateDtos)
+        {
+            using (var connection = CreateConnection())
+            {
+                var dataTable = new DataTable();
+                dataTable.Columns.Add("LocItemID", typeof(int));
+                dataTable.Columns.Add("RemarkLocitemID", typeof(string));
+                dataTable.Columns.Add("EditedBy", typeof(string));
+                dataTable.Columns.Add("EditedDate", typeof(DateTime));
 
+                foreach (var dto in updateDtos)
+                {
+                    dataTable.Rows.Add(dto.LocItemID, dto.RemarkLocitemID, dto.EditedBy, dto.EditedDate);
+                }
+
+                var parameters = new DynamicParameters();
+                parameters.Add("@UpdateLocItemRemarkMrvTVP", dataTable.AsTableValuedParameter("dbo.UpdateLocItemRemarkMrvType"));
+
+                try
+                {
+                    await connection.ExecuteAsync("UpdateLocItemRemarkinMrv", parameters, commandType: CommandType.StoredProcedure);
+                }
+                catch (Exception ex)
+                {
+                    // ثبت خطا برای اشکال‌زدایی
+                    Console.WriteLine($"Error: {ex.Message}");
+                    throw;
+                }
+            }
+        }
     }
 }

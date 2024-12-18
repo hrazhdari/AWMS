@@ -8,11 +8,13 @@ namespace AWMS.dto
 {
     public class MrvUpdateDto
     {
+        public int RowNumber { get; set; }
         public string RequestNO { get; set; }
         public string MRVNO { get; set; }
         public string CompanyName { get; set; }
         public int ItemId { get; set; }
         public int LocItemID { get; set; }
+        public int ReqLocItemID { get; set; }
         public string PLName { get; set; }
         public string PK { get; set; }
         public string ItemOfPk { get; set; }
@@ -23,6 +25,7 @@ namespace AWMS.dto
         public decimal DelMrvQty { get; set; }
         public decimal DelMrvRejQty { get; set; }
         public string LocationName { get; set; }
+        public int LocationID { get; set; }
         public string ScopeName { get; set; }
         public string RemarkLocitemID { get; set; }
         public string RemarkRequests { get; set; }

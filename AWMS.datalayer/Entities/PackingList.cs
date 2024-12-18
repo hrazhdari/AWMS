@@ -65,5 +65,7 @@ namespace AWMS.datalayer.Entities
         public virtual Irn Irn { get; set; }
         public virtual DescriptionForPk DescriptionForPk { get; set; }
         public virtual ICollection<Package> Packages { get; set; }
+        // Navigation Property برای اتصال به Inspections
+        public virtual ICollection<Inspection> Inspections { get; set; }
     }
 }

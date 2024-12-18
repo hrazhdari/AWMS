@@ -283,88 +283,107 @@ namespace AWMS.app.Forms.RibbonMaterial
 
         private void gridView1_CellValueChanged(object sender, DevExpress.XtraGrid.Views.Base.CellValueChangedEventArgs e)
         {
-            // Get the changed value
-            var newValue = e.Value;
-
-            // Get the current row handle
             int rowHandle = e.RowHandle;
-
-            // Get the column name
             string columnName = e.Column.FieldName;
 
-            // Get the PKID of the current row
-            int pkId = Convert.ToInt32(gridView1.GetRowCellValue(rowHandle, "PKID"));
-
-            // Update the corresponding property in the data source
-            var package = (PackageDto)gridView1.GetRow(rowHandle);
-            package.EditedBy = _session.UserID; // تنظیم شناسه کاربر ویرایش‌کننده
-            package.EditedDate = DateTime.Now; // تنظیم تاریخ و زمان فعلی
-            switch (columnName)
+            // بررسی null بودن gridView1
+            if (gridView1 == null)
             {
-                case "PK":
-                    package.PK = Convert.ToInt32(newValue);
-                    break;
-                case "PLId":
-                    package.PLId = Convert.ToInt32(newValue);
-                    break;
-                case "NetW":
-                    package.NetW = Convert.ToDecimal(newValue);
-                    break;
-                case "GrossW":
-                    package.GrossW = Convert.ToDecimal(newValue);
-                    break;
-                case "Dimension":
-                    package.Dimension = newValue.ToString();
-                    break;
-                case "Volume":
-                    package.Volume = newValue.ToString();
-                    break;
-                case "ArrivalDate":
-                    package.ArrivalDate = Convert.ToDateTime(newValue);
-                    break;
-                case "Desciption":
-                    package.Desciption = newValue.ToString();
-                    break;
-                case "Remark":
-                    package.Remark = newValue.ToString();
-                    break;
-                case "EnteredDate":
-                    package.EnteredDate = Convert.ToDateTime(newValue);
-                    break;
-                case "MSRNO":
-                    package.MSRNO = newValue.ToString();
-                    break;
-                case "MSRPDF":
-                    package.MSRPDF = newValue.ToString();
-                    break;
-                case "MSRDate":
-                    package.MSRDate = Convert.ToDateTime(newValue);
-                    break;
-                case "MSRRevDate":
-                    package.MSRRevDate = Convert.ToDateTime(newValue);
-                    break;
-                default:
-                    // Handle any other columns or log an error if needed
-                    break;
+                MessageBox.Show("gridView1 is not initialized.");
+                return;
             }
 
-            // Update the database
-            bool isUpdated = _packageDapperRepository.UpdatePackage(pkId, package);
-
-            // Show a message based on the update result
-            if (isUpdated)
+            // گرفتن مقادیر سلول‌ها و بررسی null بودن هرکدام
+            var pkId = gridView1.GetRowCellValue(rowHandle, "PKID");
+            if (pkId == null || pkId == DBNull.Value)
             {
-                XtraMessageBox.Show("Record updated successfully!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                e.Column.AppearanceCell.BackColor = Color.LightGreen; // Change the cell background color to light green
+                MessageBox.Show("PKID is null.");
+                return;
             }
-            else
-            {
-                XtraMessageBox.Show("Failed to update the record. Please check your input.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                e.Column.AppearanceCell.BackColor = Color.OrangeRed; // Change the cell background color to orange red
-            }
+            var pkIdValue = Convert.ToInt32(pkId);
 
-            // Force the grid to repaint to reflect the changes
-            gridView1.RefreshRow(rowHandle);
+            var plId = gridView1.GetRowCellValue(rowHandle, "PLId");
+            if (plId == null || plId == DBNull.Value)
+            {
+                MessageBox.Show("PLId is null.");
+                return;
+            }
+            var plIdValue = Convert.ToInt32(plId);
+
+            var netW = gridView1.GetRowCellValue(rowHandle, "NetW");
+            var netWValue = (netW == null || netW == DBNull.Value) ? 0.00m : Convert.ToDecimal(netW);
+
+            var grossW = gridView1.GetRowCellValue(rowHandle, "GrossW");
+            var grossWValue = (grossW == null || grossW == DBNull.Value) ? 0.00m : Convert.ToDecimal(grossW);
+
+            // بررسی null برای "Dimension" و تعیین مقدار پیش‌فرض در صورت خالی بودن
+            var dimension = gridView1.GetRowCellValue(rowHandle, "Dimension");
+            var dimensionValue = (dimension == null || dimension == DBNull.Value) ? string.Empty : dimension.ToString();
+
+            var volume = gridView1.GetRowCellValue(rowHandle, "Volume");
+            var volumeValue = (volume == null || volume == DBNull.Value) ? string.Empty : volume.ToString();
+
+            var arrivalDate = gridView1.GetRowCellValue(rowHandle, "ArrivalDate");
+            var arrivalDateValue = (arrivalDate == null || arrivalDate == DBNull.Value) ? DateTime.MinValue : Convert.ToDateTime(arrivalDate);
+
+            var description = gridView1.GetRowCellValue(rowHandle, "Desciption");
+            var descriptionValue = (description == null || description == DBNull.Value) ? string.Empty : description.ToString();
+
+            var remark = gridView1.GetRowCellValue(rowHandle, "Remark");
+            var remarkValue = (remark == null || remark == DBNull.Value) ? string.Empty : remark.ToString();
+
+            // نمایش داده‌ها در MessageBox برای بررسی
+            string message = $"Row Handle: {rowHandle}\n" +
+                             $"PKID: {pkIdValue}\n" +
+                             $"PLId: {plIdValue}\n" +
+                             $"NetW: {netWValue}\n" +
+                             $"GrossW: {grossWValue}\n" +
+                             $"Dimension: {dimensionValue}\n" +
+                             $"Volume: {volumeValue}\n" +
+                             $"ArrivalDate: {arrivalDateValue}\n" +
+                             $"Desciption: {descriptionValue}\n" +
+                             $"Remark: {remarkValue}";
+
+            // نمایش پیام
+            MessageBox.Show(message, "Current Row Data", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+            // ساخت یک نمونه جدید از UpdatePkDto
+            var updatedPackage = new UpdatePkDto
+            {
+                PKID = pkIdValue,
+                PLId = plIdValue,
+                NetW = netWValue,
+                GrossW = grossWValue,
+                Dimension = dimensionValue,  // اطمینان از مقدار پیش‌فرض
+                Volume = volumeValue,
+                ArrivalDate = arrivalDateValue,
+                Desciption = descriptionValue,
+                Remark = remarkValue,
+                EditedBy = _session.UserID // تنظیم کاربر ویرایشگر
+            };
+
+            try
+            {
+                // فراخوانی متد به‌روزرسانی
+                bool isUpdated = _packageDapperRepository.UpdatePackagePulse(updatedPackage.PKID, updatedPackage);
+
+                // نمایش پیام موفقیت یا خطا
+                if (isUpdated)
+                {
+                    XtraMessageBox.Show("Record updated successfully!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    e.Column.AppearanceCell.BackColor = Color.LightGreen;
+                }
+                else
+                {
+                    XtraMessageBox.Show("Database update failed. Please check the input.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
+                }
+            }
+            catch (Exception ex)
+            {
+                // مدیریت خطا و نمایش پیام خطا
+                XtraMessageBox.Show($"Error updating record: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
         private void barButtonItem1_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)

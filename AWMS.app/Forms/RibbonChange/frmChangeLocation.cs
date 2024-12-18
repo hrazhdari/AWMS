@@ -27,7 +27,7 @@ namespace AWMS.app.Forms.RibbonChange
         {
             try
             {
-                gridControl1.DataSource = await _serviceProvider.GetService<ICompanyService>()!.GetAllCompaniesNameAsync();
+                gridControl1.DataSource =  _serviceProvider.GetService<IChangeDapperRepository>()!.SearchFillLocChange();
                 lookUpEditlocation.Properties.DataSource = _serviceProvider.GetService<ILocationDapperRepository>()!.GetAllLocLocationChange();
             }
             catch (Exception ex)

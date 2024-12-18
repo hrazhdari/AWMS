@@ -19,7 +19,8 @@ namespace AWMS.dapper.Repositories
         int GetPackageCount(int plId);
         bool CheckPkExist(int plId, int pkNumber);
         int GetPkId(int plId, int pkNumber);
-        bool UpdatePackage(int packageId, PackageDto updatedPackage);
+        //bool UpdatePackage(int packageId, PackageDto updatedPackage);
+        bool UpdatePackagePulse(int packageId, UpdatePkDto updatedPackage);
         bool UpdatePackage(int packageId, UpdatePackageDto updatedPackage);
         Task DeleteMultiplePKsWithTransactionAsync(IEnumerable<PackagePKIDDto> PKIDs);
     }

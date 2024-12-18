@@ -10,6 +10,7 @@ namespace AWMS.dapper.Repositories
         Task AddAsync(LocItemDto Locitem);
         Task UpdateAsync(LocItemDto Locitem);
         Task UpdateLocationsAsync(List<UpdateLocitemLocationDto> updateDtos);
+        Task UpdateLocitemRemarksAsync(List<UpdateRemarkLocitemidDto> updateDtos);
         Task DeleteAsync(int LocItemid);
         Task DeleteMultipleLocItemsWithTransactionAsync(IEnumerable<LocItemDto> Locitems);
         Task<IEnumerable<LocItemDto>> GetLocItemsByItemIdAsync(int itemId);

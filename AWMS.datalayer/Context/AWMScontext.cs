@@ -28,6 +28,7 @@ namespace AWMS.datalayer.Context
         public DbSet<ApplicationRole> ApplicationRoles { get; set; }
         public DbSet<Request> Requests { get; set; }
         public DbSet<RequestType> RequestTypes { get; set; }
+        public DbSet<Inspection> Inspections { get; set; }
 
         public DbSet<Company> Companies { get; set; }
         public DbSet<CompanyContract> CompanyContracts { get; set; }
@@ -42,7 +43,7 @@ namespace AWMS.datalayer.Context
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             base.OnModelCreating(modelBuilder);
-
+            modelBuilder.Entity<Inspection>().ToTable("Inspection");
             //Fluent API Configuration's
             modelBuilder.ApplyConfiguration(new MrConfiguration());
             modelBuilder.ApplyConfiguration(new PoConfiguration());
@@ -65,6 +66,7 @@ namespace AWMS.datalayer.Context
             modelBuilder.ApplyConfiguration(new RoleConfiguration());
             modelBuilder.ApplyConfiguration(new RequestConfiguration());
             modelBuilder.ApplyConfiguration(new RequestTypeConfiguration());
+            modelBuilder.ApplyConfiguration(new InspectionConfiguration());
 
             // Seed initial data
             modelBuilder.Entity<Mr>().HasData(

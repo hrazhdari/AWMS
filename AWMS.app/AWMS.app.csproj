@@ -88,7 +88,19 @@
     <Compile Update="Forms\RibbonChange\frmChangeLocation.cs">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Update="Forms\RibbonMsr\frmMsrRev.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="Forms\RibbonMsr\frmRegisterMsr.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="Forms\RibbonMsr\frmRegisterIvr.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Update="Forms\RibbonSearch\frmSearchMiv.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="Forms\RibbonVoucher\frmUpdateHmv.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Update="Forms\RibbonVoucher\frmUpdateMrv.cs">

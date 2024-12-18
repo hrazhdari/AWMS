@@ -584,6 +584,7 @@
             IconOptions.Image = Properties.Resources.functionsmore_16x16;
             MaximizeBox = false;
             Name = "frmCompanyContract";
+            ShowInTaskbar = false;
             StartPosition = FormStartPosition.CenterScreen;
             Text = "Company Contract";
             Load += frmCompanyContract_Load;

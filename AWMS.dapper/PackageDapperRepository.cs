@@ -207,55 +207,46 @@ namespace AWMS.dapper
             }
         }
 
-        public bool UpdatePackage(int packageId, PackageDto updatedPackage)
+        public bool UpdatePackagePulse(int packageId, UpdatePkDto updatedPackage)
         {
-            using (var connection = CreateConnection())
+            try
             {
-                var parameters = new DynamicParameters();
-                decimal netW = 0.00m;
-                decimal grossW = 0.00m;
-
-                // تبدیل مقادیر به نوع decimal و مدیریت مقادیر نادرست
-                if (decimal.TryParse(updatedPackage.NetW?.ToString() ?? "0", out netW) == false)
+                using (var connection = CreateConnection())
                 {
-                    // لاگ یا هشدار در صورت نیاز
-                    Console.WriteLine($"Invalid NetW value: {updatedPackage.NetW}");
+                    var parameters = new DynamicParameters();
+
+                    // افزودن پارامترها با مقادیر پیش‌فرض یا بررسی‌شده
+                    parameters.Add("@PKID", packageId);
+                    parameters.Add("@PLId", updatedPackage.PLId);
+                    parameters.Add("@NetW", updatedPackage.NetW ?? 0); // مقدار پیش‌فرض 0
+                    parameters.Add("@GrossW", updatedPackage.GrossW ?? 0); // مقدار پیش‌فرض 0
+                    parameters.Add("@Dimension", updatedPackage.Dimension ?? string.Empty); // پیش‌فرض خالی
+                    parameters.Add("@Volume", updatedPackage.Volume ?? string.Empty);
+                    parameters.Add("@ArrivalDate", updatedPackage.ArrivalDate.HasValue ? updatedPackage.ArrivalDate : DBNull.Value);
+                    parameters.Add("@Desciption", updatedPackage.Desciption ?? string.Empty);
+                    parameters.Add("@Remark", updatedPackage.Remark ?? string.Empty);
+                    parameters.Add("@EditedBy", updatedPackage.EditedBy.HasValue ? updatedPackage.EditedBy.Value : DBNull.Value);
+
+                    // اجرای پروسیجر
+                    var result = connection.QueryFirstOrDefault<string>(
+                        "UpdatePackage2025Pluse",
+                        parameters,
+                        commandType: CommandType.StoredProcedure,
+                        commandTimeout: 120
+                    );
+
+                    // بررسی نتیجه
+                    return result == "Update successful";
                 }
-
-                if (decimal.TryParse(updatedPackage.GrossW?.ToString() ?? "0", out grossW) == false)
-                {
-                    // لاگ یا هشدار در صورت نیاز
-                    Console.WriteLine($"Invalid GrossW value: {updatedPackage.GrossW}");
-                }
-
-                // افزودن پارامترها به درخواست پروسیجر
-                parameters.Add("@PKID", packageId);
-                parameters.Add("@PLId", updatedPackage.PLId);
-                parameters.Add("@PK", updatedPackage.PK);
-                parameters.Add("@NetW", netW);
-                parameters.Add("@GrossW", grossW);
-                parameters.Add("@Dimension", updatedPackage.Dimension);
-                parameters.Add("@Volume", updatedPackage.Volume);
-                parameters.Add("@ArrivalDate", updatedPackage.ArrivalDate);
-                parameters.Add("@Desciption", updatedPackage.Desciption);
-                parameters.Add("@Remark", updatedPackage.Remark);
-                parameters.Add("@EnteredBy", updatedPackage.EnteredBy);
-                parameters.Add("@EnteredDate", updatedPackage.EnteredDate);
-                parameters.Add("@EditedBy", updatedPackage.EditedBy);
-                parameters.Add("@EditedDate", updatedPackage.EditedDate);
-                parameters.Add("@MSRNO", updatedPackage.MSRNO);
-                parameters.Add("@MSRPDF", updatedPackage.MSRPDF);
-                parameters.Add("@MSRDate", updatedPackage.MSRDate);
-                parameters.Add("@MSREnteredBy", updatedPackage.MSREnteredBy);
-                parameters.Add("@MSRStatus", updatedPackage.MSRStatus);
-                parameters.Add("@MSRRev", updatedPackage.MSRRev);
-                parameters.Add("@MSRRevEnteredBy", updatedPackage.MSRRevEnteredBy);
-                parameters.Add("@MSRRevDate", updatedPackage.MSRRevDate);
-
-                var affectedRows = connection.Execute("UpdatePackage", parameters, commandType: CommandType.StoredProcedure);
-                return affectedRows > 0;
+            }
+            catch (Exception ex)
+            {
+                // لاگ کردن خطا
+                Console.WriteLine($"Error in UpdatePackage: {ex.Message}");
+                return false;
             }
         }
+
         public bool UpdatePackage(int packageId, UpdatePackageDto updatedPackage)
         {
             using (var connection = CreateConnection())

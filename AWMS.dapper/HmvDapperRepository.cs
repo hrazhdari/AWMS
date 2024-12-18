@@ -21,15 +21,15 @@ namespace AWMS.dapper
         {
             return new SqlConnection(_connectionString);
         }
-        public async Task<IEnumerable<HmvAbleDto>> GetAllMaterialHmvableAsync(int companyId)
+        public async Task<IEnumerable<MrvAbleDto>> GetAllMaterialHmvableAsync(int companyId)
         {
             try
             {
                 using (var connection = new SqlConnection(_connectionString))
                 {
                     await connection.OpenAsync();
-                    var result = await connection.QueryAsync<HmvAbleDto>(
-                        "AllMaterialMrvHmvable3",
+                    var result = await connection.QueryAsync<MrvAbleDto>(
+                        "AllMaterialMrvHmvable2025",//"AllMaterialMrvHmvable3",
                         new { CompanyID = companyId },
                         commandType: CommandType.StoredProcedure);
                     return result;
@@ -122,6 +122,195 @@ namespace AWMS.dapper
                 var parameters = new {CompanyID = companyId, hmvNo = hmvNo };
                 var result = await connection.QuerySingleAsync<int>("CheckHmvNameCondition", parameters, commandType: CommandType.StoredProcedure);
                 return result == 1;
+            }
+        }
+
+        public async Task<List<string>> GetHmvsAsync()
+        {
+            using (var connection = CreateConnection())
+            {
+                // اجرای کوئری و بازگرداندن نتیجه به صورت List<string>
+                var requestNos = await connection.QueryAsync<string>("ALLHmvs", commandType: CommandType.StoredProcedure);
+                return requestNos.ToList();
+            }
+        }
+
+        public async Task<HmvInfoDto> GetHmvsInfoAsync(string req)
+        {
+            using (var connection = CreateConnection())
+            {
+
+                var parameters = new { RequestNO = req };
+             
+                var requestInfo = await connection.QueryFirstOrDefaultAsync<HmvInfoDto>(
+                    "ALLHmvinfo",
+                    parameters,
+                    commandType: CommandType.StoredProcedure
+                );
+
+                return requestInfo;
+            }
+        }
+
+        public async Task<IEnumerable<HmvUpdateDto>> GetHmvByHmvNoAsync(string req)
+        {
+            using (var connection = CreateConnection())
+            {
+
+                var parameters = new { RequestNO = req };
+
+                var requestInfo = await connection.QueryAsync<HmvUpdateDto>(
+                    "GetInfoHmv",
+                    parameters,
+                    commandType: CommandType.StoredProcedure
+                );
+
+                return requestInfo;
+            }
+        }
+
+        public async Task<bool> UpdateHmvNameAsync(string req, string hmvName)
+        {
+            using (var connection = CreateConnection())
+            {
+                var parameters = new DynamicParameters();
+                parameters.Add("RequestNO", req, DbType.String);
+                parameters.Add("HmvNo", hmvName, DbType.String);
+                parameters.Add("Success", dbType: DbType.Boolean, direction: ParameterDirection.Output);
+
+                // Execute the stored procedure
+                await connection.ExecuteAsync("updateHmvName", parameters, commandType: CommandType.StoredProcedure);
+
+                // Get the output parameter value
+                bool success = parameters.Get<bool>("Success");
+                return success;
+            }
+        }
+
+        public async Task<bool> UpdateHmvCompanyAsync(string hmvno, int hmvcompany)
+        {
+            using (var connection = CreateConnection())
+            {
+                var parameters = new DynamicParameters();
+                parameters.Add("RequestNO", hmvno, DbType.String);
+                parameters.Add("HmvCompany", hmvcompany, DbType.Int32);
+                parameters.Add("Success", dbType: DbType.Boolean, direction: ParameterDirection.Output);
+
+                // Execute the stored procedure
+                await connection.ExecuteAsync("updateHmvCompany", parameters, commandType: CommandType.StoredProcedure);
+
+                // Get the output parameter value
+                bool success = parameters.Get<bool>("Success");
+                return success;
+            }
+        }
+
+
+
+        public async Task UpdateHmvRemarksAsync(List<UpdateMrvRemarkDto> updateDtos)
+        {
+            using (var connection = CreateConnection())
+            {
+                var dataTable = new DataTable();
+                dataTable.Columns.Add("LocItemID", typeof(int));
+                dataTable.Columns.Add("RemarkRequests", typeof(string));
+                dataTable.Columns.Add("MRVRequest", typeof(string));
+                dataTable.Columns.Add("EditedBy", typeof(string));
+                dataTable.Columns.Add("EditedDate", typeof(DateTime));
+
+                foreach (var dto in updateDtos)
+                {
+                    dataTable.Rows.Add(dto.LocItemID, dto.RemarkRequests, dto.MRVRequest, dto.EditedBy, dto.EditedDate);
+                }
+
+                var parameters = new DynamicParameters();
+                parameters.Add("@UpdateMrvRemarkTVP", dataTable.AsTableValuedParameter("dbo.UpdateMrvRemarkType"));
+
+                try
+                {
+                    await connection.ExecuteAsync("UpdateHMVRemark", parameters, commandType: CommandType.StoredProcedure);
+                }
+                catch (Exception ex)
+                {
+                    // ثبت خطا برای اشکال‌زدایی
+                    Console.WriteLine($"Error: {ex.Message}");
+                    throw;
+                }
+            }
+        }
+
+        public async Task UpdateHmvQtyAsync(List<updateHMVqtiesDto> updateDtos)
+        {
+            using (var connection = CreateConnection())
+            {
+                var dataTable = new DataTable();
+                dataTable.Columns.Add("LocItemID", typeof(int));
+                dataTable.Columns.Add("ReqLocItemID", typeof(int));
+                dataTable.Columns.Add("PLocItemIDforMRV", typeof(int));
+                dataTable.Columns.Add("ReqHmvQty", typeof(decimal));
+                dataTable.Columns.Add("DelHmvQty", typeof(decimal));
+                dataTable.Columns.Add("DelHmvRejQty", typeof(decimal));
+                dataTable.Columns.Add("HMVRequest", typeof(string));
+                dataTable.Columns.Add("EditedBy", typeof(string));
+                dataTable.Columns.Add("EditedDate", typeof(DateTime));
+
+                foreach (var dto in updateDtos)
+                {
+                    dataTable.Rows.Add(dto.LocItemID, dto.ReqLocItemID,1,  dto.ReqHmvQty, dto.DelHmvQty, dto.DelHmvRejQty, dto.HMVRequest, dto.EditedBy, dto.EditedDate);
+                }
+
+                var parameters = new DynamicParameters();
+                parameters.Add("@UpdateMrvQtyTVP", dataTable.AsTableValuedParameter("dbo.UpdateMrvQtType"));
+
+                try
+                {
+                    await connection.ExecuteAsync("UpdateHMVQty2025", parameters, commandType: CommandType.StoredProcedure);
+                }
+                catch (Exception ex)
+                {
+                    // ثبت خطا برای اشکال‌زدایی
+                    //Console.WriteLine($"Error: {ex.Message}");
+                    throw;
+                }
+            }
+        }
+
+        public async Task DeleteHmvRowAsync(int ReqLocItemID, string hmvno)
+        {
+            using (var connection = CreateConnection())
+            {
+                var parameters = new DynamicParameters();
+                parameters.Add("@ReqLocItemID", ReqLocItemID);
+                parameters.Add("@RequestNO", hmvno);
+
+                try
+                {
+                    await connection.ExecuteAsync("DeleteHmvRow", parameters, commandType: CommandType.StoredProcedure);
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine($"Error: {ex.Message}");
+                    throw;
+                }
+            }
+        }
+
+        public async Task DeleteHmvAsync(string hmvno)
+        {
+            using (var connection = CreateConnection())
+            {
+                var parameters = new DynamicParameters();
+                parameters.Add("@RequestNO", hmvno);
+
+                try
+                {
+                    await connection.ExecuteAsync("DeleteHMVByHMVNO", parameters, commandType: CommandType.StoredProcedure);
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine($"Error: {ex.Message}");
+                    throw;
+                }
             }
         }
     }

@@ -2,6 +2,7 @@
 using AWMS.app.Forms.frmSmall;
 using AWMS.app.Forms.RibbonChange;
 using AWMS.app.Forms.RibbonMaterial;
+using AWMS.app.Forms.RibbonMsr;
 using AWMS.app.Forms.RibbonSearch;
 using AWMS.app.Forms.RibbonUser;
 using AWMS.app.Forms.RibbonVoucher;
@@ -460,6 +461,82 @@ namespace AWMS.app.Forms
                 var frmUpdateMRV = ActivatorUtilities.CreateInstance<frmUpdateMrv>(_serviceProvider, _userContext.UserId);
                 frmUpdateMRV.MdiParent = this;
                 frmUpdateMRV.Show();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"An error occurred: {ex.Message}");
+            }
+            finally
+            {
+                SplashScreenManager.CloseForm();
+            }
+        }
+
+        private void barButtonItem21_ItemClick(object sender, ItemClickEventArgs e)
+        {
+            try
+            {
+                SplashScreenManager.ShowForm(this, typeof(frmWait), true, true, true, false);
+                var frmUpdateHmv = ActivatorUtilities.CreateInstance<frmUpdateHmv>(_serviceProvider, _userContext.UserId);
+                frmUpdateHmv.MdiParent = this;
+                frmUpdateHmv.Show();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"An error occurred: {ex.Message}");
+            }
+            finally
+            {
+                SplashScreenManager.CloseForm();
+            }
+        }
+
+        private void barButtonItem20_ItemClick(object sender, ItemClickEventArgs e)
+        {
+            try
+            {
+                SplashScreenManager.ShowForm(this, typeof(frmWait), true, true, true, false);
+                var frmRegisterIvr = _serviceProvider.GetRequiredService<frmRegisterIvr>();
+                frmRegisterIvr.MdiParent = this;
+                frmRegisterIvr.Show();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"An error occurred: {ex.Message}");
+            }
+            finally
+            {
+                SplashScreenManager.CloseForm();
+            }
+        }
+
+        private void barButtonItem22_ItemClick(object sender, ItemClickEventArgs e)
+        {
+            try
+            {
+                SplashScreenManager.ShowForm(this, typeof(frmWait), true, true, true, false);
+                var frmRegisterMsr = _serviceProvider.GetRequiredService<frmRegisterMsr>();
+                frmRegisterMsr.MdiParent = this;
+                frmRegisterMsr.Show();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"An error occurred: {ex.Message}");
+            }
+            finally
+            {
+                SplashScreenManager.CloseForm();
+            }
+        }
+
+        private void barButtonItem23_ItemClick(object sender, ItemClickEventArgs e)
+        {
+            try
+            {
+                SplashScreenManager.ShowForm(this, typeof(frmWait), true, true, true, false);
+                var frmMsrRev = _serviceProvider.GetRequiredService<frmMsrRev>();
+                frmMsrRev.MdiParent = this;
+                frmMsrRev.Show();
             }
             catch (Exception ex)
             {

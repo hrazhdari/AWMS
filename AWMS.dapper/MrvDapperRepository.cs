@@ -1,5 +1,6 @@
 ﻿using AWMS.dapper.Repositories;
 using AWMS.dto;
+using Azure.Core;
 using Dapper;
 using Microsoft.Data.SqlClient;
 using Microsoft.Extensions.Configuration;
@@ -160,6 +161,148 @@ namespace AWMS.dapper
                 );
 
                 return requestInfo;
+            }
+        }
+
+        public async Task<bool> UpdateMrvNameAsync(string req, string mrvName)
+        {
+            using (var connection = CreateConnection())
+            {
+                var parameters = new DynamicParameters();
+                parameters.Add("RequestNO", req, DbType.String);
+                parameters.Add("MrvNo", mrvName, DbType.String);
+                parameters.Add("Success", dbType: DbType.Boolean, direction: ParameterDirection.Output);
+
+                // Execute the stored procedure
+                await connection.ExecuteAsync("updateMrvName", parameters, commandType: CommandType.StoredProcedure);
+
+                // Get the output parameter value
+                bool success = parameters.Get<bool>("Success");
+                return success;
+            }
+        }
+
+        public async Task<bool> UpdateMrvCompanyAsync(string mrvno, int mrvcopany)
+        {
+            using (var connection = CreateConnection())
+            {
+                var parameters = new DynamicParameters();
+                parameters.Add("RequestNO", mrvno, DbType.String);
+                parameters.Add("MrvCompany", mrvcopany, DbType.Int32);
+                parameters.Add("Success", dbType: DbType.Boolean, direction: ParameterDirection.Output);
+
+                // Execute the stored procedure
+                await connection.ExecuteAsync("updateMrvCompany", parameters, commandType: CommandType.StoredProcedure);
+
+                // Get the output parameter value
+                bool success = parameters.Get<bool>("Success");
+                return success;
+            }
+        }
+
+        public async Task UpdateMrvRemarksAsync(List<UpdateMrvRemarkDto> updateDtos)
+        {
+            using (var connection = CreateConnection())
+            {
+                var dataTable = new DataTable();
+                dataTable.Columns.Add("LocItemID", typeof(int));
+                dataTable.Columns.Add("RemarkRequests", typeof(string));
+                dataTable.Columns.Add("MRVRequest", typeof(string));
+                dataTable.Columns.Add("EditedBy", typeof(string));
+                dataTable.Columns.Add("EditedDate", typeof(DateTime));
+
+                foreach (var dto in updateDtos)
+                {
+                    dataTable.Rows.Add(dto.LocItemID, dto.RemarkRequests,dto.MRVRequest, dto.EditedBy, dto.EditedDate);
+                }
+
+                var parameters = new DynamicParameters();
+                parameters.Add("@UpdateMrvRemarkTVP", dataTable.AsTableValuedParameter("dbo.UpdateMrvRemarkType"));
+
+                try
+                {
+                    await connection.ExecuteAsync("UpdateMRVRemark", parameters, commandType: CommandType.StoredProcedure);
+                }
+                catch (Exception ex)
+                {
+                    // ثبت خطا برای اشکال‌زدایی
+                    Console.WriteLine($"Error: {ex.Message}");
+                    throw;
+                }
+            }
+        }
+
+        public async Task UpdateMrvQtyAsync(List<UpdateMRVqtiesDto> updateDtos)
+        {
+            using (var connection = CreateConnection())
+            {
+                var dataTable = new DataTable();
+                dataTable.Columns.Add("LocItemID", typeof(int));
+                dataTable.Columns.Add("ReqLocItemID", typeof(int));
+                dataTable.Columns.Add("PLocItemIDforMRV", typeof(int));
+                dataTable.Columns.Add("ReqMrvQty", typeof(decimal));
+                dataTable.Columns.Add("DelMrvQty", typeof(decimal));
+                dataTable.Columns.Add("DelMrvRejQty", typeof(decimal));
+                dataTable.Columns.Add("MRVRequest", typeof(string));
+                dataTable.Columns.Add("EditedBy", typeof(string));
+                dataTable.Columns.Add("EditedDate", typeof(DateTime));
+
+                foreach (var dto in updateDtos)
+                {
+                    dataTable.Rows.Add(dto.LocItemID, dto.ReqLocItemID, dto.PLocItemIDforMRV, dto.ReqMrvQty,dto.DelMrvQty,dto.DelMrvRejQty, dto.MRVRequest, dto.EditedBy, dto.EditedDate);
+                }
+
+                var parameters = new DynamicParameters();
+                parameters.Add("@UpdateMrvQtyTVP", dataTable.AsTableValuedParameter("dbo.UpdateMrvQtType"));
+
+                try
+                {
+                    await connection.ExecuteAsync("UpdateMRVQty2025", parameters, commandType: CommandType.StoredProcedure);
+                }
+                catch (Exception ex)
+                {
+                    // ثبت خطا برای اشکال‌زدایی
+                    //Console.WriteLine($"Error: {ex.Message}");
+                    throw;
+                }
+            }
+        }
+        public async Task DeleteMrvRowAsync(int ReqLocItemID, string mrvno)
+        {
+            using (var connection = CreateConnection())
+            {
+                var parameters = new DynamicParameters();
+                parameters.Add("@ReqLocItemID", ReqLocItemID);
+                parameters.Add("@RequestNO", mrvno);
+
+                try
+                {
+                    await connection.ExecuteAsync("DeleteMrvRow", parameters, commandType: CommandType.StoredProcedure);
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine($"Error: {ex.Message}");
+                    throw;
+                }
+            }
+        }
+
+        public async Task DeleteMrvAsync(string mrvno)
+        {
+            using (var connection = CreateConnection())
+            {
+                var parameters = new DynamicParameters();
+                parameters.Add("@RequestNO", mrvno);
+
+                try
+                {
+                    await connection.ExecuteAsync("DeleteMRVByMRVNO", parameters, commandType: CommandType.StoredProcedure);
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine($"Error: {ex.Message}");
+                    throw;
+                }
             }
         }
     }

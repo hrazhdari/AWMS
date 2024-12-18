@@ -57,13 +57,16 @@
             Hold = new DevExpress.XtraGrid.Columns.GridColumn();
             repositoryItemCheckEdit1 = new DevExpress.XtraEditors.Repository.RepositoryItemCheckEdit();
             panelControl2 = new DevExpress.XtraEditors.PanelControl();
+            panel1 = new Panel();
+            panelControl12 = new DevExpress.XtraEditors.PanelControl();
+            simpleButton5 = new DevExpress.XtraEditors.SimpleButton();
+            labelControl3 = new DevExpress.XtraEditors.LabelControl();
+            panelControl5 = new DevExpress.XtraEditors.PanelControl();
+            simpleButton1 = new DevExpress.XtraEditors.SimpleButton();
             progressLabel = new Label();
             progressBar1 = new ProgressBar();
             panelControl9 = new DevExpress.XtraEditors.PanelControl();
             btnApply = new DevExpress.XtraEditors.SimpleButton();
-            labelControl3 = new DevExpress.XtraEditors.LabelControl();
-            panelControl5 = new DevExpress.XtraEditors.PanelControl();
-            simpleButton1 = new DevExpress.XtraEditors.SimpleButton();
             panelControl4 = new DevExpress.XtraEditors.PanelControl();
             radioGroup1 = new DevExpress.XtraEditors.RadioGroup();
             labelControl2 = new DevExpress.XtraEditors.LabelControl();
@@ -245,10 +248,13 @@
             ((System.ComponentModel.ISupportInitialize)repositoryItemCheckEdit1).BeginInit();
             ((System.ComponentModel.ISupportInitialize)panelControl2).BeginInit();
             panelControl2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)panelControl9).BeginInit();
-            panelControl9.SuspendLayout();
+            panel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)panelControl12).BeginInit();
+            panelControl12.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)panelControl5).BeginInit();
             panelControl5.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)panelControl9).BeginInit();
+            panelControl9.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)panelControl4).BeginInit();
             panelControl4.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)radioGroup1.Properties).BeginInit();
@@ -328,10 +334,10 @@
             // 
             panelControl3.Controls.Add(gridControl1);
             panelControl3.Dock = DockStyle.Fill;
-            panelControl3.Location = new Point(2, 58);
+            panelControl3.Location = new Point(2, 60);
             panelControl3.Margin = new Padding(3, 2, 3, 2);
             panelControl3.Name = "panelControl3";
-            panelControl3.Size = new Size(1548, 488);
+            panelControl3.Size = new Size(1548, 486);
             panelControl3.TabIndex = 1;
             // 
             // gridControl1
@@ -343,7 +349,7 @@
             gridControl1.Margin = new Padding(3, 2, 3, 2);
             gridControl1.Name = "gridControl1";
             gridControl1.RepositoryItems.AddRange(new DevExpress.XtraEditors.Repository.RepositoryItem[] { repositoryItemCheckEdit1 });
-            gridControl1.Size = new Size(1544, 484);
+            gridControl1.Size = new Size(1544, 482);
             gridControl1.TabIndex = 0;
             gridControl1.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] { gridView1 });
             // 
@@ -603,11 +609,10 @@
             // 
             // panelControl2
             // 
+            panelControl2.Controls.Add(panel1);
             panelControl2.Controls.Add(progressLabel);
             panelControl2.Controls.Add(progressBar1);
             panelControl2.Controls.Add(panelControl9);
-            panelControl2.Controls.Add(labelControl3);
-            panelControl2.Controls.Add(panelControl5);
             panelControl2.Controls.Add(panelControl4);
             panelControl2.Controls.Add(labelControl2);
             panelControl2.Controls.Add(gridLookUpEdit2);
@@ -617,8 +622,87 @@
             panelControl2.Location = new Point(2, 2);
             panelControl2.Margin = new Padding(3, 2, 3, 2);
             panelControl2.Name = "panelControl2";
-            panelControl2.Size = new Size(1548, 56);
+            panelControl2.Size = new Size(1548, 58);
             panelControl2.TabIndex = 0;
+            panelControl2.Paint += panelControl2_Paint;
+            // 
+            // panel1
+            // 
+            panel1.Anchor = AnchorStyles.Top | AnchorStyles.Right;
+            panel1.BorderStyle = BorderStyle.FixedSingle;
+            panel1.Controls.Add(panelControl12);
+            panel1.Controls.Add(labelControl3);
+            panel1.Controls.Add(panelControl5);
+            panel1.Location = new Point(1294, 3);
+            panel1.Name = "panel1";
+            panel1.Size = new Size(249, 52);
+            panel1.TabIndex = 11;
+            // 
+            // panelControl12
+            // 
+            panelControl12.Anchor = AnchorStyles.Top | AnchorStyles.Right;
+            panelControl12.Appearance.BackColor = Color.FromArgb(192, 255, 255);
+            panelControl12.Appearance.Options.UseBackColor = true;
+            panelControl12.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.NoBorder;
+            panelControl12.Controls.Add(simpleButton5);
+            panelControl12.Location = new Point(140, 20);
+            panelControl12.Margin = new Padding(3, 2, 3, 2);
+            panelControl12.Name = "panelControl12";
+            panelControl12.Size = new Size(103, 26);
+            panelControl12.TabIndex = 13;
+            // 
+            // simpleButton5
+            // 
+            simpleButton5.Appearance.BackColor = Color.Turquoise;
+            simpleButton5.Appearance.Options.UseBackColor = true;
+            simpleButton5.Cursor = Cursors.Hand;
+            simpleButton5.ImageOptions.Image = (Image)resources.GetObject("simpleButton5.ImageOptions.Image");
+            simpleButton5.Location = new Point(3, 3);
+            simpleButton5.Margin = new Padding(3, 2, 3, 2);
+            simpleButton5.Name = "simpleButton5";
+            simpleButton5.Size = new Size(97, 20);
+            simpleButton5.TabIndex = 0;
+            simpleButton5.Text = "Refresh Data";
+            // 
+            // labelControl3
+            // 
+            labelControl3.Anchor = AnchorStyles.Top | AnchorStyles.Right;
+            labelControl3.Appearance.Font = new Font("Tahoma", 7.8F, FontStyle.Bold, GraphicsUnit.Point);
+            labelControl3.Appearance.ForeColor = Color.DimGray;
+            labelControl3.Appearance.Options.UseFont = true;
+            labelControl3.Appearance.Options.UseForeColor = true;
+            labelControl3.Location = new Point(9, 4);
+            labelControl3.Margin = new Padding(3, 2, 3, 2);
+            labelControl3.Name = "labelControl3";
+            labelControl3.Size = new Size(78, 12);
+            labelControl3.TabIndex = 12;
+            labelControl3.Text = "Selected Rows :";
+            // 
+            // panelControl5
+            // 
+            panelControl5.Anchor = AnchorStyles.Top | AnchorStyles.Right;
+            panelControl5.Appearance.BackColor = Color.Violet;
+            panelControl5.Appearance.Options.UseBackColor = true;
+            panelControl5.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.NoBorder;
+            panelControl5.Controls.Add(simpleButton1);
+            panelControl5.Location = new Point(6, 20);
+            panelControl5.Margin = new Padding(3, 2, 3, 2);
+            panelControl5.Name = "panelControl5";
+            panelControl5.Size = new Size(129, 26);
+            panelControl5.TabIndex = 11;
+            // 
+            // simpleButton1
+            // 
+            simpleButton1.Appearance.BackColor = Color.FromArgb(255, 192, 255);
+            simpleButton1.Appearance.Options.UseBackColor = true;
+            simpleButton1.Cursor = Cursors.Hand;
+            simpleButton1.ImageOptions.Image = (Image)resources.GetObject("simpleButton1.ImageOptions.Image");
+            simpleButton1.Location = new Point(3, 3);
+            simpleButton1.Margin = new Padding(3, 2, 3, 2);
+            simpleButton1.Name = "simpleButton1";
+            simpleButton1.Size = new Size(123, 20);
+            simpleButton1.TabIndex = 0;
+            simpleButton1.Text = "Manage Companies";
             // 
             // progressLabel
             // 
@@ -641,69 +725,31 @@
             // panelControl9
             // 
             panelControl9.Anchor = AnchorStyles.Top | AnchorStyles.Right;
-            panelControl9.Appearance.BackColor = Color.FromArgb(192, 255, 192);
+            panelControl9.Appearance.BackColor = Color.Gold;
             panelControl9.Appearance.Options.UseBackColor = true;
             panelControl9.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.NoBorder;
             panelControl9.Controls.Add(btnApply);
-            panelControl9.Location = new Point(1339, 27);
+            panelControl9.Location = new Point(1186, 3);
             panelControl9.Margin = new Padding(3, 2, 3, 2);
             panelControl9.Name = "panelControl9";
-            panelControl9.Size = new Size(64, 26);
+            panelControl9.Size = new Size(103, 52);
             panelControl9.TabIndex = 7;
             // 
             // btnApply
             // 
-            btnApply.Appearance.BackColor = Color.Lime;
+            btnApply.Appearance.BackColor = Color.GreenYellow;
+            btnApply.Appearance.Font = new Font("Calibri", 12F, FontStyle.Bold, GraphicsUnit.Point);
             btnApply.Appearance.Options.UseBackColor = true;
+            btnApply.Appearance.Options.UseFont = true;
             btnApply.Cursor = Cursors.Hand;
             btnApply.ImageOptions.Image = (Image)resources.GetObject("btnApply.ImageOptions.Image");
             btnApply.Location = new Point(3, 3);
             btnApply.Margin = new Padding(3, 2, 3, 2);
             btnApply.Name = "btnApply";
-            btnApply.Size = new Size(58, 20);
+            btnApply.Size = new Size(97, 46);
             btnApply.TabIndex = 0;
             btnApply.Text = "Apply";
             btnApply.Click += btnApply_Click;
-            // 
-            // labelControl3
-            // 
-            labelControl3.Anchor = AnchorStyles.Top | AnchorStyles.Right;
-            labelControl3.Appearance.Font = new Font("Tahoma", 7.8F, FontStyle.Bold, GraphicsUnit.Point);
-            labelControl3.Appearance.ForeColor = Color.DimGray;
-            labelControl3.Appearance.Options.UseFont = true;
-            labelControl3.Appearance.Options.UseForeColor = true;
-            labelControl3.Location = new Point(1412, 8);
-            labelControl3.Margin = new Padding(3, 2, 3, 2);
-            labelControl3.Name = "labelControl3";
-            labelControl3.Size = new Size(0, 12);
-            labelControl3.TabIndex = 6;
-            // 
-            // panelControl5
-            // 
-            panelControl5.Anchor = AnchorStyles.Top | AnchorStyles.Right;
-            panelControl5.Appearance.BackColor = Color.Violet;
-            panelControl5.Appearance.Options.UseBackColor = true;
-            panelControl5.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.NoBorder;
-            panelControl5.Controls.Add(simpleButton1);
-            panelControl5.Location = new Point(1412, 27);
-            panelControl5.Margin = new Padding(3, 2, 3, 2);
-            panelControl5.Name = "panelControl5";
-            panelControl5.Size = new Size(129, 26);
-            panelControl5.TabIndex = 5;
-            // 
-            // simpleButton1
-            // 
-            simpleButton1.Appearance.BackColor = Color.FromArgb(255, 192, 255);
-            simpleButton1.Appearance.Options.UseBackColor = true;
-            simpleButton1.Cursor = Cursors.Hand;
-            simpleButton1.ImageOptions.Image = (Image)resources.GetObject("simpleButton1.ImageOptions.Image");
-            simpleButton1.Location = new Point(3, 3);
-            simpleButton1.Margin = new Padding(3, 2, 3, 2);
-            simpleButton1.Name = "simpleButton1";
-            simpleButton1.Size = new Size(123, 20);
-            simpleButton1.TabIndex = 0;
-            simpleButton1.Text = "Manage Companies";
-            simpleButton1.Click += simpleButton1_Click;
             // 
             // panelControl4
             // 
@@ -713,6 +759,7 @@
             panelControl4.Name = "panelControl4";
             panelControl4.Size = new Size(314, 38);
             panelControl4.TabIndex = 4;
+            panelControl4.Visible = false;
             // 
             // radioGroup1
             // 
@@ -2409,10 +2456,14 @@
             ((System.ComponentModel.ISupportInitialize)panelControl2).EndInit();
             panelControl2.ResumeLayout(false);
             panelControl2.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)panelControl9).EndInit();
-            panelControl9.ResumeLayout(false);
+            panel1.ResumeLayout(false);
+            panel1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)panelControl12).EndInit();
+            panelControl12.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)panelControl5).EndInit();
             panelControl5.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)panelControl9).EndInit();
+            panelControl9.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)panelControl4).EndInit();
             panelControl4.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)radioGroup1.Properties).EndInit();
@@ -2467,18 +2518,7 @@
         private DevExpress.XtraEditors.PanelControl panelControl3;
         private DevExpress.XtraGrid.GridControl gridControl1;
         private DevExpress.XtraGrid.Views.Grid.GridView gridView1;
-        private DevExpress.XtraEditors.PanelControl panelControl2;
         private DevExpress.XtraTab.XtraTabPage xtraTabPage2;
-        private DevExpress.XtraEditors.LabelControl labelControl2;
-        private DevExpress.XtraEditors.GridLookUpEdit gridLookUpEdit2;
-        private DevExpress.XtraGrid.Views.Grid.GridView gridView2;
-        private DevExpress.XtraEditors.LabelControl labelControl1;
-        private DevExpress.XtraEditors.GridLookUpEdit gridLookUpEdit1;
-        private DevExpress.XtraGrid.Views.Grid.GridView gridLookUpEdit1View;
-        private DevExpress.XtraEditors.PanelControl panelControl4;
-        private DevExpress.XtraEditors.RadioGroup radioGroup1;
-        private DevExpress.XtraEditors.PanelControl panelControl5;
-        private DevExpress.XtraEditors.SimpleButton simpleButton1;
         private DevExpress.XtraGrid.Columns.GridColumn RowNumber;
         private DevExpress.XtraGrid.Columns.GridColumn Project;
         private DevExpress.XtraGrid.Columns.GridColumn Po;
@@ -2498,7 +2538,6 @@
         private DevExpress.XtraGrid.Columns.GridColumn BatchNo;
         private DevExpress.XtraGrid.Columns.GridColumn Remark;
         private DevExpress.XtraGrid.Columns.GridColumn Hold;
-        private DevExpress.XtraEditors.LabelControl labelControl3;
         private DevExpress.XtraEditors.PanelControl panelControl6;
         private DevExpress.XtraEditors.PanelControl panelControl8;
         private DevExpress.XtraEditors.PanelControl panelControl7;
@@ -2527,8 +2566,6 @@
         private DevExpress.XtraGrid.Columns.GridColumn Heat;
         private DevExpress.XtraGrid.Columns.GridColumn colCompanyID;
         private DevExpress.XtraGrid.Columns.GridColumn colCompanyName;
-        private DevExpress.XtraEditors.PanelControl panelControl9;
-        private DevExpress.XtraEditors.SimpleButton btnApply;
         private DevExpress.XtraGrid.Columns.GridColumn LocItemID;
         private DevExpress.XtraGrid.Columns.GridColumn QtyinLoc;
         private DevExpress.XtraGrid.Columns.GridColumn QtyIssue;
@@ -2554,8 +2591,6 @@
         private DevExpress.XtraBars.Navigation.AccordionControlElement accordionControlElement1;
         private DevExpress.XtraBars.Navigation.AccordionControlElement accordionControlElement2;
         private DevExpress.XtraBars.Navigation.AccordionControlElement accordionControlElement3;
-        private ProgressBar progressBar1;
-        private Label progressLabel;
         private DevExpress.XtraEditors.Repository.RepositoryItemLookUpEdit repositoryItemLookUpLocation;
         private DevExpress.XtraGrid.Columns.GridColumn Location;
         private DevExpress.XtraEditors.Repository.RepositoryItemLookUpEdit repositoryItemLookUpEditUnit;
@@ -2654,7 +2689,6 @@
         private DevExpress.XtraBars.StandaloneBarDockControl standaloneBarDockControl1;
         private DevExpress.XtraPrinting.Preview.PreviewBar previewBar6;
         private DevExpress.XtraEditors.SidePanel sidePanel3;
-        private DevExpress.XtraEditors.PanelControl panelControl12;
         private DevExpress.XtraEditors.ToggleSwitch toggleSwitch1;
         private DevExpress.XtraBars.Navigation.AccordionControl accordionControl1;
         private DevExpress.XtraBars.Navigation.AccordionControlElement accordionControlElement4;
@@ -2667,5 +2701,24 @@
         private DevExpress.XtraBars.Navigation.AccordionControlElement accordionControlElement8;
         private DevExpress.XtraEditors.SimpleButton simpleButton3;
         private DevExpress.XtraEditors.SimpleButton simpleButton4;
+        private DevExpress.XtraEditors.PanelControl panelControl2;
+        private Panel panel1;
+        private Label progressLabel;
+        private ProgressBar progressBar1;
+        private DevExpress.XtraEditors.PanelControl panelControl9;
+        private DevExpress.XtraEditors.SimpleButton btnApply;
+        private DevExpress.XtraEditors.PanelControl panelControl4;
+        private DevExpress.XtraEditors.RadioGroup radioGroup1;
+        private DevExpress.XtraEditors.LabelControl labelControl2;
+        private DevExpress.XtraEditors.GridLookUpEdit gridLookUpEdit2;
+        private DevExpress.XtraGrid.Views.Grid.GridView gridView2;
+        private DevExpress.XtraEditors.LabelControl labelControl1;
+        private DevExpress.XtraEditors.GridLookUpEdit gridLookUpEdit1;
+        private DevExpress.XtraGrid.Views.Grid.GridView gridLookUpEdit1View;
+        private DevExpress.XtraEditors.PanelControl panelControl12;
+        private DevExpress.XtraEditors.SimpleButton simpleButton5;
+        private DevExpress.XtraEditors.LabelControl labelControl3;
+        private DevExpress.XtraEditors.PanelControl panelControl5;
+        private DevExpress.XtraEditors.SimpleButton simpleButton1;
     }
 }

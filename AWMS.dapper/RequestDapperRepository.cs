@@ -1,6 +1,5 @@
 ﻿using AWMS.dapper.Repositories;
 using AWMS.dto;
-using AWMS.dto.AWMS.datalayer.Entities;
 using Dapper;
 using Microsoft.Data.SqlClient;
 using Microsoft.Extensions.Configuration;
@@ -71,6 +70,53 @@ public class RequestDapperRepository : IRequestDapperRepository
             return materialIssue.ToList();
         }
     }
+    public async Task<List<MaterialIssueVoucherDto>> MaterialIssueVoucherFillCompleteGrid()
+    {
+        try
+        {
+            using (var connection = CreateConnection())
+            {
+                connection.Open();
+
+                var materialIssue = await connection.QueryAsync<MaterialIssueVoucherDto>(
+                "Search_Material_Issue_Voucher7",
+                commandType: CommandType.StoredProcedure,
+                commandTimeout: 600
+                );
+
+                return materialIssue.ToList();
+            }
+        }
+        catch (Exception ex)
+        {
+            // مدیریت خطا
+            // می‌توانید خطا را لاگ کنید یا به کاربر اطلاع دهید
+            //Console.WriteLine($"Error: {ex.Message}");
+            throw;
+        }
+    }
+    public async Task<IEnumerable<MaterialIssueVoucherDto>> MaterialIssueVoucherFillCompleteGridIEnumerable()
+    {
+        try
+        {
+            using (var connection = new SqlConnection(_connectionString))
+            {
+                await connection.OpenAsync();
+                var result = await connection.QueryAsync<MaterialIssueVoucherDto>(
+                    "Search_Material_Issue_Voucher2025",
+                    commandType: CommandType.StoredProcedure,
+                    commandTimeout: 600
+                    );
+                return result;
+            }
+        }
+        catch (Exception ex)
+        {
+            // خطا را به سمت متدی که این تابع را صدا زده منتقل می‌کند
+            throw new Exception("Error fetching material issue vouchers: " + ex.Message, ex);
+        }
+    }
+
     public async Task<List<MaterialIssueVoucherDto>> MaterialIssueVoucherFillGrid2(int pageNumber, int pageSize)
     {
         var materialIssueList = new List<MaterialIssueVoucherDto>();

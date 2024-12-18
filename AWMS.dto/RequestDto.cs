@@ -1,13 +1,7 @@
 ﻿namespace AWMS.dto
 {
-    using System;
-    using System.ComponentModel.DataAnnotations;
-
-    namespace AWMS.datalayer.Entities
-    {
         public class RequestDto
         {
-
             public int ReqLocItemID { get; set; }
             public int? LocItemID { get; set; }
             public int? CompanyID { get; set; }
@@ -18,7 +12,6 @@
             public int? VendorID { get; set; }
             public int? TypeID { get; set; }
             public string RequestNO { get; set; }
-            [DataType(DataType.Date)]
             public DateTime? ReqDate { get; set; }
             public int? Item { get; set; }
             public decimal? ReqMivQty { get; set; }
@@ -34,12 +27,9 @@
             public decimal? DelHmvQty { get; set; }
             public decimal? DelHmvRejQty { get; set; }
             public int? IssuedBy { get; set; }
-            [DataType(DataType.Date)]
             public DateTime? IssuedDate { get; set; }
             public int? ApprovedBy { get; set; }
-            [DataType(DataType.Date)]
             public DateTime? ApprovedDate { get; set; }
-            [DataType(DataType.Date)]
             public DateTime? DelDate { get; set; }
             public string? Remark { get; set; }
             public string? MRCNO { get; set; }
@@ -48,6 +38,6 @@
             public string? RequestPDF { get; set; }
 
         }
-    }
-
 }
+
+

@@ -2,7 +2,6 @@
 using AWMS.core.Interfaces;
 using AWMS.dapper.Repositories;
 using AWMS.dto;
-using AWMS.dto.AWMS.datalayer.Entities;
 using AWMS.report;
 using DevExpress.XtraBars.Navigation;
 using DevExpress.XtraEditors;
@@ -15,46 +14,30 @@ namespace AWMS.app.Forms.RibbonVoucher
 {
     public partial class frmIssueVoucher : XtraForm
     {
-        //private readonly UnitOfWork _unitOfWork;
         private readonly IServiceProvider _serviceProvider;
-        private readonly IRequestDapperRepository _requestDapperRepository;
-        private readonly IAreaUnitService _areaUnitService;
-        private readonly ICompanyService _companyService;
-        private readonly IContractService _contractService;
-        private readonly ILocationDapperRepository _locationRepository;
-        private readonly IUnitDapperRepository _unitDapperRepository;
         private readonly UserSession _session; // اضافه کردن UserSession
-        public frmIssueVoucher(IServiceProvider serviceProvider, IRequestDapperRepository requestDapperRepository,
-            IAreaUnitService areaUnitService, ICompanyService companyService, IContractService contractService,
-            ILocationDapperRepository locationDapperRepository, IUnitDapperRepository unitDapperRepository, int? userId = null)
+        public frmIssueVoucher(IServiceProvider serviceProvider, int? userId = null)
         {
             InitializeComponent();
             _serviceProvider = serviceProvider;
-            _requestDapperRepository = requestDapperRepository;
-            _areaUnitService = areaUnitService;
-            _companyService = companyService;
-            _contractService = contractService;
-            this._locationRepository = locationDapperRepository;
             initGrid();
             // اگر UserId پاس داده نشده بود، مقدار پیش‌فرض 1 استفاده می‌شود
             int finalUserId = userId ?? 1;
             _session = SessionManager.GetSession(finalUserId);
-            _unitDapperRepository = unitDapperRepository;
         }
-
-        private void simpleButton1_Click(object sender, EventArgs e)
+        private async void initGrid()
         {
-            try
-            {
-                var CompanyManagementForm = _serviceProvider.GetRequiredService<frmCompanyManagment>();
-                CompanyManagementForm.ShowDialog();
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show($"An error occurred: {ex.Message}");
-            }
+            // پنهان کردن ProgressBar پیش از بارگیری داده‌ها
+            progressBar1.Visible = false;
+            progressLabel.Visible = false;
 
+            // بارگیری داده‌ها به صورت تکه‌تکه
+            //await LoadDataIntoGrid();
+            // بارگیری داده‌ها به صورت کامل
+            //await LoadDataIntoGridComplete();
+            await LoadDataIntoGridCompleteIEnumerable();
         }
+
         private async Task LoadDataIntoGrid()
         {
             int pageNumber = 1;
@@ -69,15 +52,15 @@ namespace AWMS.app.Forms.RibbonVoucher
             progressLabel.Visible = true;
             progressLabel.Text = "0%";
 
-            int totalRecords = await _requestDapperRepository.GetTotalRecordCount(); // دریافت تعداد کل رکوردها
+            int totalRecords = await _serviceProvider.GetService<IRequestDapperRepository>()!.GetTotalRecordCount(); // دریافت تعداد کل رکوردها
 
             List<MaterialIssueVoucherDto> allData = new List<MaterialIssueVoucherDto>();
 
             try
             {
-                while (moreData)
+                while (moreData && pageNumber <= 100) // اضافه کردن شرط برای محدود کردن تعداد صفحات
                 {
-                    var data = await _requestDapperRepository.MaterialIssueVoucherFillGrid(pageNumber, pageSize);
+                    var data = await _serviceProvider.GetService<IRequestDapperRepository>()!.MaterialIssueVoucherFillGrid(pageNumber, pageSize);
 
                     if (data.Any())
                     {
@@ -87,13 +70,22 @@ namespace AWMS.app.Forms.RibbonVoucher
                         pageNumber++;
                         int percentage = (int)((double)allData.Count / totalRecords * 100);
 
-                        progressBar1.Value = percentage;
+                        if (percentage >= progressBar1.Minimum && percentage <= progressBar1.Maximum)
+                        {
+                            progressBar1.Value = percentage;
+                        }
+
                         progressLabel.Text = $"{percentage}%";
                     }
                     else
                     {
                         moreData = false;
                     }
+                }
+
+                if (pageNumber > 100)
+                {
+                    MessageBox.Show("Data loading stopped as it reached the maximum page limit (100).");
                 }
             }
             catch (Exception ex)
@@ -106,14 +98,49 @@ namespace AWMS.app.Forms.RibbonVoucher
                 progressLabel.Visible = false;
             }
         }
-        private async void initGrid()
-        {
-            // پنهان کردن ProgressBar پیش از بارگیری داده‌ها
-            progressBar1.Visible = false;
 
-            // بارگیری داده‌ها به صورت تکه‌تکه
-            await LoadDataIntoGrid();
+        private async Task LoadDataIntoGridComplete()
+        {
+            try
+            {
+
+                gridControl1.DataSource = await _serviceProvider.GetService<IRequestDapperRepository>()!.MaterialIssueVoucherFillCompleteGrid();
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error loading data: " + ex.Message);
+            }
         }
+        private async Task LoadDataIntoGridCompleteIEnumerable()
+        {
+            try
+            {
+                // فراخوانی متد و بارگذاری داده در GridControl
+                gridControl1.DataSource = await _serviceProvider
+                    .GetService<IRequestDapperRepository>()!
+                    .MaterialIssueVoucherFillCompleteGridIEnumerable();
+            }
+            catch (Exception ex)
+            {
+                // نمایش پیام خطا به کاربر
+                MessageBox.Show("Error loading data: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+        private void simpleButton1_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                var CompanyManagementForm = _serviceProvider.GetRequiredService<frmCompanyManagment>();
+                CompanyManagementForm.ShowDialog();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"An error occurred: {ex.Message}");
+            }
+
+        }
+
         private void gridView1_RowCellStyle(object sender, DevExpress.XtraGrid.Views.Grid.RowCellStyleEventArgs e)
         {
             if (e.RowHandle >= 0)
@@ -145,13 +172,13 @@ namespace AWMS.app.Forms.RibbonVoucher
             // Check if the selected page is xtraTabPage2
             if (e.Page == xtraTabPage2)
             {
-                lookUpEditAreaUnit.Properties.DataSource = _areaUnitService.GetAllAreaUnits();
-                gridLookUpEdit3.Properties.DataSource = await _companyService.GetAllCompaniesAsync();
+                lookUpEditAreaUnit.Properties.DataSource = _serviceProvider.GetService<IAreaUnitService>()!.GetAllAreaUnits();
+                gridLookUpEdit3.Properties.DataSource = await _serviceProvider.GetService<ICompanyService>()!.GetAllCompaniesAsync();
                 //lookUpEditContract.Properties.DataSource = await _contractService.GetAllContractsAsync();
                 //repositoryItemLookUpLocation.DataSource = await _locationRepository.GetAllAsync();
                 //repositoryItemLookUpEditUnit.DataSource = _unitDapperRepository.GetAll();
 
-                var nextMIVNumberString = await _requestDapperRepository.NextMivNumber();
+                var nextMIVNumberString = await _serviceProvider.GetService<IRequestDapperRepository>()!.NextMivNumber();
 
                 // تبدیل string به int و مقداردهی پیش فرض اگر رشته null یا خالی بود
                 int nextMIVNumber = int.TryParse(nextMIVNumberString, out int parsedValue) ? parsedValue : 0;
@@ -318,7 +345,7 @@ namespace AWMS.app.Forms.RibbonVoucher
             // Fetch all LocItems and their Balance for the selected ItemIds
             if (selectedItemIds.Any())
             {
-                DataTable newDataTable = await _requestDapperRepository.GetLocItemOFSelectedItemID_FOR_ISSUE_VOUCHER(selectedItemIds);
+                DataTable newDataTable = await _serviceProvider.GetService<IRequestDapperRepository>()!.GetLocItemOFSelectedItemID_FOR_ISSUE_VOUCHER(selectedItemIds);
 
                 if (gridControl2.DataSource is DataTable existingDataTable)
                 {
@@ -505,7 +532,7 @@ namespace AWMS.app.Forms.RibbonVoucher
                 // Show relevant messages and return if validation fails
                 return;
             }
-            bool resuli = await _requestDapperRepository.CheckMrcDuplicate(Convert.ToInt32(gridLookUpEdit3.EditValue), txtMrcNo.Text.Trim());
+            bool resuli = await _serviceProvider.GetService<IRequestDapperRepository>()!.CheckMrcDuplicate(Convert.ToInt32(gridLookUpEdit3.EditValue), txtMrcNo.Text.Trim());
             if (resuli)
             {
                 MessageBox.Show("Duplicate Mrc.No Found , Please Check Mrc.No !", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
@@ -539,7 +566,7 @@ namespace AWMS.app.Forms.RibbonVoucher
             }
 
             // Send the batch to the database and get the new MIV numbers
-            var newMIVNumbers = await _requestDapperRepository.InsertRequestBatchWithReturnMivNumberAsync(requestMivs, _session.UserID);
+            var newMIVNumbers = await _serviceProvider.GetService<IRequestDapperRepository>()!.InsertRequestBatchWithReturnMivNumberAsync(requestMivs, _session.UserID);
 
             // Display new MIV numbers
             StringBuilder nextMIVNumbersStringBuilder = new StringBuilder();
@@ -662,7 +689,7 @@ namespace AWMS.app.Forms.RibbonVoucher
             //report.Parameters["MivNumber"].Value = mivNumber;
 
             // Fetch data from the database based on the MIV number
-            var requestData = await _requestDapperRepository.GetDataFromDatabaseAsync(mivNumber);
+            var requestData = await _serviceProvider.GetService<IRequestDapperRepository>()!.GetDataFromDatabaseAsync(mivNumber);
 
             // Bind the fetched data to the report
             report.DataSource = requestData;
@@ -680,7 +707,7 @@ namespace AWMS.app.Forms.RibbonVoucher
             //report.Parameters["MivNumber"].Value = mivNumber;
 
             // Fetch data from the database based on the MIV number
-            var requestData = await _requestDapperRepository.GetDataFromDatabaseREARAsync(mivNumber);
+            var requestData = await _serviceProvider.GetService<IRequestDapperRepository>()!.GetDataFromDatabaseREARAsync(mivNumber);
 
             // Bind the fetched data to the report
             report.DataSource = requestData;
@@ -718,7 +745,7 @@ namespace AWMS.app.Forms.RibbonVoucher
             {
 
                 // Load data asynchronously
-                lookUpEditContract.Properties.DataSource = await Task.Run(() => _contractService.GetAllContractsByCompanyidAsync(Convert.ToInt32(gridLookUpEdit3.EditValue)));
+                lookUpEditContract.Properties.DataSource = await Task.Run(() => _serviceProvider.GetService<IContractService>()!.GetAllContractsByCompanyidAsync(Convert.ToInt32(gridLookUpEdit3.EditValue)));
                 // Show null text
                 lookUpEditContract.EditValue = null;
             }
@@ -798,6 +825,16 @@ namespace AWMS.app.Forms.RibbonVoucher
                 MessageBox.Show($"An error occurred: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
 
+        }
+
+        private void panelControl2_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private async void simpleButton5_Click(object sender, EventArgs e)
+        {
+            await LoadDataIntoGridCompleteIEnumerable();
         }
     }
 }

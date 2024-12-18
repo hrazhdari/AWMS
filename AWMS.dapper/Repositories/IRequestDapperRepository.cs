@@ -1,5 +1,4 @@
 ﻿using AWMS.dto;
-using AWMS.dto.AWMS.datalayer.Entities;
 using System.Data;
 
 namespace AWMS.dapper.Repositories
@@ -10,6 +9,8 @@ namespace AWMS.dapper.Repositories
         Task<int> GetTotalRecordCount();
         Task<int> GetTotalItemRecordCount();
         Task<List<MaterialIssueVoucherDto>> MaterialIssueVoucherFillGrid(int pageNumber, int pageSize);
+        Task<List<MaterialIssueVoucherDto>> MaterialIssueVoucherFillCompleteGrid();
+        Task<IEnumerable<MaterialIssueVoucherDto>> MaterialIssueVoucherFillCompleteGridIEnumerable();
         Task<List<MaterialIssueVoucherDto>> MaterialIssueVoucherFillGrid2(int pageNumber, int pageSize);
         Task<DataTable> GetLocItemOFSelectedItemID_FOR_ISSUE_VOUCHER(List<int> itemIds);
         Task AddRequests(List<RequestDto> requestMivs);

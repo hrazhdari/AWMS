@@ -29,10 +29,9 @@
         private void InitializeComponent()
         {
             components = new System.ComponentModel.Container();
-            components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmMain));
-            DevExpress.Utils.SuperToolTip superToolTip2 = new DevExpress.Utils.SuperToolTip();
-            DevExpress.Utils.ToolTipItem toolTipItem2 = new DevExpress.Utils.ToolTipItem();
+            DevExpress.Utils.SuperToolTip superToolTip1 = new DevExpress.Utils.SuperToolTip();
+            DevExpress.Utils.ToolTipItem toolTipItem1 = new DevExpress.Utils.ToolTipItem();
             ribbonControl1 = new DevExpress.XtraBars.Ribbon.RibbonControl();
             barButtonItem1 = new DevExpress.XtraBars.BarButtonItem();
             MrbarButtonItem = new DevExpress.XtraBars.BarButtonItem();
@@ -67,6 +66,10 @@
             barButtonItem17 = new DevExpress.XtraBars.BarButtonItem();
             barButtonItem18 = new DevExpress.XtraBars.BarButtonItem();
             barButtonItem19 = new DevExpress.XtraBars.BarButtonItem();
+            barBtnUpdateMRV = new DevExpress.XtraBars.BarButtonItem();
+            barButtonItem21 = new DevExpress.XtraBars.BarButtonItem();
+            barButtonItem20 = new DevExpress.XtraBars.BarButtonItem();
+            barButtonItem22 = new DevExpress.XtraBars.BarButtonItem();
             ribbonPage1 = new DevExpress.XtraBars.Ribbon.RibbonPage();
             ribbonPageGroup1 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             ribbonPage3 = new DevExpress.XtraBars.Ribbon.RibbonPage();
@@ -74,12 +77,15 @@
             ribbonPageGroup4 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             ribbonPageGroup6 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             ribbonPageGroup7 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
+            ribbonPage10 = new DevExpress.XtraBars.Ribbon.RibbonPage();
+            ribbonPageGroup19 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             ribbonPage8 = new DevExpress.XtraBars.Ribbon.RibbonPage();
             ribbonPageGroup12 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             ribbonPage5 = new DevExpress.XtraBars.Ribbon.RibbonPage();
             ribbonPageGroup9 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             ribbonPageGroup15 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             ribbonPageGroup16 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
+            ribbonPageGroup18 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             ribbonPage6 = new DevExpress.XtraBars.Ribbon.RibbonPage();
             ribbonPageGroup10 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             ribbonPage4 = new DevExpress.XtraBars.Ribbon.RibbonPage();
@@ -98,9 +104,7 @@
             ribbonStatusBar1 = new DevExpress.XtraBars.Ribbon.RibbonStatusBar();
             documentManager1 = new DevExpress.XtraBars.Docking2010.DocumentManager(components);
             tabbedView1 = new DevExpress.XtraBars.Docking2010.Views.Tabbed.TabbedView(components);
-            ribbonPageGroup18 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
-            barBtnUpdateMRV = new DevExpress.XtraBars.BarButtonItem();
-            barButtonItem21 = new DevExpress.XtraBars.BarButtonItem();
+            barButtonItem23 = new DevExpress.XtraBars.BarButtonItem();
             ((System.ComponentModel.ISupportInitialize)ribbonControl1).BeginInit();
             ((System.ComponentModel.ISupportInitialize)repositoryItemHypertextLabel1).BeginInit();
             ((System.ComponentModel.ISupportInitialize)repositoryItemHypertextLabel2).BeginInit();
@@ -114,16 +118,16 @@
             ribbonControl1.Cursor = Cursors.Hand;
             ribbonControl1.EmptyAreaImageOptions.ImagePadding = new Padding(22, 24, 22, 24);
             ribbonControl1.ExpandCollapseItem.Id = 0;
-            ribbonControl1.Items.AddRange(new DevExpress.XtraBars.BarItem[] { ribbonControl1.ExpandCollapseItem, barButtonItem1, MrbarButtonItem, PoBarButtonItem, skinPaletteDropDownButtonItem1, barStaticItem1, barBtnPl, barBtnPk, barButtonItem6, barButtonItem7, barButtonItem8, barButtonItem9, barbtnImportPackingList, barButtonItem11, btnmiv, barButtonItem13, barButtonItem14, CompanybarButtonItem, barStaticItem2, skinDropDownButtonItem1, barStaticItem3, barStaticItem4, barBtnContracts, barButtonItem4, barButtonItem5, barButtonItem10, barButtonItem2, barButtonItem3, barButtonItem12, barButtonItem15, barButtonItem16, barButtonItem17, barButtonItem18, barButtonItem19, barBtnUpdateMRV, barButtonItem21 });
+            ribbonControl1.Items.AddRange(new DevExpress.XtraBars.BarItem[] { ribbonControl1.ExpandCollapseItem, barButtonItem1, MrbarButtonItem, PoBarButtonItem, skinPaletteDropDownButtonItem1, barStaticItem1, barBtnPl, barBtnPk, barButtonItem6, barButtonItem7, barButtonItem8, barButtonItem9, barbtnImportPackingList, barButtonItem11, btnmiv, barButtonItem13, barButtonItem14, CompanybarButtonItem, barStaticItem2, skinDropDownButtonItem1, barStaticItem3, barStaticItem4, barBtnContracts, barButtonItem4, barButtonItem5, barButtonItem10, barButtonItem2, barButtonItem3, barButtonItem12, barButtonItem15, barButtonItem16, barButtonItem17, barButtonItem18, barButtonItem19, barBtnUpdateMRV, barButtonItem21, barButtonItem20, barButtonItem22, barButtonItem23 });
             ribbonControl1.Location = new Point(0, 0);
             ribbonControl1.Margin = new Padding(3, 2, 3, 2);
-            ribbonControl1.MaxItemId = 59;
+            ribbonControl1.MaxItemId = 62;
             ribbonControl1.Name = "ribbonControl1";
             ribbonControl1.OptionsMenuMinWidth = 248;
             ribbonControl1.PageHeaderItemLinks.Add(skinPaletteDropDownButtonItem1);
             ribbonControl1.PageHeaderItemLinks.Add(skinDropDownButtonItem1);
             ribbonControl1.PageHeaderItemLinks.Add(barStaticItem3);
-            ribbonControl1.Pages.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPage[] { ribbonPage1, ribbonPage3, ribbonPage8, ribbonPage5, ribbonPage6, ribbonPage4, ribbonPage9, ribbonPage2, ribbonPage7 });
+            ribbonControl1.Pages.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPage[] { ribbonPage1, ribbonPage3, ribbonPage10, ribbonPage8, ribbonPage5, ribbonPage6, ribbonPage4, ribbonPage9, ribbonPage2, ribbonPage7 });
             ribbonControl1.RepositoryItems.AddRange(new DevExpress.XtraEditors.Repository.RepositoryItem[] { repositoryItemHypertextLabel1, repositoryItemHypertextLabel2, repositoryItemHypertextLabel3 });
             ribbonControl1.Size = new Size(1384, 177);
             ribbonControl1.StatusBar = ribbonStatusBar1;
@@ -415,6 +419,43 @@
             barButtonItem19.Name = "barButtonItem19";
             barButtonItem19.ItemClick += barButtonItem19_ItemClick;
             // 
+            // barBtnUpdateMRV
+            // 
+            barBtnUpdateMRV.Caption = "Update  Mrv";
+            barBtnUpdateMRV.Id = 57;
+            barBtnUpdateMRV.ImageOptions.Image = (Image)resources.GetObject("barBtnUpdateMRV.ImageOptions.Image");
+            barBtnUpdateMRV.ImageOptions.LargeImage = (Image)resources.GetObject("barBtnUpdateMRV.ImageOptions.LargeImage");
+            barBtnUpdateMRV.Name = "barBtnUpdateMRV";
+            barBtnUpdateMRV.ItemClick += barBtnUpdateMRV_ItemClick;
+            // 
+            // barButtonItem21
+            // 
+            barButtonItem21.Caption = "Update  Hmv";
+            barButtonItem21.Id = 58;
+            barButtonItem21.ImageOptions.Image = (Image)resources.GetObject("barButtonItem21.ImageOptions.Image");
+            barButtonItem21.ImageOptions.LargeImage = (Image)resources.GetObject("barButtonItem21.ImageOptions.LargeImage");
+            barButtonItem21.Name = "barButtonItem21";
+            barButtonItem21.ItemClick += barButtonItem21_ItemClick;
+            // 
+            // barButtonItem20
+            // 
+            barButtonItem20.Caption = "Register IVR";
+            barButtonItem20.Hint = "Register Site Inspection Visit Report (IVR)";
+            barButtonItem20.Id = 59;
+            barButtonItem20.ImageOptions.Image = (Image)resources.GetObject("barButtonItem20.ImageOptions.Image");
+            barButtonItem20.ImageOptions.LargeImage = (Image)resources.GetObject("barButtonItem20.ImageOptions.LargeImage");
+            barButtonItem20.Name = "barButtonItem20";
+            barButtonItem20.ItemClick += barButtonItem20_ItemClick;
+            // 
+            // barButtonItem22
+            // 
+            barButtonItem22.Caption = "Register MSR";
+            barButtonItem22.Id = 60;
+            barButtonItem22.ImageOptions.Image = (Image)resources.GetObject("barButtonItem22.ImageOptions.Image");
+            barButtonItem22.ImageOptions.LargeImage = (Image)resources.GetObject("barButtonItem22.ImageOptions.LargeImage");
+            barButtonItem22.Name = "barButtonItem22";
+            barButtonItem22.ItemClick += barButtonItem22_ItemClick;
+            // 
             // ribbonPage1
             // 
             ribbonPage1.Groups.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPageGroup[] { ribbonPageGroup1 });
@@ -464,6 +505,21 @@
             ribbonPageGroup7.Name = "ribbonPageGroup7";
             ribbonPageGroup7.Text = "Import Packing List";
             // 
+            // ribbonPage10
+            // 
+            ribbonPage10.Groups.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPageGroup[] { ribbonPageGroup19 });
+            ribbonPage10.ImageOptions.Image = (Image)resources.GetObject("ribbonPage10.ImageOptions.Image");
+            ribbonPage10.Name = "ribbonPage10";
+            ribbonPage10.Text = "MSR";
+            // 
+            // ribbonPageGroup19
+            // 
+            ribbonPageGroup19.ItemLinks.Add(barButtonItem20);
+            ribbonPageGroup19.ItemLinks.Add(barButtonItem22);
+            ribbonPageGroup19.ItemLinks.Add(barButtonItem23);
+            ribbonPageGroup19.Name = "ribbonPageGroup19";
+            ribbonPageGroup19.Text = "Material Site Receipt (MSR/OSD)";
+            // 
             // ribbonPage8
             // 
             ribbonPage8.Groups.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPageGroup[] { ribbonPageGroup12 });
@@ -503,10 +559,17 @@
             ribbonPageGroup16.ItemLinks.Add(barButtonItem17);
             ribbonPageGroup16.ItemLinks.Add(barButtonItem19);
             ribbonPageGroup16.Name = "ribbonPageGroup16";
-            toolTipItem2.Text = "Material Return Voucher ( MRV )";
-            superToolTip2.Items.Add(toolTipItem2);
-            ribbonPageGroup16.SuperTip = superToolTip2;
+            toolTipItem1.Text = "Material Return Voucher ( MRV )";
+            superToolTip1.Items.Add(toolTipItem1);
+            ribbonPageGroup16.SuperTip = superToolTip1;
             ribbonPageGroup16.Text = "Mrv / Hmv";
+            // 
+            // ribbonPageGroup18
+            // 
+            ribbonPageGroup18.ItemLinks.Add(barBtnUpdateMRV);
+            ribbonPageGroup18.ItemLinks.Add(barButtonItem21);
+            ribbonPageGroup18.Name = "ribbonPageGroup18";
+            ribbonPageGroup18.Text = "Update  Mrv/ Hmv";
             // 
             // ribbonPage6
             // 
@@ -622,29 +685,14 @@
             documentManager1.View = tabbedView1;
             documentManager1.ViewCollection.AddRange(new DevExpress.XtraBars.Docking2010.Views.BaseView[] { tabbedView1 });
             // 
-            // ribbonPageGroup18
+            // barButtonItem23
             // 
-            ribbonPageGroup18.ItemLinks.Add(barBtnUpdateMRV);
-            ribbonPageGroup18.ItemLinks.Add(barButtonItem21);
-            ribbonPageGroup18.Name = "ribbonPageGroup18";
-            ribbonPageGroup18.Text = "Update  Mrv/ Hmv";
-            // 
-            // barBtnUpdateMRV
-            // 
-            barBtnUpdateMRV.Caption = "Update  Mrv";
-            barBtnUpdateMRV.Id = 57;
-            barBtnUpdateMRV.ImageOptions.Image = (Image)resources.GetObject("barButtonItem20.ImageOptions.Image");
-            barBtnUpdateMRV.ImageOptions.LargeImage = (Image)resources.GetObject("barButtonItem20.ImageOptions.LargeImage");
-            barBtnUpdateMRV.Name = "barBtnUpdateMRV";
-            barBtnUpdateMRV.ItemClick += barBtnUpdateMRV_ItemClick;
-            // 
-            // barButtonItem21
-            // 
-            barButtonItem21.Caption = "Update  Hmv";
-            barButtonItem21.Id = 58;
-            barButtonItem21.ImageOptions.Image = (Image)resources.GetObject("barButtonItem21.ImageOptions.Image");
-            barButtonItem21.ImageOptions.LargeImage = (Image)resources.GetObject("barButtonItem21.ImageOptions.LargeImage");
-            barButtonItem21.Name = "barButtonItem21";
+            barButtonItem23.Caption = "MSR Rev / Delete";
+            barButtonItem23.Id = 61;
+            barButtonItem23.ImageOptions.Image = (Image)resources.GetObject("barButtonItem23.ImageOptions.Image");
+            barButtonItem23.ImageOptions.LargeImage = (Image)resources.GetObject("barButtonItem23.ImageOptions.LargeImage");
+            barButtonItem23.Name = "barButtonItem23";
+            barButtonItem23.ItemClick += barButtonItem23_ItemClick;
             // 
             // frmMain
             // 
@@ -746,5 +794,10 @@
         private DevExpress.XtraBars.BarButtonItem barBtnUpdateMRV;
         private DevExpress.XtraBars.BarButtonItem barButtonItem21;
         private DevExpress.XtraBars.Ribbon.RibbonPageGroup ribbonPageGroup18;
+        private DevExpress.XtraBars.Ribbon.RibbonPage ribbonPage10;
+        private DevExpress.XtraBars.Ribbon.RibbonPageGroup ribbonPageGroup19;
+        private DevExpress.XtraBars.BarButtonItem barButtonItem20;
+        private DevExpress.XtraBars.BarButtonItem barButtonItem22;
+        private DevExpress.XtraBars.BarButtonItem barButtonItem23;
     }
 }

@@ -220,7 +220,7 @@
             xtraTabControl1.Margin = new Padding(3, 2, 3, 2);
             xtraTabControl1.Name = "xtraTabControl1";
             xtraTabControl1.SelectedTabPage = xtraTabPage1;
-            xtraTabControl1.Size = new Size(1264, 644);
+            xtraTabControl1.Size = new Size(1554, 644);
             xtraTabControl1.TabIndex = 0;
             xtraTabControl1.TabPages.AddRange(new DevExpress.XtraTab.XtraTabPage[] { xtraTabPage1, xtraTabPage2 });
             // 
@@ -915,7 +915,7 @@
             xtraTabPage2.ImageOptions.Image = (Image)resources.GetObject("xtraTabPage2.ImageOptions.Image");
             xtraTabPage2.Margin = new Padding(3, 2, 3, 2);
             xtraTabPage2.Name = "xtraTabPage2";
-            xtraTabPage2.Size = new Size(1262, 600);
+            xtraTabPage2.Size = new Size(1552, 600);
             xtraTabPage2.Text = "All Item Of Selected PackingList";
             // 
             // panelControl6
@@ -927,7 +927,7 @@
             panelControl6.Location = new Point(0, 0);
             panelControl6.Margin = new Padding(3, 2, 3, 2);
             panelControl6.Name = "panelControl6";
-            panelControl6.Size = new Size(1262, 600);
+            panelControl6.Size = new Size(1552, 600);
             panelControl6.TabIndex = 0;
             // 
             // gridControl2
@@ -939,7 +939,7 @@
             gridControl2.Margin = new Padding(3, 2, 3, 2);
             gridControl2.Name = "gridControl2";
             gridControl2.RepositoryItems.AddRange(new DevExpress.XtraEditors.Repository.RepositoryItem[] { repositoryItemLookUpEditunit, repositoryItemLookUpEditscope, repositoryItemLookUpEditlocation, repositoryItemCheckEditHold, repositoryItemLookUpEditpk, repositoryItemCheckEditselect });
-            gridControl2.Size = new Size(1262, 558);
+            gridControl2.Size = new Size(1552, 558);
             gridControl2.TabIndex = 1;
             gridControl2.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] { gridView2 });
             gridControl2.Click += gridControl2_Click;
@@ -1388,7 +1388,7 @@
             panelControl7.Location = new Point(0, 0);
             panelControl7.Margin = new Padding(3, 2, 3, 2);
             panelControl7.Name = "panelControl7";
-            panelControl7.Size = new Size(1262, 42);
+            panelControl7.Size = new Size(1552, 42);
             panelControl7.TabIndex = 0;
             // 
             // panelControl10
@@ -1401,7 +1401,7 @@
             panelControl10.Controls.Add(checkEdit3);
             panelControl10.Controls.Add(labelControl6);
             panelControl10.Controls.Add(checkEdit4);
-            panelControl10.Location = new Point(1017, 7);
+            panelControl10.Location = new Point(1307, 7);
             panelControl10.Margin = new Padding(3, 2, 3, 2);
             panelControl10.Name = "panelControl10";
             panelControl10.Size = new Size(237, 28);
@@ -1457,7 +1457,7 @@
             panelControl9.Controls.Add(simpleButton6);
             panelControl9.Controls.Add(labelControl7);
             panelControl9.Controls.Add(simpleButton7);
-            panelControl9.Location = new Point(786, 7);
+            panelControl9.Location = new Point(1076, 7);
             panelControl9.Margin = new Padding(3, 2, 3, 2);
             panelControl9.Name = "panelControl9";
             panelControl9.Size = new Size(223, 28);
@@ -1613,7 +1613,7 @@
             Appearance.Options.UseFont = true;
             AutoScaleDimensions = new SizeF(6F, 13F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(1264, 644);
+            ClientSize = new Size(1554, 644);
             Controls.Add(xtraTabControl1);
             Margin = new Padding(3, 2, 3, 2);
             Name = "frmViewPackingList";

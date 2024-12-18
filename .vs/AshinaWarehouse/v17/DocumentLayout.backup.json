@@ -3,34 +3,42 @@
   "WorkspaceRootPath": "D:\\MyBigProject\\AshinaWarehouse\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{89D8F00C-F3D8-4FD2-9904-504DD587455F}|AWMS.app\\AWMS.app.csproj|d:\\mybigproject\\ashinawarehouse\\awms.app\\forms\\ribbonvoucher\\frmupdatemrv.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{89D8F00C-F3D8-4FD2-9904-504DD587455F}|AWMS.app\\AWMS.app.csproj|solutionrelative:awms.app\\forms\\ribbonvoucher\\frmupdatemrv.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{89D8F00C-F3D8-4FD2-9904-504DD587455F}|AWMS.app\\AWMS.app.csproj|d:\\mybigproject\\ashinawarehouse\\awms.app\\forms\\ribbonmsr\\frmmsrrev.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{89D8F00C-F3D8-4FD2-9904-504DD587455F}|AWMS.app\\AWMS.app.csproj|solutionrelative:awms.app\\forms\\ribbonmsr\\frmmsrrev.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{F8DC9077-A301-4213-A38D-FCEB52DD31E5}|AWMS.dto\\AWMS.dto.csproj|d:\\mybigproject\\ashinawarehouse\\awms.dto\\mrvupdatedto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{F8DC9077-A301-4213-A38D-FCEB52DD31E5}|AWMS.dto\\AWMS.dto.csproj|solutionrelative:awms.dto\\mrvupdatedto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{72C9D7C4-39DA-4D50-8F4F-A18DB77F1F9B}|AWMS.dapper\\AWMS.dapper.csproj|d:\\mybigproject\\ashinawarehouse\\awms.dapper\\inspectiondapperrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{72C9D7C4-39DA-4D50-8F4F-A18DB77F1F9B}|AWMS.dapper\\AWMS.dapper.csproj|solutionrelative:awms.dapper\\inspectiondapperrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{72C9D7C4-39DA-4D50-8F4F-A18DB77F1F9B}|AWMS.dapper\\AWMS.dapper.csproj|d:\\mybigproject\\ashinawarehouse\\awms.dapper\\mrvdapperrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{72C9D7C4-39DA-4D50-8F4F-A18DB77F1F9B}|AWMS.dapper\\AWMS.dapper.csproj|solutionrelative:awms.dapper\\mrvdapperrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{72C9D7C4-39DA-4D50-8F4F-A18DB77F1F9B}|AWMS.dapper\\AWMS.dapper.csproj|d:\\mybigproject\\ashinawarehouse\\awms.dapper\\repositories\\iinspectiondapperrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{72C9D7C4-39DA-4D50-8F4F-A18DB77F1F9B}|AWMS.dapper\\AWMS.dapper.csproj|solutionrelative:awms.dapper\\repositories\\iinspectiondapperrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{72C9D7C4-39DA-4D50-8F4F-A18DB77F1F9B}|AWMS.dapper\\AWMS.dapper.csproj|d:\\mybigproject\\ashinawarehouse\\awms.dapper\\repositories\\imrvdapperrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{72C9D7C4-39DA-4D50-8F4F-A18DB77F1F9B}|AWMS.dapper\\AWMS.dapper.csproj|solutionrelative:awms.dapper\\repositories\\imrvdapperrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{89D8F00C-F3D8-4FD2-9904-504DD587455F}|AWMS.app\\AWMS.app.csproj|d:\\mybigproject\\ashinawarehouse\\awms.app\\forms\\ribbonmsr\\frmmsrrev.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{89D8F00C-F3D8-4FD2-9904-504DD587455F}|AWMS.app\\AWMS.app.csproj|solutionrelative:awms.app\\forms\\ribbonmsr\\frmmsrrev.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{89D8F00C-F3D8-4FD2-9904-504DD587455F}|AWMS.app\\AWMS.app.csproj|d:\\mybigproject\\ashinawarehouse\\awms.app\\forms\\ribbonvoucher\\frmupdatemrv.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
-      "RelativeMoniker": "D:0:0:{89D8F00C-F3D8-4FD2-9904-504DD587455F}|AWMS.app\\AWMS.app.csproj|solutionrelative:awms.app\\forms\\ribbonvoucher\\frmupdatemrv.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+      "AbsoluteMoniker": "D:0:0:{F8DC9077-A301-4213-A38D-FCEB52DD31E5}|AWMS.dto\\AWMS.dto.csproj|d:\\mybigproject\\ashinawarehouse\\awms.dto\\inspectionmsrrevdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{F8DC9077-A301-4213-A38D-FCEB52DD31E5}|AWMS.dto\\AWMS.dto.csproj|solutionrelative:awms.dto\\inspectionmsrrevdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{89D8F00C-F3D8-4FD2-9904-504DD587455F}|AWMS.app\\AWMS.app.csproj|d:\\mybigproject\\ashinawarehouse\\awms.app\\forms\\ribbonmsr\\frmregistermsr.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{89D8F00C-F3D8-4FD2-9904-504DD587455F}|AWMS.app\\AWMS.app.csproj|solutionrelative:awms.app\\forms\\ribbonmsr\\frmregistermsr.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{89D8F00C-F3D8-4FD2-9904-504DD587455F}|AWMS.app\\AWMS.app.csproj|d:\\mybigproject\\ashinawarehouse\\awms.app\\forms\\ribbonmaterial\\frmpk.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{89D8F00C-F3D8-4FD2-9904-504DD587455F}|AWMS.app\\AWMS.app.csproj|solutionrelative:awms.app\\forms\\ribbonmaterial\\frmpk.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
     }
   ],
   "DocumentGroupContainers": [
     {
-      "Orientation": 1,
+      "Orientation": 0,
       "VerticalTabListWidth": 256,
       "DocumentGroups": [
         {
-          "DockedHeight": 200,
-          "SelectedChildIndex": 5,
+          "DockedWidth": 200,
+          "SelectedChildIndex": 4,
           "Children": [
             {
               "$type": "Bookmark",
@@ -38,66 +46,90 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "MrvUpdateDto.cs",
-              "DocumentMoniker": "D:\\MyBigProject\\AshinaWarehouse\\AWMS.dto\\MrvUpdateDto.cs",
-              "RelativeDocumentMoniker": "AWMS.dto\\MrvUpdateDto.cs",
-              "ToolTip": "D:\\MyBigProject\\AshinaWarehouse\\AWMS.dto\\MrvUpdateDto.cs",
-              "RelativeToolTip": "AWMS.dto\\MrvUpdateDto.cs",
-              "ViewState": "AgIAAAoAAAAAAAAAAAAzwBgAAAAiAAAAAAAAAA==",
+              "DocumentIndex": 6,
+              "Title": "frmPK.cs [Design]",
+              "DocumentMoniker": "D:\\MyBigProject\\AshinaWarehouse\\AWMS.app\\Forms\\RibbonMaterial\\frmPK.cs",
+              "RelativeDocumentMoniker": "AWMS.app\\Forms\\RibbonMaterial\\frmPK.cs",
+              "ToolTip": "D:\\MyBigProject\\AshinaWarehouse\\AWMS.app\\Forms\\RibbonMaterial\\frmPK.cs [Design]",
+              "RelativeToolTip": "AWMS.app\\Forms\\RibbonMaterial\\frmPK.cs [Design]",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-11-13T13:27:39.445Z",
+              "WhenOpened": "2024-12-18T17:29:57.185Z",
+              "EditorCaption": " [Design]"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "frmRegisterMsr.cs [Design]",
+              "DocumentMoniker": "D:\\MyBigProject\\AshinaWarehouse\\AWMS.app\\Forms\\RibbonMsr\\frmRegisterMsr.cs",
+              "RelativeDocumentMoniker": "AWMS.app\\Forms\\RibbonMsr\\frmRegisterMsr.cs",
+              "ToolTip": "D:\\MyBigProject\\AshinaWarehouse\\AWMS.app\\Forms\\RibbonMsr\\frmRegisterMsr.cs [Design]",
+              "RelativeToolTip": "AWMS.app\\Forms\\RibbonMsr\\frmRegisterMsr.cs [Design]",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-12-18T13:40:09.885Z",
+              "EditorCaption": " [Design]"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "InspectionMsrRevDto.cs",
+              "DocumentMoniker": "D:\\MyBigProject\\AshinaWarehouse\\AWMS.dto\\InspectionMsrRevDto.cs",
+              "RelativeDocumentMoniker": "AWMS.dto\\InspectionMsrRevDto.cs",
+              "ToolTip": "D:\\MyBigProject\\AshinaWarehouse\\AWMS.dto\\InspectionMsrRevDto.cs",
+              "RelativeToolTip": "AWMS.dto\\InspectionMsrRevDto.cs",
+              "ViewState": "AgIAAAsAAAAAAAAAAADwvx0AAAAeAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-12-18T13:29:24.448Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "MrvDapperRepository.cs",
-              "DocumentMoniker": "D:\\MyBigProject\\AshinaWarehouse\\AWMS.dapper\\MrvDapperRepository.cs",
-              "RelativeDocumentMoniker": "AWMS.dapper\\MrvDapperRepository.cs",
-              "ToolTip": "D:\\MyBigProject\\AshinaWarehouse\\AWMS.dapper\\MrvDapperRepository.cs",
-              "RelativeToolTip": "AWMS.dapper\\MrvDapperRepository.cs",
-              "ViewState": "AgIAAJEAAAAAAAAAAAAUwKEAAAAjAAAAAAAAAA==",
+              "DocumentIndex": 0,
+              "Title": "frmMsrRev.cs",
+              "DocumentMoniker": "D:\\MyBigProject\\AshinaWarehouse\\AWMS.app\\Forms\\RibbonMsr\\frmMsrRev.cs",
+              "RelativeDocumentMoniker": "AWMS.app\\Forms\\RibbonMsr\\frmMsrRev.cs",
+              "ToolTip": "D:\\MyBigProject\\AshinaWarehouse\\AWMS.app\\Forms\\RibbonMsr\\frmMsrRev.cs",
+              "RelativeToolTip": "AWMS.app\\Forms\\RibbonMsr\\frmMsrRev.cs",
+              "ViewState": "AgIAALEAAAAAAAAAAAAUwMYAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-11-13T11:09:45.794Z",
+              "WhenOpened": "2024-12-18T13:17:03.104Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 3,
-              "Title": "IMrvDapperRepository.cs",
-              "DocumentMoniker": "D:\\MyBigProject\\AshinaWarehouse\\AWMS.dapper\\Repositories\\IMrvDapperRepository.cs",
-              "RelativeDocumentMoniker": "AWMS.dapper\\Repositories\\IMrvDapperRepository.cs",
-              "ToolTip": "D:\\MyBigProject\\AshinaWarehouse\\AWMS.dapper\\Repositories\\IMrvDapperRepository.cs",
-              "RelativeToolTip": "AWMS.dapper\\Repositories\\IMrvDapperRepository.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA4AAAAnAAAAAAAAAA==",
+              "Title": "frmMsrRev.cs [Design]",
+              "DocumentMoniker": "D:\\MyBigProject\\AshinaWarehouse\\AWMS.app\\Forms\\RibbonMsr\\frmMsrRev.cs",
+              "RelativeDocumentMoniker": "AWMS.app\\Forms\\RibbonMsr\\frmMsrRev.cs",
+              "ToolTip": "D:\\MyBigProject\\AshinaWarehouse\\AWMS.app\\Forms\\RibbonMsr\\frmMsrRev.cs [Design]",
+              "RelativeToolTip": "AWMS.app\\Forms\\RibbonMsr\\frmMsrRev.cs [Design]",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-11-13T11:03:13.428Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 4,
-              "Title": "frmUpdateMrv.cs [Design]",
-              "DocumentMoniker": "D:\\MyBigProject\\AshinaWarehouse\\AWMS.app\\Forms\\RibbonVoucher\\frmUpdateMrv.cs",
-              "RelativeDocumentMoniker": "AWMS.app\\Forms\\RibbonVoucher\\frmUpdateMrv.cs",
-              "ToolTip": "D:\\MyBigProject\\AshinaWarehouse\\AWMS.app\\Forms\\RibbonVoucher\\frmUpdateMrv.cs [Design]",
-              "RelativeToolTip": "AWMS.app\\Forms\\RibbonVoucher\\frmUpdateMrv.cs [Design]",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-11-13T07:12:59.855Z",
+              "WhenOpened": "2024-12-18T13:02:59.442Z",
               "EditorCaption": " [Design]"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "frmUpdateMrv.cs",
-              "DocumentMoniker": "D:\\MyBigProject\\AshinaWarehouse\\AWMS.app\\Forms\\RibbonVoucher\\frmUpdateMrv.cs",
-              "RelativeDocumentMoniker": "AWMS.app\\Forms\\RibbonVoucher\\frmUpdateMrv.cs",
-              "ToolTip": "D:\\MyBigProject\\AshinaWarehouse\\AWMS.app\\Forms\\RibbonVoucher\\frmUpdateMrv.cs",
-              "RelativeToolTip": "AWMS.app\\Forms\\RibbonVoucher\\frmUpdateMrv.cs",
-              "ViewState": "AgIAACQAAAAAAAAAAAAUwFQAAAAAAAAAAAAAAA==",
+              "DocumentIndex": 2,
+              "Title": "IInspectionDapperRepository.cs",
+              "DocumentMoniker": "D:\\MyBigProject\\AshinaWarehouse\\AWMS.dapper\\Repositories\\IInspectionDapperRepository.cs",
+              "RelativeDocumentMoniker": "AWMS.dapper\\Repositories\\IInspectionDapperRepository.cs",
+              "ToolTip": "D:\\MyBigProject\\AshinaWarehouse\\AWMS.dapper\\Repositories\\IInspectionDapperRepository.cs",
+              "RelativeToolTip": "AWMS.dapper\\Repositories\\IInspectionDapperRepository.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAuwA0AAAA7AAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-11-13T07:11:27.237Z",
+              "WhenOpened": "2024-12-16T07:33:44.508Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "InspectionDapperRepository.cs",
+              "DocumentMoniker": "D:\\MyBigProject\\AshinaWarehouse\\AWMS.dapper\\InspectionDapperRepository.cs",
+              "RelativeDocumentMoniker": "AWMS.dapper\\InspectionDapperRepository.cs",
+              "ToolTip": "D:\\MyBigProject\\AshinaWarehouse\\AWMS.dapper\\InspectionDapperRepository.cs",
+              "RelativeToolTip": "AWMS.dapper\\InspectionDapperRepository.cs",
+              "ViewState": "AgIAAH0AAAAAAAAAAAAUwIkAAAAzAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-12-16T07:49:02.951Z",
               "EditorCaption": ""
             }
           ]

@@ -94,6 +94,7 @@
             colMSRRevEnteredBy = new DevExpress.XtraGrid.Columns.GridColumn();
             colMSRRevDate = new DevExpress.XtraGrid.Columns.GridColumn();
             repositoryItemLookUpEdit1 = new DevExpress.XtraEditors.Repository.RepositoryItemLookUpEdit();
+            Dimension = new DevExpress.XtraGrid.Columns.GridColumn();
             ((System.ComponentModel.ISupportInitialize)ArrivalDate.Properties).BeginInit();
             ((System.ComponentModel.ISupportInitialize)ArrivalDate.Properties.CalendarTimeProperties).BeginInit();
             ((System.ComponentModel.ISupportInitialize)txtPkDescription.Properties).BeginInit();
@@ -618,7 +619,7 @@
             gridView1.Appearance.Row.Options.UseTextOptions = true;
             gridView1.Appearance.Row.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
             gridView1.Appearance.Row.TextOptions.VAlignment = DevExpress.Utils.VertAlignment.Center;
-            gridView1.Columns.AddRange(new DevExpress.XtraGrid.Columns.GridColumn[] { colPKID, colPLId, colPK, colNetW, colGrossW, colVolume, colArrivalDate, colDesciption, colRemark, colEnteredBy, colEnteredDate, colEditedBy, colEditedDate, colMSRNO, colMSRPDF, colMSRDate, colMSREnteredBy, colMSRStatus, colMSRRev, colMSRRevEnteredBy, colMSRRevDate });
+            gridView1.Columns.AddRange(new DevExpress.XtraGrid.Columns.GridColumn[] { colPKID, colPLId, colPK, colNetW, colGrossW, colVolume, Dimension, colArrivalDate, colDesciption, colRemark, colEnteredBy, colEnteredDate, colEditedBy, colEditedDate, colMSRNO, colMSRPDF, colMSRDate, colMSREnteredBy, colMSRStatus, colMSRRev, colMSRRevEnteredBy, colMSRRevDate });
             gridView1.DetailHeight = 284;
             gridView1.GridControl = gridcontrol;
             gridView1.Name = "gridView1";
@@ -704,7 +705,7 @@
             colArrivalDate.MinWidth = 21;
             colArrivalDate.Name = "colArrivalDate";
             colArrivalDate.Visible = true;
-            colArrivalDate.VisibleIndex = 3;
+            colArrivalDate.VisibleIndex = 4;
             colArrivalDate.Width = 81;
             // 
             // colDesciption
@@ -714,7 +715,7 @@
             colDesciption.MinWidth = 21;
             colDesciption.Name = "colDesciption";
             colDesciption.Visible = true;
-            colDesciption.VisibleIndex = 4;
+            colDesciption.VisibleIndex = 5;
             colDesciption.Width = 81;
             // 
             // colRemark
@@ -733,7 +734,7 @@
             colEnteredBy.Name = "colEnteredBy";
             colEnteredBy.OptionsColumn.AllowEdit = false;
             colEnteredBy.Visible = true;
-            colEnteredBy.VisibleIndex = 5;
+            colEnteredBy.VisibleIndex = 6;
             colEnteredBy.Width = 81;
             // 
             // colEnteredDate
@@ -744,7 +745,7 @@
             colEnteredDate.Name = "colEnteredDate";
             colEnteredDate.OptionsColumn.AllowEdit = false;
             colEnteredDate.Visible = true;
-            colEnteredDate.VisibleIndex = 6;
+            colEnteredDate.VisibleIndex = 7;
             colEnteredDate.Width = 81;
             // 
             // colEditedBy
@@ -774,7 +775,7 @@
             colMSRNO.Name = "colMSRNO";
             colMSRNO.OptionsColumn.AllowEdit = false;
             colMSRNO.Visible = true;
-            colMSRNO.VisibleIndex = 7;
+            colMSRNO.VisibleIndex = 8;
             colMSRNO.Width = 81;
             // 
             // colMSRPDF
@@ -794,7 +795,7 @@
             colMSRDate.Name = "colMSRDate";
             colMSRDate.OptionsColumn.AllowEdit = false;
             colMSRDate.Visible = true;
-            colMSRDate.VisibleIndex = 8;
+            colMSRDate.VisibleIndex = 9;
             colMSRDate.Width = 81;
             // 
             // colMSREnteredBy
@@ -805,7 +806,7 @@
             colMSREnteredBy.Name = "colMSREnteredBy";
             colMSREnteredBy.OptionsColumn.AllowEdit = false;
             colMSREnteredBy.Visible = true;
-            colMSREnteredBy.VisibleIndex = 9;
+            colMSREnteredBy.VisibleIndex = 10;
             colMSREnteredBy.Width = 81;
             // 
             // colMSRStatus
@@ -852,6 +853,14 @@
             repositoryItemLookUpEdit1.DisplayMember = "MrName";
             repositoryItemLookUpEdit1.Name = "repositoryItemLookUpEdit1";
             repositoryItemLookUpEdit1.ValueMember = "MrId";
+            // 
+            // Dimension
+            // 
+            Dimension.Caption = "Dimension";
+            Dimension.FieldName = "Dimension";
+            Dimension.Name = "Dimension";
+            Dimension.Visible = true;
+            Dimension.VisibleIndex = 3;
             // 
             // frmPK
             // 
@@ -967,5 +976,6 @@
         private DevExpress.XtraBars.BarButtonItem barButtonItem2;
         private Label label1;
         private DevExpress.XtraEditors.Repository.RepositoryItemCalcEdit repositoryItemCalcEdit1;
+        private DevExpress.XtraGrid.Columns.GridColumn Dimension;
     }
 }

@@ -209,14 +209,14 @@ namespace AWMS.datalayer.Migrations
                             CompanyID = 1,
                             Abbreviation = "PPI",
                             CompanyName = "Petro Paydar Iranian",
-                            EnteredDate = new DateTime(2024, 11, 10, 17, 27, 35, 307, DateTimeKind.Local).AddTicks(6124)
+                            EnteredDate = new DateTime(2024, 12, 16, 21, 49, 18, 799, DateTimeKind.Local).AddTicks(6893)
                         },
                         new
                         {
                             CompanyID = 2,
                             Abbreviation = "TESCO",
                             CompanyName = "Teco",
-                            EnteredDate = new DateTime(2024, 11, 10, 17, 27, 35, 307, DateTimeKind.Local).AddTicks(6133)
+                            EnteredDate = new DateTime(2024, 12, 16, 21, 49, 18, 799, DateTimeKind.Local).AddTicks(6906)
                         });
                 });
 
@@ -385,6 +385,140 @@ namespace AWMS.datalayer.Migrations
                             DescriptionForPkId = 1,
                             Description = "-"
                         });
+                });
+
+            modelBuilder.Entity("AWMS.datalayer.Entities.Inspection", b =>
+                {
+                    b.Property<int>("PLId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("Description")
+                        .HasMaxLength(500)
+                        .HasColumnType("nvarchar(500)");
+
+                    b.Property<int?>("EditedBy")
+                        .HasColumnType("int");
+
+                    b.Property<DateTime?>("EditedDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<int?>("EnteredBy")
+                        .HasColumnType("int");
+
+                    b.Property<DateTime?>("EnteredDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("IFRPDF")
+                        .HasMaxLength(300)
+                        .HasColumnType("nvarchar(300)");
+
+                    b.Property<bool?>("IRN_Conflict")
+                        .IsRequired()
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("bit")
+                        .HasDefaultValue(false);
+
+                    b.Property<string>("IVRPDF")
+                        .HasMaxLength(300)
+                        .HasColumnType("nvarchar(300)");
+
+                    b.Property<string>("IVR_IFR")
+                        .HasMaxLength(100)
+                        .HasColumnType("nvarchar(100)");
+
+                    b.Property<string>("IVR_NO")
+                        .HasMaxLength(100)
+                        .HasColumnType("nvarchar(100)");
+
+                    b.Property<string>("IcNo")
+                        .IsRequired()
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("nvarchar(max)")
+                        .HasDefaultValue("False");
+
+                    b.Property<int?>("IrnId")
+                        .HasColumnType("int");
+
+                    b.Property<bool?>("Laydown")
+                        .IsRequired()
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("bit")
+                        .HasDefaultValue(false);
+
+                    b.Property<bool?>("Marking")
+                        .IsRequired()
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("bit")
+                        .HasDefaultValue(false);
+
+                    b.Property<bool?>("OPI")
+                        .IsRequired()
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("bit")
+                        .HasDefaultValue(false);
+
+                    b.Property<bool?>("OSBL")
+                        .IsRequired()
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("bit")
+                        .HasDefaultValue(false);
+
+                    b.Property<string>("OrderStatus")
+                        .HasMaxLength(100)
+                        .HasColumnType("nvarchar(100)");
+
+                    b.Property<bool?>("QuantityCheck")
+                        .IsRequired()
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("bit")
+                        .HasDefaultValue(false);
+
+                    b.Property<bool?>("Site")
+                        .IsRequired()
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("bit")
+                        .HasDefaultValue(false);
+
+                    b.Property<string>("SubProject")
+                        .HasMaxLength(200)
+                        .HasColumnType("nvarchar(200)");
+
+                    b.Property<bool?>("ThirdParty")
+                        .IsRequired()
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("bit")
+                        .HasDefaultValue(false);
+
+                    b.Property<bool?>("Unloading")
+                        .IsRequired()
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("bit")
+                        .HasDefaultValue(false);
+
+                    b.Property<bool?>("VisualInspection")
+                        .IsRequired()
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("bit")
+                        .HasDefaultValue(false);
+
+                    b.Property<bool?>("Warehouse")
+                        .IsRequired()
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("bit")
+                        .HasDefaultValue(false);
+
+                    b.HasKey("PLId");
+
+                    b.HasIndex("IVR_NO")
+                        .HasDatabaseName("IX_Inspection_IVR_NO");
+
+                    b.HasIndex("IrnId")
+                        .HasDatabaseName("IX_Inspection_IrnId");
+
+                    b.HasIndex("PLId")
+                        .HasDatabaseName("IX_Inspection_PLId");
+
+                    b.ToTable("Inspection", (string)null);
                 });
 
             modelBuilder.Entity("AWMS.datalayer.Entities.Irn", b =>
@@ -662,21 +796,21 @@ namespace AWMS.datalayer.Migrations
                         {
                             LocationID = 1,
                             EnteredBy = 88,
-                            EnteredDate = new DateTime(2024, 11, 10, 17, 27, 35, 306, DateTimeKind.Local).AddTicks(3303),
+                            EnteredDate = new DateTime(2024, 12, 16, 21, 49, 18, 797, DateTimeKind.Local).AddTicks(6094),
                             LocationName = "L02A101A"
                         },
                         new
                         {
                             LocationID = 2,
                             EnteredBy = 88,
-                            EnteredDate = new DateTime(2024, 11, 10, 17, 27, 35, 306, DateTimeKind.Local).AddTicks(3321),
+                            EnteredDate = new DateTime(2024, 12, 16, 21, 49, 18, 797, DateTimeKind.Local).AddTicks(6115),
                             LocationName = "L02A102A"
                         },
                         new
                         {
                             LocationID = 3,
                             EnteredBy = 88,
-                            EnteredDate = new DateTime(2024, 11, 10, 17, 27, 35, 306, DateTimeKind.Local).AddTicks(3322),
+                            EnteredDate = new DateTime(2024, 12, 16, 21, 49, 18, 797, DateTimeKind.Local).AddTicks(6116),
                             LocationName = "W02A02B"
                         });
                 });
@@ -1875,6 +2009,17 @@ namespace AWMS.datalayer.Migrations
                     b.Navigation("Company");
                 });
 
+            modelBuilder.Entity("AWMS.datalayer.Entities.Inspection", b =>
+                {
+                    b.HasOne("AWMS.datalayer.Entities.PackingList", "PackingList")
+                        .WithMany("Inspections")
+                        .HasForeignKey("PLId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("PackingList");
+                });
+
             modelBuilder.Entity("AWMS.datalayer.Entities.Item", b =>
                 {
                     b.HasOne("AWMS.datalayer.Entities.Package", "Package")
@@ -2106,6 +2251,8 @@ namespace AWMS.datalayer.Migrations
 
             modelBuilder.Entity("AWMS.datalayer.Entities.PackingList", b =>
                 {
+                    b.Navigation("Inspections");
+
                     b.Navigation("Packages");
                 });
 

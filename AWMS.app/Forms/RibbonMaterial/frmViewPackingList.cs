@@ -1,6 +1,7 @@
 ﻿using AWMS.app.Forms.RibbonUser;
 using AWMS.app.Utility;
 using AWMS.core.Interfaces;
+using AWMS.core.Services;
 using AWMS.dapper.Repositories;
 using AWMS.dto;
 using DevExpress.XtraEditors;
@@ -17,22 +18,6 @@ namespace AWMS.app.Forms.RibbonMaterial
     public partial class frmViewPackingList : XtraForm
     {
         private readonly IServiceProvider _serviceProvider;
-        private readonly ISupplierService _supplierService;
-        private readonly IIrnService _irnService;
-        private readonly IShipmentService _shipmentService;
-        private readonly IMrService _mrService;
-        private readonly IPoService _poService;
-        private readonly IAreaUnitService _areaunitService;
-        private readonly IVendorService _vendorService;
-        private readonly IDesciplineService _desciplineService;
-        private readonly IDescriptionForPkService _descriptionforpkService;
-        private readonly IUnitDapperRepository _unitService;
-        private readonly IScopeDapperRepository _scopeService;
-        private readonly ILocationDapperRepository _locationRepository;
-        private readonly IPackingListDapperRepository _packingRepository;
-        private readonly IPackageDapperRepository _packageRepository;
-        private readonly ILocItemDapperRepository _LocitemRepository;
-        private readonly IItemDapperRepository _itemRepository;
         private readonly UserSession _session;
 
         private bool _isAllSelected = false;
@@ -40,32 +25,10 @@ namespace AWMS.app.Forms.RibbonMaterial
         string PLname;
 
         public frmViewPackingList(
-            ISupplierService supplierService, IServiceProvider serviceProvider, IIrnService irnService,
-            IShipmentService shipmentService, IMrService mrService, IPoService poService,
-            IAreaUnitService areaunitService, IVendorService vendorService, IDesciplineService desciplineService,
-            IDescriptionForPkService descriptionforpkService, IUnitDapperRepository unitService,
-            IScopeDapperRepository scopeDapperRepository, IPackageDapperRepository packageDapperRepository,
-            ILocationDapperRepository locationDapperRepository, IPackingListDapperRepository packingListDapperRepository,
-            ILocItemDapperRepository locitemRepository, IItemDapperRepository itemDapperRepository, int? userId = null)
+            ISupplierService supplierService, IServiceProvider serviceProvider,int? userId = null)
         {
             InitializeComponent();
             _serviceProvider = serviceProvider;
-            _supplierService = supplierService;
-            _irnService = irnService;
-            _shipmentService = shipmentService;
-            _mrService = mrService;
-            _poService = poService;
-            _areaunitService = areaunitService;
-            _vendorService = vendorService;
-            _desciplineService = desciplineService;
-            _descriptionforpkService = descriptionforpkService;
-            _unitService = unitService;
-            _scopeService = scopeDapperRepository;
-            _locationRepository = locationDapperRepository;
-            _packingRepository = packingListDapperRepository;
-            _packageRepository = packageDapperRepository;
-            _LocitemRepository = locitemRepository;
-            _itemRepository = itemDapperRepository;
 
             int finalUserId = userId ?? 1; // استفاده از userId یا مقدار پیش‌فرض
             _session = SessionManager.GetSession(finalUserId);
@@ -79,7 +42,7 @@ namespace AWMS.app.Forms.RibbonMaterial
         {
             try
             {
-                var data = await _packingRepository.GetAllAsync();
+                var data = await _serviceProvider.GetService<IPackingListDapperRepository>()!.GetAllAsync();
                 if (data != null && gridControl1 != null)
                 {
                     gridControl1.DataSource = data;
@@ -97,18 +60,18 @@ namespace AWMS.app.Forms.RibbonMaterial
                 MessageBox.Show($"Error loading data: {ex.Message}");
             }
 
-            repositoryItemLookUpEditirn.DataSource = _irnService.GetAllIrns();
-            repositoryItemLookUpEditshipment.DataSource = _shipmentService.GetAllShipments();
-            repositoryItemLookUpEditmr.DataSource = _mrService.GetAllMrs();
-            repositoryItemLookUpEditpo.DataSource = _poService.GetAllPos();
-            repositoryItemLookUpEditarea.DataSource = _areaunitService.GetAllAreaUnits();
-            repositoryItemLookUpEditsupplier.DataSource = _supplierService.GetAllSuppliers();
-            repositoryItemLookUpEditvendor.DataSource = _vendorService.GetAllVendors();
-            repositoryItemLookUpEditdescipline.DataSource = _desciplineService.GetAllDesciplines();
-            repositoryItemLookUpEditdescriptionForPk.DataSource = _descriptionforpkService.GetAllDescriptionForPks();
-            repositoryItemLookUpEditunit.DataSource = _unitService.GetAll();
-            repositoryItemLookUpEditscope.DataSource = _scopeService.GetAll();
-            repositoryItemLookUpEditlocation.DataSource = await _locationRepository.GetAllAsync();
+            repositoryItemLookUpEditirn.DataSource = _serviceProvider.GetService<IrnService>()!.GetAllIrns();
+            repositoryItemLookUpEditshipment.DataSource = _serviceProvider.GetService<ShipmentService>()!.GetAllShipments();
+            repositoryItemLookUpEditmr.DataSource = _serviceProvider.GetService<MrService>()!.GetAllMrs();
+            repositoryItemLookUpEditpo.DataSource = _serviceProvider.GetService<PoService>()!.GetAllPos();
+            repositoryItemLookUpEditarea.DataSource = _serviceProvider.GetService<AreaUnitService>()!.GetAllAreaUnits();
+            repositoryItemLookUpEditsupplier.DataSource = _serviceProvider.GetService<SupplierService>()!.GetAllSuppliers();
+            repositoryItemLookUpEditvendor.DataSource = _serviceProvider.GetService<VendorService>()!.GetAllVendors();
+            repositoryItemLookUpEditdescipline.DataSource = _serviceProvider.GetService<DesciplineService>()!.GetAllDesciplines();
+            repositoryItemLookUpEditdescriptionForPk.DataSource = _serviceProvider.GetService<DescriptionForPkService>()!.GetAllDescriptionForPks();
+            repositoryItemLookUpEditunit.DataSource = _serviceProvider.GetService<IUnitDapperRepository>()!.GetAll();
+            repositoryItemLookUpEditscope.DataSource = _serviceProvider.GetService<IScopeDapperRepository>()!.GetAll();
+            repositoryItemLookUpEditlocation.DataSource = await _serviceProvider.GetService<ILocationDapperRepository>()!.GetAllAsync();
 
         }
 
@@ -215,8 +178,8 @@ namespace AWMS.app.Forms.RibbonMaterial
                     labelControl3.Text = $"Selected PlName: {plName.ToString()}";
                 }
 
-                int lastPK = _packageRepository.GetLastPackage(Convert.ToInt32(plid.ToString()));
-                int CountPK = _packageRepository.GetPackageCount(Convert.ToInt32(plid.ToString()));
+                int lastPK = _serviceProvider.GetService<IPackageDapperRepository>()!.GetLastPackage(Convert.ToInt32(plid.ToString()));
+                int CountPK = _serviceProvider.GetService<IPackageDapperRepository>()!.GetPackageCount(Convert.ToInt32(plid.ToString()));
                 lblcount.Text = "Count Of PK : " + CountPK;
                 lblLastPK.Text = "Last PK : " + lastPK;
             }
@@ -269,7 +232,7 @@ namespace AWMS.app.Forms.RibbonMaterial
                         try
                         {
                             // Update the entity using the repository method
-                            var (success, errorMessage) = await _packingRepository.UpdateAsync(modifiedPackingList);
+                            var (success, errorMessage) = await _serviceProvider.GetService<IPackingListDapperRepository>()!.UpdateAsync(modifiedPackingList);
 
                             if (!success)
                             {
@@ -318,9 +281,9 @@ namespace AWMS.app.Forms.RibbonMaterial
                                 PLname = gridView1.GetRowCellValue(hitInfo.RowHandle, "PLName")?.ToString();
 
                                 // اطمینان حاصل کنید که _packingRepository مقداردهی شده است
-                                if (_packingRepository != null)
+                                if (_serviceProvider.GetService<IPackingListDapperRepository>() != null)
                                 {
-                                    gridControl2.DataSource = await _packingRepository.AllItemSelectedPlAsync(PLid);
+                                    gridControl2.DataSource = await _serviceProvider.GetService<IPackingListDapperRepository>().AllItemSelectedPlAsync(PLid);
                                 }
 
                                 if (xtraTabControl1 != null)
@@ -343,9 +306,9 @@ namespace AWMS.app.Forms.RibbonMaterial
                                 labelControl9.Text = "PLName:  " + PLname;
 
                                 // اطمینان حاصل کنید که _packageRepository مقداردهی شده است
-                                if (_packageRepository != null)
+                                if (_serviceProvider.GetService<IPackageDapperRepository>() != null)
                                 {
-                                    repositoryItemLookUpEditpk.DataSource = _packageRepository.GetPackageByPLId(PLid);
+                                    repositoryItemLookUpEditpk.DataSource = _serviceProvider.GetService<IPackageDapperRepository>()!.GetPackageByPLId(PLid);
                                 }
 
                                 gridView2.SortInfo.Clear();
@@ -441,7 +404,7 @@ namespace AWMS.app.Forms.RibbonMaterial
         {
             try
             {
-                await _LocitemRepository.UpdateLocationsAsync(updateDtos);
+                await _serviceProvider.GetService<ILocItemDapperRepository>()!.UpdateLocationsAsync(updateDtos);
                 gridView2.RefreshData();
             }
             catch (Exception ex)
@@ -460,7 +423,7 @@ namespace AWMS.app.Forms.RibbonMaterial
             try
             {
                 // گرفتن شی از متدل
-                var entityToUpdate = await _LocitemRepository.GetByIdAsync(entityId);
+                var entityToUpdate = await _serviceProvider.GetService<ILocItemDapperRepository>()!.GetByIdAsync(entityId);
 
                 // بررسی وجود شی
                 if (entityToUpdate != null)
@@ -479,7 +442,7 @@ namespace AWMS.app.Forms.RibbonMaterial
                     entityToUpdate.EditedDate = DateTime.Now;
 
                     // فراخوانی متد به‌روزرسانی برای ذخیره تغییرات
-                    await _LocitemRepository.UpdateAsync(entityToUpdate);
+                    await _serviceProvider.GetService<ILocItemDapperRepository>()!.UpdateAsync(entityToUpdate);
                 }
                 else
                 {
@@ -495,7 +458,7 @@ namespace AWMS.app.Forms.RibbonMaterial
             try
             {
                 // گرفتن شی از متدل
-                var entityItemToUpdate = await _itemRepository.GetByIdAsync(itemid);
+                var entityItemToUpdate = await _serviceProvider.GetService<IItemDapperRepository>()!.GetByIdAsync(itemid);
 
                 // بررسی وجود شی
                 if (entityItemToUpdate != null)
@@ -530,7 +493,7 @@ namespace AWMS.app.Forms.RibbonMaterial
                     entityItemToUpdate.EditedDate = DateTime.Now;
 
                     // فراخوانی متد به‌روزرسانی برای ذخیره تغییرات
-                    await _itemRepository.UpdateAsync(entityItemToUpdate);
+                    await _serviceProvider.GetService<IItemDapperRepository>()!.UpdateAsync(entityItemToUpdate);
                 }
                 else
                 {
@@ -548,7 +511,7 @@ namespace AWMS.app.Forms.RibbonMaterial
             try
             {
                 // گرفتن شی از متدل
-                var entityToUpdate = _packageRepository.GetPackageById(pkId);
+                var entityToUpdate = _serviceProvider.GetService<IPackageDapperRepository>()!.GetPackageById(pkId);
 
                 // بررسی وجود شی
                 if (entityToUpdate != null)
@@ -574,7 +537,7 @@ namespace AWMS.app.Forms.RibbonMaterial
                     };
 
                     // فراخوانی متد به‌روزرسانی برای ذخیره تغییرات
-                    var updateResult = _packageRepository.UpdatePackage(pkId, updatedPackage);
+                    var updateResult = _serviceProvider.GetService<IPackageDapperRepository>()!.UpdatePackage(pkId, updatedPackage);
 
                     if (!updateResult)
                     {
@@ -691,8 +654,8 @@ namespace AWMS.app.Forms.RibbonMaterial
 
         private async void simpleButton7_Click(object sender, EventArgs e)
         {
-            gridControl2.DataSource = await _packingRepository.AllItemSelectedPlAsync(PLid);
-            repositoryItemLookUpEditpk.DataSource = _packageRepository.GetPackageByPLId(PLid);
+            gridControl2.DataSource = await _serviceProvider.GetService<IPackingListDapperRepository>()!.AllItemSelectedPlAsync(PLid);
+            repositoryItemLookUpEditpk.DataSource = _serviceProvider.GetService<IPackageDapperRepository>()!.GetPackageByPLId(PLid);
             _isAllSelected = false;
             btnSelectAll.Text = "Select All";
             XtraMessageBox.Show("All Data Refreshed ;)", "Success Refresh", MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -738,7 +701,7 @@ namespace AWMS.app.Forms.RibbonMaterial
                     {
                         try
                         {
-                            await _itemRepository.UpdateStorageCodesAsync(itemIds, newStorageValue);
+                            await _serviceProvider.GetService<IItemDapperRepository>()!.UpdateStorageCodesAsync(itemIds, newStorageValue);
 
                             // Update the grid view
                             view.BeginDataUpdate();

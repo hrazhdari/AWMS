@@ -5,6 +5,7 @@ using AWMS.app.Forms.RibbonMaterial;
 using AWMS.app.Forms.RibbonSearch;
 using AWMS.app.Forms.RibbonUser;
 using AWMS.app.Forms.RibbonVoucher;
+using AWMS.app.Forms.RibbonMsr;
 using AWMS.core;
 using AWMS.core.Interfaces;
 using AWMS.core.Services;
@@ -97,6 +98,7 @@ namespace AWMS.app
                     services.AddScoped<IApproveDapperRepository, ApproveDapperRepository>();
                     services.AddScoped<IMrvDapperRepository, MrvDapperRepository>();
                     services.AddScoped<IHmvDapperRepository, HmvDapperRepository>();
+                    services.AddScoped<IInspectionDapperRepository, InspectionDapperRepository>();
 
                     // افزودن سرویس‌های فرم‌ها به سرویس‌ها
                     services.AddTransient<frmMain>();
@@ -128,6 +130,10 @@ namespace AWMS.app
                     services.AddTransient<frmHMV>();
                     services.AddTransient<frmBio>();
                     services.AddTransient<frmUpdateMrv>();
+                    services.AddTransient<frmUpdateHmv>();
+                    services.AddTransient<frmRegisterIvr>();
+                    services.AddTransient<frmRegisterMsr>();
+                    services.AddTransient<frmMsrRev>();
                     services.AddTransient<r>();
 
 

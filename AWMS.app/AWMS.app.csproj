@@ -91,6 +91,9 @@
     <Compile Update="Forms\RibbonMsr\frmMsrRev.cs">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Update="Forms\RibbonMsr\frmPrintMSR.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Update="Forms\RibbonMsr\frmRegisterMsr.cs">
       <SubType>Form</SubType>
     </Compile>

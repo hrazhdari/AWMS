@@ -28,6 +28,11 @@ namespace AWMS.app.Forms.RibbonMaterial
             _session = SessionManager.GetSession(finalUserId);
             LoadPackingListData();
         }
+
+        private void frmPlChecking_Load(object sender, EventArgs e)
+        {
+            simpleButton1.Focus();
+        }
         private async void LoadPackingListData()
         {
             try
@@ -35,8 +40,9 @@ namespace AWMS.app.Forms.RibbonMaterial
                 var packingListData = await _serviceProvider.GetService<IPackingListDapperRepository>()!.GetAllPackingListNamesAsync();
 
                 lookUpEdit1.Properties.DataSource = packingListData;
-                //lookUpEdit1.Properties.DisplayMember = "PLName"; // فیلدی که به کاربر نمایش داده می‌شود
-                //lookUpEdit1.Properties.ValueMember = "PLId";    // فیلدی که به عنوان مقدار بازمی‌گردد
+
+                // تنظیم NullText برای نمایش مقدار پیش‌فرض
+                lookUpEdit1.Properties.NullText = "Please Select PackingList ...";
             }
             catch (Exception ex)
             {

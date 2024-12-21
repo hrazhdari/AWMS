@@ -159,5 +159,70 @@ namespace AWMS.dapper
             }
         }
 
+
+
+
+        public async Task<List<GetAllMSRDto>> GetAllMsrNoAsync()
+        {
+            using (var connection = new SqlConnection(_connectionString))
+            {
+                var result = await connection.QueryAsync<GetAllMSRDto>(
+                    "[dbo].[GetAllMsrNo]",
+                    commandType: CommandType.StoredProcedure);
+                return result.ToList();
+            }
+        }
+
+        public async Task<List<MsrHeaderDetailsDto>> GetMsrHeaderDetailsPLIdAsync(int plId)
+        {
+            try
+            {
+                using var connection = new SqlConnection(_connectionString);
+                await connection.OpenAsync(); // Open the connection asynchronously
+
+                var result = await connection.QueryAsync<MsrHeaderDetailsDto>(
+                    "[dbo].[GetMsrHeaderDetailsByPLId]",
+                    new { PLId = plId },
+                    commandType: CommandType.StoredProcedure,
+                    commandTimeout: 120 // 120 seconds
+                );
+
+                return result.ToList(); // Convert the result to a list
+            }
+            catch (SqlException ex) when (ex.Number == -2) // SQL timeout exception
+            {
+                throw new Exception("The operation timed out. Please try again later.");
+            }
+            catch (Exception ex)
+            {
+                throw new Exception($"An error occurred while fetching data: {ex.Message}");
+            }
+        }
+
+        public async Task<List<MsrDetailDetailsDto>> GetMsrDetailDetailsByPLIdAsync(int plId)
+        {
+            try
+            {
+                using var connection = new SqlConnection(_connectionString);
+                await connection.OpenAsync(); // Open the connection asynchronously
+
+                var result = await connection.QueryAsync<MsrDetailDetailsDto>(
+                    "[dbo].[GetMsrDetailDetailsByPLId]",
+                    new { PLId = plId },
+                    commandType: CommandType.StoredProcedure,
+                    commandTimeout: 120 // 120 seconds
+                );
+
+                return result.ToList(); // Convert the result to a list
+            }
+            catch (SqlException ex) when (ex.Number == -2) // SQL timeout exception
+            {
+                throw new Exception("The operation timed out. Please try again later.");
+            }
+            catch (Exception ex)
+            {
+                throw new Exception($"An error occurred while fetching data: {ex.Message}");
+            }
+        }
     }
 }

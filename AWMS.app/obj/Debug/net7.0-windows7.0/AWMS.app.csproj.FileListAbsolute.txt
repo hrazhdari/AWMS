@@ -12,6 +12,8 @@ D:\MyBigProject\AshinaWarehouse\AWMS.app\bin\Debug\net7.0-windows7.0\Resources\w
 D:\MyBigProject\AshinaWarehouse\AWMS.app\bin\Debug\net7.0-windows7.0\AWMS.app.exe
 D:\MyBigProject\AshinaWarehouse\AWMS.app\bin\Debug\net7.0-windows7.0\ReportBackMiv.repx
 D:\MyBigProject\AshinaWarehouse\AWMS.app\bin\Debug\net7.0-windows7.0\ReportFrontMiv.repx
+D:\MyBigProject\AshinaWarehouse\AWMS.app\bin\Debug\net7.0-windows7.0\ReportMSRPrint.repx
+D:\MyBigProject\AshinaWarehouse\AWMS.app\bin\Debug\net7.0-windows7.0\ReportPlChecking.repx
 D:\MyBigProject\AshinaWarehouse\AWMS.app\bin\Debug\net7.0-windows7.0\appsettings.json
 D:\MyBigProject\AshinaWarehouse\AWMS.app\bin\Debug\net7.0-windows7.0\AWMS.app.dll.config
 D:\MyBigProject\AshinaWarehouse\AWMS.app\bin\Debug\net7.0-windows7.0\AWMS.app.deps.json
@@ -318,6 +320,7 @@ D:\MyBigProject\AshinaWarehouse\AWMS.app\obj\Debug\net7.0-windows7.0\AWMS.app.Fo
 D:\MyBigProject\AshinaWarehouse\AWMS.app\obj\Debug\net7.0-windows7.0\AWMS.app.Forms.RibbonMaterial.frmPo.resources
 D:\MyBigProject\AshinaWarehouse\AWMS.app\obj\Debug\net7.0-windows7.0\AWMS.app.Forms.RibbonMaterial.frmViewPackingList.resources
 D:\MyBigProject\AshinaWarehouse\AWMS.app\obj\Debug\net7.0-windows7.0\AWMS.app.Forms.RibbonMsr.frmMsrRev.resources
+D:\MyBigProject\AshinaWarehouse\AWMS.app\obj\Debug\net7.0-windows7.0\AWMS.app.Forms.RibbonMsr.frmPrintMSR.resources
 D:\MyBigProject\AshinaWarehouse\AWMS.app\obj\Debug\net7.0-windows7.0\AWMS.app.Forms.RibbonMsr.frmRegisterIvr.resources
 D:\MyBigProject\AshinaWarehouse\AWMS.app\obj\Debug\net7.0-windows7.0\AWMS.app.Forms.RibbonMsr.frmRegisterMsr.resources
 D:\MyBigProject\AshinaWarehouse\AWMS.app\obj\Debug\net7.0-windows7.0\AWMS.app.Forms.RibbonSearch.frmSearchItem.resources

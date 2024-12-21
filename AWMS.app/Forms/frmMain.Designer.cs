@@ -73,6 +73,7 @@
             barButtonItem23 = new DevExpress.XtraBars.BarButtonItem();
             barButtonItem24 = new DevExpress.XtraBars.BarButtonItem();
             barButtonItem25 = new DevExpress.XtraBars.BarButtonItem();
+            barButtonItem26 = new DevExpress.XtraBars.BarButtonItem();
             ribbonPage1 = new DevExpress.XtraBars.Ribbon.RibbonPage();
             ribbonPageGroup1 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             ribbonPage3 = new DevExpress.XtraBars.Ribbon.RibbonPage();
@@ -83,6 +84,7 @@
             ribbonPageGroup20 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             ribbonPage10 = new DevExpress.XtraBars.Ribbon.RibbonPage();
             ribbonPageGroup19 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
+            ribbonPageGroup21 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             ribbonPage8 = new DevExpress.XtraBars.Ribbon.RibbonPage();
             ribbonPageGroup12 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             ribbonPage5 = new DevExpress.XtraBars.Ribbon.RibbonPage();
@@ -121,10 +123,10 @@
             ribbonControl1.Cursor = Cursors.Hand;
             ribbonControl1.EmptyAreaImageOptions.ImagePadding = new Padding(22, 24, 22, 24);
             ribbonControl1.ExpandCollapseItem.Id = 0;
-            ribbonControl1.Items.AddRange(new DevExpress.XtraBars.BarItem[] { ribbonControl1.ExpandCollapseItem, barButtonItem1, MrbarButtonItem, PoBarButtonItem, skinPaletteDropDownButtonItem1, barStaticItem1, barBtnPl, barBtnPk, barButtonItem6, barButtonItem7, barButtonItem8, barButtonItem9, barbtnImportPackingList, barButtonItem11, btnmiv, barButtonItem13, barButtonItem14, CompanybarButtonItem, barStaticItem2, skinDropDownButtonItem1, barStaticItem3, barStaticItem4, barBtnContracts, barButtonItem4, barButtonItem5, barButtonItem10, barButtonItem2, barButtonItem3, barButtonItem12, barButtonItem15, barButtonItem16, barButtonItem17, barButtonItem18, barButtonItem19, barBtnUpdateMRV, barButtonItem21, barButtonItem20, barButtonItem22, barButtonItem23, barButtonItem24, barButtonItem25 });
+            ribbonControl1.Items.AddRange(new DevExpress.XtraBars.BarItem[] { ribbonControl1.ExpandCollapseItem, barButtonItem1, MrbarButtonItem, PoBarButtonItem, skinPaletteDropDownButtonItem1, barStaticItem1, barBtnPl, barBtnPk, barButtonItem6, barButtonItem7, barButtonItem8, barButtonItem9, barbtnImportPackingList, barButtonItem11, btnmiv, barButtonItem13, barButtonItem14, CompanybarButtonItem, barStaticItem2, skinDropDownButtonItem1, barStaticItem3, barStaticItem4, barBtnContracts, barButtonItem4, barButtonItem5, barButtonItem10, barButtonItem2, barButtonItem3, barButtonItem12, barButtonItem15, barButtonItem16, barButtonItem17, barButtonItem18, barButtonItem19, barBtnUpdateMRV, barButtonItem21, barButtonItem20, barButtonItem22, barButtonItem23, barButtonItem24, barButtonItem25, barButtonItem26 });
             ribbonControl1.Location = new Point(0, 0);
             ribbonControl1.Margin = new Padding(3, 2, 3, 2);
-            ribbonControl1.MaxItemId = 64;
+            ribbonControl1.MaxItemId = 65;
             ribbonControl1.Name = "ribbonControl1";
             ribbonControl1.OptionsMenuMinWidth = 248;
             ribbonControl1.PageHeaderItemLinks.Add(skinPaletteDropDownButtonItem1);
@@ -485,6 +487,14 @@
             barButtonItem25.Name = "barButtonItem25";
             barButtonItem25.ItemClick += barButtonItem25_ItemClick;
             // 
+            // barButtonItem26
+            // 
+            barButtonItem26.Caption = "Print MSR";
+            barButtonItem26.Id = 64;
+            barButtonItem26.ImageOptions.LargeImage = (Image)resources.GetObject("barButtonItem26.ImageOptions.LargeImage");
+            barButtonItem26.Name = "barButtonItem26";
+            barButtonItem26.ItemClick += barButtonItem26_ItemClick;
+            // 
             // ribbonPage1
             // 
             ribbonPage1.Groups.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPageGroup[] { ribbonPageGroup1 });
@@ -542,7 +552,7 @@
             // 
             // ribbonPage10
             // 
-            ribbonPage10.Groups.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPageGroup[] { ribbonPageGroup19 });
+            ribbonPage10.Groups.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPageGroup[] { ribbonPageGroup19, ribbonPageGroup21 });
             ribbonPage10.ImageOptions.Image = (Image)resources.GetObject("ribbonPage10.ImageOptions.Image");
             ribbonPage10.Name = "ribbonPage10";
             ribbonPage10.Text = "MSR";
@@ -554,6 +564,12 @@
             ribbonPageGroup19.ItemLinks.Add(barButtonItem23);
             ribbonPageGroup19.Name = "ribbonPageGroup19";
             ribbonPageGroup19.Text = "Material Site Receipt (MSR/OSD)";
+            // 
+            // ribbonPageGroup21
+            // 
+            ribbonPageGroup21.ItemLinks.Add(barButtonItem26);
+            ribbonPageGroup21.Name = "ribbonPageGroup21";
+            ribbonPageGroup21.Text = "Print MSR";
             // 
             // ribbonPage8
             // 
@@ -829,5 +845,7 @@
         private DevExpress.XtraBars.BarButtonItem barButtonItem24;
         private DevExpress.XtraBars.BarButtonItem barButtonItem25;
         private DevExpress.XtraBars.Ribbon.RibbonPageGroup ribbonPageGroup20;
+        private DevExpress.XtraBars.BarButtonItem barButtonItem26;
+        private DevExpress.XtraBars.Ribbon.RibbonPageGroup ribbonPageGroup21;
     }
 }

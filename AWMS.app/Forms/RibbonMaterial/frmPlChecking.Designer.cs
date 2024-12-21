@@ -134,6 +134,7 @@
             Controls.Add(splitContainerControl1);
             Name = "frmPlChecking";
             Text = "PL Checking";
+            Load += frmPlChecking_Load;
             ((System.ComponentModel.ISupportInitialize)splitContainerControl1.Panel1).EndInit();
             splitContainerControl1.Panel1.ResumeLayout(false);
             splitContainerControl1.Panel1.PerformLayout();

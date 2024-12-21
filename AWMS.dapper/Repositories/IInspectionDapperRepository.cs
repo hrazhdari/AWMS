@@ -14,5 +14,11 @@ namespace AWMS.dapper.Repositories
         Task<string> RegisterMsrAsync(int plId,int userID);
         Task<string> UpdateMsrRevAsync(int plId,int MsrRev ,int userID);
         Task<bool> ClearMsrAsync(int plId);
+
+
+
+        Task<List<GetAllMSRDto>> GetAllMsrNoAsync();
+        Task<List<MsrHeaderDetailsDto>> GetMsrHeaderDetailsPLIdAsync(int plId);
+        Task<List<MsrDetailDetailsDto>> GetMsrDetailDetailsByPLIdAsync(int plId);
     }
 }

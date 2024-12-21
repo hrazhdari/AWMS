@@ -135,6 +135,7 @@ namespace AWMS.app
                     services.AddTransient<frmRegisterMsr>();
                     services.AddTransient<frmMsrRev>();
                     services.AddTransient<frmPlChecking>();
+                    services.AddTransient<frmPrintMSR>();
 
 
                     services.AddTransient<frmChangeFormat>();

@@ -547,5 +547,43 @@ namespace AWMS.app.Forms
                 SplashScreenManager.CloseForm();
             }
         }
+
+        private void barButtonItem24_ItemClick(object sender, ItemClickEventArgs e)
+        {
+            try
+            {
+                SplashScreenManager.ShowForm(this, typeof(frmWait), true, true, true, false);
+                var frmChangeFormat = _serviceProvider.GetRequiredService<frmChangeFormat>();
+                frmChangeFormat.MdiParent = this;
+                frmChangeFormat.Show();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"An error occurred: {ex.Message}");
+            }
+            finally
+            {
+                SplashScreenManager.CloseForm();
+            }
+        }
+
+        private void barButtonItem25_ItemClick(object sender, ItemClickEventArgs e)
+        {
+            try
+            {
+                SplashScreenManager.ShowForm(this, typeof(frmWait), true, true, true, false);
+                var frmPlChecking = _serviceProvider.GetRequiredService<frmPlChecking>();
+                frmPlChecking.MdiParent = this;
+                frmPlChecking.Show();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"An error occurred: {ex.Message}");
+            }
+            finally
+            {
+                SplashScreenManager.CloseForm();
+            }
+        }
     }
 }

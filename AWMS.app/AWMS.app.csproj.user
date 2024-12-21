@@ -61,6 +61,9 @@
     <Compile Update="Forms\RibbonMaterial\frmPl.cs">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Update="Forms\RibbonMaterial\frmPlChecking.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Update="Forms\RibbonMaterial\frmPo.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -77,6 +80,9 @@
       <SubType>Form</SubType>
     </Compile>
     <Compile Update="Forms\RibbonVoucher\frmApprove.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="Forms\RibbonVoucher\frmChangeFormat.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Update="Forms\RibbonVoucher\frmIssueVoucher.cs">

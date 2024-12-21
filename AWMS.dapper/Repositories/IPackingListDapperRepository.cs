@@ -17,5 +17,11 @@ namespace AWMS.dapper.Repositories
         Task<bool> AddAsync(PackingListDto PackingList);
         Task<(bool Success, string ErrorMessage)> UpdateAsync(PackingListDto packingListDto);
         Task DeleteAsync(int PlId);
+
+
+
+        Task<List<GetAllPackingListNameDto>> GetAllPackingListNamesAsync();
+        Task<List<PLcheckingHeaderDetailDto>> GetPackingListHeaderDetailsByPLIdAsync(int plId);
+        Task<List<PLcheckingDetailDetailDto>> GetPackingListDetailDetailsByPLIdAsync(int plId);
     }
 }

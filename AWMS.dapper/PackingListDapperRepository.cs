@@ -265,5 +265,52 @@ namespace AWMS.dapper
                 return await db.QueryAsync<PackingListAllPlNameDto>(storedProc, commandType: CommandType.StoredProcedure);
             }
         }
+
+
+
+        public async Task<List<GetAllPackingListNameDto>> GetAllPackingListNamesAsync()
+        {
+            using (var connection = new SqlConnection(_connectionString))
+            {
+                var result = await connection.QueryAsync<GetAllPackingListNameDto>(
+                    "[dbo].[GetAllPackingListNames]",
+                    commandType: CommandType.StoredProcedure);
+                return result.ToList();
+            }
+        }
+
+        public async Task<List<PLcheckingHeaderDetailDto>> GetPackingListHeaderDetailsByPLIdAsync(int plId)
+        {
+            using (var connection = new SqlConnection(_connectionString))
+            {
+                var result = await connection.QueryAsync<PLcheckingHeaderDetailDto>(
+                    "[dbo].[GetPackingListHeaderDetailsByPLId]",
+                    new { PLId = plId },
+                    commandType: CommandType.StoredProcedure,
+                    commandTimeout: 120 // 60 ثانیه
+                );
+
+                // تبدیل به لیست به صورت غیر همزمان
+                return result.ToList(); // استفاده از ToList که به طور مستقیم از Dapper پشتیبانی می‌کند
+            }
+        }
+
+        public async Task<List<PLcheckingDetailDetailDto>> GetPackingListDetailDetailsByPLIdAsync(int plId)
+        {
+            using (var connection = new SqlConnection(_connectionString))
+            {
+                var result = await connection.QueryAsync<PLcheckingDetailDetailDto>(
+                    "[dbo].[GetPackingListDetailDetailsByPLId]",
+                    new { PLId = plId },
+                    commandType: CommandType.StoredProcedure,
+                    commandTimeout: 120 // 60 ثانیه
+                );
+
+                // تبدیل به لیست به صورت غیر همزمان
+                return result.ToList(); // استفاده از ToList که به طور مستقیم از Dapper پشتیبانی می‌کند
+            }
+        }
+
+
     }
 }

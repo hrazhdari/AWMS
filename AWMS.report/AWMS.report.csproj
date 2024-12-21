@@ -10,6 +10,7 @@
     <None Remove=".repx" />
     <None Remove="ReportBackMiv.repx" />
     <None Remove="ReportFrontMiv.repx" />
+    <None Remove="ReportPlChecking.repx" />
   </ItemGroup>
 
   <ItemGroup>
@@ -17,6 +18,9 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="ReportFrontMiv.repx">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ReportPlChecking.repx">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
   </ItemGroup>

@@ -29,6 +29,7 @@ namespace AWMS.datalayer.Context
         public DbSet<Request> Requests { get; set; }
         public DbSet<RequestType> RequestTypes { get; set; }
         public DbSet<Inspection> Inspections { get; set; }
+        public DbSet<Mrc> Mrcs { get; set; }
 
         public DbSet<Company> Companies { get; set; }
         public DbSet<CompanyContract> CompanyContracts { get; set; }
@@ -67,6 +68,7 @@ namespace AWMS.datalayer.Context
             modelBuilder.ApplyConfiguration(new RequestConfiguration());
             modelBuilder.ApplyConfiguration(new RequestTypeConfiguration());
             modelBuilder.ApplyConfiguration(new InspectionConfiguration());
+            modelBuilder.ApplyConfiguration(new MrcConfiguration());
 
             // Seed initial data
             modelBuilder.Entity<Mr>().HasData(

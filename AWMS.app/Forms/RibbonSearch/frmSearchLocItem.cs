@@ -1,92 +1,24 @@
 ﻿using AWMS.dapper.Repositories;
 using DevExpress.XtraEditors;
 using System.IO;
-
+using Microsoft.Extensions.DependencyInjection;
 namespace AWMS.app.Forms.RibbonSearch
 {
     public partial class frmSearchLocItem : XtraForm
     {
-        // private readonly IRequestDapperRepository _requestDapperRepository;
-        private readonly ISearchDapperRepository _searchDapperRepository;
-        public frmSearchLocItem(ISearchDapperRepository searchDapperRepository)//IRequestDapperRepository requestDapperRepository,)
+        private readonly IServiceProvider _serviceProvider;
+        public frmSearchLocItem(IServiceProvider serviceProvider)
         {
             InitializeComponent();
-            //_requestDapperRepository = requestDapperRepository;
-            _searchDapperRepository = searchDapperRepository;
+            _serviceProvider = serviceProvider;
             initGrid();
         }
 
-        //private async Task LoadDataIntoGrid()
-        //{
-        //    int pageNumber = 1;
-        //    int pageSize = 100;
-        //    bool moreData = true;
-
-        //    progressBar1.Visible = true;
-        //    progressBar1.Style = ProgressBarStyle.Continuous;
-        //    progressBar1.Maximum = 100;
-        //    progressBar1.Value = 0;
-
-        //    progressLabel.Visible = true;
-        //    progressLabel.Text = "0%";
-
-        //    int totalRecords = await _searchDapperRepository.GetTotalItemRecordCount(); // دریافت تعداد کل رکوردها
-        //    MessageBox.Show("item = " + totalRecords);
-        //    List<SearchItemDto> allData = new List<SearchItemDto>();
-
-        //    try
-        //    {
-        //        while (moreData)
-        //        {
-        //            var data = await _searchDapperRepository.SearchItemFillGrid(pageNumber, pageSize);
-
-        //            if (data.Any())
-        //            {
-        //                allData.AddRange(data);
-        //                gridControl1.DataSource = allData;
-
-        //                pageNumber++;
-        //                int percentage = (int)((double)allData.Count / totalRecords * 100);
-
-        //                progressBar1.Value = percentage;
-        //                progressLabel.Text = $"{percentage}%";
-        //            }
-        //            else
-        //            {
-        //                moreData = false;
-        //            }
-        //        }
-        //    }
-        //    catch (Exception ex)
-        //    {
-        //        MessageBox.Show("Error loading data: " + ex.Message);
-        //        progressLabel.Text = "Error loading data: " + ex.Message;
-        //    }
-        //    finally
-        //    {
-        //        progressBar1.Visible = false;
-        //        progressLabel.Visible = false;
-        //    }
-        //}
-        //private async Task LoadDataIntoGrid2()
-        //{
-        //    try
-        //    {
-        //        var data = await _searchDapperRepository.SearchItemFillGrid2();
-
-        //        gridControl1.DataSource = data;
-        //    }
-        //    catch (Exception ex)
-        //    {
-        //        MessageBox.Show("Error loading data: " + ex.Message);
-        //    }
-
-        //}
         private void LoadDataIntoGrid3()
         {
             try
             {
-                gridControl1.DataSource = _searchDapperRepository.SearchLocItemFillGridWithDataReader();
+                gridControl1.DataSource = _serviceProvider.GetService<ISearchDapperRepository>()!.SearchLocItemFillGridWithDataReaderyieldreturn();
             }
             catch (Exception ex)
             {
@@ -96,12 +28,6 @@ namespace AWMS.app.Forms.RibbonSearch
         }
         private async void initGrid()
         {
-            // پنهان کردن ProgressBar پیش از بارگیری داده‌ها
-            progressBar1.Visible = false;
-
-            // بارگیری داده‌ها به صورت تکه‌تکه
-            //await LoadDataIntoGrid();
-            //await LoadDataIntoGrid2();
             LoadDataIntoGrid3();
         }
         private void labelControl4_Click_1(object sender, EventArgs e)
@@ -141,11 +67,6 @@ namespace AWMS.app.Forms.RibbonSearch
         private void simpleButton1_Click(object sender, EventArgs e)
         {
             SaveGridData("Excel Files|*.xlsx", "Save Excel File", fileName => gridView1.ExportToXlsx(fileName));
-        }
-
-        private void gridControl1_Click(object sender, EventArgs e)
-        {
-
         }
 
         private void gridView1_CustomUnboundColumnData_1(object sender, DevExpress.XtraGrid.Views.Base.CustomColumnDataEventArgs e)

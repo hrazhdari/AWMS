@@ -12,7 +12,9 @@ D:\MyBigProject\AshinaWarehouse\AWMS.app\bin\Debug\net7.0-windows7.0\Resources\w
 D:\MyBigProject\AshinaWarehouse\AWMS.app\bin\Debug\net7.0-windows7.0\AWMS.app.exe
 D:\MyBigProject\AshinaWarehouse\AWMS.app\bin\Debug\net7.0-windows7.0\ReportBackMiv.repx
 D:\MyBigProject\AshinaWarehouse\AWMS.app\bin\Debug\net7.0-windows7.0\ReportFrontMiv.repx
+D:\MyBigProject\AshinaWarehouse\AWMS.app\bin\Debug\net7.0-windows7.0\ReportMRC.repx
 D:\MyBigProject\AshinaWarehouse\AWMS.app\bin\Debug\net7.0-windows7.0\ReportMSRPrint.repx
+D:\MyBigProject\AshinaWarehouse\AWMS.app\bin\Debug\net7.0-windows7.0\ReportOpiList.repx
 D:\MyBigProject\AshinaWarehouse\AWMS.app\bin\Debug\net7.0-windows7.0\ReportPlChecking.repx
 D:\MyBigProject\AshinaWarehouse\AWMS.app\bin\Debug\net7.0-windows7.0\appsettings.json
 D:\MyBigProject\AshinaWarehouse\AWMS.app\bin\Debug\net7.0-windows7.0\AWMS.app.dll.config
@@ -320,6 +322,7 @@ D:\MyBigProject\AshinaWarehouse\AWMS.app\obj\Debug\net7.0-windows7.0\AWMS.app.Fo
 D:\MyBigProject\AshinaWarehouse\AWMS.app\obj\Debug\net7.0-windows7.0\AWMS.app.Forms.RibbonMaterial.frmPo.resources
 D:\MyBigProject\AshinaWarehouse\AWMS.app\obj\Debug\net7.0-windows7.0\AWMS.app.Forms.RibbonMaterial.frmViewPackingList.resources
 D:\MyBigProject\AshinaWarehouse\AWMS.app\obj\Debug\net7.0-windows7.0\AWMS.app.Forms.RibbonMsr.frmMsrRev.resources
+D:\MyBigProject\AshinaWarehouse\AWMS.app\obj\Debug\net7.0-windows7.0\AWMS.app.Forms.RibbonMsr.frmOpiList.resources
 D:\MyBigProject\AshinaWarehouse\AWMS.app\obj\Debug\net7.0-windows7.0\AWMS.app.Forms.RibbonMsr.frmPrintMSR.resources
 D:\MyBigProject\AshinaWarehouse\AWMS.app\obj\Debug\net7.0-windows7.0\AWMS.app.Forms.RibbonMsr.frmRegisterIvr.resources
 D:\MyBigProject\AshinaWarehouse\AWMS.app\obj\Debug\net7.0-windows7.0\AWMS.app.Forms.RibbonMsr.frmRegisterMsr.resources
@@ -330,9 +333,12 @@ D:\MyBigProject\AshinaWarehouse\AWMS.app\obj\Debug\net7.0-windows7.0\AWMS.app.Fo
 D:\MyBigProject\AshinaWarehouse\AWMS.app\obj\Debug\net7.0-windows7.0\AWMS.app.Forms.RibbonVoucher.frmApprove.resources
 D:\MyBigProject\AshinaWarehouse\AWMS.app\obj\Debug\net7.0-windows7.0\AWMS.app.Forms.RibbonVoucher.frmChangeFormat.resources
 D:\MyBigProject\AshinaWarehouse\AWMS.app\obj\Debug\net7.0-windows7.0\AWMS.app.Forms.RibbonVoucher.frmHMV.resources
+D:\MyBigProject\AshinaWarehouse\AWMS.app\obj\Debug\net7.0-windows7.0\AWMS.app.Forms.RibbonVoucher.frmImportMrc.resources
 D:\MyBigProject\AshinaWarehouse\AWMS.app\obj\Debug\net7.0-windows7.0\AWMS.app.Forms.RibbonVoucher.frmIssueVoucher.resources
+D:\MyBigProject\AshinaWarehouse\AWMS.app\obj\Debug\net7.0-windows7.0\AWMS.app.Forms.RibbonVoucher.frmManageMrc.resources
 D:\MyBigProject\AshinaWarehouse\AWMS.app\obj\Debug\net7.0-windows7.0\AWMS.app.Forms.RibbonVoucher.frmMRV.resources
 D:\MyBigProject\AshinaWarehouse\AWMS.app\obj\Debug\net7.0-windows7.0\AWMS.app.Forms.RibbonVoucher.frmPrint.resources
+D:\MyBigProject\AshinaWarehouse\AWMS.app\obj\Debug\net7.0-windows7.0\AWMS.app.Forms.RibbonVoucher.frmPrintMRC.resources
 D:\MyBigProject\AshinaWarehouse\AWMS.app\obj\Debug\net7.0-windows7.0\AWMS.app.Forms.RibbonVoucher.frmUpdateHmv.resources
 D:\MyBigProject\AshinaWarehouse\AWMS.app\obj\Debug\net7.0-windows7.0\AWMS.app.Forms.RibbonVoucher.frmUpdateMrv.resources
 D:\MyBigProject\AshinaWarehouse\AWMS.app\obj\Debug\net7.0-windows7.0\AWMS.app.Forms.RibbonVoucher.r.resources

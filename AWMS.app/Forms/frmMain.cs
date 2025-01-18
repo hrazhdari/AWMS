@@ -604,5 +604,63 @@ namespace AWMS.app.Forms
                 SplashScreenManager.CloseForm();
             }
         }
+
+        private void barButtonItem27_ItemClick(object sender, ItemClickEventArgs e)
+        {
+            try
+            {
+                SplashScreenManager.ShowForm(this, typeof(frmWait), true, true, true, false);
+                var frmOpiList = _serviceProvider.GetRequiredService<frmOpiList>();
+                frmOpiList.MdiParent = this;
+                frmOpiList.Show();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"An error occurred: {ex.Message}");
+            }
+            finally
+            {
+                SplashScreenManager.CloseForm();
+            }
+        }
+
+        private void barButtonItem28_ItemClick(object sender, ItemClickEventArgs e)
+        {
+            try
+            {
+                SplashScreenManager.ShowForm(this, typeof(frmWait), true, true, true, false);
+                var frmImportMrc = _serviceProvider.GetRequiredService<frmImportMrc>();
+                frmImportMrc.MdiParent = this;
+                frmImportMrc.Show();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"An error occurred: {ex.Message}");
+            }
+            finally
+            {
+                SplashScreenManager.CloseForm();
+            }
+
+        }
+
+        private void barButtonItem29_ItemClick(object sender, ItemClickEventArgs e)
+        {
+            try
+            {
+                SplashScreenManager.ShowForm(this, typeof(frmWait), true, true, true, false);
+                var frmManageMrc = _serviceProvider.GetRequiredService<frmManageMrc>();
+                frmManageMrc.MdiParent = this;
+                frmManageMrc.Show();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"An error occurred: {ex.Message}");
+            }
+            finally
+            {
+                SplashScreenManager.CloseForm();
+            }
+        }
     }
 }

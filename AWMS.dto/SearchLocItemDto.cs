@@ -3,16 +3,22 @@
     public class SearchLocItemDto
     {
         public DateTime? ArrivalDate { get; set; }
+        public DateTime? EnteredDate { get; set; }
+        public DateTime? MARDate { get; set; }
         public string Project { get; set; }
+        public string Mr { get; set; }
         public string PoName { get; set; }
         public string Vendor { get; set; }
         public string ArchiveNO { get; set; }
         public int ItemId { get; set; }
         public int LocItemID { get; set; }
         public string PLName { get; set; }
+        public string MSRNO { get; set; }
         public string LocationName { get; set; }
+        public string OPINO { get; set; }
         public int PK { get; set; }
         public string ItemOfPk { get; set; }
+        public string IRN { get; set; }
         public string Tag { get; set; }
         public string Description { get; set; }
         public string UnitName { get; set; }

@@ -60,15 +60,15 @@ namespace AWMS.app.Forms.RibbonMaterial
                 MessageBox.Show($"Error loading data: {ex.Message}");
             }
 
-            repositoryItemLookUpEditirn.DataSource = _serviceProvider.GetService<IrnService>()!.GetAllIrns();
-            repositoryItemLookUpEditshipment.DataSource = _serviceProvider.GetService<ShipmentService>()!.GetAllShipments();
-            repositoryItemLookUpEditmr.DataSource = _serviceProvider.GetService<MrService>()!.GetAllMrs();
-            repositoryItemLookUpEditpo.DataSource = _serviceProvider.GetService<PoService>()!.GetAllPos();
-            repositoryItemLookUpEditarea.DataSource = _serviceProvider.GetService<AreaUnitService>()!.GetAllAreaUnits();
-            repositoryItemLookUpEditsupplier.DataSource = _serviceProvider.GetService<SupplierService>()!.GetAllSuppliers();
-            repositoryItemLookUpEditvendor.DataSource = _serviceProvider.GetService<VendorService>()!.GetAllVendors();
-            repositoryItemLookUpEditdescipline.DataSource = _serviceProvider.GetService<DesciplineService>()!.GetAllDesciplines();
-            repositoryItemLookUpEditdescriptionForPk.DataSource = _serviceProvider.GetService<DescriptionForPkService>()!.GetAllDescriptionForPks();
+            repositoryItemLookUpEditirn.DataSource = _serviceProvider.GetService<IIrnService>()!.GetAllIrns();
+            repositoryItemLookUpEditshipment.DataSource = _serviceProvider.GetService<IShipmentService>()!.GetAllShipments();
+            repositoryItemLookUpEditmr.DataSource = _serviceProvider.GetService<IMrService>()!.GetAllMrs();
+            repositoryItemLookUpEditpo.DataSource = _serviceProvider.GetService<IPoService>()!.GetAllPos();
+            repositoryItemLookUpEditarea.DataSource = _serviceProvider.GetService<IAreaUnitService>()!.GetAllAreaUnits();
+            repositoryItemLookUpEditsupplier.DataSource = _serviceProvider.GetService<ISupplierService>()!.GetAllSuppliers();
+            repositoryItemLookUpEditvendor.DataSource = _serviceProvider.GetService<IVendorService>()!.GetAllVendors();
+            repositoryItemLookUpEditdescipline.DataSource = _serviceProvider.GetService<IDesciplineService>()!.GetAllDesciplines();
+            repositoryItemLookUpEditdescriptionForPk.DataSource = _serviceProvider.GetService<IDescriptionForPkService>()!.GetAllDescriptionForPks();
             repositoryItemLookUpEditunit.DataSource = _serviceProvider.GetService<IUnitDapperRepository>()!.GetAll();
             repositoryItemLookUpEditscope.DataSource = _serviceProvider.GetService<IScopeDapperRepository>()!.GetAll();
             repositoryItemLookUpEditlocation.DataSource = await _serviceProvider.GetService<ILocationDapperRepository>()!.GetAllAsync();

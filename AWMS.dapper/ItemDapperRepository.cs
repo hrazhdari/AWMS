@@ -445,41 +445,7 @@ namespace AWMS.dapper
                 }
             }
         }
-        //private void SendDataToStoredProcedure(DataTable items, int plId, int locationId)
-        //{
-        //    using (var connection = new SqlConnection(_connectionString))
-        //    {
-        //        connection.Open();
-
-        //        // اضافه کردن ستون‌های PLId و LocationID به DataTable
-        //        if (!items.Columns.Contains("PLId"))
-        //        {
-        //            items.Columns.Add("PLId", typeof(int));
-        //        }
-        //        if (!items.Columns.Contains("LocationID"))
-        //        {
-        //            items.Columns.Add("LocationID", typeof(int));
-        //        }
-
-        //        foreach (DataRow row in items.Rows)
-        //        {
-        //            row["PLId"] = plId;
-        //            row["LocationID"] = locationId;
-        //        }
-
-        //        using (var bulkCopy = new SqlBulkCopy(connection))
-        //        {
-        //            bulkCopy.DestinationTableName = "Items"; // نام جدول مقصد
-
-        //            // مطابقت ستون‌ها
-        //            bulkCopy.ColumnMappings.Add("ColumnNameInDataTable", "ColumnNameInDestinationTable");
-        //            // ... اضافه کردن سایر ستون‌ها به همین روش
-
-        //            bulkCopy.WriteToServer(items);
-        //        }
-        //    }
-        //}
-
+       
         public void AddItems(IEnumerable<ImportItemDto> items, int plId, int locationId)
         {
             var dataTable = ConvertToDataTable(items);
@@ -487,6 +453,99 @@ namespace AWMS.dapper
         }
 
 
+
+
+
+
+
+        private DataTable ConvertToDataTable2025(IEnumerable<ImportItemDto> items,int userid)
+        {
+            var table = new DataTable();
+            table.Columns.Add("PK", typeof(int)); // کلید اصلی
+            table.Columns.Add("Tag", typeof(string));
+            table.Columns.Add("Description", typeof(string));
+            table.Columns.Add("UnitID", typeof(string)); // به int تغییر داده شد
+            table.Columns.Add("Qty", typeof(decimal));
+            table.Columns.Add("OverQty", typeof(decimal));
+            table.Columns.Add("ShortageQty", typeof(decimal));
+            table.Columns.Add("DamageQty", typeof(decimal));
+            table.Columns.Add("IncorectQty", typeof(decimal));
+            table.Columns.Add("ScopeID", typeof(string)); // به int تغییر داده شد
+            table.Columns.Add("HeatNo", typeof(string));
+            table.Columns.Add("BatchNo", typeof(string));
+            table.Columns.Add("Remark", typeof(string));
+            table.Columns.Add("Price", typeof(decimal));
+            table.Columns.Add("UnitPriceID", typeof(string)); // به int تغییر داده شد
+            table.Columns.Add("NetW", typeof(decimal));
+            table.Columns.Add("GrossW", typeof(decimal));
+            table.Columns.Add("BaseMaterial", typeof(string));
+            table.Columns.Add("EnteredBy", typeof(int));
+            table.Columns.Add("EnteredDate", typeof(DateTime));
+
+            foreach (var item in items)
+            {
+                table.Rows.Add(
+                    item.PK,
+                    item.Tag,
+                    item.Description,
+                    item.UnitID,
+                    item.Qty,
+                    item.OverQty,
+                    item.ShortageQty,
+                    item.DamageQty,
+                    item.IncorectQty,
+                    item.ScopeID,
+                    item.HeatNo,
+                    item.BatchNo,
+                    item.Remark,
+                    item.Price,
+                    item.UnitPriceID,
+                    item.NetW,
+                    item.GrossW,
+                    item.BaseMaterial,
+                    userid, 
+                    DateTime.Now
+                );
+            }
+
+            return table;
+        }
+
+        private void SendDataToStoredProcedure2025(DataTable items, int plId, int locationId)
+        {
+            using (var connection = new SqlConnection(_connectionString))
+            {
+                connection.Open();
+
+                using (var command = new SqlCommand("AddItemsFromTempTableWithoutTrigger", connection))
+                {
+                    command.CommandType = CommandType.StoredProcedure;
+
+                    // تنظیم CommandTimeout به 300 ثانیه
+                    command.CommandTimeout = 300;
+
+                    // پارامتر جدول
+                    var itemParam = command.Parameters.AddWithValue("@Items", items);
+                    itemParam.SqlDbType = SqlDbType.Structured;
+                    itemParam.TypeName = "dbo.ItemTableType";
+
+                    // پارامتر PLId
+                    command.Parameters.AddWithValue("@PLId", plId).SqlDbType = SqlDbType.Int;
+
+                    // پارامتر LocationID
+                    command.Parameters.AddWithValue("@LocationID", locationId).SqlDbType = SqlDbType.Int;
+
+                    // اجرای Stored Procedure
+                    command.ExecuteNonQuery();
+                }
+            }
+        }
+
+        public void AddItems2025(IEnumerable<ImportItemDto> items, int plId, int locationId , int userid)
+        {
+            var dataTable = ConvertToDataTable2025(items, userid);
+            SendDataToStoredProcedure2025(dataTable, plId, locationId);
+        }
 
     }
 }

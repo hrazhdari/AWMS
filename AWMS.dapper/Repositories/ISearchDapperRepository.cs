@@ -15,5 +15,13 @@ namespace AWMS.dapper.Repositories
         DataTable SearchMivFillGrid();
         List<SearchMivDto> SearchMivFillGrid2();
 
+
+        IEnumerable<SearchLocItemDto> SearchLocItemFillGridWithDataReaderyieldreturn();
+
+
+        Task<List<SearchItemDto>> SearchItemFillGridAsync();
+        Task<List<SearchItemDto>> SearchItemFillGridDataReaderAsync();
+        Task<IEnumerable<SearchItemDto>> SearchItemFillGridIEnumerableAsync();
+
     }
 }

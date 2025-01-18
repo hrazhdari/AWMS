@@ -128,7 +128,7 @@ namespace AWMS.app.Forms.RibbonMaterial
 
                             if (details.Any())
                             {
-                                _itemDapperRepository.AddItems(details, (int)lookUpEditPL.EditValue, locationLookupValue);
+                                _itemDapperRepository.AddItems2025(details, (int)lookUpEditPL.EditValue, locationLookupValue, _session.UserID);
                                 MessageBox.Show("Details imported successfully!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
                             }
                             else

@@ -209,14 +209,14 @@ namespace AWMS.datalayer.Migrations
                             CompanyID = 1,
                             Abbreviation = "PPI",
                             CompanyName = "Petro Paydar Iranian",
-                            EnteredDate = new DateTime(2024, 12, 16, 21, 49, 18, 799, DateTimeKind.Local).AddTicks(6893)
+                            EnteredDate = new DateTime(2025, 1, 15, 21, 56, 26, 547, DateTimeKind.Local).AddTicks(9188)
                         },
                         new
                         {
                             CompanyID = 2,
                             Abbreviation = "TESCO",
                             CompanyName = "Teco",
-                            EnteredDate = new DateTime(2024, 12, 16, 21, 49, 18, 799, DateTimeKind.Local).AddTicks(6906)
+                            EnteredDate = new DateTime(2025, 1, 15, 21, 56, 26, 547, DateTimeKind.Local).AddTicks(9201)
                         });
                 });
 
@@ -796,21 +796,21 @@ namespace AWMS.datalayer.Migrations
                         {
                             LocationID = 1,
                             EnteredBy = 88,
-                            EnteredDate = new DateTime(2024, 12, 16, 21, 49, 18, 797, DateTimeKind.Local).AddTicks(6094),
+                            EnteredDate = new DateTime(2025, 1, 15, 21, 56, 26, 545, DateTimeKind.Local).AddTicks(6393),
                             LocationName = "L02A101A"
                         },
                         new
                         {
                             LocationID = 2,
                             EnteredBy = 88,
-                            EnteredDate = new DateTime(2024, 12, 16, 21, 49, 18, 797, DateTimeKind.Local).AddTicks(6115),
+                            EnteredDate = new DateTime(2025, 1, 15, 21, 56, 26, 545, DateTimeKind.Local).AddTicks(6411),
                             LocationName = "L02A102A"
                         },
                         new
                         {
                             LocationID = 3,
                             EnteredBy = 88,
-                            EnteredDate = new DateTime(2024, 12, 16, 21, 49, 18, 797, DateTimeKind.Local).AddTicks(6116),
+                            EnteredDate = new DateTime(2025, 1, 15, 21, 56, 26, 545, DateTimeKind.Local).AddTicks(6412),
                             LocationName = "W02A02B"
                         });
                 });
@@ -845,6 +845,90 @@ namespace AWMS.datalayer.Migrations
                             MrId = 1,
                             MrName = "-"
                         });
+                });
+
+            modelBuilder.Entity("AWMS.datalayer.Entities.Mrc", b =>
+                {
+                    b.Property<int>("MrcId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("MrcId"));
+
+                    b.Property<string>("BatchNo")
+                        .HasMaxLength(500)
+                        .HasColumnType("nvarchar(500)");
+
+                    b.Property<string>("Description")
+                        .HasMaxLength(500)
+                        .HasColumnType("nvarchar(500)");
+
+                    b.Property<string>("DocNo")
+                        .HasMaxLength(500)
+                        .HasColumnType("nvarchar(500)");
+
+                    b.Property<int?>("EditedBy")
+                        .HasColumnType("int");
+
+                    b.Property<DateTime?>("EditedDate")
+                        .HasColumnType("date");
+
+                    b.Property<int?>("EnteredBy")
+                        .HasColumnType("int");
+
+                    b.Property<DateTime?>("EnteredDate")
+                        .HasColumnType("date");
+
+                    b.Property<int?>("ItemOfPk")
+                        .HasColumnType("int");
+
+                    b.Property<string>("MrcDescription")
+                        .HasMaxLength(1000)
+                        .HasColumnType("nvarchar(1000)");
+
+                    b.Property<string>("MrcName")
+                        .HasMaxLength(200)
+                        .HasColumnType("nvarchar(200)");
+
+                    b.Property<int?>("PK")
+                        .HasColumnType("int");
+
+                    b.Property<decimal?>("Qty")
+                        .HasColumnType("decimal(18,2)");
+
+                    b.Property<string>("Remark")
+                        .HasMaxLength(500)
+                        .HasColumnType("nvarchar(500)");
+
+                    b.Property<string>("Size1")
+                        .HasMaxLength(50)
+                        .HasColumnType("nvarchar(50)");
+
+                    b.Property<string>("Size2")
+                        .HasMaxLength(50)
+                        .HasColumnType("nvarchar(50)");
+
+                    b.Property<string>("Tag")
+                        .HasMaxLength(500)
+                        .HasColumnType("nvarchar(500)");
+
+                    b.Property<int?>("ToCompanyID")
+                        .IsRequired()
+                        .HasColumnType("int");
+
+                    b.Property<int?>("UnitID")
+                        .IsRequired()
+                        .HasColumnType("int");
+
+                    b.HasKey("MrcId");
+
+                    b.HasIndex("ToCompanyID")
+                        .HasDatabaseName("IX_Item_ToCompanyID");
+
+                    b.HasIndex("UnitID")
+                        .HasDatabaseName("IX_Item_UnitID");
+
+                    b.ToTable("Mrcs");
                 });
 
             modelBuilder.Entity("AWMS.datalayer.Entities.Package", b =>
@@ -2077,6 +2161,27 @@ namespace AWMS.datalayer.Migrations
                     b.Navigation("Location");
 
                     b.Navigation("ParentLocItem");
+                });
+
+            modelBuilder.Entity("AWMS.datalayer.Entities.Mrc", b =>
+                {
+                    b.HasOne("AWMS.datalayer.Entities.Company", "Company")
+                        .WithMany()
+                        .HasForeignKey("ToCompanyID")
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired()
+                        .HasConstraintName("FK_Mrc_Company");
+
+                    b.HasOne("AWMS.datalayer.Entities.Unit", "Unit")
+                        .WithMany()
+                        .HasForeignKey("UnitID")
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired()
+                        .HasConstraintName("FK_Mrc_Unit");
+
+                    b.Navigation("Company");
+
+                    b.Navigation("Unit");
                 });
 
             modelBuilder.Entity("AWMS.datalayer.Entities.Package", b =>

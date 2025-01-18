@@ -91,6 +91,9 @@
     <Compile Update="Forms\RibbonMsr\frmMsrRev.cs">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Update="Forms\RibbonMsr\frmOpiList.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Update="Forms\RibbonMsr\frmPrintMSR.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -101,6 +104,15 @@
       <SubType>Form</SubType>
     </Compile>
     <Compile Update="Forms\RibbonSearch\frmSearchMiv.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="Forms\RibbonVoucher\frmManageMrc.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="Forms\RibbonVoucher\frmImportMrc.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="Forms\RibbonVoucher\frmPrintMRC.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Update="Forms\RibbonVoucher\frmUpdateHmv.cs">

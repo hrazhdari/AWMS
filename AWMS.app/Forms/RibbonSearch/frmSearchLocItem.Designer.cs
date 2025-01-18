@@ -39,7 +39,6 @@
             NISQty = new DevExpress.XtraGrid.Columns.GridColumn();
             Discipline = new DevExpress.XtraGrid.Columns.GridColumn();
             Scope = new DevExpress.XtraGrid.Columns.GridColumn();
-            QtyinLocWithMRV = new DevExpress.XtraGrid.Columns.GridColumn();
             repositoryItemLookUpEditirn = new DevExpress.XtraEditors.Repository.RepositoryItemLookUpEdit();
             repositoryItemLookUpEditpo = new DevExpress.XtraEditors.Repository.RepositoryItemLookUpEdit();
             repositoryItemLookUpEditmr = new DevExpress.XtraEditors.Repository.RepositoryItemLookUpEdit();
@@ -48,8 +47,6 @@
             repositoryItemLookUpEditdescipline = new DevExpress.XtraEditors.Repository.RepositoryItemLookUpEdit();
             repositoryItemTextEditirn = new DevExpress.XtraEditors.Repository.RepositoryItemTextEdit();
             panelControl2 = new DevExpress.XtraEditors.PanelControl();
-            progressLabel = new Label();
-            progressBar1 = new ProgressBar();
             labelControl2 = new DevExpress.XtraEditors.LabelControl();
             labelControl1 = new DevExpress.XtraEditors.LabelControl();
             simpleButton1 = new DevExpress.XtraEditors.SimpleButton();
@@ -61,9 +58,10 @@
             RowNumber = new DevExpress.XtraGrid.Columns.GridColumn();
             ArrivalDate = new DevExpress.XtraGrid.Columns.GridColumn();
             MSRNO = new DevExpress.XtraGrid.Columns.GridColumn();
-            PLNO = new DevExpress.XtraGrid.Columns.GridColumn();
             OPINO = new DevExpress.XtraGrid.Columns.GridColumn();
             Project = new DevExpress.XtraGrid.Columns.GridColumn();
+            LocItemID = new DevExpress.XtraGrid.Columns.GridColumn();
+            LocationName = new DevExpress.XtraGrid.Columns.GridColumn();
             EnteredDate = new DevExpress.XtraGrid.Columns.GridColumn();
             MARDate = new DevExpress.XtraGrid.Columns.GridColumn();
             PoName = new DevExpress.XtraGrid.Columns.GridColumn();
@@ -81,8 +79,6 @@
             QtyPL = new DevExpress.XtraGrid.Columns.GridColumn();
             panelControl1 = new DevExpress.XtraEditors.PanelControl();
             panelControl3 = new DevExpress.XtraEditors.PanelControl();
-            LocationName = new DevExpress.XtraGrid.Columns.GridColumn();
-            LocItemID = new DevExpress.XtraGrid.Columns.GridColumn();
             ((System.ComponentModel.ISupportInitialize)repositoryItemLookUpEditirn).BeginInit();
             ((System.ComponentModel.ISupportInitialize)repositoryItemLookUpEditpo).BeginInit();
             ((System.ComponentModel.ISupportInitialize)repositoryItemLookUpEditmr).BeginInit();
@@ -125,7 +121,7 @@
             ReserveMivQty.MinWidth = 21;
             ReserveMivQty.Name = "ReserveMivQty";
             ReserveMivQty.Visible = true;
-            ReserveMivQty.VisibleIndex = 15;
+            ReserveMivQty.VisibleIndex = 14;
             ReserveMivQty.Width = 81;
             // 
             // DelMivQty
@@ -135,7 +131,7 @@
             DelMivQty.MinWidth = 21;
             DelMivQty.Name = "DelMivQty";
             DelMivQty.Visible = true;
-            DelMivQty.VisibleIndex = 16;
+            DelMivQty.VisibleIndex = 15;
             DelMivQty.Width = 81;
             // 
             // TotalReturnAcceptQty
@@ -155,7 +151,7 @@
             Balance.MinWidth = 21;
             Balance.Name = "Balance";
             Balance.Visible = true;
-            Balance.VisibleIndex = 17;
+            Balance.VisibleIndex = 16;
             Balance.Width = 81;
             // 
             // Inventory
@@ -165,7 +161,7 @@
             Inventory.MinWidth = 21;
             Inventory.Name = "Inventory";
             Inventory.Visible = true;
-            Inventory.VisibleIndex = 18;
+            Inventory.VisibleIndex = 17;
             Inventory.Width = 81;
             // 
             // RejectQty
@@ -175,7 +171,7 @@
             RejectQty.MinWidth = 21;
             RejectQty.Name = "RejectQty";
             RejectQty.Visible = true;
-            RejectQty.VisibleIndex = 14;
+            RejectQty.VisibleIndex = 13;
             RejectQty.Width = 81;
             // 
             // NISQty
@@ -185,7 +181,7 @@
             NISQty.MinWidth = 21;
             NISQty.Name = "NISQty";
             NISQty.Visible = true;
-            NISQty.VisibleIndex = 13;
+            NISQty.VisibleIndex = 12;
             NISQty.Width = 81;
             // 
             // Discipline
@@ -195,7 +191,7 @@
             Discipline.MinWidth = 21;
             Discipline.Name = "Discipline";
             Discipline.Visible = true;
-            Discipline.VisibleIndex = 19;
+            Discipline.VisibleIndex = 18;
             Discipline.Width = 127;
             // 
             // Scope
@@ -205,18 +201,8 @@
             Scope.MinWidth = 21;
             Scope.Name = "Scope";
             Scope.Visible = true;
-            Scope.VisibleIndex = 20;
+            Scope.VisibleIndex = 19;
             Scope.Width = 144;
-            // 
-            // QtyinLocWithMRV
-            // 
-            QtyinLocWithMRV.Caption = "QtyinLoc With MRV";
-            QtyinLocWithMRV.FieldName = "QtyinLocWithMRV";
-            QtyinLocWithMRV.MinWidth = 21;
-            QtyinLocWithMRV.Name = "QtyinLocWithMRV";
-            QtyinLocWithMRV.Visible = true;
-            QtyinLocWithMRV.VisibleIndex = 12;
-            QtyinLocWithMRV.Width = 81;
             // 
             // repositoryItemLookUpEditirn
             // 
@@ -278,8 +264,6 @@
             // 
             // panelControl2
             // 
-            panelControl2.Controls.Add(progressLabel);
-            panelControl2.Controls.Add(progressBar1);
             panelControl2.Controls.Add(labelControl2);
             panelControl2.Controls.Add(labelControl1);
             panelControl2.Controls.Add(simpleButton1);
@@ -291,23 +275,6 @@
             panelControl2.Name = "panelControl2";
             panelControl2.Size = new Size(955, 33);
             panelControl2.TabIndex = 1;
-            // 
-            // progressLabel
-            // 
-            progressLabel.AutoSize = true;
-            progressLabel.Font = new Font("Tahoma", 10.2F, FontStyle.Bold, GraphicsUnit.Point);
-            progressLabel.ForeColor = Color.Green;
-            progressLabel.Location = new Point(417, 8);
-            progressLabel.Name = "progressLabel";
-            progressLabel.Size = new Size(0, 17);
-            progressLabel.TabIndex = 147;
-            // 
-            // progressBar1
-            // 
-            progressBar1.Location = new Point(168, 6);
-            progressBar1.Name = "progressBar1";
-            progressBar1.Size = new Size(240, 21);
-            progressBar1.TabIndex = 146;
             // 
             // labelControl2
             // 
@@ -394,7 +361,6 @@
             gridControl1.Size = new Size(951, 533);
             gridControl1.TabIndex = 0;
             gridControl1.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] { gridView1 });
-            gridControl1.Click += gridControl1_Click;
             // 
             // gridView1
             // 
@@ -414,7 +380,7 @@
             gridView1.Appearance.Row.Options.UseTextOptions = true;
             gridView1.Appearance.Row.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
             gridView1.Appearance.Row.TextOptions.VAlignment = DevExpress.Utils.VertAlignment.Center;
-            gridView1.Columns.AddRange(new DevExpress.XtraGrid.Columns.GridColumn[] { RowNumber, ArrivalDate, MSRNO, PLNO, OPINO, Project, LocItemID, LocationName, EnteredDate, MARDate, PoName, Supplier, Vendor, Mr, IRN, ItemId, PLName, ArchiveNO, PK, Tag, Description, UnitName, QtyPL, QtyInLoc, QtyinLocWithMRV, NISQty, RejectQty, ReqMivQty, ReserveMivQty, DelMivQty, TotalReturnAcceptQty, Balance, Inventory, Discipline, Scope });
+            gridView1.Columns.AddRange(new DevExpress.XtraGrid.Columns.GridColumn[] { RowNumber, ArrivalDate, MSRNO, OPINO, Project, LocItemID, LocationName, EnteredDate, MARDate, PoName, Supplier, Vendor, Mr, IRN, ItemId, PLName, ArchiveNO, PK, Tag, Description, UnitName, QtyPL, QtyInLoc, NISQty, RejectQty, ReqMivQty, ReserveMivQty, DelMivQty, TotalReturnAcceptQty, Balance, Inventory, Discipline, Scope });
             gridView1.DetailHeight = 284;
             gridView1.GridControl = gridControl1;
             gridView1.Name = "gridView1";
@@ -451,14 +417,6 @@
             MSRNO.Name = "MSRNO";
             MSRNO.Width = 81;
             // 
-            // PLNO
-            // 
-            PLNO.Caption = "PLNO";
-            PLNO.FieldName = "PLNO";
-            PLNO.MinWidth = 21;
-            PLNO.Name = "PLNO";
-            PLNO.Width = 81;
-            // 
             // OPINO
             // 
             OPINO.Caption = "OPI NO";
@@ -475,6 +433,22 @@
             Project.Name = "Project";
             Project.Width = 81;
             // 
+            // LocItemID
+            // 
+            LocItemID.Caption = "LocItemID";
+            LocItemID.FieldName = "LocItemID";
+            LocItemID.Name = "LocItemID";
+            LocItemID.Visible = true;
+            LocItemID.VisibleIndex = 6;
+            // 
+            // LocationName
+            // 
+            LocationName.Caption = "Location";
+            LocationName.FieldName = "LocationName";
+            LocationName.Name = "LocationName";
+            LocationName.Visible = true;
+            LocationName.VisibleIndex = 7;
+            // 
             // EnteredDate
             // 
             EnteredDate.Caption = "Entered Date";
@@ -482,7 +456,7 @@
             EnteredDate.MinWidth = 21;
             EnteredDate.Name = "EnteredDate";
             EnteredDate.Visible = true;
-            EnteredDate.VisibleIndex = 21;
+            EnteredDate.VisibleIndex = 20;
             EnteredDate.Width = 105;
             // 
             // MARDate
@@ -635,22 +609,6 @@
             panelControl3.Size = new Size(955, 537);
             panelControl3.TabIndex = 2;
             // 
-            // LocationName
-            // 
-            LocationName.Caption = "Location";
-            LocationName.FieldName = "LocationName";
-            LocationName.Name = "LocationName";
-            LocationName.Visible = true;
-            LocationName.VisibleIndex = 7;
-            // 
-            // LocItemID
-            // 
-            LocItemID.Caption = "LocItemID";
-            LocItemID.FieldName = "LocItemID";
-            LocItemID.Name = "LocItemID";
-            LocItemID.Visible = true;
-            LocItemID.VisibleIndex = 6;
-            // 
             // frmSearchLocItem
             // 
             Appearance.Options.UseFont = true;
@@ -694,7 +652,6 @@
         private DevExpress.XtraGrid.Columns.GridColumn NISQty;
         private DevExpress.XtraGrid.Columns.GridColumn Discipline;
         private DevExpress.XtraGrid.Columns.GridColumn Scope;
-        private DevExpress.XtraGrid.Columns.GridColumn QtyinLocWithMRV;
         private DevExpress.XtraEditors.Repository.RepositoryItemLookUpEdit repositoryItemLookUpEditirn;
         private DevExpress.XtraEditors.Repository.RepositoryItemLookUpEdit repositoryItemLookUpEditpo;
         private DevExpress.XtraEditors.Repository.RepositoryItemLookUpEdit repositoryItemLookUpEditmr;
@@ -712,7 +669,6 @@
         private DevExpress.XtraGrid.Columns.GridColumn RowNumber;
         private DevExpress.XtraGrid.Columns.GridColumn ArrivalDate;
         private DevExpress.XtraGrid.Columns.GridColumn MSRNO;
-        private DevExpress.XtraGrid.Columns.GridColumn PLNO;
         private DevExpress.XtraGrid.Columns.GridColumn OPINO;
         private DevExpress.XtraGrid.Columns.GridColumn Project;
         private DevExpress.XtraGrid.Columns.GridColumn EnteredDate;
@@ -734,8 +690,6 @@
         private DevExpress.XtraEditors.PanelControl panelControl3;
         private DevExpress.XtraEditors.LabelControl labelControl2;
         private DevExpress.XtraEditors.LabelControl labelControl1;
-        private Label progressLabel;
-        private ProgressBar progressBar1;
         private DevExpress.XtraGrid.Columns.GridColumn LocItemID;
         private DevExpress.XtraGrid.Columns.GridColumn LocationName;
     }

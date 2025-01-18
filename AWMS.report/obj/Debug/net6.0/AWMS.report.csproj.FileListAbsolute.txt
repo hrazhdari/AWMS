@@ -1,7 +1,9 @@
 D:\MyBigProject\AshinaWarehouse\AWMS.report\bin\Debug\net6.0\MivReportFront.cs
 D:\MyBigProject\AshinaWarehouse\AWMS.report\bin\Debug\net6.0\ReportBackMiv.repx
 D:\MyBigProject\AshinaWarehouse\AWMS.report\bin\Debug\net6.0\ReportFrontMiv.repx
+D:\MyBigProject\AshinaWarehouse\AWMS.report\bin\Debug\net6.0\ReportMRC.repx
 D:\MyBigProject\AshinaWarehouse\AWMS.report\bin\Debug\net6.0\ReportMSRPrint.repx
+D:\MyBigProject\AshinaWarehouse\AWMS.report\bin\Debug\net6.0\ReportOpiList.repx
 D:\MyBigProject\AshinaWarehouse\AWMS.report\bin\Debug\net6.0\ReportPlChecking.repx
 D:\MyBigProject\AshinaWarehouse\AWMS.report\bin\Debug\net6.0\AWMS.report.deps.json
 D:\MyBigProject\AshinaWarehouse\AWMS.report\bin\Debug\net6.0\AWMS.report.dll

@@ -99,6 +99,7 @@ namespace AWMS.app
                     services.AddScoped<IMrvDapperRepository, MrvDapperRepository>();
                     services.AddScoped<IHmvDapperRepository, HmvDapperRepository>();
                     services.AddScoped<IInspectionDapperRepository, InspectionDapperRepository>();
+                    services.AddScoped<IMrcDapperRepository, MrcDapperRepository>();
 
                     // افزودن سرویس‌های فرم‌ها به سرویس‌ها
                     services.AddTransient<frmMain>();
@@ -136,6 +137,9 @@ namespace AWMS.app
                     services.AddTransient<frmMsrRev>();
                     services.AddTransient<frmPlChecking>();
                     services.AddTransient<frmPrintMSR>();
+                    services.AddTransient<frmOpiList>();
+                    services.AddTransient<frmImportMrc>();
+                    services.AddTransient<frmManageMrc>();
 
 
                     services.AddTransient<frmChangeFormat>();

@@ -44,8 +44,6 @@
             repositoryItemLookUpEditdescipline = new DevExpress.XtraEditors.Repository.RepositoryItemLookUpEdit();
             repositoryItemTextEditirn = new DevExpress.XtraEditors.Repository.RepositoryItemTextEdit();
             panelControl2 = new DevExpress.XtraEditors.PanelControl();
-            progressLabel = new Label();
-            progressBar1 = new ProgressBar();
             labelControl2 = new DevExpress.XtraEditors.LabelControl();
             labelControl1 = new DevExpress.XtraEditors.LabelControl();
             simpleButton1 = new DevExpress.XtraEditors.SimpleButton();
@@ -234,8 +232,6 @@
             // 
             // panelControl2
             // 
-            panelControl2.Controls.Add(progressLabel);
-            panelControl2.Controls.Add(progressBar1);
             panelControl2.Controls.Add(labelControl2);
             panelControl2.Controls.Add(labelControl1);
             panelControl2.Controls.Add(simpleButton1);
@@ -247,23 +243,6 @@
             panelControl2.Name = "panelControl2";
             panelControl2.Size = new Size(955, 33);
             panelControl2.TabIndex = 1;
-            // 
-            // progressLabel
-            // 
-            progressLabel.AutoSize = true;
-            progressLabel.Font = new Font("Tahoma", 10.2F, FontStyle.Bold, GraphicsUnit.Point);
-            progressLabel.ForeColor = Color.Green;
-            progressLabel.Location = new Point(531, 8);
-            progressLabel.Name = "progressLabel";
-            progressLabel.Size = new Size(0, 17);
-            progressLabel.TabIndex = 147;
-            // 
-            // progressBar1
-            // 
-            progressBar1.Location = new Point(282, 6);
-            progressBar1.Name = "progressBar1";
-            progressBar1.Size = new Size(240, 21);
-            progressBar1.TabIndex = 146;
             // 
             // labelControl2
             // 
@@ -350,7 +329,6 @@
             gridControl1.Size = new Size(951, 533);
             gridControl1.TabIndex = 0;
             gridControl1.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] { gridView1 });
-            gridControl1.Click += gridControl1_Click;
             // 
             // gridView1
             // 
@@ -684,8 +662,6 @@
         private DevExpress.XtraEditors.PanelControl panelControl3;
         private DevExpress.XtraEditors.LabelControl labelControl2;
         private DevExpress.XtraEditors.LabelControl labelControl1;
-        private Label progressLabel;
-        private ProgressBar progressBar1;
         private DevExpress.XtraGrid.Columns.GridColumn LocItemID;
         private DevExpress.XtraGrid.Columns.GridColumn LocationName;
         private DevExpress.XtraGrid.Columns.GridColumn ReqDate;

@@ -10,7 +10,9 @@
     <None Remove=".repx" />
     <None Remove="ReportBackMiv.repx" />
     <None Remove="ReportFrontMiv.repx" />
+    <None Remove="ReportMRC.repx" />
     <None Remove="ReportMSRPrint.repx" />
+    <None Remove="ReportOpiList.repx" />
     <None Remove="ReportPlChecking.repx" />
   </ItemGroup>
 
@@ -21,7 +23,13 @@
     <Content Include="ReportFrontMiv.repx">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <Content Include="ReportMRC.repx">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Include="ReportMSRPrint.repx">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ReportOpiList.repx">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="ReportPlChecking.repx">

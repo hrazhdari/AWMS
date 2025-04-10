@@ -106,6 +106,12 @@
     <Compile Update="Forms\RibbonSearch\frmSearchMiv.cs">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Update="Forms\RibbonUser\frmManageUser.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="Forms\RibbonUser\frmAddUser.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Update="Forms\RibbonVoucher\frmManageMrc.cs">
       <SubType>Form</SubType>
     </Compile>

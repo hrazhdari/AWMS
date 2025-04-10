@@ -16,5 +16,6 @@ namespace AWMS.dapper.Repositories
         //Task AddItemWithAddLocitemWithTriggerAsync(ItemDto itemDto, int locationId);
         Task<int> AddItemWithAddLocitemWithTriggerAsync(ItemDto item, int locationId);
         Task DeleteMultipleItemsWithTransactionAsync(IEnumerable<ItemDto> items);
+        bool ChangePKidOfItemid(int pkid, int itemid);
     }
 }

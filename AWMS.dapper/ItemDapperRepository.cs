@@ -546,6 +546,20 @@ namespace AWMS.dapper
             var dataTable = ConvertToDataTable2025(items, userid);
             SendDataToStoredProcedure2025(dataTable, plId, locationId);
         }
+        public bool ChangePKidOfItemid(int pkid, int itemid)
+        {
+            using (IDbConnection db = new SqlConnection(_connectionString))
+            {
+                // استفاده از Execute به جای ExecuteScalar
+                int affectedRows = db.Execute(
+                    "ChangePKidOfItemid",
+                    new { pkid, itemid },
+                    commandType: CommandType.StoredProcedure);
+
+                // بررسی تعداد ردیف‌های تاثیرگذاری که آپدیت شده‌اند
+                return affectedRows > 0;
+            }
+        }
 
     }
 }

@@ -6,6 +6,7 @@ using AWMS.app.Forms.RibbonSearch;
 using AWMS.app.Forms.RibbonUser;
 using AWMS.app.Forms.RibbonVoucher;
 using AWMS.app.Forms.RibbonMsr;
+using AWMS.app.Forms.RibbonSetting;
 using AWMS.core;
 using AWMS.core.Interfaces;
 using AWMS.core.Services;
@@ -140,6 +141,10 @@ namespace AWMS.app
                     services.AddTransient<frmOpiList>();
                     services.AddTransient<frmImportMrc>();
                     services.AddTransient<frmManageMrc>();
+                    services.AddTransient<frmAddUser>();
+                    services.AddTransient<frmManageUser>();
+                    services.AddTransient<frmMoveItem>();
+                    services.AddTransient<frmDatabaseSetting>();
 
 
                     services.AddTransient<frmChangeFormat>();

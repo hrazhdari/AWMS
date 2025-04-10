@@ -23,5 +23,6 @@ namespace AWMS.dapper.Repositories
         Task<List<GetAllPackingListNameDto>> GetAllPackingListNamesAsync();
         Task<List<PLcheckingHeaderDetailDto>> GetPackingListHeaderDetailsByPLIdAsync(int plId);
         Task<List<PLcheckingDetailDetailDto>> GetPackingListDetailDetailsByPLIdAsync(int plId);
+        Task<List<MoveItemPackingDetailDto>> GetPackingListMoveItemDetailsAsync(int plId);
     }
 }

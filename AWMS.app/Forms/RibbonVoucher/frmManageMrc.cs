@@ -221,12 +221,31 @@ namespace AWMS.app.Forms.RibbonVoucher
                 }
 
                 // ایجاد و نمایش فرم جدید و ارسال مقدار
-                frmPrintMRC printForm = new frmPrintMRC(_serviceProvider, mrcValue,_session.UserID);
+                frmPrintMRC printForm = new frmPrintMRC(_serviceProvider, mrcValue, _session.UserID);
                 printForm.ShowDialog();
             }
             catch (Exception ex)
             {
                 MessageBox.Show($"خطایی رخ داد: {ex.Message}", "خطا", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void simpleButton1_Click(object sender, EventArgs e)
+        {
+            SaveGridData("Excel Files|*.xlsx", "Save Excel File", fileName => gridView1.ExportToXlsx(fileName));
+        }
+        private void SaveGridData(string filter, string title, Action<string> exportAction)
+        {
+            SaveFileDialog saveFileDialog = new SaveFileDialog
+            {
+                Filter = filter,
+                Title = title
+            };
+
+            if (saveFileDialog.ShowDialog() == DialogResult.OK)
+            {
+                exportAction.Invoke(saveFileDialog.FileName);
+                DevExpress.XtraEditors.XtraMessageBox.Show($"{Path.GetExtension(saveFileDialog.FileName)} file saved successfully!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
         }
 

@@ -7,10 +7,10 @@
     <Compile Update="Forms\frmBase\frmWait.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Update="Forms\frmCompanyContract.cs">
+    <Compile Update="Forms\RibbonSetting\frmCompanyContract.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Update="Forms\frmCompanyManagment.cs">
+    <Compile Update="Forms\RibbonSetting\frmCompanyManagment.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Update="Forms\frmMain.cs">
@@ -52,6 +52,9 @@
     <Compile Update="Forms\RibbonMaterial\frmItemLoc.cs">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Update="Forms\RibbonMaterial\frmMoveItem.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Update="Forms\RibbonMaterial\frmMr.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -74,6 +77,9 @@
       <SubType>Form</SubType>
     </Compile>
     <Compile Update="Forms\RibbonSearch\frmSearchLocItem.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="Forms\RibbonSetting\frmDatabaseSetting.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Update="Forms\RibbonUser\frmLogin.cs">

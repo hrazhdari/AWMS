@@ -4,14 +4,20 @@ using AWMS.app.Forms.RibbonChange;
 using AWMS.app.Forms.RibbonMaterial;
 using AWMS.app.Forms.RibbonMsr;
 using AWMS.app.Forms.RibbonSearch;
+using AWMS.app.Forms.RibbonSetting;
 using AWMS.app.Forms.RibbonUser;
 using AWMS.app.Forms.RibbonVoucher;
 using AWMS.app.Utility;
 using AWMS.core.Interfaces;
 using AWMS.dapper.Repositories;
 using DevExpress.XtraBars;
+using DevExpress.XtraBars.Ribbon;
 using DevExpress.XtraSplashScreen;
 using Microsoft.Extensions.DependencyInjection;
+using Newtonsoft.Json;
+using System.IO;
+using System.Windows.Controls.Ribbon;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement.StartPanel;
 
 namespace AWMS.app.Forms
 {
@@ -26,6 +32,7 @@ namespace AWMS.app.Forms
             _serviceProvider = serviceProvider;
             _userContext = userContext;
             this.Icon = Properties.Resources.warehouse2024;
+            ApplyRolePermissions();
             barStaticItem2.Caption = " :: " + DateMiladiShamsi.DateMiladi() + " : " + DateMiladiShamsi.DateShamsi();
         }
 
@@ -34,7 +41,50 @@ namespace AWMS.app.Forms
             if (_userContext != null)
             {
                 barStaticItem3.Caption = $"Welcome, {_userContext.Username}";
+                LoadSkin(_userContext.Username);
             }
+        }
+        private async void ApplyRolePermissions()
+        {
+            // دریافت RoleID کاربر از UserContext
+            var roleId = _userContext.RoleID;
+
+            // دریافت دسترسی‌های نقش از جدول ApplicationPermissions
+            var repository = _serviceProvider.GetService<IUserDapperRepository>();
+            var permissions = await repository.GetPermissionsByRoleIdAsync(roleId);
+
+            if (permissions == null || !permissions.Any()) return;
+
+            // فعال یا غیرفعال کردن تب‌ها بر اساس دسترسی‌ها
+            foreach (DevExpress.XtraBars.Ribbon.RibbonPage page in ribbonControl1.Pages)
+            {
+                var permission = permissions.FirstOrDefault(p => p.RibbonPageName == page.Name);
+
+                if (permission != null)
+                {
+                    page.Visible = permission.IsEnabled; // نمایش تب اگر مجوز فعال باشد
+
+                    // غیرفعال کردن گروه‌ها در این تب
+                    foreach (DevExpress.XtraBars.Ribbon.RibbonPageGroup group in page.Groups)
+                    {
+                        group.Enabled = permission.IsEnabled; // غیرفعال کردن گروه‌ها
+                    }
+
+                    // جلوگیری از انتخاب تب اگر غیرفعال باشد
+                    if (!permission.IsEnabled)
+                    {
+                        // برای جلوگیری از انتخاب تب
+                        page.Visible = true; // تب نمایش داده می‌شود
+                        ribbonControl1.SelectedPage = null; // از انتخاب تب جلوگیری می‌شود
+                    }
+                }
+                else
+                {
+                    page.Visible = false; // مخفی کردن تب
+                }
+            }
+
+
         }
 
         private void CompanybarButtonItem_ItemClick(object sender, ItemClickEventArgs e)
@@ -450,6 +500,12 @@ namespace AWMS.app.Forms
 
         private void frmMain_FormClosing(object sender, FormClosingEventArgs e)
         {
+            if (_userContext != null)
+            {
+                SessionManager.RemoveSession(_userContext.UserId);
+                SaveSkin(_userContext.Username);
+            }
+
             Application.Exit();
         }
 
@@ -662,5 +718,167 @@ namespace AWMS.app.Forms
                 SplashScreenManager.CloseForm();
             }
         }
+
+        private void barButtonItem6_ItemClick(object sender, ItemClickEventArgs e)
+        {
+            try
+            {
+                //SplashScreenManager.ShowForm(this, typeof(frmWait), true, true, true, false);
+                var frmAddUser = _serviceProvider.GetRequiredService<frmAddUser>();
+                // frmAddUser.MdiParent = this;
+                frmAddUser.ShowDialog();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"An error occurred: {ex.Message}");
+            }
+            finally
+            {
+                //SplashScreenManager.CloseForm();
+            }
+        }
+
+        private void barButtonItem7_ItemClick(object sender, ItemClickEventArgs e)
+        {
+            try
+            {
+                SplashScreenManager.ShowForm(this, typeof(frmWait), true, true, true, false);
+                var frmManageUser = _serviceProvider.GetRequiredService<frmManageUser>();
+                frmManageUser.MdiParent = this;
+                frmManageUser.Show();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"An error occurred: {ex.Message}");
+            }
+            finally
+            {
+                SplashScreenManager.CloseForm();
+            }
+
+        }
+
+        private void barButtonItem30_ItemClick(object sender, ItemClickEventArgs e)
+        {
+            try
+            {
+                SplashScreenManager.ShowForm(this, typeof(frmWait), true, true, true, false);
+                var frmMoveItem = _serviceProvider.GetRequiredService<frmMoveItem>();
+                frmMoveItem.MdiParent = this;
+                frmMoveItem.Show();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"An error occurred: {ex.Message}");
+            }
+            finally
+            {
+                SplashScreenManager.CloseForm();
+            }
+        }
+        private void barButtonItem31_ItemClick(object sender, ItemClickEventArgs e)
+        {
+            try
+            {
+                SplashScreenManager.ShowForm(this, typeof(frmWait), true, true, true, false);
+                var frmDatabaseSetting = _serviceProvider.GetRequiredService<frmDatabaseSetting>();
+                frmDatabaseSetting.MdiParent = this;
+                frmDatabaseSetting.Show();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"An error occurred: {ex.Message}");
+            }
+            finally
+            {
+                SplashScreenManager.CloseForm();
+            }
+        }
+
+
+
+
+
+
+
+
+
+
+        private void LoadSkin(string username)
+        {
+            // مسیر فایل اسکین در AppData به نام کاربر
+            string appDataPath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData), "AWMS", username, "skinSettings.json");
+
+            try
+            {
+                if (File.Exists(appDataPath))
+                {
+                    string json = File.ReadAllText(appDataPath);
+                    var settings = JsonConvert.DeserializeObject<dynamic>(json);
+
+                    // بارگذاری اسکین از فایل
+                    string skinName = settings?.SkinName;
+                    if (!string.IsNullOrEmpty(skinName))
+                    {
+                        DevExpress.LookAndFeel.UserLookAndFeel.Default.SkinName = skinName;
+                    }
+                    else
+                    {
+                        // اگر اسکین در فایل پیدا نشد، از اسکین پیش‌فرض استفاده می‌کنیم
+                        DevExpress.LookAndFeel.UserLookAndFeel.Default.SkinName = "Office 2019 Colorful"; // اسکین پیش‌فرض
+                    }
+                }
+                else
+                {
+                    // اگر فایل اسکین پیدا نشد، از اسکین پیش‌فرض استفاده می‌کنیم
+                    DevExpress.LookAndFeel.UserLookAndFeel.Default.SkinName = "Office 2019 Colorful"; // اسکین پیش‌فرض
+                }
+            }
+            catch (Exception ex)
+            {
+                // در صورت بروز هر گونه خطا، اسکین پیش‌فرض اعمال می‌شود
+                DevExpress.LookAndFeel.UserLookAndFeel.Default.SkinName = "Office 2019 Colorful"; // اسکین پیش‌فرض
+
+                // لاگ خطا یا نمایش پیغام خطا (در صورت تمایل)
+                //Console.WriteLine("Error loading skin: " + ex.Message);
+            }
+        }
+
+
+
+        private void SaveSkin(string username)
+        {
+            // مسیر فایل اسکین در AppData به نام کاربر
+            string appDataPath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData), "AWMS", username, "skinSettings.json");
+
+            try
+            {
+                // اگر پوشه‌ی مورد نظر وجود ندارد، آن را ایجاد می‌کنیم
+                string directory = Path.GetDirectoryName(appDataPath);
+                if (!Directory.Exists(directory))
+                {
+                    Directory.CreateDirectory(directory);
+                }
+
+                // ایجاد شیء تنظیمات
+                var settings = new
+                {
+                    SkinName = DevExpress.LookAndFeel.UserLookAndFeel.Default.SkinName
+                };
+
+                // تبدیل تنظیمات به JSON
+                string json = JsonConvert.SerializeObject(settings);
+
+                // ذخیره تنظیمات در فایل
+                File.WriteAllText(appDataPath, json);
+            }
+            catch (Exception ex)
+            {
+                // در صورت بروز هرگونه خطا، پیغام خطا نمایش داده نمی‌شود و فقط در کنسول لاگ می‌شود
+                //Console.WriteLine("Error saving skin: " + ex.Message);
+            }
+        }
+
+ 
     }
 }

@@ -22,6 +22,160 @@ namespace AWMS.datalayer.Migrations
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder);
 
+            modelBuilder.Entity("AWMS.datalayer.Entities.ApplicationPermission", b =>
+                {
+                    b.Property<int>("PermissionID")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("PermissionID"));
+
+                    b.Property<bool>("IsEnabled")
+                        .HasColumnType("bit");
+
+                    b.Property<string>("RibbonPageName")
+                        .IsRequired()
+                        .HasMaxLength(50)
+                        .HasColumnType("nvarchar(50)");
+
+                    b.Property<int>("RoleID")
+                        .HasColumnType("int");
+
+                    b.HasKey("PermissionID");
+
+                    b.HasIndex("RoleID");
+
+                    b.ToTable("ApplicationPermissions", (string)null);
+
+                    b.HasData(
+                        new
+                        {
+                            PermissionID = 1,
+                            IsEnabled = true,
+                            RibbonPageName = "ribbonPage1",
+                            RoleID = 1
+                        },
+                        new
+                        {
+                            PermissionID = 2,
+                            IsEnabled = true,
+                            RibbonPageName = "ribbonPage2",
+                            RoleID = 1
+                        },
+                        new
+                        {
+                            PermissionID = 3,
+                            IsEnabled = true,
+                            RibbonPageName = "ribbonPage3",
+                            RoleID = 1
+                        },
+                        new
+                        {
+                            PermissionID = 4,
+                            IsEnabled = true,
+                            RibbonPageName = "ribbonPage4",
+                            RoleID = 1
+                        },
+                        new
+                        {
+                            PermissionID = 5,
+                            IsEnabled = true,
+                            RibbonPageName = "ribbonPage5",
+                            RoleID = 1
+                        },
+                        new
+                        {
+                            PermissionID = 6,
+                            IsEnabled = true,
+                            RibbonPageName = "ribbonPage6",
+                            RoleID = 1
+                        },
+                        new
+                        {
+                            PermissionID = 7,
+                            IsEnabled = true,
+                            RibbonPageName = "ribbonPage7",
+                            RoleID = 1
+                        },
+                        new
+                        {
+                            PermissionID = 8,
+                            IsEnabled = true,
+                            RibbonPageName = "ribbonPage8",
+                            RoleID = 1
+                        },
+                        new
+                        {
+                            PermissionID = 9,
+                            IsEnabled = true,
+                            RibbonPageName = "ribbonPage9",
+                            RoleID = 1
+                        },
+                        new
+                        {
+                            PermissionID = 10,
+                            IsEnabled = true,
+                            RibbonPageName = "ribbonPage10",
+                            RoleID = 1
+                        },
+                        new
+                        {
+                            PermissionID = 11,
+                            IsEnabled = true,
+                            RibbonPageName = "ribbonPage11",
+                            RoleID = 1
+                        },
+                        new
+                        {
+                            PermissionID = 12,
+                            IsEnabled = true,
+                            RibbonPageName = "ribbonPage12",
+                            RoleID = 1
+                        },
+                        new
+                        {
+                            PermissionID = 13,
+                            IsEnabled = true,
+                            RibbonPageName = "ribbonPage13",
+                            RoleID = 1
+                        },
+                        new
+                        {
+                            PermissionID = 14,
+                            IsEnabled = true,
+                            RibbonPageName = "ribbonPage14",
+                            RoleID = 1
+                        },
+                        new
+                        {
+                            PermissionID = 15,
+                            IsEnabled = true,
+                            RibbonPageName = "ribbonPage15",
+                            RoleID = 1
+                        },
+                        new
+                        {
+                            PermissionID = 16,
+                            IsEnabled = true,
+                            RibbonPageName = "ribbonPage16",
+                            RoleID = 1
+                        },
+                        new
+                        {
+                            PermissionID = 17,
+                            IsEnabled = true,
+                            RibbonPageName = "ribbonPage17",
+                            RoleID = 1
+                        },
+                        new
+                        {
+                            PermissionID = 18,
+                            IsEnabled = true,
+                            RibbonPageName = "ribbonPage18",
+                            RoleID = 1
+                        });
+                });
+
             modelBuilder.Entity("AWMS.datalayer.Entities.ApplicationRole", b =>
                 {
                     b.Property<int>("RoleID")
@@ -209,14 +363,14 @@ namespace AWMS.datalayer.Migrations
                             CompanyID = 1,
                             Abbreviation = "PPI",
                             CompanyName = "Petro Paydar Iranian",
-                            EnteredDate = new DateTime(2025, 1, 15, 21, 56, 26, 547, DateTimeKind.Local).AddTicks(9188)
+                            EnteredDate = new DateTime(2025, 1, 19, 21, 58, 19, 371, DateTimeKind.Local).AddTicks(1180)
                         },
                         new
                         {
                             CompanyID = 2,
                             Abbreviation = "TESCO",
                             CompanyName = "Teco",
-                            EnteredDate = new DateTime(2025, 1, 15, 21, 56, 26, 547, DateTimeKind.Local).AddTicks(9201)
+                            EnteredDate = new DateTime(2025, 1, 19, 21, 58, 19, 371, DateTimeKind.Local).AddTicks(1198)
                         });
                 });
 
@@ -796,21 +950,21 @@ namespace AWMS.datalayer.Migrations
                         {
                             LocationID = 1,
                             EnteredBy = 88,
-                            EnteredDate = new DateTime(2025, 1, 15, 21, 56, 26, 545, DateTimeKind.Local).AddTicks(6393),
+                            EnteredDate = new DateTime(2025, 1, 19, 21, 58, 19, 367, DateTimeKind.Local).AddTicks(5266),
                             LocationName = "L02A101A"
                         },
                         new
                         {
                             LocationID = 2,
                             EnteredBy = 88,
-                            EnteredDate = new DateTime(2025, 1, 15, 21, 56, 26, 545, DateTimeKind.Local).AddTicks(6411),
+                            EnteredDate = new DateTime(2025, 1, 19, 21, 58, 19, 367, DateTimeKind.Local).AddTicks(5286),
                             LocationName = "L02A102A"
                         },
                         new
                         {
                             LocationID = 3,
                             EnteredBy = 88,
-                            EnteredDate = new DateTime(2025, 1, 15, 21, 56, 26, 545, DateTimeKind.Local).AddTicks(6412),
+                            EnteredDate = new DateTime(2025, 1, 19, 21, 58, 19, 367, DateTimeKind.Local).AddTicks(5288),
                             LocationName = "W02A02B"
                         });
                 });
@@ -2071,6 +2225,17 @@ namespace AWMS.datalayer.Migrations
                             VendorContractNO = "-",
                             VendorName = "-"
                         });
+                });
+
+            modelBuilder.Entity("AWMS.datalayer.Entities.ApplicationPermission", b =>
+                {
+                    b.HasOne("AWMS.datalayer.Entities.ApplicationRole", "Role")
+                        .WithMany()
+                        .HasForeignKey("RoleID")
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired();
+
+                    b.Navigation("Role");
                 });
 
             modelBuilder.Entity("AWMS.datalayer.Entities.ApplicationUser", b =>

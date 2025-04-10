@@ -260,68 +260,137 @@ namespace AWMS.app.Forms.RibbonMaterial
             }
         }
 
+        //private async void gridControl1_DoubleClick(object sender, EventArgs e)
+        //{
+        //    try
+        //    {
+        //        GridControl gridControl = sender as GridControl;
+
+        //        if (gridControl != null && gridView1 != null)
+        //        {
+        //            GridHitInfo hitInfo = gridView1.CalcHitInfo(gridControl.PointToClient(Control.MousePosition));
+
+        //            if (hitInfo != null && hitInfo.RowHandle >= 0)
+        //            {
+        //                if (hitInfo.RowHandle < gridView1.RowCount)
+        //                {
+        //                    object plIdObject = gridView1.GetRowCellValue(hitInfo.RowHandle, "PLId");
+        //                    if (plIdObject != null && plIdObject is int)
+        //                    {
+        //                        PLid = (int)plIdObject;
+        //                        PLname = gridView1.GetRowCellValue(hitInfo.RowHandle, "PLName")?.ToString();
+
+        //                        // اطمینان حاصل کنید که _packingRepository مقداردهی شده است
+        //                        if (_serviceProvider.GetService<IPackingListDapperRepository>() != null)
+        //                        {
+        //                            gridControl2.DataSource = await _serviceProvider.GetService<IPackingListDapperRepository>().AllItemSelectedPlAsync(PLid);
+        //                        }
+
+        //                        if (xtraTabControl1 != null)
+        //                        {
+        //                            if (xtraTabPage2 != null)
+        //                            {
+        //                                xtraTabControl1.SelectedTabPage = xtraTabPage2;
+        //                            }
+        //                            else
+        //                            {
+        //                                MessageBox.Show("xtraTabPage2 مقداردهی اولیه نشده است.");
+        //                            }
+        //                        }
+        //                        else
+        //                        {
+        //                            MessageBox.Show("xtraTabControl1 مقداردهی اولیه نشده است.");
+        //                        }
+
+        //                        labelControl8.Text = "PLID:  " + PLid.ToString();
+        //                        labelControl9.Text = "PLName:  " + PLname;
+
+        //                        // اطمینان حاصل کنید که _packageRepository مقداردهی شده است
+        //                        if (_serviceProvider.GetService<IPackageDapperRepository>() != null)
+        //                        {
+        //                            repositoryItemLookUpEditpk.DataSource = _serviceProvider.GetService<IPackageDapperRepository>()!.GetPackageByPLId(PLid);
+        //                        }
+
+        //                        gridView2.SortInfo.Clear();
+        //                        gridView2.SortInfo.Add(new GridColumnSortInfo(gridView1.Columns["LocItemID"], DevExpress.Data.ColumnSortOrder.Descending));
+
+        //                        if (gridView2.RowCount > 0)
+        //                        {
+        //                            gridView2.FocusedRowHandle = 0;
+        //                        }
+
+        //                        _isAllSelected = false;
+        //                        btnSelectAll.Text = "Select All";
+        //                    }
+        //                }
+        //            }
+        //        }
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        // ثبت یا مدیریت استثنا
+        //        MessageBox.Show($"خطا رخ داده است: {ex.Message}");
+        //    }
+        //}
         private async void gridControl1_DoubleClick(object sender, EventArgs e)
         {
             try
             {
-                GridControl gridControl = sender as GridControl;
-
-                if (gridControl != null && gridView1 != null)
+                // چک کردن اعتبار gridControl و gridView
+                if (sender is GridControl gridControl && gridView1 != null)
                 {
+                    // محاسبه مکان کلیک
                     GridHitInfo hitInfo = gridView1.CalcHitInfo(gridControl.PointToClient(Control.MousePosition));
 
-                    if (hitInfo != null && hitInfo.RowHandle >= 0)
+                    if (hitInfo?.RowHandle >= 0 && hitInfo.RowHandle < gridView1.RowCount)
                     {
-                        if (hitInfo.RowHandle < gridView1.RowCount)
+                        // استخراج اطلاعات PLId و PLName
+                        object plIdObject = gridView1.GetRowCellValue(hitInfo.RowHandle, "PLId");
+                        string plNameObject = gridView1.GetRowCellValue(hitInfo.RowHandle, "PLName")?.ToString();
+
+                        if (plIdObject is int plId && !string.IsNullOrEmpty(plNameObject))
                         {
-                            object plIdObject = gridView1.GetRowCellValue(hitInfo.RowHandle, "PLId");
-                            if (plIdObject != null && plIdObject is int)
+                            PLid = plId;
+                            PLname = plNameObject;
+
+                            var packingRepo = _serviceProvider.GetService<IPackingListDapperRepository>();
+                            var packageRepo = _serviceProvider.GetService<IPackageDapperRepository>();
+
+                            if (packingRepo != null)
                             {
-                                PLid = (int)plIdObject;
-                                PLname = gridView1.GetRowCellValue(hitInfo.RowHandle, "PLName")?.ToString();
-
-                                // اطمینان حاصل کنید که _packingRepository مقداردهی شده است
-                                if (_serviceProvider.GetService<IPackingListDapperRepository>() != null)
-                                {
-                                    gridControl2.DataSource = await _serviceProvider.GetService<IPackingListDapperRepository>().AllItemSelectedPlAsync(PLid);
-                                }
-
-                                if (xtraTabControl1 != null)
-                                {
-                                    if (xtraTabPage2 != null)
-                                    {
-                                        xtraTabControl1.SelectedTabPage = xtraTabPage2;
-                                    }
-                                    else
-                                    {
-                                        MessageBox.Show("xtraTabPage2 مقداردهی اولیه نشده است.");
-                                    }
-                                }
-                                else
-                                {
-                                    MessageBox.Show("xtraTabControl1 مقداردهی اولیه نشده است.");
-                                }
-
-                                labelControl8.Text = "PLID:  " + PLid.ToString();
-                                labelControl9.Text = "PLName:  " + PLname;
-
-                                // اطمینان حاصل کنید که _packageRepository مقداردهی شده است
-                                if (_serviceProvider.GetService<IPackageDapperRepository>() != null)
-                                {
-                                    repositoryItemLookUpEditpk.DataSource = _serviceProvider.GetService<IPackageDapperRepository>()!.GetPackageByPLId(PLid);
-                                }
-
-                                gridView2.SortInfo.Clear();
-                                gridView2.SortInfo.Add(new GridColumnSortInfo(gridView1.Columns["LocItemID"], DevExpress.Data.ColumnSortOrder.Descending));
-
-                                if (gridView2.RowCount > 0)
-                                {
-                                    gridView2.FocusedRowHandle = 0;
-                                }
-
-                                _isAllSelected = false;
-                                btnSelectAll.Text = "Select All";
+                                // بارگذاری داده‌های gridControl2
+                                var itemsTask = packingRepo.AllItemSelectedPlAsync(PLid);
+                                gridControl2.DataSource = await itemsTask;
                             }
+
+                            if (xtraTabControl1 != null && xtraTabPage2 != null)
+                            {
+                                xtraTabControl1.SelectedTabPage = xtraTabPage2;
+                            }
+
+                            labelControl8.Text = $"PLID: {PLid}";
+                            labelControl9.Text = $"PLName: {PLname}";
+
+                            if (packageRepo != null)
+                            {
+                                // بارگذاری داده‌های RepositoryItemLookUpEdit
+                                var packagesTask = Task.Run(() => packageRepo.GetPackageByPLId(PLid));
+                                repositoryItemLookUpEditpk.DataSource = await packagesTask;
+                            }
+
+                            // تنظیم مرتب‌سازی
+                            gridView2.SortInfo.Clear();
+                            gridView2.SortInfo.Add(new GridColumnSortInfo(gridView1.Columns["LocItemID"], DevExpress.Data.ColumnSortOrder.Descending));
+
+                            // تنظیم فوکوس
+                            if (gridView2.RowCount > 0)
+                            {
+                                gridView2.FocusedRowHandle = 0;
+                            }
+
+                            // بازنشانی وضعیت Select All
+                            _isAllSelected = false;
+                            btnSelectAll.Text = "Select All";
                         }
                     }
                 }
@@ -332,6 +401,7 @@ namespace AWMS.app.Forms.RibbonMaterial
                 MessageBox.Show($"خطا رخ داده است: {ex.Message}");
             }
         }
+
 
         private bool updatingQtyInLoc = false;
 

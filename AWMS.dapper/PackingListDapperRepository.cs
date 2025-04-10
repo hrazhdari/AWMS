@@ -246,9 +246,10 @@ namespace AWMS.dapper
 
                 // Increase command timeout to 300 seconds (5 minutes)
                 var commandTimeout = 300; // in seconds
-
+                //AllItemSelectedPl
+                //AllItemSelectedPlWithView
                 return await db.QueryAsync<AllItemSelectedPlDto>(
-                    "AllItemSelectedPl",
+                    "[dbo].[AllItemSelectedPlNew2025]",
                     parameters,
                     commandType: CommandType.StoredProcedure,
                     commandTimeout: commandTimeout
@@ -309,6 +310,18 @@ namespace AWMS.dapper
                 // تبدیل به لیست به صورت غیر همزمان
                 return result.ToList(); // استفاده از ToList که به طور مستقیم از Dapper پشتیبانی می‌کند
             }
+        }
+
+  
+        public async Task<List<MoveItemPackingDetailDto>> GetPackingListMoveItemDetailsAsync(int plId)
+        {
+            var query = "EXEC [dbo].[GetPackingListDetails] @PLId";
+            using var connection = new SqlConnection(_connectionString);
+            return (await connection.QueryAsync<MoveItemPackingDetailDto>(
+                query,
+                new { PLId = plId },
+                commandTimeout: 120 // تنظیم Timeout به 120 ثانیه
+            )).ToList();
         }
 
 

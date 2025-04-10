@@ -54,6 +54,7 @@
             colEditedDate = new DevExpress.XtraGrid.Columns.GridColumn();
             panelControl2 = new DevExpress.XtraEditors.PanelControl();
             panelControl4 = new DevExpress.XtraEditors.PanelControl();
+            simpleButton1 = new DevExpress.XtraEditors.SimpleButton();
             lookUpEdit1 = new DevExpress.XtraEditors.LookUpEdit();
             btnRefreshData = new DevExpress.XtraEditors.SimpleButton();
             panelControl5 = new DevExpress.XtraEditors.PanelControl();
@@ -65,6 +66,7 @@
             chkAllowEdit = new DevExpress.XtraEditors.CheckEdit();
             labelControl2 = new DevExpress.XtraEditors.LabelControl();
             btnPrintMRC = new DevExpress.XtraEditors.SimpleButton();
+            ExcelExportBarButtonItem = new DevExpress.XtraBars.BarButtonItem();
             ((System.ComponentModel.ISupportInitialize)panelControl1).BeginInit();
             panelControl1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)panelControl3).BeginInit();
@@ -333,6 +335,7 @@
             panelControl4.Appearance.BackColor = Color.Linen;
             panelControl4.Appearance.Options.UseBackColor = true;
             panelControl4.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.NoBorder;
+            panelControl4.Controls.Add(simpleButton1);
             panelControl4.Controls.Add(lookUpEdit1);
             panelControl4.Controls.Add(btnRefreshData);
             panelControl4.Controls.Add(panelControl5);
@@ -342,6 +345,16 @@
             panelControl4.Name = "panelControl4";
             panelControl4.Size = new Size(1077, 78);
             panelControl4.TabIndex = 4;
+            // 
+            // simpleButton1
+            // 
+            simpleButton1.ImageOptions.Image = (Image)resources.GetObject("simpleButton1.ImageOptions.Image");
+            simpleButton1.Location = new Point(659, 14);
+            simpleButton1.Name = "simpleButton1";
+            simpleButton1.Size = new Size(103, 24);
+            simpleButton1.TabIndex = 141;
+            simpleButton1.Text = "Export";
+            simpleButton1.Click += simpleButton1_Click;
             // 
             // lookUpEdit1
             // 
@@ -357,10 +370,10 @@
             // 
             btnRefreshData.Anchor = AnchorStyles.Top | AnchorStyles.Right;
             btnRefreshData.ImageOptions.Image = (Image)resources.GetObject("btnRefreshData.ImageOptions.Image");
-            btnRefreshData.Location = new Point(659, 10);
+            btnRefreshData.Location = new Point(659, 43);
             btnRefreshData.Margin = new Padding(3, 2, 3, 2);
             btnRefreshData.Name = "btnRefreshData";
-            btnRefreshData.Size = new Size(103, 59);
+            btnRefreshData.Size = new Size(103, 24);
             btnRefreshData.TabIndex = 139;
             btnRefreshData.Text = "Refresh DATA";
             btnRefreshData.Click += btnRefreshData_Click;
@@ -377,7 +390,7 @@
             panelControl5.Controls.Add(labelControl1);
             panelControl5.Controls.Add(btnDeleteItem);
             panelControl5.Controls.Add(chkAllowEdit);
-            panelControl5.Location = new Point(768, 10);
+            panelControl5.Location = new Point(768, 11);
             panelControl5.Margin = new Padding(3, 2, 3, 2);
             panelControl5.Name = "panelControl5";
             panelControl5.Size = new Size(302, 59);
@@ -457,12 +470,20 @@
             // btnPrintMRC
             // 
             btnPrintMRC.ImageOptions.Image = (Image)resources.GetObject("btnPrintMRC.ImageOptions.Image");
-            btnPrintMRC.Location = new Point(337, 27);
+            btnPrintMRC.Location = new Point(337, 25);
             btnPrintMRC.Name = "btnPrintMRC";
             btnPrintMRC.Size = new Size(67, 24);
             btnPrintMRC.TabIndex = 6;
             btnPrintMRC.Text = "Print";
             btnPrintMRC.Click += btnPrintMRC_Click;
+            // 
+            // ExcelExportBarButtonItem
+            // 
+            ExcelExportBarButtonItem.Caption = "Excel";
+            ExcelExportBarButtonItem.Id = 0;
+            ExcelExportBarButtonItem.ImageOptions.Image = Properties.Resources.exporttoxls_16x161;
+            ExcelExportBarButtonItem.ImageOptions.LargeImage = Properties.Resources.exporttoxls_16x161;
+            ExcelExportBarButtonItem.Name = "ExcelExportBarButtonItem";
             // 
             // frmManageMrc
             // 
@@ -532,5 +553,7 @@
         private DevExpress.XtraEditors.CheckEdit chkAllowEdit;
         private DevExpress.XtraEditors.LabelControl labelControl2;
         private DevExpress.XtraEditors.SimpleButton btnPrintMRC;
+        private DevExpress.XtraEditors.SimpleButton simpleButton1;
+        private DevExpress.XtraBars.BarButtonItem ExcelExportBarButtonItem;
     }
 }

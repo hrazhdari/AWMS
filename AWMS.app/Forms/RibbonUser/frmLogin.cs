@@ -7,13 +7,11 @@ namespace AWMS.app.Forms.RibbonUser
     public partial class frmLogin : XtraForm
     {
         private readonly IServiceProvider _serviceProvider;
-        private readonly IUserDapperRepository _userDapperRepository;
 
-        public frmLogin(IServiceProvider serviceProvider, IUserDapperRepository userDapperRepository)
+        public frmLogin(IServiceProvider serviceProvider)
         {
             InitializeComponent();
             _serviceProvider = serviceProvider;
-            _userDapperRepository = userDapperRepository;
 
             this.KeyDown += new KeyEventHandler(frmLogin_KeyDown);
             this.AcceptButton = btnEnter;
@@ -29,7 +27,7 @@ namespace AWMS.app.Forms.RibbonUser
             string username = txtUserName.Text;
             string passwordHash = txtPassword.Text; // فرض بر این است که تابع HashPassword وجود دارد
 
-            var user = await _userDapperRepository.GetUserByUsernameAsync(username);
+            var user = await _serviceProvider.GetService<IUserDapperRepository>()!.GetUserByUsernameAsync(username);
 
             if (user != null && user.PasswordHash == passwordHash)
             {
